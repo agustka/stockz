@@ -1,0 +1,17 @@
+{
+  "@@locale": "is",
+  "application_name": "Hlutabréff",
+  "close": "Loka",
+  "back": "Til baka",
+  "retry": "Reyna aftur",
+  "more": "Meira",
+  "overview": "Yfirlit",
+  "page_not_found_message": "Þessari aðgerð hefur verið lokað tímabundið. vinsamlegast reyndu aftur síðar. Við biðjumst afsökunar á þeim óþægindum sem þetta kann að valda. Kóði 560.",
+  "error_loading_feature_heading": "Tenging tókst ekki",
+  "semantics_tap_to_dismiss": "Smelltu hvar sem er til að fara til baka",
+  "semantics_drag_down_to_dismiss_drawer": "Dragðu til að loka skúffunni.",
+  "date_format_default": "dd.MM.yyyy",
+  "date_short_format": "d. MMMM yyyy",
+  "date_short_format_no_year": "dd. MMMM",
+  "date_short_format_no_year_single_digit": "d. MMMM"
+}
