@@ -6193,21 +6193,21 @@ class $IncomeStatementTableRowDefinitionTable
   static const VerificationMeta _revenueMeta =
       const VerificationMeta('revenue');
   @override
-  late final GeneratedColumn<double> revenue = GeneratedColumn<double>(
+  late final GeneratedColumn<int> revenue = GeneratedColumn<int>(
       'revenue', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _costOfRevenueMeta =
       const VerificationMeta('costOfRevenue');
   @override
-  late final GeneratedColumn<double> costOfRevenue = GeneratedColumn<double>(
+  late final GeneratedColumn<int> costOfRevenue = GeneratedColumn<int>(
       'cost_of_revenue', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _grossProfitMeta =
       const VerificationMeta('grossProfit');
   @override
-  late final GeneratedColumn<double> grossProfit = GeneratedColumn<double>(
+  late final GeneratedColumn<int> grossProfit = GeneratedColumn<int>(
       'gross_profit', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _grossProfitRatioMeta =
       const VerificationMeta('grossProfitRatio');
   @override
@@ -6217,73 +6217,71 @@ class $IncomeStatementTableRowDefinitionTable
   static const VerificationMeta _researchAndDevelopmentExpensesMeta =
       const VerificationMeta('researchAndDevelopmentExpenses');
   @override
-  late final GeneratedColumn<double> researchAndDevelopmentExpenses =
-      GeneratedColumn<double>(
+  late final GeneratedColumn<int> researchAndDevelopmentExpenses =
+      GeneratedColumn<int>(
           'research_and_development_expenses', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _generalAndAdministrativeExpensesMeta =
       const VerificationMeta('generalAndAdministrativeExpenses');
   @override
-  late final GeneratedColumn<double> generalAndAdministrativeExpenses =
-      GeneratedColumn<double>(
+  late final GeneratedColumn<int> generalAndAdministrativeExpenses =
+      GeneratedColumn<int>(
           'general_and_administrative_expenses', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _sellingAndMarketingExpensesMeta =
       const VerificationMeta('sellingAndMarketingExpenses');
   @override
-  late final GeneratedColumn<double> sellingAndMarketingExpenses =
-      GeneratedColumn<double>(
-          'selling_and_marketing_expenses', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> sellingAndMarketingExpenses =
+      GeneratedColumn<int>('selling_and_marketing_expenses', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _sellingGeneralAndAdministrativeExpensesMeta =
       const VerificationMeta('sellingGeneralAndAdministrativeExpenses');
   @override
-  late final GeneratedColumn<double> sellingGeneralAndAdministrativeExpenses =
-      GeneratedColumn<double>(
+  late final GeneratedColumn<int> sellingGeneralAndAdministrativeExpenses =
+      GeneratedColumn<int>(
           'selling_general_and_administrative_expenses', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _otherExpensesMeta =
       const VerificationMeta('otherExpenses');
   @override
-  late final GeneratedColumn<double> otherExpenses = GeneratedColumn<double>(
+  late final GeneratedColumn<int> otherExpenses = GeneratedColumn<int>(
       'other_expenses', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _operatingExpensesMeta =
       const VerificationMeta('operatingExpenses');
   @override
-  late final GeneratedColumn<double> operatingExpenses =
-      GeneratedColumn<double>('operating_expenses', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> operatingExpenses = GeneratedColumn<int>(
+      'operating_expenses', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _costAndExpensesMeta =
       const VerificationMeta('costAndExpenses');
   @override
-  late final GeneratedColumn<double> costAndExpenses = GeneratedColumn<double>(
+  late final GeneratedColumn<int> costAndExpenses = GeneratedColumn<int>(
       'cost_and_expenses', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _interestIncomeMeta =
       const VerificationMeta('interestIncome');
   @override
-  late final GeneratedColumn<double> interestIncome = GeneratedColumn<double>(
+  late final GeneratedColumn<int> interestIncome = GeneratedColumn<int>(
       'interest_income', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _interestExpenseMeta =
       const VerificationMeta('interestExpense');
   @override
-  late final GeneratedColumn<double> interestExpense = GeneratedColumn<double>(
+  late final GeneratedColumn<int> interestExpense = GeneratedColumn<int>(
       'interest_expense', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _depreciationAndAmortizationMeta =
       const VerificationMeta('depreciationAndAmortization');
   @override
-  late final GeneratedColumn<double> depreciationAndAmortization =
-      GeneratedColumn<double>(
-          'depreciation_and_amortization', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> depreciationAndAmortization =
+      GeneratedColumn<int>('depreciation_and_amortization', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _ebitdaMeta = const VerificationMeta('ebitda');
   @override
-  late final GeneratedColumn<double> ebitda = GeneratedColumn<double>(
+  late final GeneratedColumn<int> ebitda = GeneratedColumn<int>(
       'ebitda', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _ebitdaratioMeta =
       const VerificationMeta('ebitdaratio');
   @override
@@ -6293,9 +6291,9 @@ class $IncomeStatementTableRowDefinitionTable
   static const VerificationMeta _operatingIncomeMeta =
       const VerificationMeta('operatingIncome');
   @override
-  late final GeneratedColumn<double> operatingIncome = GeneratedColumn<double>(
+  late final GeneratedColumn<int> operatingIncome = GeneratedColumn<int>(
       'operating_income', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _operatingIncomeRatioMeta =
       const VerificationMeta('operatingIncomeRatio');
   @override
@@ -6305,16 +6303,15 @@ class $IncomeStatementTableRowDefinitionTable
   static const VerificationMeta _totalOtherIncomeExpensesNetMeta =
       const VerificationMeta('totalOtherIncomeExpensesNet');
   @override
-  late final GeneratedColumn<double> totalOtherIncomeExpensesNet =
-      GeneratedColumn<double>(
-          'total_other_income_expenses_net', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> totalOtherIncomeExpensesNet =
+      GeneratedColumn<int>('total_other_income_expenses_net', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _incomeBeforeTaxMeta =
       const VerificationMeta('incomeBeforeTax');
   @override
-  late final GeneratedColumn<double> incomeBeforeTax = GeneratedColumn<double>(
+  late final GeneratedColumn<int> incomeBeforeTax = GeneratedColumn<int>(
       'income_before_tax', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _incomeBeforeTaxRatioMeta =
       const VerificationMeta('incomeBeforeTaxRatio');
   @override
@@ -6324,15 +6321,15 @@ class $IncomeStatementTableRowDefinitionTable
   static const VerificationMeta _incomeTaxExpenseMeta =
       const VerificationMeta('incomeTaxExpense');
   @override
-  late final GeneratedColumn<double> incomeTaxExpense = GeneratedColumn<double>(
+  late final GeneratedColumn<int> incomeTaxExpense = GeneratedColumn<int>(
       'income_tax_expense', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _netIncomeMeta =
       const VerificationMeta('netIncome');
   @override
-  late final GeneratedColumn<double> netIncome = GeneratedColumn<double>(
+  late final GeneratedColumn<int> netIncome = GeneratedColumn<int>(
       'net_income', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _netIncomeRatioMeta =
       const VerificationMeta('netIncomeRatio');
   @override
@@ -6353,15 +6350,15 @@ class $IncomeStatementTableRowDefinitionTable
   static const VerificationMeta _weightedAverageShsOutMeta =
       const VerificationMeta('weightedAverageShsOut');
   @override
-  late final GeneratedColumn<double> weightedAverageShsOut =
-      GeneratedColumn<double>('weighted_average_shs_out', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> weightedAverageShsOut = GeneratedColumn<int>(
+      'weighted_average_shs_out', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _weightedAverageShsOutDilMeta =
       const VerificationMeta('weightedAverageShsOutDil');
   @override
-  late final GeneratedColumn<double> weightedAverageShsOutDil =
-      GeneratedColumn<double>('weighted_average_shs_out_dil', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> weightedAverageShsOutDil =
+      GeneratedColumn<int>('weighted_average_shs_out_dil', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _linkMeta = const VerificationMeta('link');
   @override
   late final GeneratedColumn<String> link = GeneratedColumn<String>(
@@ -6684,60 +6681,60 @@ class $IncomeStatementTableRowDefinitionTable
       period: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}period']),
       revenue: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}revenue']),
+          .read(DriftSqlType.int, data['${effectivePrefix}revenue']),
       costOfRevenue: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}cost_of_revenue']),
+          .read(DriftSqlType.int, data['${effectivePrefix}cost_of_revenue']),
       grossProfit: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}gross_profit']),
+          .read(DriftSqlType.int, data['${effectivePrefix}gross_profit']),
       grossProfitRatio: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}gross_profit_ratio']),
       researchAndDevelopmentExpenses: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}research_and_development_expenses']),
       generalAndAdministrativeExpenses: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}general_and_administrative_expenses']),
       sellingAndMarketingExpenses: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}selling_and_marketing_expenses']),
       sellingGeneralAndAdministrativeExpenses: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data[
               '${effectivePrefix}selling_general_and_administrative_expenses']),
       otherExpenses: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}other_expenses']),
-      operatingExpenses: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}operating_expenses']),
-      costAndExpenses: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}cost_and_expenses']),
+          .read(DriftSqlType.int, data['${effectivePrefix}other_expenses']),
+      operatingExpenses: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}operating_expenses']),
+      costAndExpenses: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}cost_and_expenses']),
       interestIncome: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}interest_income']),
-      interestExpense: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}interest_expense']),
+          .read(DriftSqlType.int, data['${effectivePrefix}interest_income']),
+      interestExpense: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}interest_expense']),
       depreciationAndAmortization: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}depreciation_and_amortization']),
       ebitda: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}ebitda']),
+          .read(DriftSqlType.int, data['${effectivePrefix}ebitda']),
       ebitdaratio: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}ebitdaratio']),
-      operatingIncome: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}operating_income']),
+      operatingIncome: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}operating_income']),
       operatingIncomeRatio: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}operating_income_ratio']),
       totalOtherIncomeExpensesNet: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}total_other_income_expenses_net']),
-      incomeBeforeTax: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}income_before_tax']),
+      incomeBeforeTax: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}income_before_tax']),
       incomeBeforeTaxRatio: attachedDatabase.typeMapping.read(
           DriftSqlType.double,
           data['${effectivePrefix}income_before_tax_ratio']),
-      incomeTaxExpense: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}income_tax_expense']),
+      incomeTaxExpense: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}income_tax_expense']),
       netIncome: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}net_income']),
+          .read(DriftSqlType.int, data['${effectivePrefix}net_income']),
       netIncomeRatio: attachedDatabase.typeMapping.read(
           DriftSqlType.double, data['${effectivePrefix}net_income_ratio']),
       eps: attachedDatabase.typeMapping
@@ -6745,10 +6742,9 @@ class $IncomeStatementTableRowDefinitionTable
       epsdiluted: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}epsdiluted']),
       weightedAverageShsOut: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
-          data['${effectivePrefix}weighted_average_shs_out']),
+          DriftSqlType.int, data['${effectivePrefix}weighted_average_shs_out']),
       weightedAverageShsOutDil: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}weighted_average_shs_out_dil']),
       link: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}link']),
@@ -6775,34 +6771,34 @@ class IncomeStatementTableRow extends DataClass
   final String? acceptedDate;
   final String? calendarYear;
   final String? period;
-  final double? revenue;
-  final double? costOfRevenue;
-  final double? grossProfit;
+  final int? revenue;
+  final int? costOfRevenue;
+  final int? grossProfit;
   final double? grossProfitRatio;
-  final double? researchAndDevelopmentExpenses;
-  final double? generalAndAdministrativeExpenses;
-  final double? sellingAndMarketingExpenses;
-  final double? sellingGeneralAndAdministrativeExpenses;
-  final double? otherExpenses;
-  final double? operatingExpenses;
-  final double? costAndExpenses;
-  final double? interestIncome;
-  final double? interestExpense;
-  final double? depreciationAndAmortization;
-  final double? ebitda;
+  final int? researchAndDevelopmentExpenses;
+  final int? generalAndAdministrativeExpenses;
+  final int? sellingAndMarketingExpenses;
+  final int? sellingGeneralAndAdministrativeExpenses;
+  final int? otherExpenses;
+  final int? operatingExpenses;
+  final int? costAndExpenses;
+  final int? interestIncome;
+  final int? interestExpense;
+  final int? depreciationAndAmortization;
+  final int? ebitda;
   final double? ebitdaratio;
-  final double? operatingIncome;
+  final int? operatingIncome;
   final double? operatingIncomeRatio;
-  final double? totalOtherIncomeExpensesNet;
-  final double? incomeBeforeTax;
+  final int? totalOtherIncomeExpensesNet;
+  final int? incomeBeforeTax;
   final double? incomeBeforeTaxRatio;
-  final double? incomeTaxExpense;
-  final double? netIncome;
+  final int? incomeTaxExpense;
+  final int? netIncome;
   final double? netIncomeRatio;
   final double? eps;
   final double? epsdiluted;
-  final double? weightedAverageShsOut;
-  final double? weightedAverageShsOutDil;
+  final int? weightedAverageShsOut;
+  final int? weightedAverageShsOutDil;
   final String? link;
   final String? finalLink;
   final DateTime expires;
@@ -6870,79 +6866,79 @@ class IncomeStatementTableRow extends DataClass
       map['period'] = Variable<String>(period);
     }
     if (!nullToAbsent || revenue != null) {
-      map['revenue'] = Variable<double>(revenue);
+      map['revenue'] = Variable<int>(revenue);
     }
     if (!nullToAbsent || costOfRevenue != null) {
-      map['cost_of_revenue'] = Variable<double>(costOfRevenue);
+      map['cost_of_revenue'] = Variable<int>(costOfRevenue);
     }
     if (!nullToAbsent || grossProfit != null) {
-      map['gross_profit'] = Variable<double>(grossProfit);
+      map['gross_profit'] = Variable<int>(grossProfit);
     }
     if (!nullToAbsent || grossProfitRatio != null) {
       map['gross_profit_ratio'] = Variable<double>(grossProfitRatio);
     }
     if (!nullToAbsent || researchAndDevelopmentExpenses != null) {
       map['research_and_development_expenses'] =
-          Variable<double>(researchAndDevelopmentExpenses);
+          Variable<int>(researchAndDevelopmentExpenses);
     }
     if (!nullToAbsent || generalAndAdministrativeExpenses != null) {
       map['general_and_administrative_expenses'] =
-          Variable<double>(generalAndAdministrativeExpenses);
+          Variable<int>(generalAndAdministrativeExpenses);
     }
     if (!nullToAbsent || sellingAndMarketingExpenses != null) {
       map['selling_and_marketing_expenses'] =
-          Variable<double>(sellingAndMarketingExpenses);
+          Variable<int>(sellingAndMarketingExpenses);
     }
     if (!nullToAbsent || sellingGeneralAndAdministrativeExpenses != null) {
       map['selling_general_and_administrative_expenses'] =
-          Variable<double>(sellingGeneralAndAdministrativeExpenses);
+          Variable<int>(sellingGeneralAndAdministrativeExpenses);
     }
     if (!nullToAbsent || otherExpenses != null) {
-      map['other_expenses'] = Variable<double>(otherExpenses);
+      map['other_expenses'] = Variable<int>(otherExpenses);
     }
     if (!nullToAbsent || operatingExpenses != null) {
-      map['operating_expenses'] = Variable<double>(operatingExpenses);
+      map['operating_expenses'] = Variable<int>(operatingExpenses);
     }
     if (!nullToAbsent || costAndExpenses != null) {
-      map['cost_and_expenses'] = Variable<double>(costAndExpenses);
+      map['cost_and_expenses'] = Variable<int>(costAndExpenses);
     }
     if (!nullToAbsent || interestIncome != null) {
-      map['interest_income'] = Variable<double>(interestIncome);
+      map['interest_income'] = Variable<int>(interestIncome);
     }
     if (!nullToAbsent || interestExpense != null) {
-      map['interest_expense'] = Variable<double>(interestExpense);
+      map['interest_expense'] = Variable<int>(interestExpense);
     }
     if (!nullToAbsent || depreciationAndAmortization != null) {
       map['depreciation_and_amortization'] =
-          Variable<double>(depreciationAndAmortization);
+          Variable<int>(depreciationAndAmortization);
     }
     if (!nullToAbsent || ebitda != null) {
-      map['ebitda'] = Variable<double>(ebitda);
+      map['ebitda'] = Variable<int>(ebitda);
     }
     if (!nullToAbsent || ebitdaratio != null) {
       map['ebitdaratio'] = Variable<double>(ebitdaratio);
     }
     if (!nullToAbsent || operatingIncome != null) {
-      map['operating_income'] = Variable<double>(operatingIncome);
+      map['operating_income'] = Variable<int>(operatingIncome);
     }
     if (!nullToAbsent || operatingIncomeRatio != null) {
       map['operating_income_ratio'] = Variable<double>(operatingIncomeRatio);
     }
     if (!nullToAbsent || totalOtherIncomeExpensesNet != null) {
       map['total_other_income_expenses_net'] =
-          Variable<double>(totalOtherIncomeExpensesNet);
+          Variable<int>(totalOtherIncomeExpensesNet);
     }
     if (!nullToAbsent || incomeBeforeTax != null) {
-      map['income_before_tax'] = Variable<double>(incomeBeforeTax);
+      map['income_before_tax'] = Variable<int>(incomeBeforeTax);
     }
     if (!nullToAbsent || incomeBeforeTaxRatio != null) {
       map['income_before_tax_ratio'] = Variable<double>(incomeBeforeTaxRatio);
     }
     if (!nullToAbsent || incomeTaxExpense != null) {
-      map['income_tax_expense'] = Variable<double>(incomeTaxExpense);
+      map['income_tax_expense'] = Variable<int>(incomeTaxExpense);
     }
     if (!nullToAbsent || netIncome != null) {
-      map['net_income'] = Variable<double>(netIncome);
+      map['net_income'] = Variable<int>(netIncome);
     }
     if (!nullToAbsent || netIncomeRatio != null) {
       map['net_income_ratio'] = Variable<double>(netIncomeRatio);
@@ -6954,11 +6950,11 @@ class IncomeStatementTableRow extends DataClass
       map['epsdiluted'] = Variable<double>(epsdiluted);
     }
     if (!nullToAbsent || weightedAverageShsOut != null) {
-      map['weighted_average_shs_out'] = Variable<double>(weightedAverageShsOut);
+      map['weighted_average_shs_out'] = Variable<int>(weightedAverageShsOut);
     }
     if (!nullToAbsent || weightedAverageShsOutDil != null) {
       map['weighted_average_shs_out_dil'] =
-          Variable<double>(weightedAverageShsOutDil);
+          Variable<int>(weightedAverageShsOutDil);
     }
     if (!nullToAbsent || link != null) {
       map['link'] = Variable<String>(link);
@@ -7096,45 +7092,44 @@ class IncomeStatementTableRow extends DataClass
       acceptedDate: serializer.fromJson<String?>(json['acceptedDate']),
       calendarYear: serializer.fromJson<String?>(json['calendarYear']),
       period: serializer.fromJson<String?>(json['period']),
-      revenue: serializer.fromJson<double?>(json['revenue']),
-      costOfRevenue: serializer.fromJson<double?>(json['costOfRevenue']),
-      grossProfit: serializer.fromJson<double?>(json['grossProfit']),
+      revenue: serializer.fromJson<int?>(json['revenue']),
+      costOfRevenue: serializer.fromJson<int?>(json['costOfRevenue']),
+      grossProfit: serializer.fromJson<int?>(json['grossProfit']),
       grossProfitRatio: serializer.fromJson<double?>(json['grossProfitRatio']),
       researchAndDevelopmentExpenses:
-          serializer.fromJson<double?>(json['researchAndDevelopmentExpenses']),
-      generalAndAdministrativeExpenses: serializer
-          .fromJson<double?>(json['generalAndAdministrativeExpenses']),
+          serializer.fromJson<int?>(json['researchAndDevelopmentExpenses']),
+      generalAndAdministrativeExpenses:
+          serializer.fromJson<int?>(json['generalAndAdministrativeExpenses']),
       sellingAndMarketingExpenses:
-          serializer.fromJson<double?>(json['sellingAndMarketingExpenses']),
+          serializer.fromJson<int?>(json['sellingAndMarketingExpenses']),
       sellingGeneralAndAdministrativeExpenses: serializer
-          .fromJson<double?>(json['sellingGeneralAndAdministrativeExpenses']),
-      otherExpenses: serializer.fromJson<double?>(json['otherExpenses']),
-      operatingExpenses:
-          serializer.fromJson<double?>(json['operatingExpenses']),
-      costAndExpenses: serializer.fromJson<double?>(json['costAndExpenses']),
-      interestIncome: serializer.fromJson<double?>(json['interestIncome']),
-      interestExpense: serializer.fromJson<double?>(json['interestExpense']),
+          .fromJson<int?>(json['sellingGeneralAndAdministrativeExpenses']),
+      otherExpenses: serializer.fromJson<int?>(json['otherExpenses']),
+      operatingExpenses: serializer.fromJson<int?>(json['operatingExpenses']),
+      costAndExpenses: serializer.fromJson<int?>(json['costAndExpenses']),
+      interestIncome: serializer.fromJson<int?>(json['interestIncome']),
+      interestExpense: serializer.fromJson<int?>(json['interestExpense']),
       depreciationAndAmortization:
-          serializer.fromJson<double?>(json['depreciationAndAmortization']),
-      ebitda: serializer.fromJson<double?>(json['ebitda']),
+          serializer.fromJson<int?>(json['depreciationAndAmortization']),
+      ebitda: serializer.fromJson<int?>(json['ebitda']),
       ebitdaratio: serializer.fromJson<double?>(json['ebitdaratio']),
-      operatingIncome: serializer.fromJson<double?>(json['operatingIncome']),
+      operatingIncome: serializer.fromJson<int?>(json['operatingIncome']),
       operatingIncomeRatio:
           serializer.fromJson<double?>(json['operatingIncomeRatio']),
       totalOtherIncomeExpensesNet:
-          serializer.fromJson<double?>(json['totalOtherIncomeExpensesNet']),
-      incomeBeforeTax: serializer.fromJson<double?>(json['incomeBeforeTax']),
+          serializer.fromJson<int?>(json['totalOtherIncomeExpensesNet']),
+      incomeBeforeTax: serializer.fromJson<int?>(json['incomeBeforeTax']),
       incomeBeforeTaxRatio:
           serializer.fromJson<double?>(json['incomeBeforeTaxRatio']),
-      incomeTaxExpense: serializer.fromJson<double?>(json['incomeTaxExpense']),
-      netIncome: serializer.fromJson<double?>(json['netIncome']),
+      incomeTaxExpense: serializer.fromJson<int?>(json['incomeTaxExpense']),
+      netIncome: serializer.fromJson<int?>(json['netIncome']),
       netIncomeRatio: serializer.fromJson<double?>(json['netIncomeRatio']),
       eps: serializer.fromJson<double?>(json['eps']),
       epsdiluted: serializer.fromJson<double?>(json['epsdiluted']),
       weightedAverageShsOut:
-          serializer.fromJson<double?>(json['weightedAverageShsOut']),
+          serializer.fromJson<int?>(json['weightedAverageShsOut']),
       weightedAverageShsOutDil:
-          serializer.fromJson<double?>(json['weightedAverageShsOutDil']),
+          serializer.fromJson<int?>(json['weightedAverageShsOutDil']),
       link: serializer.fromJson<String?>(json['link']),
       finalLink: serializer.fromJson<String?>(json['finalLink']),
       expires: serializer.fromJson<DateTime>(json['expires']),
@@ -7152,42 +7147,41 @@ class IncomeStatementTableRow extends DataClass
       'acceptedDate': serializer.toJson<String?>(acceptedDate),
       'calendarYear': serializer.toJson<String?>(calendarYear),
       'period': serializer.toJson<String?>(period),
-      'revenue': serializer.toJson<double?>(revenue),
-      'costOfRevenue': serializer.toJson<double?>(costOfRevenue),
-      'grossProfit': serializer.toJson<double?>(grossProfit),
+      'revenue': serializer.toJson<int?>(revenue),
+      'costOfRevenue': serializer.toJson<int?>(costOfRevenue),
+      'grossProfit': serializer.toJson<int?>(grossProfit),
       'grossProfitRatio': serializer.toJson<double?>(grossProfitRatio),
       'researchAndDevelopmentExpenses':
-          serializer.toJson<double?>(researchAndDevelopmentExpenses),
+          serializer.toJson<int?>(researchAndDevelopmentExpenses),
       'generalAndAdministrativeExpenses':
-          serializer.toJson<double?>(generalAndAdministrativeExpenses),
+          serializer.toJson<int?>(generalAndAdministrativeExpenses),
       'sellingAndMarketingExpenses':
-          serializer.toJson<double?>(sellingAndMarketingExpenses),
+          serializer.toJson<int?>(sellingAndMarketingExpenses),
       'sellingGeneralAndAdministrativeExpenses':
-          serializer.toJson<double?>(sellingGeneralAndAdministrativeExpenses),
-      'otherExpenses': serializer.toJson<double?>(otherExpenses),
-      'operatingExpenses': serializer.toJson<double?>(operatingExpenses),
-      'costAndExpenses': serializer.toJson<double?>(costAndExpenses),
-      'interestIncome': serializer.toJson<double?>(interestIncome),
-      'interestExpense': serializer.toJson<double?>(interestExpense),
+          serializer.toJson<int?>(sellingGeneralAndAdministrativeExpenses),
+      'otherExpenses': serializer.toJson<int?>(otherExpenses),
+      'operatingExpenses': serializer.toJson<int?>(operatingExpenses),
+      'costAndExpenses': serializer.toJson<int?>(costAndExpenses),
+      'interestIncome': serializer.toJson<int?>(interestIncome),
+      'interestExpense': serializer.toJson<int?>(interestExpense),
       'depreciationAndAmortization':
-          serializer.toJson<double?>(depreciationAndAmortization),
-      'ebitda': serializer.toJson<double?>(ebitda),
+          serializer.toJson<int?>(depreciationAndAmortization),
+      'ebitda': serializer.toJson<int?>(ebitda),
       'ebitdaratio': serializer.toJson<double?>(ebitdaratio),
-      'operatingIncome': serializer.toJson<double?>(operatingIncome),
+      'operatingIncome': serializer.toJson<int?>(operatingIncome),
       'operatingIncomeRatio': serializer.toJson<double?>(operatingIncomeRatio),
       'totalOtherIncomeExpensesNet':
-          serializer.toJson<double?>(totalOtherIncomeExpensesNet),
-      'incomeBeforeTax': serializer.toJson<double?>(incomeBeforeTax),
+          serializer.toJson<int?>(totalOtherIncomeExpensesNet),
+      'incomeBeforeTax': serializer.toJson<int?>(incomeBeforeTax),
       'incomeBeforeTaxRatio': serializer.toJson<double?>(incomeBeforeTaxRatio),
-      'incomeTaxExpense': serializer.toJson<double?>(incomeTaxExpense),
-      'netIncome': serializer.toJson<double?>(netIncome),
+      'incomeTaxExpense': serializer.toJson<int?>(incomeTaxExpense),
+      'netIncome': serializer.toJson<int?>(netIncome),
       'netIncomeRatio': serializer.toJson<double?>(netIncomeRatio),
       'eps': serializer.toJson<double?>(eps),
       'epsdiluted': serializer.toJson<double?>(epsdiluted),
-      'weightedAverageShsOut':
-          serializer.toJson<double?>(weightedAverageShsOut),
+      'weightedAverageShsOut': serializer.toJson<int?>(weightedAverageShsOut),
       'weightedAverageShsOutDil':
-          serializer.toJson<double?>(weightedAverageShsOutDil),
+          serializer.toJson<int?>(weightedAverageShsOutDil),
       'link': serializer.toJson<String?>(link),
       'finalLink': serializer.toJson<String?>(finalLink),
       'expires': serializer.toJson<DateTime>(expires),
@@ -7203,36 +7197,35 @@ class IncomeStatementTableRow extends DataClass
           Value<String?> acceptedDate = const Value.absent(),
           Value<String?> calendarYear = const Value.absent(),
           Value<String?> period = const Value.absent(),
-          Value<double?> revenue = const Value.absent(),
-          Value<double?> costOfRevenue = const Value.absent(),
-          Value<double?> grossProfit = const Value.absent(),
+          Value<int?> revenue = const Value.absent(),
+          Value<int?> costOfRevenue = const Value.absent(),
+          Value<int?> grossProfit = const Value.absent(),
           Value<double?> grossProfitRatio = const Value.absent(),
-          Value<double?> researchAndDevelopmentExpenses = const Value.absent(),
-          Value<double?> generalAndAdministrativeExpenses =
+          Value<int?> researchAndDevelopmentExpenses = const Value.absent(),
+          Value<int?> generalAndAdministrativeExpenses = const Value.absent(),
+          Value<int?> sellingAndMarketingExpenses = const Value.absent(),
+          Value<int?> sellingGeneralAndAdministrativeExpenses =
               const Value.absent(),
-          Value<double?> sellingAndMarketingExpenses = const Value.absent(),
-          Value<double?> sellingGeneralAndAdministrativeExpenses =
-              const Value.absent(),
-          Value<double?> otherExpenses = const Value.absent(),
-          Value<double?> operatingExpenses = const Value.absent(),
-          Value<double?> costAndExpenses = const Value.absent(),
-          Value<double?> interestIncome = const Value.absent(),
-          Value<double?> interestExpense = const Value.absent(),
-          Value<double?> depreciationAndAmortization = const Value.absent(),
-          Value<double?> ebitda = const Value.absent(),
+          Value<int?> otherExpenses = const Value.absent(),
+          Value<int?> operatingExpenses = const Value.absent(),
+          Value<int?> costAndExpenses = const Value.absent(),
+          Value<int?> interestIncome = const Value.absent(),
+          Value<int?> interestExpense = const Value.absent(),
+          Value<int?> depreciationAndAmortization = const Value.absent(),
+          Value<int?> ebitda = const Value.absent(),
           Value<double?> ebitdaratio = const Value.absent(),
-          Value<double?> operatingIncome = const Value.absent(),
+          Value<int?> operatingIncome = const Value.absent(),
           Value<double?> operatingIncomeRatio = const Value.absent(),
-          Value<double?> totalOtherIncomeExpensesNet = const Value.absent(),
-          Value<double?> incomeBeforeTax = const Value.absent(),
+          Value<int?> totalOtherIncomeExpensesNet = const Value.absent(),
+          Value<int?> incomeBeforeTax = const Value.absent(),
           Value<double?> incomeBeforeTaxRatio = const Value.absent(),
-          Value<double?> incomeTaxExpense = const Value.absent(),
-          Value<double?> netIncome = const Value.absent(),
+          Value<int?> incomeTaxExpense = const Value.absent(),
+          Value<int?> netIncome = const Value.absent(),
           Value<double?> netIncomeRatio = const Value.absent(),
           Value<double?> eps = const Value.absent(),
           Value<double?> epsdiluted = const Value.absent(),
-          Value<double?> weightedAverageShsOut = const Value.absent(),
-          Value<double?> weightedAverageShsOutDil = const Value.absent(),
+          Value<int?> weightedAverageShsOut = const Value.absent(),
+          Value<int?> weightedAverageShsOutDil = const Value.absent(),
           Value<String?> link = const Value.absent(),
           Value<String?> finalLink = const Value.absent(),
           DateTime? expires}) =>
@@ -7473,34 +7466,34 @@ class IncomeStatementTableRowDefinitionCompanion
   final Value<String?> acceptedDate;
   final Value<String?> calendarYear;
   final Value<String?> period;
-  final Value<double?> revenue;
-  final Value<double?> costOfRevenue;
-  final Value<double?> grossProfit;
+  final Value<int?> revenue;
+  final Value<int?> costOfRevenue;
+  final Value<int?> grossProfit;
   final Value<double?> grossProfitRatio;
-  final Value<double?> researchAndDevelopmentExpenses;
-  final Value<double?> generalAndAdministrativeExpenses;
-  final Value<double?> sellingAndMarketingExpenses;
-  final Value<double?> sellingGeneralAndAdministrativeExpenses;
-  final Value<double?> otherExpenses;
-  final Value<double?> operatingExpenses;
-  final Value<double?> costAndExpenses;
-  final Value<double?> interestIncome;
-  final Value<double?> interestExpense;
-  final Value<double?> depreciationAndAmortization;
-  final Value<double?> ebitda;
+  final Value<int?> researchAndDevelopmentExpenses;
+  final Value<int?> generalAndAdministrativeExpenses;
+  final Value<int?> sellingAndMarketingExpenses;
+  final Value<int?> sellingGeneralAndAdministrativeExpenses;
+  final Value<int?> otherExpenses;
+  final Value<int?> operatingExpenses;
+  final Value<int?> costAndExpenses;
+  final Value<int?> interestIncome;
+  final Value<int?> interestExpense;
+  final Value<int?> depreciationAndAmortization;
+  final Value<int?> ebitda;
   final Value<double?> ebitdaratio;
-  final Value<double?> operatingIncome;
+  final Value<int?> operatingIncome;
   final Value<double?> operatingIncomeRatio;
-  final Value<double?> totalOtherIncomeExpensesNet;
-  final Value<double?> incomeBeforeTax;
+  final Value<int?> totalOtherIncomeExpensesNet;
+  final Value<int?> incomeBeforeTax;
   final Value<double?> incomeBeforeTaxRatio;
-  final Value<double?> incomeTaxExpense;
-  final Value<double?> netIncome;
+  final Value<int?> incomeTaxExpense;
+  final Value<int?> netIncome;
   final Value<double?> netIncomeRatio;
   final Value<double?> eps;
   final Value<double?> epsdiluted;
-  final Value<double?> weightedAverageShsOut;
-  final Value<double?> weightedAverageShsOutDil;
+  final Value<int?> weightedAverageShsOut;
+  final Value<int?> weightedAverageShsOutDil;
   final Value<String?> link;
   final Value<String?> finalLink;
   final Value<DateTime> expires;
@@ -7600,34 +7593,34 @@ class IncomeStatementTableRowDefinitionCompanion
     Expression<String>? acceptedDate,
     Expression<String>? calendarYear,
     Expression<String>? period,
-    Expression<double>? revenue,
-    Expression<double>? costOfRevenue,
-    Expression<double>? grossProfit,
+    Expression<int>? revenue,
+    Expression<int>? costOfRevenue,
+    Expression<int>? grossProfit,
     Expression<double>? grossProfitRatio,
-    Expression<double>? researchAndDevelopmentExpenses,
-    Expression<double>? generalAndAdministrativeExpenses,
-    Expression<double>? sellingAndMarketingExpenses,
-    Expression<double>? sellingGeneralAndAdministrativeExpenses,
-    Expression<double>? otherExpenses,
-    Expression<double>? operatingExpenses,
-    Expression<double>? costAndExpenses,
-    Expression<double>? interestIncome,
-    Expression<double>? interestExpense,
-    Expression<double>? depreciationAndAmortization,
-    Expression<double>? ebitda,
+    Expression<int>? researchAndDevelopmentExpenses,
+    Expression<int>? generalAndAdministrativeExpenses,
+    Expression<int>? sellingAndMarketingExpenses,
+    Expression<int>? sellingGeneralAndAdministrativeExpenses,
+    Expression<int>? otherExpenses,
+    Expression<int>? operatingExpenses,
+    Expression<int>? costAndExpenses,
+    Expression<int>? interestIncome,
+    Expression<int>? interestExpense,
+    Expression<int>? depreciationAndAmortization,
+    Expression<int>? ebitda,
     Expression<double>? ebitdaratio,
-    Expression<double>? operatingIncome,
+    Expression<int>? operatingIncome,
     Expression<double>? operatingIncomeRatio,
-    Expression<double>? totalOtherIncomeExpensesNet,
-    Expression<double>? incomeBeforeTax,
+    Expression<int>? totalOtherIncomeExpensesNet,
+    Expression<int>? incomeBeforeTax,
     Expression<double>? incomeBeforeTaxRatio,
-    Expression<double>? incomeTaxExpense,
-    Expression<double>? netIncome,
+    Expression<int>? incomeTaxExpense,
+    Expression<int>? netIncome,
     Expression<double>? netIncomeRatio,
     Expression<double>? eps,
     Expression<double>? epsdiluted,
-    Expression<double>? weightedAverageShsOut,
-    Expression<double>? weightedAverageShsOutDil,
+    Expression<int>? weightedAverageShsOut,
+    Expression<int>? weightedAverageShsOutDil,
     Expression<String>? link,
     Expression<String>? finalLink,
     Expression<DateTime>? expires,
@@ -7697,34 +7690,34 @@ class IncomeStatementTableRowDefinitionCompanion
       Value<String?>? acceptedDate,
       Value<String?>? calendarYear,
       Value<String?>? period,
-      Value<double?>? revenue,
-      Value<double?>? costOfRevenue,
-      Value<double?>? grossProfit,
+      Value<int?>? revenue,
+      Value<int?>? costOfRevenue,
+      Value<int?>? grossProfit,
       Value<double?>? grossProfitRatio,
-      Value<double?>? researchAndDevelopmentExpenses,
-      Value<double?>? generalAndAdministrativeExpenses,
-      Value<double?>? sellingAndMarketingExpenses,
-      Value<double?>? sellingGeneralAndAdministrativeExpenses,
-      Value<double?>? otherExpenses,
-      Value<double?>? operatingExpenses,
-      Value<double?>? costAndExpenses,
-      Value<double?>? interestIncome,
-      Value<double?>? interestExpense,
-      Value<double?>? depreciationAndAmortization,
-      Value<double?>? ebitda,
+      Value<int?>? researchAndDevelopmentExpenses,
+      Value<int?>? generalAndAdministrativeExpenses,
+      Value<int?>? sellingAndMarketingExpenses,
+      Value<int?>? sellingGeneralAndAdministrativeExpenses,
+      Value<int?>? otherExpenses,
+      Value<int?>? operatingExpenses,
+      Value<int?>? costAndExpenses,
+      Value<int?>? interestIncome,
+      Value<int?>? interestExpense,
+      Value<int?>? depreciationAndAmortization,
+      Value<int?>? ebitda,
       Value<double?>? ebitdaratio,
-      Value<double?>? operatingIncome,
+      Value<int?>? operatingIncome,
       Value<double?>? operatingIncomeRatio,
-      Value<double?>? totalOtherIncomeExpensesNet,
-      Value<double?>? incomeBeforeTax,
+      Value<int?>? totalOtherIncomeExpensesNet,
+      Value<int?>? incomeBeforeTax,
       Value<double?>? incomeBeforeTaxRatio,
-      Value<double?>? incomeTaxExpense,
-      Value<double?>? netIncome,
+      Value<int?>? incomeTaxExpense,
+      Value<int?>? netIncome,
       Value<double?>? netIncomeRatio,
       Value<double?>? eps,
       Value<double?>? epsdiluted,
-      Value<double?>? weightedAverageShsOut,
-      Value<double?>? weightedAverageShsOutDil,
+      Value<int?>? weightedAverageShsOut,
+      Value<int?>? weightedAverageShsOutDil,
       Value<String?>? link,
       Value<String?>? finalLink,
       Value<DateTime>? expires,
@@ -7810,60 +7803,60 @@ class IncomeStatementTableRowDefinitionCompanion
       map['period'] = Variable<String>(period.value);
     }
     if (revenue.present) {
-      map['revenue'] = Variable<double>(revenue.value);
+      map['revenue'] = Variable<int>(revenue.value);
     }
     if (costOfRevenue.present) {
-      map['cost_of_revenue'] = Variable<double>(costOfRevenue.value);
+      map['cost_of_revenue'] = Variable<int>(costOfRevenue.value);
     }
     if (grossProfit.present) {
-      map['gross_profit'] = Variable<double>(grossProfit.value);
+      map['gross_profit'] = Variable<int>(grossProfit.value);
     }
     if (grossProfitRatio.present) {
       map['gross_profit_ratio'] = Variable<double>(grossProfitRatio.value);
     }
     if (researchAndDevelopmentExpenses.present) {
       map['research_and_development_expenses'] =
-          Variable<double>(researchAndDevelopmentExpenses.value);
+          Variable<int>(researchAndDevelopmentExpenses.value);
     }
     if (generalAndAdministrativeExpenses.present) {
       map['general_and_administrative_expenses'] =
-          Variable<double>(generalAndAdministrativeExpenses.value);
+          Variable<int>(generalAndAdministrativeExpenses.value);
     }
     if (sellingAndMarketingExpenses.present) {
       map['selling_and_marketing_expenses'] =
-          Variable<double>(sellingAndMarketingExpenses.value);
+          Variable<int>(sellingAndMarketingExpenses.value);
     }
     if (sellingGeneralAndAdministrativeExpenses.present) {
       map['selling_general_and_administrative_expenses'] =
-          Variable<double>(sellingGeneralAndAdministrativeExpenses.value);
+          Variable<int>(sellingGeneralAndAdministrativeExpenses.value);
     }
     if (otherExpenses.present) {
-      map['other_expenses'] = Variable<double>(otherExpenses.value);
+      map['other_expenses'] = Variable<int>(otherExpenses.value);
     }
     if (operatingExpenses.present) {
-      map['operating_expenses'] = Variable<double>(operatingExpenses.value);
+      map['operating_expenses'] = Variable<int>(operatingExpenses.value);
     }
     if (costAndExpenses.present) {
-      map['cost_and_expenses'] = Variable<double>(costAndExpenses.value);
+      map['cost_and_expenses'] = Variable<int>(costAndExpenses.value);
     }
     if (interestIncome.present) {
-      map['interest_income'] = Variable<double>(interestIncome.value);
+      map['interest_income'] = Variable<int>(interestIncome.value);
     }
     if (interestExpense.present) {
-      map['interest_expense'] = Variable<double>(interestExpense.value);
+      map['interest_expense'] = Variable<int>(interestExpense.value);
     }
     if (depreciationAndAmortization.present) {
       map['depreciation_and_amortization'] =
-          Variable<double>(depreciationAndAmortization.value);
+          Variable<int>(depreciationAndAmortization.value);
     }
     if (ebitda.present) {
-      map['ebitda'] = Variable<double>(ebitda.value);
+      map['ebitda'] = Variable<int>(ebitda.value);
     }
     if (ebitdaratio.present) {
       map['ebitdaratio'] = Variable<double>(ebitdaratio.value);
     }
     if (operatingIncome.present) {
-      map['operating_income'] = Variable<double>(operatingIncome.value);
+      map['operating_income'] = Variable<int>(operatingIncome.value);
     }
     if (operatingIncomeRatio.present) {
       map['operating_income_ratio'] =
@@ -7871,20 +7864,20 @@ class IncomeStatementTableRowDefinitionCompanion
     }
     if (totalOtherIncomeExpensesNet.present) {
       map['total_other_income_expenses_net'] =
-          Variable<double>(totalOtherIncomeExpensesNet.value);
+          Variable<int>(totalOtherIncomeExpensesNet.value);
     }
     if (incomeBeforeTax.present) {
-      map['income_before_tax'] = Variable<double>(incomeBeforeTax.value);
+      map['income_before_tax'] = Variable<int>(incomeBeforeTax.value);
     }
     if (incomeBeforeTaxRatio.present) {
       map['income_before_tax_ratio'] =
           Variable<double>(incomeBeforeTaxRatio.value);
     }
     if (incomeTaxExpense.present) {
-      map['income_tax_expense'] = Variable<double>(incomeTaxExpense.value);
+      map['income_tax_expense'] = Variable<int>(incomeTaxExpense.value);
     }
     if (netIncome.present) {
-      map['net_income'] = Variable<double>(netIncome.value);
+      map['net_income'] = Variable<int>(netIncome.value);
     }
     if (netIncomeRatio.present) {
       map['net_income_ratio'] = Variable<double>(netIncomeRatio.value);
@@ -7897,11 +7890,11 @@ class IncomeStatementTableRowDefinitionCompanion
     }
     if (weightedAverageShsOut.present) {
       map['weighted_average_shs_out'] =
-          Variable<double>(weightedAverageShsOut.value);
+          Variable<int>(weightedAverageShsOut.value);
     }
     if (weightedAverageShsOutDil.present) {
       map['weighted_average_shs_out_dil'] =
-          Variable<double>(weightedAverageShsOutDil.value);
+          Variable<int>(weightedAverageShsOutDil.value);
     }
     if (link.present) {
       map['link'] = Variable<String>(link.value);

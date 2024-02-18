@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 part 'income_statement_model.g.dart';
 
@@ -14,34 +15,34 @@ class IncomeStatementModel {
   final String? acceptedDate;
   final String? calendarYear;
   final String? period;
-  final num? revenue;
-  final num? costOfRevenue;
-  final num? grossProfit;
-  final num? grossProfitRatio;
-  final num? researchAndDevelopmentExpenses;
-  final num? generalAndAdministrativeExpenses;
-  final num? sellingAndMarketingExpenses;
-  final num? sellingGeneralAndAdministrativeExpenses;
-  final num? otherExpenses;
-  final num? operatingExpenses;
-  final num? costAndExpenses;
-  final num? interestIncome;
-  final num? interestExpense;
-  final num? depreciationAndAmortization;
-  final num? ebitda;
-  final num? ebitdaratio;
-  final num? operatingIncome;
-  final num? operatingIncomeRatio;
-  final num? totalOtherIncomeExpensesNet;
-  final num? incomeBeforeTax;
-  final num? incomeBeforeTaxRatio;
-  final num? incomeTaxExpense;
-  final num? netIncome;
-  final num? netIncomeRatio;
-  final num? eps;
-  final num? epsdiluted;
-  final num? weightedAverageShsOut;
-  final num? weightedAverageShsOutDil;
+  final int? revenue;
+  final int? costOfRevenue;
+  final int? grossProfit;
+  final double? grossProfitRatio;
+  final int? researchAndDevelopmentExpenses;
+  final int? generalAndAdministrativeExpenses;
+  final int? sellingAndMarketingExpenses;
+  final int? sellingGeneralAndAdministrativeExpenses;
+  final int? otherExpenses;
+  final int? operatingExpenses;
+  final int? costAndExpenses;
+  final int? interestIncome;
+  final int? interestExpense;
+  final int? depreciationAndAmortization;
+  final int? ebitda;
+  final double? ebitdaratio;
+  final int? operatingIncome;
+  final double? operatingIncomeRatio;
+  final int? totalOtherIncomeExpensesNet;
+  final int? incomeBeforeTax;
+  final double? incomeBeforeTaxRatio;
+  final int? incomeTaxExpense;
+  final int? netIncome;
+  final double? netIncomeRatio;
+  final double? eps;
+  final double? epsdiluted;
+  final int? weightedAverageShsOut;
+  final int? weightedAverageShsOutDil;
   final String? link;
   final String? finalLink;
 
@@ -85,6 +86,8 @@ class IncomeStatementModel {
     required this.link,
     required this.finalLink,
   });
+
+  factory IncomeStatementModel.fromTableRow(IncomeStatementTableRow row) {}
 
   factory IncomeStatementModel.fromJson(Map<String, dynamic> json) {
     return _$IncomeStatementModelFromJson(json);
