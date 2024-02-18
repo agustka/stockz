@@ -4215,190 +4215,187 @@ class $CashFlowStatementTableRowDefinitionTable
   static const VerificationMeta _netIncomeMeta =
       const VerificationMeta('netIncome');
   @override
-  late final GeneratedColumn<String> netIncome = GeneratedColumn<String>(
+  late final GeneratedColumn<int> netIncome = GeneratedColumn<int>(
       'net_income', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _depreciationAndAmortizationMeta =
       const VerificationMeta('depreciationAndAmortization');
   @override
-  late final GeneratedColumn<double> depreciationAndAmortization =
-      GeneratedColumn<double>(
-          'depreciation_and_amortization', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> depreciationAndAmortization =
+      GeneratedColumn<int>('depreciation_and_amortization', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _deferredIncomeTaxMeta =
       const VerificationMeta('deferredIncomeTax');
   @override
-  late final GeneratedColumn<double> deferredIncomeTax =
-      GeneratedColumn<double>('deferred_income_tax', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> deferredIncomeTax = GeneratedColumn<int>(
+      'deferred_income_tax', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _stockBasedCompensationMeta =
       const VerificationMeta('stockBasedCompensation');
   @override
-  late final GeneratedColumn<double> stockBasedCompensation =
-      GeneratedColumn<double>('stock_based_compensation', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> stockBasedCompensation = GeneratedColumn<int>(
+      'stock_based_compensation', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _changeInWorkingCapitalMeta =
       const VerificationMeta('changeInWorkingCapital');
   @override
-  late final GeneratedColumn<double> changeInWorkingCapital =
-      GeneratedColumn<double>('change_in_working_capital', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> changeInWorkingCapital = GeneratedColumn<int>(
+      'change_in_working_capital', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _accountsReceivablesMeta =
       const VerificationMeta('accountsReceivables');
   @override
-  late final GeneratedColumn<double> accountsReceivables =
-      GeneratedColumn<double>('accounts_receivables', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> accountsReceivables = GeneratedColumn<int>(
+      'accounts_receivables', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _inventoryMeta =
       const VerificationMeta('inventory');
   @override
-  late final GeneratedColumn<double> inventory = GeneratedColumn<double>(
+  late final GeneratedColumn<int> inventory = GeneratedColumn<int>(
       'inventory', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _accountsPayablesMeta =
       const VerificationMeta('accountsPayables');
   @override
-  late final GeneratedColumn<double> accountsPayables = GeneratedColumn<double>(
+  late final GeneratedColumn<int> accountsPayables = GeneratedColumn<int>(
       'accounts_payables', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _otherWorkingCapitalMeta =
       const VerificationMeta('otherWorkingCapital');
   @override
-  late final GeneratedColumn<double> otherWorkingCapital =
-      GeneratedColumn<double>('other_working_capital', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> otherWorkingCapital = GeneratedColumn<int>(
+      'other_working_capital', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _otherNonCashItemsMeta =
       const VerificationMeta('otherNonCashItems');
   @override
-  late final GeneratedColumn<double> otherNonCashItems =
-      GeneratedColumn<double>('other_non_cash_items', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> otherNonCashItems = GeneratedColumn<int>(
+      'other_non_cash_items', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _netCashProvidedByOperatingActivitiesMeta =
       const VerificationMeta('netCashProvidedByOperatingActivities');
   @override
-  late final GeneratedColumn<double> netCashProvidedByOperatingActivities =
-      GeneratedColumn<double>(
+  late final GeneratedColumn<int> netCashProvidedByOperatingActivities =
+      GeneratedColumn<int>(
           'net_cash_provided_by_operating_activities', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _investmentsInPropertyPlantAndEquipmentMeta =
       const VerificationMeta('investmentsInPropertyPlantAndEquipment');
   @override
-  late final GeneratedColumn<double> investmentsInPropertyPlantAndEquipment =
-      GeneratedColumn<double>(
+  late final GeneratedColumn<int> investmentsInPropertyPlantAndEquipment =
+      GeneratedColumn<int>(
           'investments_in_property_plant_and_equipment', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _acquisitionsNetMeta =
       const VerificationMeta('acquisitionsNet');
   @override
-  late final GeneratedColumn<double> acquisitionsNet = GeneratedColumn<double>(
+  late final GeneratedColumn<int> acquisitionsNet = GeneratedColumn<int>(
       'acquisitions_net', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _purchasesOfInvestmentsMeta =
       const VerificationMeta('purchasesOfInvestments');
   @override
-  late final GeneratedColumn<double> purchasesOfInvestments =
-      GeneratedColumn<double>('purchases_of_investments', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> purchasesOfInvestments = GeneratedColumn<int>(
+      'purchases_of_investments', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _salesMaturitiesOfInvestmentsMeta =
       const VerificationMeta('salesMaturitiesOfInvestments');
   @override
-  late final GeneratedColumn<double> salesMaturitiesOfInvestments =
-      GeneratedColumn<double>(
-          'sales_maturities_of_investments', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> salesMaturitiesOfInvestments =
+      GeneratedColumn<int>('sales_maturities_of_investments', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _otherInvestingActivitesMeta =
       const VerificationMeta('otherInvestingActivites');
   @override
-  late final GeneratedColumn<double> otherInvestingActivites =
-      GeneratedColumn<double>('other_investing_activites', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> otherInvestingActivites =
+      GeneratedColumn<int>('other_investing_activites', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _netCashUsedForInvestingActivitesMeta =
       const VerificationMeta('netCashUsedForInvestingActivites');
   @override
-  late final GeneratedColumn<double> netCashUsedForInvestingActivites =
-      GeneratedColumn<double>(
+  late final GeneratedColumn<int> netCashUsedForInvestingActivites =
+      GeneratedColumn<int>(
           'net_cash_used_for_investing_activites', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _debtRepaymentMeta =
       const VerificationMeta('debtRepayment');
   @override
-  late final GeneratedColumn<double> debtRepayment = GeneratedColumn<double>(
+  late final GeneratedColumn<int> debtRepayment = GeneratedColumn<int>(
       'debt_repayment', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _commonStockIssuedMeta =
       const VerificationMeta('commonStockIssued');
   @override
-  late final GeneratedColumn<double> commonStockIssued =
-      GeneratedColumn<double>('common_stock_issued', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> commonStockIssued = GeneratedColumn<int>(
+      'common_stock_issued', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _commonStockRepurchasedMeta =
       const VerificationMeta('commonStockRepurchased');
   @override
-  late final GeneratedColumn<double> commonStockRepurchased =
-      GeneratedColumn<double>('common_stock_repurchased', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> commonStockRepurchased = GeneratedColumn<int>(
+      'common_stock_repurchased', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _dividendsPaidMeta =
       const VerificationMeta('dividendsPaid');
   @override
-  late final GeneratedColumn<double> dividendsPaid = GeneratedColumn<double>(
+  late final GeneratedColumn<int> dividendsPaid = GeneratedColumn<int>(
       'dividends_paid', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _otherFinancingActivitesMeta =
       const VerificationMeta('otherFinancingActivites');
   @override
-  late final GeneratedColumn<double> otherFinancingActivites =
-      GeneratedColumn<double>('other_financing_activites', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> otherFinancingActivites =
+      GeneratedColumn<int>('other_financing_activites', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _netCashUsedProvidedByFinancingActivitiesMeta =
       const VerificationMeta('netCashUsedProvidedByFinancingActivities');
   @override
-  late final GeneratedColumn<double> netCashUsedProvidedByFinancingActivities =
-      GeneratedColumn<double>(
+  late final GeneratedColumn<int> netCashUsedProvidedByFinancingActivities =
+      GeneratedColumn<int>(
           'net_cash_used_provided_by_financing_activities', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _effectOfForexChangesOnCashMeta =
       const VerificationMeta('effectOfForexChangesOnCash');
   @override
-  late final GeneratedColumn<double> effectOfForexChangesOnCash =
-      GeneratedColumn<double>(
-          'effect_of_forex_changes_on_cash', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> effectOfForexChangesOnCash =
+      GeneratedColumn<int>('effect_of_forex_changes_on_cash', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _netChangeInCashMeta =
       const VerificationMeta('netChangeInCash');
   @override
-  late final GeneratedColumn<double> netChangeInCash = GeneratedColumn<double>(
+  late final GeneratedColumn<int> netChangeInCash = GeneratedColumn<int>(
       'net_change_in_cash', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _cashAtEndOfPeriodMeta =
       const VerificationMeta('cashAtEndOfPeriod');
   @override
-  late final GeneratedColumn<double> cashAtEndOfPeriod =
-      GeneratedColumn<double>('cash_at_end_of_period', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> cashAtEndOfPeriod = GeneratedColumn<int>(
+      'cash_at_end_of_period', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _cashAtBeginningOfPeriodMeta =
       const VerificationMeta('cashAtBeginningOfPeriod');
   @override
-  late final GeneratedColumn<double> cashAtBeginningOfPeriod =
-      GeneratedColumn<double>('cash_at_beginning_of_period', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> cashAtBeginningOfPeriod =
+      GeneratedColumn<int>('cash_at_beginning_of_period', aliasedName, true,
+          type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _operatingCashFlowMeta =
       const VerificationMeta('operatingCashFlow');
   @override
-  late final GeneratedColumn<double> operatingCashFlow =
-      GeneratedColumn<double>('operating_cash_flow', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> operatingCashFlow = GeneratedColumn<int>(
+      'operating_cash_flow', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _capitalExpenditureMeta =
       const VerificationMeta('capitalExpenditure');
   @override
-  late final GeneratedColumn<double> capitalExpenditure =
-      GeneratedColumn<double>('capital_expenditure', aliasedName, true,
-          type: DriftSqlType.double, requiredDuringInsert: false);
+  late final GeneratedColumn<int> capitalExpenditure = GeneratedColumn<int>(
+      'capital_expenditure', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _freeCashFlowMeta =
       const VerificationMeta('freeCashFlow');
   @override
-  late final GeneratedColumn<double> freeCashFlow = GeneratedColumn<double>(
+  late final GeneratedColumn<int> freeCashFlow = GeneratedColumn<int>(
       'free_cash_flow', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _linkMeta = const VerificationMeta('link');
   @override
   late final GeneratedColumn<String> link = GeneratedColumn<String>(
@@ -4742,81 +4739,78 @@ class $CashFlowStatementTableRowDefinitionTable
       period: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}period']),
       netIncome: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}net_income']),
+          .read(DriftSqlType.int, data['${effectivePrefix}net_income']),
       depreciationAndAmortization: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}depreciation_and_amortization']),
       deferredIncomeTax: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}deferred_income_tax']),
+          DriftSqlType.int, data['${effectivePrefix}deferred_income_tax']),
       stockBasedCompensation: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
-          data['${effectivePrefix}stock_based_compensation']),
+          DriftSqlType.int, data['${effectivePrefix}stock_based_compensation']),
       changeInWorkingCapital: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}change_in_working_capital']),
       accountsReceivables: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}accounts_receivables']),
+          DriftSqlType.int, data['${effectivePrefix}accounts_receivables']),
       inventory: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}inventory']),
-      accountsPayables: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}accounts_payables']),
+          .read(DriftSqlType.int, data['${effectivePrefix}inventory']),
+      accountsPayables: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}accounts_payables']),
       otherWorkingCapital: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}other_working_capital']),
+          DriftSqlType.int, data['${effectivePrefix}other_working_capital']),
       otherNonCashItems: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}other_non_cash_items']),
+          DriftSqlType.int, data['${effectivePrefix}other_non_cash_items']),
       netCashProvidedByOperatingActivities: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}net_cash_provided_by_operating_activities']),
       investmentsInPropertyPlantAndEquipment: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data[
               '${effectivePrefix}investments_in_property_plant_and_equipment']),
-      acquisitionsNet: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}acquisitions_net']),
+      acquisitionsNet: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}acquisitions_net']),
       purchasesOfInvestments: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
-          data['${effectivePrefix}purchases_of_investments']),
+          DriftSqlType.int, data['${effectivePrefix}purchases_of_investments']),
       salesMaturitiesOfInvestments: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}sales_maturities_of_investments']),
       otherInvestingActivites: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}other_investing_activites']),
       netCashUsedForInvestingActivites: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}net_cash_used_for_investing_activites']),
       debtRepayment: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}debt_repayment']),
+          .read(DriftSqlType.int, data['${effectivePrefix}debt_repayment']),
       commonStockIssued: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}common_stock_issued']),
+          DriftSqlType.int, data['${effectivePrefix}common_stock_issued']),
       commonStockRepurchased: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
-          data['${effectivePrefix}common_stock_repurchased']),
+          DriftSqlType.int, data['${effectivePrefix}common_stock_repurchased']),
       dividendsPaid: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}dividends_paid']),
+          .read(DriftSqlType.int, data['${effectivePrefix}dividends_paid']),
       otherFinancingActivites: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}other_financing_activites']),
       netCashUsedProvidedByFinancingActivities: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data[
               '${effectivePrefix}net_cash_used_provided_by_financing_activities']),
       effectOfForexChangesOnCash: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}effect_of_forex_changes_on_cash']),
-      netChangeInCash: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}net_change_in_cash']),
+      netChangeInCash: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}net_change_in_cash']),
       cashAtEndOfPeriod: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}cash_at_end_of_period']),
+          DriftSqlType.int, data['${effectivePrefix}cash_at_end_of_period']),
       cashAtBeginningOfPeriod: attachedDatabase.typeMapping.read(
-          DriftSqlType.double,
+          DriftSqlType.int,
           data['${effectivePrefix}cash_at_beginning_of_period']),
       operatingCashFlow: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}operating_cash_flow']),
+          DriftSqlType.int, data['${effectivePrefix}operating_cash_flow']),
       capitalExpenditure: attachedDatabase.typeMapping.read(
-          DriftSqlType.double, data['${effectivePrefix}capital_expenditure']),
+          DriftSqlType.int, data['${effectivePrefix}capital_expenditure']),
       freeCashFlow: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}free_cash_flow']),
+          .read(DriftSqlType.int, data['${effectivePrefix}free_cash_flow']),
       link: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}link']),
       finalLink: attachedDatabase.typeMapping
@@ -4842,36 +4836,36 @@ class CashFlowStatementTableRow extends DataClass
   final String? acceptedDate;
   final String? calendarYear;
   final String? period;
-  final String? netIncome;
-  final double? depreciationAndAmortization;
-  final double? deferredIncomeTax;
-  final double? stockBasedCompensation;
-  final double? changeInWorkingCapital;
-  final double? accountsReceivables;
-  final double? inventory;
-  final double? accountsPayables;
-  final double? otherWorkingCapital;
-  final double? otherNonCashItems;
-  final double? netCashProvidedByOperatingActivities;
-  final double? investmentsInPropertyPlantAndEquipment;
-  final double? acquisitionsNet;
-  final double? purchasesOfInvestments;
-  final double? salesMaturitiesOfInvestments;
-  final double? otherInvestingActivites;
-  final double? netCashUsedForInvestingActivites;
-  final double? debtRepayment;
-  final double? commonStockIssued;
-  final double? commonStockRepurchased;
-  final double? dividendsPaid;
-  final double? otherFinancingActivites;
-  final double? netCashUsedProvidedByFinancingActivities;
-  final double? effectOfForexChangesOnCash;
-  final double? netChangeInCash;
-  final double? cashAtEndOfPeriod;
-  final double? cashAtBeginningOfPeriod;
-  final double? operatingCashFlow;
-  final double? capitalExpenditure;
-  final double? freeCashFlow;
+  final int? netIncome;
+  final int? depreciationAndAmortization;
+  final int? deferredIncomeTax;
+  final int? stockBasedCompensation;
+  final int? changeInWorkingCapital;
+  final int? accountsReceivables;
+  final int? inventory;
+  final int? accountsPayables;
+  final int? otherWorkingCapital;
+  final int? otherNonCashItems;
+  final int? netCashProvidedByOperatingActivities;
+  final int? investmentsInPropertyPlantAndEquipment;
+  final int? acquisitionsNet;
+  final int? purchasesOfInvestments;
+  final int? salesMaturitiesOfInvestments;
+  final int? otherInvestingActivites;
+  final int? netCashUsedForInvestingActivites;
+  final int? debtRepayment;
+  final int? commonStockIssued;
+  final int? commonStockRepurchased;
+  final int? dividendsPaid;
+  final int? otherFinancingActivites;
+  final int? netCashUsedProvidedByFinancingActivities;
+  final int? effectOfForexChangesOnCash;
+  final int? netChangeInCash;
+  final int? cashAtEndOfPeriod;
+  final int? cashAtBeginningOfPeriod;
+  final int? operatingCashFlow;
+  final int? capitalExpenditure;
+  final int? freeCashFlow;
   final String? link;
   final String? finalLink;
   final DateTime expires;
@@ -4941,108 +4935,102 @@ class CashFlowStatementTableRow extends DataClass
       map['period'] = Variable<String>(period);
     }
     if (!nullToAbsent || netIncome != null) {
-      map['net_income'] = Variable<String>(netIncome);
+      map['net_income'] = Variable<int>(netIncome);
     }
     if (!nullToAbsent || depreciationAndAmortization != null) {
       map['depreciation_and_amortization'] =
-          Variable<double>(depreciationAndAmortization);
+          Variable<int>(depreciationAndAmortization);
     }
     if (!nullToAbsent || deferredIncomeTax != null) {
-      map['deferred_income_tax'] = Variable<double>(deferredIncomeTax);
+      map['deferred_income_tax'] = Variable<int>(deferredIncomeTax);
     }
     if (!nullToAbsent || stockBasedCompensation != null) {
-      map['stock_based_compensation'] =
-          Variable<double>(stockBasedCompensation);
+      map['stock_based_compensation'] = Variable<int>(stockBasedCompensation);
     }
     if (!nullToAbsent || changeInWorkingCapital != null) {
-      map['change_in_working_capital'] =
-          Variable<double>(changeInWorkingCapital);
+      map['change_in_working_capital'] = Variable<int>(changeInWorkingCapital);
     }
     if (!nullToAbsent || accountsReceivables != null) {
-      map['accounts_receivables'] = Variable<double>(accountsReceivables);
+      map['accounts_receivables'] = Variable<int>(accountsReceivables);
     }
     if (!nullToAbsent || inventory != null) {
-      map['inventory'] = Variable<double>(inventory);
+      map['inventory'] = Variable<int>(inventory);
     }
     if (!nullToAbsent || accountsPayables != null) {
-      map['accounts_payables'] = Variable<double>(accountsPayables);
+      map['accounts_payables'] = Variable<int>(accountsPayables);
     }
     if (!nullToAbsent || otherWorkingCapital != null) {
-      map['other_working_capital'] = Variable<double>(otherWorkingCapital);
+      map['other_working_capital'] = Variable<int>(otherWorkingCapital);
     }
     if (!nullToAbsent || otherNonCashItems != null) {
-      map['other_non_cash_items'] = Variable<double>(otherNonCashItems);
+      map['other_non_cash_items'] = Variable<int>(otherNonCashItems);
     }
     if (!nullToAbsent || netCashProvidedByOperatingActivities != null) {
       map['net_cash_provided_by_operating_activities'] =
-          Variable<double>(netCashProvidedByOperatingActivities);
+          Variable<int>(netCashProvidedByOperatingActivities);
     }
     if (!nullToAbsent || investmentsInPropertyPlantAndEquipment != null) {
       map['investments_in_property_plant_and_equipment'] =
-          Variable<double>(investmentsInPropertyPlantAndEquipment);
+          Variable<int>(investmentsInPropertyPlantAndEquipment);
     }
     if (!nullToAbsent || acquisitionsNet != null) {
-      map['acquisitions_net'] = Variable<double>(acquisitionsNet);
+      map['acquisitions_net'] = Variable<int>(acquisitionsNet);
     }
     if (!nullToAbsent || purchasesOfInvestments != null) {
-      map['purchases_of_investments'] =
-          Variable<double>(purchasesOfInvestments);
+      map['purchases_of_investments'] = Variable<int>(purchasesOfInvestments);
     }
     if (!nullToAbsent || salesMaturitiesOfInvestments != null) {
       map['sales_maturities_of_investments'] =
-          Variable<double>(salesMaturitiesOfInvestments);
+          Variable<int>(salesMaturitiesOfInvestments);
     }
     if (!nullToAbsent || otherInvestingActivites != null) {
-      map['other_investing_activites'] =
-          Variable<double>(otherInvestingActivites);
+      map['other_investing_activites'] = Variable<int>(otherInvestingActivites);
     }
     if (!nullToAbsent || netCashUsedForInvestingActivites != null) {
       map['net_cash_used_for_investing_activites'] =
-          Variable<double>(netCashUsedForInvestingActivites);
+          Variable<int>(netCashUsedForInvestingActivites);
     }
     if (!nullToAbsent || debtRepayment != null) {
-      map['debt_repayment'] = Variable<double>(debtRepayment);
+      map['debt_repayment'] = Variable<int>(debtRepayment);
     }
     if (!nullToAbsent || commonStockIssued != null) {
-      map['common_stock_issued'] = Variable<double>(commonStockIssued);
+      map['common_stock_issued'] = Variable<int>(commonStockIssued);
     }
     if (!nullToAbsent || commonStockRepurchased != null) {
-      map['common_stock_repurchased'] =
-          Variable<double>(commonStockRepurchased);
+      map['common_stock_repurchased'] = Variable<int>(commonStockRepurchased);
     }
     if (!nullToAbsent || dividendsPaid != null) {
-      map['dividends_paid'] = Variable<double>(dividendsPaid);
+      map['dividends_paid'] = Variable<int>(dividendsPaid);
     }
     if (!nullToAbsent || otherFinancingActivites != null) {
-      map['other_financing_activites'] =
-          Variable<double>(otherFinancingActivites);
+      map['other_financing_activites'] = Variable<int>(otherFinancingActivites);
     }
     if (!nullToAbsent || netCashUsedProvidedByFinancingActivities != null) {
       map['net_cash_used_provided_by_financing_activities'] =
-          Variable<double>(netCashUsedProvidedByFinancingActivities);
+          Variable<int>(netCashUsedProvidedByFinancingActivities);
     }
     if (!nullToAbsent || effectOfForexChangesOnCash != null) {
       map['effect_of_forex_changes_on_cash'] =
-          Variable<double>(effectOfForexChangesOnCash);
+          Variable<int>(effectOfForexChangesOnCash);
     }
     if (!nullToAbsent || netChangeInCash != null) {
-      map['net_change_in_cash'] = Variable<double>(netChangeInCash);
+      map['net_change_in_cash'] = Variable<int>(netChangeInCash);
     }
     if (!nullToAbsent || cashAtEndOfPeriod != null) {
-      map['cash_at_end_of_period'] = Variable<double>(cashAtEndOfPeriod);
+      map['cash_at_end_of_period'] = Variable<int>(cashAtEndOfPeriod);
     }
     if (!nullToAbsent || cashAtBeginningOfPeriod != null) {
       map['cash_at_beginning_of_period'] =
-          Variable<double>(cashAtBeginningOfPeriod);
+          Variable<int>(cashAtBeginningOfPeriod);
     }
     if (!nullToAbsent || operatingCashFlow != null) {
-      map['operating_cash_flow'] = Variable<double>(operatingCashFlow);
+      map['operating_cash_flow'] = Variable<int>(operatingCashFlow);
     }
     if (!nullToAbsent || capitalExpenditure != null) {
-      map['capital_expenditure'] = Variable<double>(capitalExpenditure);
+      map['capital_expenditure'] = Variable<int>(capitalExpenditure);
     }
     if (!nullToAbsent || freeCashFlow != null) {
-      map['free_cash_flow'] = Variable<double>(freeCashFlow);
+      map['free_cash_flow'] = Variable<int>(freeCashFlow);
     }
     if (!nullToAbsent || link != null) {
       map['link'] = Variable<String>(link);
@@ -5190,58 +5178,52 @@ class CashFlowStatementTableRow extends DataClass
       acceptedDate: serializer.fromJson<String?>(json['acceptedDate']),
       calendarYear: serializer.fromJson<String?>(json['calendarYear']),
       period: serializer.fromJson<String?>(json['period']),
-      netIncome: serializer.fromJson<String?>(json['netIncome']),
+      netIncome: serializer.fromJson<int?>(json['netIncome']),
       depreciationAndAmortization:
-          serializer.fromJson<double?>(json['depreciationAndAmortization']),
-      deferredIncomeTax:
-          serializer.fromJson<double?>(json['deferredIncomeTax']),
+          serializer.fromJson<int?>(json['depreciationAndAmortization']),
+      deferredIncomeTax: serializer.fromJson<int?>(json['deferredIncomeTax']),
       stockBasedCompensation:
-          serializer.fromJson<double?>(json['stockBasedCompensation']),
+          serializer.fromJson<int?>(json['stockBasedCompensation']),
       changeInWorkingCapital:
-          serializer.fromJson<double?>(json['changeInWorkingCapital']),
+          serializer.fromJson<int?>(json['changeInWorkingCapital']),
       accountsReceivables:
-          serializer.fromJson<double?>(json['accountsReceivables']),
-      inventory: serializer.fromJson<double?>(json['inventory']),
-      accountsPayables: serializer.fromJson<double?>(json['accountsPayables']),
+          serializer.fromJson<int?>(json['accountsReceivables']),
+      inventory: serializer.fromJson<int?>(json['inventory']),
+      accountsPayables: serializer.fromJson<int?>(json['accountsPayables']),
       otherWorkingCapital:
-          serializer.fromJson<double?>(json['otherWorkingCapital']),
-      otherNonCashItems:
-          serializer.fromJson<double?>(json['otherNonCashItems']),
+          serializer.fromJson<int?>(json['otherWorkingCapital']),
+      otherNonCashItems: serializer.fromJson<int?>(json['otherNonCashItems']),
       netCashProvidedByOperatingActivities: serializer
-          .fromJson<double?>(json['netCashProvidedByOperatingActivities']),
+          .fromJson<int?>(json['netCashProvidedByOperatingActivities']),
       investmentsInPropertyPlantAndEquipment: serializer
-          .fromJson<double?>(json['investmentsInPropertyPlantAndEquipment']),
-      acquisitionsNet: serializer.fromJson<double?>(json['acquisitionsNet']),
+          .fromJson<int?>(json['investmentsInPropertyPlantAndEquipment']),
+      acquisitionsNet: serializer.fromJson<int?>(json['acquisitionsNet']),
       purchasesOfInvestments:
-          serializer.fromJson<double?>(json['purchasesOfInvestments']),
+          serializer.fromJson<int?>(json['purchasesOfInvestments']),
       salesMaturitiesOfInvestments:
-          serializer.fromJson<double?>(json['salesMaturitiesOfInvestments']),
+          serializer.fromJson<int?>(json['salesMaturitiesOfInvestments']),
       otherInvestingActivites:
-          serializer.fromJson<double?>(json['otherInvestingActivites']),
-      netCashUsedForInvestingActivites: serializer
-          .fromJson<double?>(json['netCashUsedForInvestingActivites']),
-      debtRepayment: serializer.fromJson<double?>(json['debtRepayment']),
-      commonStockIssued:
-          serializer.fromJson<double?>(json['commonStockIssued']),
+          serializer.fromJson<int?>(json['otherInvestingActivites']),
+      netCashUsedForInvestingActivites:
+          serializer.fromJson<int?>(json['netCashUsedForInvestingActivites']),
+      debtRepayment: serializer.fromJson<int?>(json['debtRepayment']),
+      commonStockIssued: serializer.fromJson<int?>(json['commonStockIssued']),
       commonStockRepurchased:
-          serializer.fromJson<double?>(json['commonStockRepurchased']),
-      dividendsPaid: serializer.fromJson<double?>(json['dividendsPaid']),
+          serializer.fromJson<int?>(json['commonStockRepurchased']),
+      dividendsPaid: serializer.fromJson<int?>(json['dividendsPaid']),
       otherFinancingActivites:
-          serializer.fromJson<double?>(json['otherFinancingActivites']),
+          serializer.fromJson<int?>(json['otherFinancingActivites']),
       netCashUsedProvidedByFinancingActivities: serializer
-          .fromJson<double?>(json['netCashUsedProvidedByFinancingActivities']),
+          .fromJson<int?>(json['netCashUsedProvidedByFinancingActivities']),
       effectOfForexChangesOnCash:
-          serializer.fromJson<double?>(json['effectOfForexChangesOnCash']),
-      netChangeInCash: serializer.fromJson<double?>(json['netChangeInCash']),
-      cashAtEndOfPeriod:
-          serializer.fromJson<double?>(json['cashAtEndOfPeriod']),
+          serializer.fromJson<int?>(json['effectOfForexChangesOnCash']),
+      netChangeInCash: serializer.fromJson<int?>(json['netChangeInCash']),
+      cashAtEndOfPeriod: serializer.fromJson<int?>(json['cashAtEndOfPeriod']),
       cashAtBeginningOfPeriod:
-          serializer.fromJson<double?>(json['cashAtBeginningOfPeriod']),
-      operatingCashFlow:
-          serializer.fromJson<double?>(json['operatingCashFlow']),
-      capitalExpenditure:
-          serializer.fromJson<double?>(json['capitalExpenditure']),
-      freeCashFlow: serializer.fromJson<double?>(json['freeCashFlow']),
+          serializer.fromJson<int?>(json['cashAtBeginningOfPeriod']),
+      operatingCashFlow: serializer.fromJson<int?>(json['operatingCashFlow']),
+      capitalExpenditure: serializer.fromJson<int?>(json['capitalExpenditure']),
+      freeCashFlow: serializer.fromJson<int?>(json['freeCashFlow']),
       link: serializer.fromJson<String?>(json['link']),
       finalLink: serializer.fromJson<String?>(json['finalLink']),
       expires: serializer.fromJson<DateTime>(json['expires']),
@@ -5259,50 +5241,46 @@ class CashFlowStatementTableRow extends DataClass
       'acceptedDate': serializer.toJson<String?>(acceptedDate),
       'calendarYear': serializer.toJson<String?>(calendarYear),
       'period': serializer.toJson<String?>(period),
-      'netIncome': serializer.toJson<String?>(netIncome),
+      'netIncome': serializer.toJson<int?>(netIncome),
       'depreciationAndAmortization':
-          serializer.toJson<double?>(depreciationAndAmortization),
-      'deferredIncomeTax': serializer.toJson<double?>(deferredIncomeTax),
-      'stockBasedCompensation':
-          serializer.toJson<double?>(stockBasedCompensation),
-      'changeInWorkingCapital':
-          serializer.toJson<double?>(changeInWorkingCapital),
-      'accountsReceivables': serializer.toJson<double?>(accountsReceivables),
-      'inventory': serializer.toJson<double?>(inventory),
-      'accountsPayables': serializer.toJson<double?>(accountsPayables),
-      'otherWorkingCapital': serializer.toJson<double?>(otherWorkingCapital),
-      'otherNonCashItems': serializer.toJson<double?>(otherNonCashItems),
+          serializer.toJson<int?>(depreciationAndAmortization),
+      'deferredIncomeTax': serializer.toJson<int?>(deferredIncomeTax),
+      'stockBasedCompensation': serializer.toJson<int?>(stockBasedCompensation),
+      'changeInWorkingCapital': serializer.toJson<int?>(changeInWorkingCapital),
+      'accountsReceivables': serializer.toJson<int?>(accountsReceivables),
+      'inventory': serializer.toJson<int?>(inventory),
+      'accountsPayables': serializer.toJson<int?>(accountsPayables),
+      'otherWorkingCapital': serializer.toJson<int?>(otherWorkingCapital),
+      'otherNonCashItems': serializer.toJson<int?>(otherNonCashItems),
       'netCashProvidedByOperatingActivities':
-          serializer.toJson<double?>(netCashProvidedByOperatingActivities),
+          serializer.toJson<int?>(netCashProvidedByOperatingActivities),
       'investmentsInPropertyPlantAndEquipment':
-          serializer.toJson<double?>(investmentsInPropertyPlantAndEquipment),
-      'acquisitionsNet': serializer.toJson<double?>(acquisitionsNet),
-      'purchasesOfInvestments':
-          serializer.toJson<double?>(purchasesOfInvestments),
+          serializer.toJson<int?>(investmentsInPropertyPlantAndEquipment),
+      'acquisitionsNet': serializer.toJson<int?>(acquisitionsNet),
+      'purchasesOfInvestments': serializer.toJson<int?>(purchasesOfInvestments),
       'salesMaturitiesOfInvestments':
-          serializer.toJson<double?>(salesMaturitiesOfInvestments),
+          serializer.toJson<int?>(salesMaturitiesOfInvestments),
       'otherInvestingActivites':
-          serializer.toJson<double?>(otherInvestingActivites),
+          serializer.toJson<int?>(otherInvestingActivites),
       'netCashUsedForInvestingActivites':
-          serializer.toJson<double?>(netCashUsedForInvestingActivites),
-      'debtRepayment': serializer.toJson<double?>(debtRepayment),
-      'commonStockIssued': serializer.toJson<double?>(commonStockIssued),
-      'commonStockRepurchased':
-          serializer.toJson<double?>(commonStockRepurchased),
-      'dividendsPaid': serializer.toJson<double?>(dividendsPaid),
+          serializer.toJson<int?>(netCashUsedForInvestingActivites),
+      'debtRepayment': serializer.toJson<int?>(debtRepayment),
+      'commonStockIssued': serializer.toJson<int?>(commonStockIssued),
+      'commonStockRepurchased': serializer.toJson<int?>(commonStockRepurchased),
+      'dividendsPaid': serializer.toJson<int?>(dividendsPaid),
       'otherFinancingActivites':
-          serializer.toJson<double?>(otherFinancingActivites),
+          serializer.toJson<int?>(otherFinancingActivites),
       'netCashUsedProvidedByFinancingActivities':
-          serializer.toJson<double?>(netCashUsedProvidedByFinancingActivities),
+          serializer.toJson<int?>(netCashUsedProvidedByFinancingActivities),
       'effectOfForexChangesOnCash':
-          serializer.toJson<double?>(effectOfForexChangesOnCash),
-      'netChangeInCash': serializer.toJson<double?>(netChangeInCash),
-      'cashAtEndOfPeriod': serializer.toJson<double?>(cashAtEndOfPeriod),
+          serializer.toJson<int?>(effectOfForexChangesOnCash),
+      'netChangeInCash': serializer.toJson<int?>(netChangeInCash),
+      'cashAtEndOfPeriod': serializer.toJson<int?>(cashAtEndOfPeriod),
       'cashAtBeginningOfPeriod':
-          serializer.toJson<double?>(cashAtBeginningOfPeriod),
-      'operatingCashFlow': serializer.toJson<double?>(operatingCashFlow),
-      'capitalExpenditure': serializer.toJson<double?>(capitalExpenditure),
-      'freeCashFlow': serializer.toJson<double?>(freeCashFlow),
+          serializer.toJson<int?>(cashAtBeginningOfPeriod),
+      'operatingCashFlow': serializer.toJson<int?>(operatingCashFlow),
+      'capitalExpenditure': serializer.toJson<int?>(capitalExpenditure),
+      'freeCashFlow': serializer.toJson<int?>(freeCashFlow),
       'link': serializer.toJson<String?>(link),
       'finalLink': serializer.toJson<String?>(finalLink),
       'expires': serializer.toJson<DateTime>(expires),
@@ -5318,40 +5296,39 @@ class CashFlowStatementTableRow extends DataClass
           Value<String?> acceptedDate = const Value.absent(),
           Value<String?> calendarYear = const Value.absent(),
           Value<String?> period = const Value.absent(),
-          Value<String?> netIncome = const Value.absent(),
-          Value<double?> depreciationAndAmortization = const Value.absent(),
-          Value<double?> deferredIncomeTax = const Value.absent(),
-          Value<double?> stockBasedCompensation = const Value.absent(),
-          Value<double?> changeInWorkingCapital = const Value.absent(),
-          Value<double?> accountsReceivables = const Value.absent(),
-          Value<double?> inventory = const Value.absent(),
-          Value<double?> accountsPayables = const Value.absent(),
-          Value<double?> otherWorkingCapital = const Value.absent(),
-          Value<double?> otherNonCashItems = const Value.absent(),
-          Value<double?> netCashProvidedByOperatingActivities =
+          Value<int?> netIncome = const Value.absent(),
+          Value<int?> depreciationAndAmortization = const Value.absent(),
+          Value<int?> deferredIncomeTax = const Value.absent(),
+          Value<int?> stockBasedCompensation = const Value.absent(),
+          Value<int?> changeInWorkingCapital = const Value.absent(),
+          Value<int?> accountsReceivables = const Value.absent(),
+          Value<int?> inventory = const Value.absent(),
+          Value<int?> accountsPayables = const Value.absent(),
+          Value<int?> otherWorkingCapital = const Value.absent(),
+          Value<int?> otherNonCashItems = const Value.absent(),
+          Value<int?> netCashProvidedByOperatingActivities =
               const Value.absent(),
-          Value<double?> investmentsInPropertyPlantAndEquipment =
+          Value<int?> investmentsInPropertyPlantAndEquipment =
               const Value.absent(),
-          Value<double?> acquisitionsNet = const Value.absent(),
-          Value<double?> purchasesOfInvestments = const Value.absent(),
-          Value<double?> salesMaturitiesOfInvestments = const Value.absent(),
-          Value<double?> otherInvestingActivites = const Value.absent(),
-          Value<double?> netCashUsedForInvestingActivites =
+          Value<int?> acquisitionsNet = const Value.absent(),
+          Value<int?> purchasesOfInvestments = const Value.absent(),
+          Value<int?> salesMaturitiesOfInvestments = const Value.absent(),
+          Value<int?> otherInvestingActivites = const Value.absent(),
+          Value<int?> netCashUsedForInvestingActivites = const Value.absent(),
+          Value<int?> debtRepayment = const Value.absent(),
+          Value<int?> commonStockIssued = const Value.absent(),
+          Value<int?> commonStockRepurchased = const Value.absent(),
+          Value<int?> dividendsPaid = const Value.absent(),
+          Value<int?> otherFinancingActivites = const Value.absent(),
+          Value<int?> netCashUsedProvidedByFinancingActivities =
               const Value.absent(),
-          Value<double?> debtRepayment = const Value.absent(),
-          Value<double?> commonStockIssued = const Value.absent(),
-          Value<double?> commonStockRepurchased = const Value.absent(),
-          Value<double?> dividendsPaid = const Value.absent(),
-          Value<double?> otherFinancingActivites = const Value.absent(),
-          Value<double?> netCashUsedProvidedByFinancingActivities =
-              const Value.absent(),
-          Value<double?> effectOfForexChangesOnCash = const Value.absent(),
-          Value<double?> netChangeInCash = const Value.absent(),
-          Value<double?> cashAtEndOfPeriod = const Value.absent(),
-          Value<double?> cashAtBeginningOfPeriod = const Value.absent(),
-          Value<double?> operatingCashFlow = const Value.absent(),
-          Value<double?> capitalExpenditure = const Value.absent(),
-          Value<double?> freeCashFlow = const Value.absent(),
+          Value<int?> effectOfForexChangesOnCash = const Value.absent(),
+          Value<int?> netChangeInCash = const Value.absent(),
+          Value<int?> cashAtEndOfPeriod = const Value.absent(),
+          Value<int?> cashAtBeginningOfPeriod = const Value.absent(),
+          Value<int?> operatingCashFlow = const Value.absent(),
+          Value<int?> capitalExpenditure = const Value.absent(),
+          Value<int?> freeCashFlow = const Value.absent(),
           Value<String?> link = const Value.absent(),
           Value<String?> finalLink = const Value.absent(),
           DateTime? expires}) =>
@@ -5619,36 +5596,36 @@ class CashFlowStatementTableRowDefinitionCompanion
   final Value<String?> acceptedDate;
   final Value<String?> calendarYear;
   final Value<String?> period;
-  final Value<String?> netIncome;
-  final Value<double?> depreciationAndAmortization;
-  final Value<double?> deferredIncomeTax;
-  final Value<double?> stockBasedCompensation;
-  final Value<double?> changeInWorkingCapital;
-  final Value<double?> accountsReceivables;
-  final Value<double?> inventory;
-  final Value<double?> accountsPayables;
-  final Value<double?> otherWorkingCapital;
-  final Value<double?> otherNonCashItems;
-  final Value<double?> netCashProvidedByOperatingActivities;
-  final Value<double?> investmentsInPropertyPlantAndEquipment;
-  final Value<double?> acquisitionsNet;
-  final Value<double?> purchasesOfInvestments;
-  final Value<double?> salesMaturitiesOfInvestments;
-  final Value<double?> otherInvestingActivites;
-  final Value<double?> netCashUsedForInvestingActivites;
-  final Value<double?> debtRepayment;
-  final Value<double?> commonStockIssued;
-  final Value<double?> commonStockRepurchased;
-  final Value<double?> dividendsPaid;
-  final Value<double?> otherFinancingActivites;
-  final Value<double?> netCashUsedProvidedByFinancingActivities;
-  final Value<double?> effectOfForexChangesOnCash;
-  final Value<double?> netChangeInCash;
-  final Value<double?> cashAtEndOfPeriod;
-  final Value<double?> cashAtBeginningOfPeriod;
-  final Value<double?> operatingCashFlow;
-  final Value<double?> capitalExpenditure;
-  final Value<double?> freeCashFlow;
+  final Value<int?> netIncome;
+  final Value<int?> depreciationAndAmortization;
+  final Value<int?> deferredIncomeTax;
+  final Value<int?> stockBasedCompensation;
+  final Value<int?> changeInWorkingCapital;
+  final Value<int?> accountsReceivables;
+  final Value<int?> inventory;
+  final Value<int?> accountsPayables;
+  final Value<int?> otherWorkingCapital;
+  final Value<int?> otherNonCashItems;
+  final Value<int?> netCashProvidedByOperatingActivities;
+  final Value<int?> investmentsInPropertyPlantAndEquipment;
+  final Value<int?> acquisitionsNet;
+  final Value<int?> purchasesOfInvestments;
+  final Value<int?> salesMaturitiesOfInvestments;
+  final Value<int?> otherInvestingActivites;
+  final Value<int?> netCashUsedForInvestingActivites;
+  final Value<int?> debtRepayment;
+  final Value<int?> commonStockIssued;
+  final Value<int?> commonStockRepurchased;
+  final Value<int?> dividendsPaid;
+  final Value<int?> otherFinancingActivites;
+  final Value<int?> netCashUsedProvidedByFinancingActivities;
+  final Value<int?> effectOfForexChangesOnCash;
+  final Value<int?> netChangeInCash;
+  final Value<int?> cashAtEndOfPeriod;
+  final Value<int?> cashAtBeginningOfPeriod;
+  final Value<int?> operatingCashFlow;
+  final Value<int?> capitalExpenditure;
+  final Value<int?> freeCashFlow;
   final Value<String?> link;
   final Value<String?> finalLink;
   final Value<DateTime> expires;
@@ -5752,36 +5729,36 @@ class CashFlowStatementTableRowDefinitionCompanion
     Expression<String>? acceptedDate,
     Expression<String>? calendarYear,
     Expression<String>? period,
-    Expression<String>? netIncome,
-    Expression<double>? depreciationAndAmortization,
-    Expression<double>? deferredIncomeTax,
-    Expression<double>? stockBasedCompensation,
-    Expression<double>? changeInWorkingCapital,
-    Expression<double>? accountsReceivables,
-    Expression<double>? inventory,
-    Expression<double>? accountsPayables,
-    Expression<double>? otherWorkingCapital,
-    Expression<double>? otherNonCashItems,
-    Expression<double>? netCashProvidedByOperatingActivities,
-    Expression<double>? investmentsInPropertyPlantAndEquipment,
-    Expression<double>? acquisitionsNet,
-    Expression<double>? purchasesOfInvestments,
-    Expression<double>? salesMaturitiesOfInvestments,
-    Expression<double>? otherInvestingActivites,
-    Expression<double>? netCashUsedForInvestingActivites,
-    Expression<double>? debtRepayment,
-    Expression<double>? commonStockIssued,
-    Expression<double>? commonStockRepurchased,
-    Expression<double>? dividendsPaid,
-    Expression<double>? otherFinancingActivites,
-    Expression<double>? netCashUsedProvidedByFinancingActivities,
-    Expression<double>? effectOfForexChangesOnCash,
-    Expression<double>? netChangeInCash,
-    Expression<double>? cashAtEndOfPeriod,
-    Expression<double>? cashAtBeginningOfPeriod,
-    Expression<double>? operatingCashFlow,
-    Expression<double>? capitalExpenditure,
-    Expression<double>? freeCashFlow,
+    Expression<int>? netIncome,
+    Expression<int>? depreciationAndAmortization,
+    Expression<int>? deferredIncomeTax,
+    Expression<int>? stockBasedCompensation,
+    Expression<int>? changeInWorkingCapital,
+    Expression<int>? accountsReceivables,
+    Expression<int>? inventory,
+    Expression<int>? accountsPayables,
+    Expression<int>? otherWorkingCapital,
+    Expression<int>? otherNonCashItems,
+    Expression<int>? netCashProvidedByOperatingActivities,
+    Expression<int>? investmentsInPropertyPlantAndEquipment,
+    Expression<int>? acquisitionsNet,
+    Expression<int>? purchasesOfInvestments,
+    Expression<int>? salesMaturitiesOfInvestments,
+    Expression<int>? otherInvestingActivites,
+    Expression<int>? netCashUsedForInvestingActivites,
+    Expression<int>? debtRepayment,
+    Expression<int>? commonStockIssued,
+    Expression<int>? commonStockRepurchased,
+    Expression<int>? dividendsPaid,
+    Expression<int>? otherFinancingActivites,
+    Expression<int>? netCashUsedProvidedByFinancingActivities,
+    Expression<int>? effectOfForexChangesOnCash,
+    Expression<int>? netChangeInCash,
+    Expression<int>? cashAtEndOfPeriod,
+    Expression<int>? cashAtBeginningOfPeriod,
+    Expression<int>? operatingCashFlow,
+    Expression<int>? capitalExpenditure,
+    Expression<int>? freeCashFlow,
     Expression<String>? link,
     Expression<String>? finalLink,
     Expression<DateTime>? expires,
@@ -5862,36 +5839,36 @@ class CashFlowStatementTableRowDefinitionCompanion
       Value<String?>? acceptedDate,
       Value<String?>? calendarYear,
       Value<String?>? period,
-      Value<String?>? netIncome,
-      Value<double?>? depreciationAndAmortization,
-      Value<double?>? deferredIncomeTax,
-      Value<double?>? stockBasedCompensation,
-      Value<double?>? changeInWorkingCapital,
-      Value<double?>? accountsReceivables,
-      Value<double?>? inventory,
-      Value<double?>? accountsPayables,
-      Value<double?>? otherWorkingCapital,
-      Value<double?>? otherNonCashItems,
-      Value<double?>? netCashProvidedByOperatingActivities,
-      Value<double?>? investmentsInPropertyPlantAndEquipment,
-      Value<double?>? acquisitionsNet,
-      Value<double?>? purchasesOfInvestments,
-      Value<double?>? salesMaturitiesOfInvestments,
-      Value<double?>? otherInvestingActivites,
-      Value<double?>? netCashUsedForInvestingActivites,
-      Value<double?>? debtRepayment,
-      Value<double?>? commonStockIssued,
-      Value<double?>? commonStockRepurchased,
-      Value<double?>? dividendsPaid,
-      Value<double?>? otherFinancingActivites,
-      Value<double?>? netCashUsedProvidedByFinancingActivities,
-      Value<double?>? effectOfForexChangesOnCash,
-      Value<double?>? netChangeInCash,
-      Value<double?>? cashAtEndOfPeriod,
-      Value<double?>? cashAtBeginningOfPeriod,
-      Value<double?>? operatingCashFlow,
-      Value<double?>? capitalExpenditure,
-      Value<double?>? freeCashFlow,
+      Value<int?>? netIncome,
+      Value<int?>? depreciationAndAmortization,
+      Value<int?>? deferredIncomeTax,
+      Value<int?>? stockBasedCompensation,
+      Value<int?>? changeInWorkingCapital,
+      Value<int?>? accountsReceivables,
+      Value<int?>? inventory,
+      Value<int?>? accountsPayables,
+      Value<int?>? otherWorkingCapital,
+      Value<int?>? otherNonCashItems,
+      Value<int?>? netCashProvidedByOperatingActivities,
+      Value<int?>? investmentsInPropertyPlantAndEquipment,
+      Value<int?>? acquisitionsNet,
+      Value<int?>? purchasesOfInvestments,
+      Value<int?>? salesMaturitiesOfInvestments,
+      Value<int?>? otherInvestingActivites,
+      Value<int?>? netCashUsedForInvestingActivites,
+      Value<int?>? debtRepayment,
+      Value<int?>? commonStockIssued,
+      Value<int?>? commonStockRepurchased,
+      Value<int?>? dividendsPaid,
+      Value<int?>? otherFinancingActivites,
+      Value<int?>? netCashUsedProvidedByFinancingActivities,
+      Value<int?>? effectOfForexChangesOnCash,
+      Value<int?>? netChangeInCash,
+      Value<int?>? cashAtEndOfPeriod,
+      Value<int?>? cashAtBeginningOfPeriod,
+      Value<int?>? operatingCashFlow,
+      Value<int?>? capitalExpenditure,
+      Value<int?>? freeCashFlow,
       Value<String?>? link,
       Value<String?>? finalLink,
       Value<DateTime>? expires,
@@ -5987,109 +5964,108 @@ class CashFlowStatementTableRowDefinitionCompanion
       map['period'] = Variable<String>(period.value);
     }
     if (netIncome.present) {
-      map['net_income'] = Variable<String>(netIncome.value);
+      map['net_income'] = Variable<int>(netIncome.value);
     }
     if (depreciationAndAmortization.present) {
       map['depreciation_and_amortization'] =
-          Variable<double>(depreciationAndAmortization.value);
+          Variable<int>(depreciationAndAmortization.value);
     }
     if (deferredIncomeTax.present) {
-      map['deferred_income_tax'] = Variable<double>(deferredIncomeTax.value);
+      map['deferred_income_tax'] = Variable<int>(deferredIncomeTax.value);
     }
     if (stockBasedCompensation.present) {
       map['stock_based_compensation'] =
-          Variable<double>(stockBasedCompensation.value);
+          Variable<int>(stockBasedCompensation.value);
     }
     if (changeInWorkingCapital.present) {
       map['change_in_working_capital'] =
-          Variable<double>(changeInWorkingCapital.value);
+          Variable<int>(changeInWorkingCapital.value);
     }
     if (accountsReceivables.present) {
-      map['accounts_receivables'] = Variable<double>(accountsReceivables.value);
+      map['accounts_receivables'] = Variable<int>(accountsReceivables.value);
     }
     if (inventory.present) {
-      map['inventory'] = Variable<double>(inventory.value);
+      map['inventory'] = Variable<int>(inventory.value);
     }
     if (accountsPayables.present) {
-      map['accounts_payables'] = Variable<double>(accountsPayables.value);
+      map['accounts_payables'] = Variable<int>(accountsPayables.value);
     }
     if (otherWorkingCapital.present) {
-      map['other_working_capital'] =
-          Variable<double>(otherWorkingCapital.value);
+      map['other_working_capital'] = Variable<int>(otherWorkingCapital.value);
     }
     if (otherNonCashItems.present) {
-      map['other_non_cash_items'] = Variable<double>(otherNonCashItems.value);
+      map['other_non_cash_items'] = Variable<int>(otherNonCashItems.value);
     }
     if (netCashProvidedByOperatingActivities.present) {
       map['net_cash_provided_by_operating_activities'] =
-          Variable<double>(netCashProvidedByOperatingActivities.value);
+          Variable<int>(netCashProvidedByOperatingActivities.value);
     }
     if (investmentsInPropertyPlantAndEquipment.present) {
       map['investments_in_property_plant_and_equipment'] =
-          Variable<double>(investmentsInPropertyPlantAndEquipment.value);
+          Variable<int>(investmentsInPropertyPlantAndEquipment.value);
     }
     if (acquisitionsNet.present) {
-      map['acquisitions_net'] = Variable<double>(acquisitionsNet.value);
+      map['acquisitions_net'] = Variable<int>(acquisitionsNet.value);
     }
     if (purchasesOfInvestments.present) {
       map['purchases_of_investments'] =
-          Variable<double>(purchasesOfInvestments.value);
+          Variable<int>(purchasesOfInvestments.value);
     }
     if (salesMaturitiesOfInvestments.present) {
       map['sales_maturities_of_investments'] =
-          Variable<double>(salesMaturitiesOfInvestments.value);
+          Variable<int>(salesMaturitiesOfInvestments.value);
     }
     if (otherInvestingActivites.present) {
       map['other_investing_activites'] =
-          Variable<double>(otherInvestingActivites.value);
+          Variable<int>(otherInvestingActivites.value);
     }
     if (netCashUsedForInvestingActivites.present) {
       map['net_cash_used_for_investing_activites'] =
-          Variable<double>(netCashUsedForInvestingActivites.value);
+          Variable<int>(netCashUsedForInvestingActivites.value);
     }
     if (debtRepayment.present) {
-      map['debt_repayment'] = Variable<double>(debtRepayment.value);
+      map['debt_repayment'] = Variable<int>(debtRepayment.value);
     }
     if (commonStockIssued.present) {
-      map['common_stock_issued'] = Variable<double>(commonStockIssued.value);
+      map['common_stock_issued'] = Variable<int>(commonStockIssued.value);
     }
     if (commonStockRepurchased.present) {
       map['common_stock_repurchased'] =
-          Variable<double>(commonStockRepurchased.value);
+          Variable<int>(commonStockRepurchased.value);
     }
     if (dividendsPaid.present) {
-      map['dividends_paid'] = Variable<double>(dividendsPaid.value);
+      map['dividends_paid'] = Variable<int>(dividendsPaid.value);
     }
     if (otherFinancingActivites.present) {
       map['other_financing_activites'] =
-          Variable<double>(otherFinancingActivites.value);
+          Variable<int>(otherFinancingActivites.value);
     }
     if (netCashUsedProvidedByFinancingActivities.present) {
       map['net_cash_used_provided_by_financing_activities'] =
-          Variable<double>(netCashUsedProvidedByFinancingActivities.value);
+          Variable<int>(netCashUsedProvidedByFinancingActivities.value);
     }
     if (effectOfForexChangesOnCash.present) {
       map['effect_of_forex_changes_on_cash'] =
-          Variable<double>(effectOfForexChangesOnCash.value);
+          Variable<int>(effectOfForexChangesOnCash.value);
     }
     if (netChangeInCash.present) {
-      map['net_change_in_cash'] = Variable<double>(netChangeInCash.value);
+      map['net_change_in_cash'] = Variable<int>(netChangeInCash.value);
     }
     if (cashAtEndOfPeriod.present) {
-      map['cash_at_end_of_period'] = Variable<double>(cashAtEndOfPeriod.value);
+      map['cash_at_end_of_period'] = Variable<int>(cashAtEndOfPeriod.value);
     }
     if (cashAtBeginningOfPeriod.present) {
       map['cash_at_beginning_of_period'] =
-          Variable<double>(cashAtBeginningOfPeriod.value);
+          Variable<int>(cashAtBeginningOfPeriod.value);
     }
     if (operatingCashFlow.present) {
-      map['operating_cash_flow'] = Variable<double>(operatingCashFlow.value);
+      map['operating_cash_flow'] = Variable<int>(operatingCashFlow.value);
     }
     if (capitalExpenditure.present) {
-      map['capital_expenditure'] = Variable<double>(capitalExpenditure.value);
+      map['capital_expenditure'] = Variable<int>(capitalExpenditure.value);
     }
     if (freeCashFlow.present) {
-      map['free_cash_flow'] = Variable<double>(freeCashFlow.value);
+      map['free_cash_flow'] = Variable<int>(freeCashFlow.value);
     }
     if (link.present) {
       map['link'] = Variable<String>(link.value);

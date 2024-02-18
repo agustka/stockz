@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 part 'cash_flow_statement_model.g.dart';
 
@@ -14,36 +15,36 @@ class CashFlowStatementModel {
   final String? acceptedDate;
   final String? calendarYear;
   final String? period;
-  final num? netIncome;
-  final num? depreciationAndAmortization;
-  final num? deferredIncomeTax;
-  final num? stockBasedCompensation;
-  final num? changeInWorkingCapital;
-  final num? accountsReceivables;
-  final num? inventory;
-  final num? accountsPayables;
-  final num? otherWorkingCapital;
-  final num? otherNonCashItems;
-  final num? netCashProvidedByOperatingActivities;
-  final num? investmentsInPropertyPlantAndEquipment;
-  final num? acquisitionsNet;
-  final num? purchasesOfInvestments;
-  final num? salesMaturitiesOfInvestments;
-  final num? otherInvestingActivites;
-  final num? netCashUsedForInvestingActivites;
-  final num? debtRepayment;
-  final num? commonStockIssued;
-  final num? commonStockRepurchased;
-  final num? dividendsPaid;
-  final num? otherFinancingActivites;
-  final num? netCashUsedProvidedByFinancingActivities;
-  final num? effectOfForexChangesOnCash;
-  final num? netChangeInCash;
-  final num? cashAtEndOfPeriod;
-  final num? cashAtBeginningOfPeriod;
-  final num? operatingCashFlow;
-  final num? capitalExpenditure;
-  final num? freeCashFlow;
+  final int? netIncome;
+  final int? depreciationAndAmortization;
+  final int? deferredIncomeTax;
+  final int? stockBasedCompensation;
+  final int? changeInWorkingCapital;
+  final int? accountsReceivables;
+  final int? inventory;
+  final int? accountsPayables;
+  final int? otherWorkingCapital;
+  final int? otherNonCashItems;
+  final int? netCashProvidedByOperatingActivities;
+  final int? investmentsInPropertyPlantAndEquipment;
+  final int? acquisitionsNet;
+  final int? purchasesOfInvestments;
+  final int? salesMaturitiesOfInvestments;
+  final int? otherInvestingActivites;
+  final int? netCashUsedForInvestingActivites;
+  final int? debtRepayment;
+  final int? commonStockIssued;
+  final int? commonStockRepurchased;
+  final int? dividendsPaid;
+  final int? otherFinancingActivites;
+  final int? netCashUsedProvidedByFinancingActivities;
+  final int? effectOfForexChangesOnCash;
+  final int? netChangeInCash;
+  final int? cashAtEndOfPeriod;
+  final int? cashAtBeginningOfPeriod;
+  final int? operatingCashFlow;
+  final int? capitalExpenditure;
+  final int? freeCashFlow;
   final String? link;
   final String? finalLink;
 
@@ -89,6 +90,51 @@ class CashFlowStatementModel {
     required this.link,
     required this.finalLink,
   });
+
+  factory CashFlowStatementModel.fromTableRow(CashFlowStatementTableRow row) {
+    return CashFlowStatementModel(
+      date: row.date,
+      symbol: row.symbol,
+      reportedCurrency: row.reportedCurrency,
+      cik: row.cik,
+      fillingDate: row.fillingDate,
+      acceptedDate: row.acceptedDate,
+      calendarYear: row.calendarYear,
+      period: row.period,
+      netIncome: row.netIncome,
+      depreciationAndAmortization: row.depreciationAndAmortization,
+      deferredIncomeTax: row.deferredIncomeTax,
+      stockBasedCompensation: row.stockBasedCompensation,
+      changeInWorkingCapital: row.changeInWorkingCapital,
+      accountsReceivables: row.accountsReceivables,
+      inventory: row.inventory,
+      accountsPayables: row.accountsPayables,
+      otherWorkingCapital: row.otherWorkingCapital,
+      otherNonCashItems: row.otherNonCashItems,
+      netCashProvidedByOperatingActivities: row.netCashProvidedByOperatingActivities,
+      investmentsInPropertyPlantAndEquipment: row.investmentsInPropertyPlantAndEquipment,
+      acquisitionsNet: row.acquisitionsNet,
+      purchasesOfInvestments: row.purchasesOfInvestments,
+      salesMaturitiesOfInvestments: row.salesMaturitiesOfInvestments,
+      otherInvestingActivites: row.otherInvestingActivites,
+      netCashUsedForInvestingActivites: row.netCashUsedForInvestingActivites,
+      debtRepayment: row.debtRepayment,
+      commonStockIssued: row.commonStockIssued,
+      commonStockRepurchased: row.commonStockRepurchased,
+      dividendsPaid: row.dividendsPaid,
+      otherFinancingActivites: row.otherFinancingActivites,
+      netCashUsedProvidedByFinancingActivities: row.netCashUsedProvidedByFinancingActivities,
+      effectOfForexChangesOnCash: row.effectOfForexChangesOnCash,
+      netChangeInCash: row.netChangeInCash,
+      cashAtEndOfPeriod: row.cashAtEndOfPeriod,
+      cashAtBeginningOfPeriod: row.cashAtBeginningOfPeriod,
+      operatingCashFlow: row.operatingCashFlow,
+      capitalExpenditure: row.capitalExpenditure,
+      freeCashFlow: row.freeCashFlow,
+      link: row.link,
+      finalLink: row.finalLink,
+    );
+  }
 
   factory CashFlowStatementModel.fromJson(Map<String, dynamic> json) {
     return _$CashFlowStatementModelFromJson(json);

@@ -10,9 +10,9 @@ import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 @Injectable(as: IBalanceSheetStatementCache)
 class BalanceSheetStatementCache with BaseCache implements IBalanceSheetStatementCache {
-  final BalanceSheetStatementDao cardsDao;
+  final BalanceSheetStatementDao balanceSheetStatementDao;
 
-  BalanceSheetStatementCache(this.cardsDao);
+  BalanceSheetStatementCache(this.balanceSheetStatementDao);
 
   @override
   Future<Cache<List<BalanceSheetStatementModel>>> getBalanceSheetStatements({
@@ -21,7 +21,7 @@ class BalanceSheetStatementCache with BaseCache implements IBalanceSheetStatemen
   }) {
     return serveCache(
       policy: policy,
-      getInput: () async => cardsDao.getBalanceSheetStatements(ticker: ticker),
+      getInput: () async => balanceSheetStatementDao.getBalanceSheetStatements(ticker: ticker),
       getExpires: (List<BalanceSheetStatementTableRow> rows) => rows.first.expires,
       conversionMethod: (List<BalanceSheetStatementTableRow> rows) {
         final List<BalanceSheetStatementModel> statements =
@@ -36,7 +36,7 @@ class BalanceSheetStatementCache with BaseCache implements IBalanceSheetStatemen
     required String ticker,
     required List<BalanceSheetStatementModel> statements,
   }) {
-    final Future added = cardsDao.addBalanceSheetStatements(
+    final Future added = balanceSheetStatementDao.addBalanceSheetStatements(
       ticker: ticker,
       statements: statements,
       ttlSeconds: timeToLive.inSeconds,
