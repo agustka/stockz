@@ -1,5 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
+import 'package:stockz/domain/core/value_objects/date_value_object.dart';
+import 'package:stockz/domain/core/value_objects/int_value_object.dart';
+import 'package:stockz/domain/core/value_objects/number_value_object.dart';
+import 'package:stockz/domain/core/value_objects/statement_period_value_object.dart';
+import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
+import 'package:stockz/domain/core/value_objects/url_value_object.dart';
+import 'package:stockz/domain/income_statement/entities/income_statements.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 part 'income_statement_model.g.dart';
@@ -135,4 +143,47 @@ class IncomeStatementModel {
   }
 
   Map<String, dynamic> toJson() => _$IncomeStatementModelToJson(this);
+
+  IncomeStatement toDomain() {
+    return IncomeStatement(
+      symbol: StringIdValueObject(symbol),
+      date: DateValueObject.fromString(date),
+      reportedCurrency: CurrencyValueObject(reportedCurrency),
+      cik: StringIdValueObject(cik),
+      fillingDate: DateValueObject.fromString(fillingDate),
+      acceptedDate: DateValueObject.fromString(acceptedDate),
+      calendarYear: IntValueObject.fromString(calendarYear),
+      period: StatementPeriodValueObject(period),
+      revenue: NumberValueObject(revenue),
+      costOfRevenue: NumberValueObject(costOfRevenue),
+      grossProfit: NumberValueObject(grossProfit),
+      grossProfitRatio: NumberValueObject(grossProfitRatio),
+      researchAndDevelopmentExpenses: NumberValueObject(researchAndDevelopmentExpenses),
+      generalAndAdministrativeExpenses: NumberValueObject(generalAndAdministrativeExpenses),
+      sellingAndMarketingExpenses: NumberValueObject(sellingAndMarketingExpenses),
+      sellingGeneralAndAdministrativeExpenses: NumberValueObject(sellingGeneralAndAdministrativeExpenses),
+      otherExpenses: NumberValueObject(otherExpenses),
+      operatingExpenses: NumberValueObject(operatingExpenses),
+      costAndExpenses: NumberValueObject(costAndExpenses),
+      interestIncome: NumberValueObject(interestIncome),
+      interestExpense: NumberValueObject(interestExpense),
+      depreciationAndAmortization: NumberValueObject(depreciationAndAmortization),
+      ebitda: NumberValueObject(ebitda),
+      ebitdaratio: NumberValueObject(ebitdaratio),
+      operatingIncome: NumberValueObject(operatingIncome),
+      operatingIncomeRatio: NumberValueObject(operatingIncomeRatio),
+      totalOtherIncomeExpensesNet: NumberValueObject(totalOtherIncomeExpensesNet),
+      incomeBeforeTax: NumberValueObject(incomeBeforeTax),
+      incomeBeforeTaxRatio: NumberValueObject(incomeBeforeTaxRatio),
+      incomeTaxExpense: NumberValueObject(incomeTaxExpense),
+      netIncome: NumberValueObject(netIncome),
+      netIncomeRatio: NumberValueObject(netIncomeRatio),
+      eps: NumberValueObject(eps),
+      epsdiluted: NumberValueObject(epsdiluted),
+      weightedAverageShsOut: NumberValueObject(weightedAverageShsOut),
+      weightedAverageShsOutDil: NumberValueObject(weightedAverageShsOutDil),
+      link: UrlValueObject(link),
+      finalLink: UrlValueObject(finalLink),
+    );
+  }
 }

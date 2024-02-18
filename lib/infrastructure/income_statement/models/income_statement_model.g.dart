@@ -9,8 +9,8 @@ part of 'income_statement_model.dart';
 IncomeStatementModel _$IncomeStatementModelFromJson(
         Map<String, dynamic> json) =>
     IncomeStatementModel(
-      date: json['date'] as String?,
       symbol: json['symbol'] as String?,
+      date: json['date'] as String?,
       reportedCurrency: json['reportedCurrency'] as String?,
       cik: json['cik'] as String?,
       fillingDate: json['fillingDate'] as String?,
@@ -55,8 +55,8 @@ IncomeStatementModel _$IncomeStatementModelFromJson(
 Map<String, dynamic> _$IncomeStatementModelToJson(
         IncomeStatementModel instance) =>
     <String, dynamic>{
-      'date': instance.date,
       'symbol': instance.symbol,
+      'date': instance.date,
       'reportedCurrency': instance.reportedCurrency,
       'cik': instance.cik,
       'fillingDate': instance.fillingDate,

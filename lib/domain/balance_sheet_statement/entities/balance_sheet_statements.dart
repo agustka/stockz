@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
@@ -8,14 +9,24 @@ import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 
 @immutable
-class BalanceSheetStatements {
+class BalanceSheetStatements extends Equatable {
   final List<BalanceSheetStatement> statements;
+  final bool valid;
 
-  const BalanceSheetStatements({required this.statements});
+  const BalanceSheetStatements({required this.statements, this.valid = true});
+
+  const factory BalanceSheetStatements.invalid() = _$InvalidBalanceSheetStatements;
+
+  @override
+  List<Object?> get props => [statements, valid];
+}
+
+class _$InvalidBalanceSheetStatements extends BalanceSheetStatements {
+  const _$InvalidBalanceSheetStatements() : super(statements: const [], valid: false);
 }
 
 @immutable
-class BalanceSheetStatement {
+class BalanceSheetStatement extends Equatable {
   final DateValueObject date;
   final StringIdValueObject symbol;
   final CurrencyValueObject reportedCurrency;
@@ -70,6 +81,7 @@ class BalanceSheetStatement {
   final NumberValueObject netDebt;
   final UrlValueObject link;
   final UrlValueObject finalLink;
+  final bool valid;
 
   const BalanceSheetStatement({
     required this.date,
@@ -126,5 +138,65 @@ class BalanceSheetStatement {
     required this.netDebt,
     required this.link,
     required this.finalLink,
+    this.valid = true,
   });
+
+  @override
+  List<Object?> get props => [
+        date,
+        symbol,
+        reportedCurrency,
+        cik,
+        fillingDate,
+        acceptedDate,
+        calendarYear,
+        period,
+        cashAndCashEquivalents,
+        shortTermInvestments,
+        cashAndShortTermInvestments,
+        netReceivables,
+        inventory,
+        otherCurrentAssets,
+        totalCurrentAssets,
+        propertyPlantEquipmentNet,
+        goodwill,
+        intangibleAssets,
+        goodwillAndIntangibleAssets,
+        longTermInvestments,
+        taxAssets,
+        otherNonCurrentAssets,
+        totalNonCurrentAssets,
+        otherAssets,
+        totalAssets,
+        accountPayables,
+        shortTermDebt,
+        taxPayables,
+        deferredRevenue,
+        otherCurrentLiabilities,
+        totalCurrentLiabilities,
+        longTermDebt,
+        deferredRevenueNonCurrent,
+        deferredTaxLiabilitiesNonCurrent,
+        otherNonCurrentLiabilities,
+        totalNonCurrentLiabilities,
+        otherLiabilities,
+        capitalLeaseObligations,
+        totalLiabilities,
+        preferredStock,
+        commonStock,
+        retainedEarnings,
+        accumulatedOtherComprehensiveIncomeLoss,
+        othertotalStockholdersEquity,
+        totalStockholdersEquity,
+        totalEquity,
+        totalLiabilitiesAndStockholdersEquity,
+        minorityInterest,
+        totalLiabilitiesAndTotalEquity,
+        totalInvestments,
+        totalDebt,
+        netDebt,
+        link,
+        finalLink,
+        valid,
+      ];
 }

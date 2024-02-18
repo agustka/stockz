@@ -10,8 +10,9 @@ abstract class IncomeStatementChopperService extends ChopperService {
 
   static IncomeStatementChopperService create([ChopperClient? client]) => _$IncomeStatementChopperService(client);
 
-  @Post(path: "/{ticker}", optionalBody: true)
+  @Get(path: "/{ticker}", optionalBody: true)
   Future<Response<List<IncomeStatementModel>>> getIncomeStatement({
     @Path("ticker") required String ticker,
+    @Query("period") String period = "annual",
   });
 }

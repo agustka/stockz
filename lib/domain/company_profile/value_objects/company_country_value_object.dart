@@ -28,6 +28,12 @@ class CompanyCountryValueObject extends ValueObject<CompanyCountry> {
     switch (input?.toLowerCase() ?? "") {
       case "us":
         return CompanyCountry.us;
+      case "ca":
+        return CompanyCountry.canada;
+      case "ch":
+        return CompanyCountry.switzerland;
+      case "il":
+        return CompanyCountry.israel;
       default:
         if (logError) {
           errEnum(type: "CompanyCountry", input: input);
@@ -44,5 +50,8 @@ class _$InvalidCardIssuer extends CompanyCountryValueObject {
 
 enum CompanyCountry {
   us,
+  switzerland,
+  israel,
+  canada,
   invalid,
 }

@@ -28,6 +28,18 @@ class CompanySectorValueObject extends ValueObject<CompanySector> {
     switch (input?.toLowerCase() ?? "") {
       case "technology":
         return CompanySector.technology;
+      case "consumer defensive":
+        return CompanySector.consumerDefensive;
+      case "communication services":
+        return CompanySector.communicationServices;
+      case "healthcare":
+        return CompanySector.healthcare;
+      case "consumer cyclical":
+        return CompanySector.consumerCyclical;
+      case "energy":
+        return CompanySector.energy;
+      case "industrials":
+        return CompanySector.industrials;
       default:
         if (logError) {
           errEnum(type: "CompanySector", input: input);
@@ -44,5 +56,11 @@ class _$InvalidCardIssuer extends CompanySectorValueObject {
 
 enum CompanySector {
   technology,
+  consumerDefensive,
+  communicationServices,
+  healthcare,
+  consumerCyclical,
+  energy,
+  industrials,
   invalid,
 }

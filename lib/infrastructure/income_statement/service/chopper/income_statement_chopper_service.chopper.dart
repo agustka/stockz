@@ -19,13 +19,17 @@ final class _$IncomeStatementChopperService
   final Type definitionType = IncomeStatementChopperService;
 
   @override
-  Future<Response<List<IncomeStatementModel>>> getIncomeStatement(
-      {required String ticker}) {
+  Future<Response<List<IncomeStatementModel>>> getIncomeStatement({
+    required String ticker,
+    String period = "annual",
+  }) {
     final Uri $url = Uri.parse('/api/v3/income-statement/${ticker}');
+    final Map<String, dynamic> $params = <String, dynamic>{'period': period};
     final Request $request = Request(
-      'POST',
+      'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
     return client
         .send<List<IncomeStatementModel>, IncomeStatementModel>($request);

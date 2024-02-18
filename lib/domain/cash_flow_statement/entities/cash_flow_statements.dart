@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
@@ -8,14 +9,24 @@ import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 
 @immutable
-class CashFlowStatements {
+class CashFlowStatements extends Equatable {
   final List<CashFlowStatement> statements;
+  final bool valid;
 
-  const CashFlowStatements({required this.statements});
+  const CashFlowStatements({required this.statements, this.valid = true});
+
+  const factory CashFlowStatements.invalid() = _$InvalidCashFlowStatements;
+
+  @override
+  List<Object?> get props => [statements, valid];
+}
+
+class _$InvalidCashFlowStatements extends CashFlowStatements {
+  const _$InvalidCashFlowStatements() : super(statements: const [], valid: false);
 }
 
 @immutable
-class CashFlowStatement {
+class CashFlowStatement extends Equatable {
   final DateValueObject date;
   final StringIdValueObject symbol;
   final CurrencyValueObject reportedCurrency;
@@ -56,6 +67,7 @@ class CashFlowStatement {
   final NumberValueObject freeCashFlow;
   final UrlValueObject link;
   final UrlValueObject finalLink;
+  final bool valid;
 
   const CashFlowStatement({
     required this.date,
@@ -98,5 +110,51 @@ class CashFlowStatement {
     required this.freeCashFlow,
     required this.link,
     required this.finalLink,
+    this.valid = true,
   });
+
+  @override
+  List<Object?> get props => [
+        date,
+        symbol,
+        reportedCurrency,
+        cik,
+        fillingDate,
+        acceptedDate,
+        calendarYear,
+        period,
+        netIncome,
+        depreciationAndAmortization,
+        deferredIncomeTax,
+        stockBasedCompensation,
+        changeInWorkingCapital,
+        accountsReceivables,
+        inventory,
+        accountsPayables,
+        otherWorkingCapital,
+        otherNonCashItems,
+        netCashProvidedByOperatingActivities,
+        investmentsInPropertyPlantAndEquipment,
+        acquisitionsNet,
+        purchasesOfInvestments,
+        salesMaturitiesOfInvestments,
+        otherInvestingActivites,
+        netCashUsedForInvestingActivites,
+        debtRepayment,
+        commonStockIssued,
+        commonStockRepurchased,
+        dividendsPaid,
+        otherFinancingActivites,
+        netCashUsedProvidedByFinancingActivities,
+        effectOfForexChangesOnCash,
+        netChangeInCash,
+        cashAtEndOfPeriod,
+        cashAtBeginningOfPeriod,
+        operatingCashFlow,
+        capitalExpenditure,
+        freeCashFlow,
+        link,
+        finalLink,
+        valid,
+      ];
 }

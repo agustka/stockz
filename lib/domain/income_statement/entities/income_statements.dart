@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
@@ -8,14 +9,24 @@ import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 
 @immutable
-class IncomeStatements {
+class IncomeStatements extends Equatable {
   final List<IncomeStatement> statements;
+  final bool valid;
 
-  const IncomeStatements({required this.statements});
+  const IncomeStatements({required this.statements, this.valid = true});
+
+  const factory IncomeStatements.invalid() = _$InvalidIncomeStatements;
+
+  @override
+  List<Object?> get props => [statements, valid];
+}
+
+class _$InvalidIncomeStatements extends IncomeStatements {
+  const _$InvalidIncomeStatements() : super(statements: const [], valid: false);
 }
 
 @immutable
-class IncomeStatement {
+class IncomeStatement extends Equatable {
   final StringIdValueObject symbol;
   final DateValueObject date;
   final CurrencyValueObject reportedCurrency;
@@ -54,6 +65,7 @@ class IncomeStatement {
   final NumberValueObject weightedAverageShsOutDil;
   final UrlValueObject link;
   final UrlValueObject finalLink;
+  final bool valid;
 
   const IncomeStatement({
     required this.symbol,
@@ -94,5 +106,50 @@ class IncomeStatement {
     required this.weightedAverageShsOutDil,
     required this.link,
     required this.finalLink,
+    this.valid = true,
   });
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => [
+        symbol,
+        date,
+        reportedCurrency,
+        cik,
+        fillingDate,
+        acceptedDate,
+        calendarYear,
+        period,
+        revenue,
+        costOfRevenue,
+        grossProfit,
+        grossProfitRatio,
+        researchAndDevelopmentExpenses,
+        generalAndAdministrativeExpenses,
+        sellingAndMarketingExpenses,
+        sellingGeneralAndAdministrativeExpenses,
+        otherExpenses,
+        operatingExpenses,
+        costAndExpenses,
+        interestIncome,
+        interestExpense,
+        depreciationAndAmortization,
+        ebitda,
+        ebitdaratio,
+        operatingIncome,
+        operatingIncomeRatio,
+        totalOtherIncomeExpensesNet,
+        incomeBeforeTax,
+        incomeBeforeTaxRatio,
+        incomeTaxExpense,
+        netIncome,
+        netIncomeRatio,
+        eps,
+        epsdiluted,
+        weightedAverageShsOut,
+        weightedAverageShsOutDil,
+        link,
+        finalLink,
+        valid,
+      ];
 }

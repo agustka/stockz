@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:stockz/domain/company_profile/entities/company_profile.dart';
 import 'package:stockz/domain/company_profile/value_objects/company_country_value_object.dart';
+import 'package:stockz/domain/company_profile/value_objects/company_exchange_value_object.dart';
 import 'package:stockz/domain/company_profile/value_objects/company_industry_value_object.dart';
 import 'package:stockz/domain/company_profile/value_objects/company_sector_value_object.dart';
 import 'package:stockz/domain/core/value_objects/bool_value_object.dart';
@@ -157,7 +158,8 @@ class CompanyProfileModel {
       cik: StringIdValueObject(cik),
       isin: StringIdValueObject(isin),
       cusip: StringIdValueObject(cusip),
-      exchange: TextValueObject(exchange),
+      exchange: CompanyExchangeValueObject(exchange),
+      exchangeName: TextValueObject(exchange),
       exchangeShortName: TextValueObject(exchangeShortName),
       industry: CompanyIndustryValueObject(industry),
       website: UrlValueObject(website),

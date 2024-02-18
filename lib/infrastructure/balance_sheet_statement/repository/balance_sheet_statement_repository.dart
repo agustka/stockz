@@ -12,11 +12,11 @@ import 'package:stockz/infrastructure/core/cache/base_cache.dart';
 import 'package:stockz/infrastructure/core/cache/cache.dart';
 
 @LazySingleton(as: IBalanceSheetStatementRepository)
-class BalanceSheetStatementService implements IBalanceSheetStatementRepository {
+class BalanceSheetStatementRepository implements IBalanceSheetStatementRepository {
   final IBalanceSheetStatementService _service;
   final IBalanceSheetStatementCache _cache;
 
-  BalanceSheetStatementService(this._service, this._cache);
+  BalanceSheetStatementRepository(this._service, this._cache);
 
   @override
   Future<Payload<BalanceSheetStatements>> getBalanceSheetStatements({
