@@ -19,14 +19,15 @@ final class _$CompanyProfileChopperService
   final Type definitionType = CompanyProfileChopperService;
 
   @override
-  Future<Response<CompanyProfileModel>> getCompanyProfile(
+  Future<Response<List<CompanyProfileModel>>> getCompanyProfile(
       {required String ticker}) {
     final Uri $url = Uri.parse('/api/v3/profile/${ticker}');
     final Request $request = Request(
-      'POST',
+      'GET',
       $url,
       client.baseUrl,
     );
-    return client.send<CompanyProfileModel, CompanyProfileModel>($request);
+    return client
+        .send<List<CompanyProfileModel>, CompanyProfileModel>($request);
   }
 }

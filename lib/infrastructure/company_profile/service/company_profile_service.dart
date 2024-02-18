@@ -15,9 +15,9 @@ class CompanyProfileService with BaseService implements ICompanyProfileService {
   CompanyProfileService(this._chopperService);
 
   @override
-  Future<Payload<CompanyProfileModel>> getCompanyProfile({required String ticker, int level = 0}) async {
+  Future<Payload<List<CompanyProfileModel>>> getCompanyProfile({required String ticker, int level = 0}) async {
     try {
-      final Response<CompanyProfileModel> response = await _chopperService.getCompanyProfile(ticker: ticker);
+      final Response<List<CompanyProfileModel>> response = await _chopperService.getCompanyProfile(ticker: ticker);
 
       if (await needsRetry(response, level)) {
         return getCompanyProfile(ticker: ticker, level: level + 1);

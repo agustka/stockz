@@ -10,6 +10,6 @@ abstract class CompanyProfileChopperService extends ChopperService {
 
   static CompanyProfileChopperService create([ChopperClient? client]) => _$CompanyProfileChopperService(client);
 
-  @Post(path: "/{ticker}")
-  Future<Response<CompanyProfileModel>> getCompanyProfile({@Path("ticker") required String ticker});
+  @Get(path: "/{ticker}")
+  Future<Response<List<CompanyProfileModel>>> getCompanyProfile({@Path("ticker") required String ticker});
 }

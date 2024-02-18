@@ -1,5 +1,17 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stockz/domain/company_profile/entities/company_profile.dart';
+import 'package:stockz/domain/company_profile/value_objects/company_country_value_object.dart';
+import 'package:stockz/domain/company_profile/value_objects/company_industry_value_object.dart';
+import 'package:stockz/domain/company_profile/value_objects/company_sector_value_object.dart';
+import 'package:stockz/domain/core/value_objects/bool_value_object.dart';
+import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
+import 'package:stockz/domain/core/value_objects/date_value_object.dart';
+import 'package:stockz/domain/core/value_objects/number_value_object.dart';
+import 'package:stockz/domain/core/value_objects/rage_value_object.dart';
+import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
+import 'package:stockz/domain/core/value_objects/text_value_object.dart';
+import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 part 'company_profile_model.g.dart';
@@ -129,4 +141,45 @@ class CompanyProfileModel {
   }
 
   Map<String, dynamic> toJson() => _$CompanyProfileModelToJson(this);
+
+  CompanyProfile toDomain() {
+    return CompanyProfile(
+      symbol: StringIdValueObject(symbol),
+      price: NumberValueObject(price),
+      beta: NumberValueObject(beta),
+      volAvg: NumberValueObject(volAvg),
+      mktCap: NumberValueObject(mktCap),
+      lastDiv: NumberValueObject(lastDiv),
+      range: RangeValueObject(range),
+      changes: NumberValueObject(changes),
+      companyName: TextValueObject(companyName),
+      currency: CurrencyValueObject(currency),
+      cik: StringIdValueObject(cik),
+      isin: StringIdValueObject(isin),
+      cusip: StringIdValueObject(cusip),
+      exchange: TextValueObject(exchange),
+      exchangeShortName: TextValueObject(exchangeShortName),
+      industry: CompanyIndustryValueObject(industry),
+      website: UrlValueObject(website),
+      description: TextValueObject(description),
+      ceo: TextValueObject(ceo),
+      sector: CompanySectorValueObject(sector),
+      country: CompanyCountryValueObject(country),
+      fullTimeEmployees: NumberValueObject.fromString(fullTimeEmployees),
+      phone: TextValueObject(phone),
+      address: TextValueObject(address),
+      city: TextValueObject(city),
+      state: TextValueObject(state),
+      zip: TextValueObject(zip),
+      dcfDiff: NumberValueObject(dcfDiff),
+      dcf: NumberValueObject(dcf),
+      image: UrlValueObject(image),
+      ipoDate: DateValueObject.fromString(ipoDate),
+      defaultImage: BoolValueObject(input: defaultImage),
+      isEtf: BoolValueObject(input: isEtf),
+      isActivelyTrading: BoolValueObject(input: isActivelyTrading),
+      isAdr: BoolValueObject(input: isAdr),
+      isFund: BoolValueObject(input: isFund),
+    );
+  }
 }
