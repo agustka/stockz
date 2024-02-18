@@ -7,8 +7,8 @@ part 'income_statement_model.g.dart';
 @immutable
 @JsonSerializable(includeIfNull: true)
 class IncomeStatementModel {
-  final String? date;
   final String? symbol;
+  final String? date;
   final String? reportedCurrency;
   final String? cik;
   final String? fillingDate;
@@ -47,8 +47,8 @@ class IncomeStatementModel {
   final String? finalLink;
 
   const IncomeStatementModel({
-    required this.date,
     required this.symbol,
+    required this.date,
     required this.reportedCurrency,
     required this.cik,
     required this.fillingDate,
@@ -88,7 +88,46 @@ class IncomeStatementModel {
   });
 
   factory IncomeStatementModel.fromTableRow(IncomeStatementTableRow row) {
-
+    return IncomeStatementModel(
+      date: row.date,
+      symbol: row.symbol,
+      reportedCurrency: row.reportedCurrency,
+      cik: row.cik,
+      fillingDate: row.fillingDate,
+      acceptedDate: row.acceptedDate,
+      calendarYear: row.calendarYear,
+      period: row.period,
+      revenue: row.revenue,
+      costOfRevenue: row.costOfRevenue,
+      grossProfit: row.grossProfit,
+      grossProfitRatio: row.grossProfitRatio,
+      researchAndDevelopmentExpenses: row.researchAndDevelopmentExpenses,
+      generalAndAdministrativeExpenses: row.generalAndAdministrativeExpenses,
+      sellingAndMarketingExpenses: row.sellingAndMarketingExpenses,
+      sellingGeneralAndAdministrativeExpenses: row.sellingGeneralAndAdministrativeExpenses,
+      otherExpenses: row.otherExpenses,
+      operatingExpenses: row.operatingExpenses,
+      costAndExpenses: row.costAndExpenses,
+      interestIncome: row.interestIncome,
+      interestExpense: row.interestExpense,
+      depreciationAndAmortization: row.depreciationAndAmortization,
+      ebitda: row.ebitda,
+      ebitdaratio: row.ebitdaratio,
+      operatingIncome: row.operatingIncome,
+      operatingIncomeRatio: row.operatingIncomeRatio,
+      totalOtherIncomeExpensesNet: row.totalOtherIncomeExpensesNet,
+      incomeBeforeTax: row.incomeBeforeTax,
+      incomeBeforeTaxRatio: row.incomeBeforeTaxRatio,
+      incomeTaxExpense: row.incomeTaxExpense,
+      netIncome: row.netIncome,
+      netIncomeRatio: row.netIncomeRatio,
+      eps: row.eps,
+      epsdiluted: row.epsdiluted,
+      weightedAverageShsOut: row.weightedAverageShsOut,
+      weightedAverageShsOutDil: row.weightedAverageShsOutDil,
+      link: row.link,
+      finalLink: row.finalLink,
+    );
   }
 
   factory IncomeStatementModel.fromJson(Map<String, dynamic> json) {
