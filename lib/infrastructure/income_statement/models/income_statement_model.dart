@@ -87,7 +87,9 @@ class IncomeStatementModel {
     required this.finalLink,
   });
 
-  factory IncomeStatementModel.fromTableRow(IncomeStatementTableRow row) {}
+  factory IncomeStatementModel.fromTableRow(IncomeStatementTableRow row) {
+
+  }
 
   factory IncomeStatementModel.fromJson(Map<String, dynamic> json) {
     return _$IncomeStatementModelFromJson(json);

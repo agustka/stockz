@@ -55,3 +55,6 @@ app.*.map.json
 *.js_
 *.js.deps
 *.js.map
+
+test_user.json
+test_access.json
