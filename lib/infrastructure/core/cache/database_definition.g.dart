@@ -29,14 +29,14 @@ class $CompanyProfileTableRowDefinitionTable
       type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _volAvgMeta = const VerificationMeta('volAvg');
   @override
-  late final GeneratedColumn<double> volAvg = GeneratedColumn<double>(
+  late final GeneratedColumn<int> volAvg = GeneratedColumn<int>(
       'vol_avg', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _mktCapMeta = const VerificationMeta('mktCap');
   @override
-  late final GeneratedColumn<double> mktCap = GeneratedColumn<double>(
+  late final GeneratedColumn<int> mktCap = GeneratedColumn<int>(
       'mkt_cap', aliasedName, true,
-      type: DriftSqlType.double, requiredDuringInsert: false);
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _lastDivMeta =
       const VerificationMeta('lastDiv');
   @override
@@ -460,9 +460,9 @@ class $CompanyProfileTableRowDefinitionTable
       beta: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}beta']),
       volAvg: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}vol_avg']),
+          .read(DriftSqlType.int, data['${effectivePrefix}vol_avg']),
       mktCap: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}mkt_cap']),
+          .read(DriftSqlType.int, data['${effectivePrefix}mkt_cap']),
       lastDiv: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}last_div']),
       range: attachedDatabase.typeMapping
@@ -541,8 +541,8 @@ class CompanyProfileTableRow extends DataClass
   final String symbol;
   final double? price;
   final double? beta;
-  final double? volAvg;
-  final double? mktCap;
+  final int? volAvg;
+  final int? mktCap;
   final double? lastDiv;
   final String? range;
   final double? changes;
@@ -624,10 +624,10 @@ class CompanyProfileTableRow extends DataClass
       map['beta'] = Variable<double>(beta);
     }
     if (!nullToAbsent || volAvg != null) {
-      map['vol_avg'] = Variable<double>(volAvg);
+      map['vol_avg'] = Variable<int>(volAvg);
     }
     if (!nullToAbsent || mktCap != null) {
-      map['mkt_cap'] = Variable<double>(mktCap);
+      map['mkt_cap'] = Variable<int>(mktCap);
     }
     if (!nullToAbsent || lastDiv != null) {
       map['last_div'] = Variable<double>(lastDiv);
@@ -819,8 +819,8 @@ class CompanyProfileTableRow extends DataClass
       symbol: serializer.fromJson<String>(json['symbol']),
       price: serializer.fromJson<double?>(json['price']),
       beta: serializer.fromJson<double?>(json['beta']),
-      volAvg: serializer.fromJson<double?>(json['volAvg']),
-      mktCap: serializer.fromJson<double?>(json['mktCap']),
+      volAvg: serializer.fromJson<int?>(json['volAvg']),
+      mktCap: serializer.fromJson<int?>(json['mktCap']),
       lastDiv: serializer.fromJson<double?>(json['lastDiv']),
       range: serializer.fromJson<String?>(json['range']),
       changes: serializer.fromJson<double?>(json['changes']),
@@ -864,8 +864,8 @@ class CompanyProfileTableRow extends DataClass
       'symbol': serializer.toJson<String>(symbol),
       'price': serializer.toJson<double?>(price),
       'beta': serializer.toJson<double?>(beta),
-      'volAvg': serializer.toJson<double?>(volAvg),
-      'mktCap': serializer.toJson<double?>(mktCap),
+      'volAvg': serializer.toJson<int?>(volAvg),
+      'mktCap': serializer.toJson<int?>(mktCap),
       'lastDiv': serializer.toJson<double?>(lastDiv),
       'range': serializer.toJson<String?>(range),
       'changes': serializer.toJson<double?>(changes),
@@ -905,8 +905,8 @@ class CompanyProfileTableRow extends DataClass
           {String? symbol,
           Value<double?> price = const Value.absent(),
           Value<double?> beta = const Value.absent(),
-          Value<double?> volAvg = const Value.absent(),
-          Value<double?> mktCap = const Value.absent(),
+          Value<int?> volAvg = const Value.absent(),
+          Value<int?> mktCap = const Value.absent(),
           Value<double?> lastDiv = const Value.absent(),
           Value<String?> range = const Value.absent(),
           Value<double?> changes = const Value.absent(),
@@ -1117,8 +1117,8 @@ class CompanyProfileTableRowDefinitionCompanion
   final Value<String> symbol;
   final Value<double?> price;
   final Value<double?> beta;
-  final Value<double?> volAvg;
-  final Value<double?> mktCap;
+  final Value<int?> volAvg;
+  final Value<int?> mktCap;
   final Value<double?> lastDiv;
   final Value<String?> range;
   final Value<double?> changes;
@@ -1237,8 +1237,8 @@ class CompanyProfileTableRowDefinitionCompanion
     Expression<String>? symbol,
     Expression<double>? price,
     Expression<double>? beta,
-    Expression<double>? volAvg,
-    Expression<double>? mktCap,
+    Expression<int>? volAvg,
+    Expression<int>? mktCap,
     Expression<double>? lastDiv,
     Expression<String>? range,
     Expression<double>? changes,
@@ -1319,8 +1319,8 @@ class CompanyProfileTableRowDefinitionCompanion
       {Value<String>? symbol,
       Value<double?>? price,
       Value<double?>? beta,
-      Value<double?>? volAvg,
-      Value<double?>? mktCap,
+      Value<int?>? volAvg,
+      Value<int?>? mktCap,
       Value<double?>? lastDiv,
       Value<String?>? range,
       Value<double?>? changes,
@@ -1409,10 +1409,10 @@ class CompanyProfileTableRowDefinitionCompanion
       map['beta'] = Variable<double>(beta.value);
     }
     if (volAvg.present) {
-      map['vol_avg'] = Variable<double>(volAvg.value);
+      map['vol_avg'] = Variable<int>(volAvg.value);
     }
     if (mktCap.present) {
-      map['mkt_cap'] = Variable<double>(mktCap.value);
+      map['mkt_cap'] = Variable<int>(mktCap.value);
     }
     if (lastDiv.present) {
       map['last_div'] = Variable<double>(lastDiv.value);

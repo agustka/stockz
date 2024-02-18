@@ -5,8 +5,8 @@ class CompanyProfileTableRowDefinition extends Table {
   TextColumn get symbol => text()();
   RealColumn get price => real().nullable()();
   RealColumn get beta => real().nullable()();
-  RealColumn get volAvg => real().nullable()();
-  RealColumn get mktCap => real().nullable()();
+  IntColumn get volAvg => integer().nullable()();
+  IntColumn get mktCap => integer().nullable()();
   RealColumn get lastDiv => real().nullable()();
   TextColumn get range => text().nullable()();
   RealColumn get changes => real().nullable()();

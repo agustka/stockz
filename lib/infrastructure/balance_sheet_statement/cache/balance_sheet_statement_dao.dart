@@ -18,13 +18,9 @@ class BalanceSheetStatementDao extends DatabaseAccessor<DriftDb> with _$BalanceS
   Future<List<BalanceSheetStatementTableRow>> getBalanceSheetStatements({required String ticker}) async {
     return (select(balanceSheetStatementTableRowDefinition)
           ..where(
-            (tbl) => tbl.symbol.equals(ticker),
+            ($BalanceSheetStatementTableRowDefinitionTable tbl) => tbl.symbol.equals(ticker),
           ))
         .get();
-  }
-
-  Future<int> deleteBalanceSheetStatements({required String ticker}) {
-    return delete(balanceSheetStatementTableRowDefinition).go();
   }
 
   Future<void> addBalanceSheetStatements({
@@ -37,7 +33,7 @@ class BalanceSheetStatementDao extends DatabaseAccessor<DriftDb> with _$BalanceS
       (Batch batch) {
         batch.deleteWhere(
           balanceSheetStatementTableRowDefinition,
-          (tbl) => tbl.symbol.equals(ticker),
+          ($BalanceSheetStatementTableRowDefinitionTable tbl) => tbl.symbol.equals(ticker),
         );
         batch.insertAll(
           balanceSheetStatementTableRowDefinition,

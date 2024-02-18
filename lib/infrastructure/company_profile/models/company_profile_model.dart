@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 part 'company_profile_model.g.dart';
 
@@ -7,13 +8,13 @@ part 'company_profile_model.g.dart';
 @JsonSerializable(includeIfNull: true)
 class CompanyProfileModel {
   final String? symbol;
-  final num? price;
-  final num? beta;
-  final num volAvg;
-  final num? mktCap;
-  final num? lastDiv;
+  final double? price;
+  final double? beta;
+  final int? volAvg;
+  final int? mktCap;
+  final double? lastDiv;
   final String? range;
-  final num? changes;
+  final double? changes;
   final String? companyName;
   final String? currency;
   final String? cik;
@@ -33,8 +34,8 @@ class CompanyProfileModel {
   final String? city;
   final String? state;
   final String? zip;
-  final num? dcfDiff;
-  final num? dcf;
+  final double? dcfDiff;
+  final double? dcf;
   final String? image;
   final String? ipoDate;
   final bool? defaultImage;
@@ -81,6 +82,47 @@ class CompanyProfileModel {
     required this.isAdr,
     required this.isFund,
   });
+
+  factory CompanyProfileModel.fromTableRow(CompanyProfileTableRow row) {
+    return CompanyProfileModel(
+      symbol: row.symbol,
+      price: row.price,
+      beta: row.beta,
+      volAvg: row.volAvg,
+      mktCap: row.mktCap,
+      lastDiv: row.lastDiv,
+      range: row.range,
+      changes: row.changes,
+      companyName: row.companyName,
+      currency: row.currency,
+      cik: row.cik,
+      isin: row.isin,
+      cusip: row.cusip,
+      exchange: row.exchange,
+      exchangeShortName: row.exchangeShortName,
+      industry: row.industry,
+      website: row.website,
+      description: row.description,
+      ceo: row.ceo,
+      sector: row.sector,
+      country: row.country,
+      fullTimeEmployees: row.fullTimeEmployees,
+      phone: row.phone,
+      address: row.address,
+      city: row.city,
+      state: row.state,
+      zip: row.zip,
+      dcfDiff: row.dcfDiff,
+      dcf: row.dcf,
+      image: row.image,
+      ipoDate: row.ipoDate,
+      defaultImage: row.defaultImage,
+      isEtf: row.isEtf,
+      isActivelyTrading: row.isActivelyTrading,
+      isAdr: row.isAdr,
+      isFund: row.isFund,
+    );
+  }
 
   factory CompanyProfileModel.fromJson(Map<String, dynamic> json) {
     return _$CompanyProfileModelFromJson(json);

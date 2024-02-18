@@ -18,13 +18,9 @@ class CashFlowStatementDao extends DatabaseAccessor<DriftDb> with _$CashFlowStat
   Future<List<CashFlowStatementTableRow>> getCashFlowStatements({required String ticker}) async {
     return (select(cashFlowStatementTableRowDefinition)
           ..where(
-            (tbl) => tbl.symbol.equals(ticker),
+            ($CashFlowStatementTableRowDefinitionTable tbl) => tbl.symbol.equals(ticker),
           ))
         .get();
-  }
-
-  Future<int> deleteCashFlowStatements({required String ticker}) {
-    return delete(cashFlowStatementTableRowDefinition).go();
   }
 
   Future<void> addCashFlowStatements({
@@ -37,7 +33,7 @@ class CashFlowStatementDao extends DatabaseAccessor<DriftDb> with _$CashFlowStat
       (Batch batch) {
         batch.deleteWhere(
           cashFlowStatementTableRowDefinition,
-          (tbl) => tbl.symbol.equals(ticker),
+          ($CashFlowStatementTableRowDefinitionTable tbl) => tbl.symbol.equals(ticker),
         );
         batch.insertAll(
           cashFlowStatementTableRowDefinition,
