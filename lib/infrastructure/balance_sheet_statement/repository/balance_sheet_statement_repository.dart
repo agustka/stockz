@@ -24,7 +24,7 @@ class BalanceSheetStatementService implements IBalanceSheetStatementRepository {
     bool forceGet = false,
   }) async {
     if (forceGet) {
-      return proceedDebitCards(ticker: ticker);
+      return _fetchBalanceSheetStatements(ticker: ticker);
     }
     return _cache.getBalanceSheetStatements(ticker: ticker, policy: CachingPolicy.onlyServeNotExpired).then((
       Cache<List<BalanceSheetStatementModel>> cache,
@@ -37,12 +37,12 @@ class BalanceSheetStatementService implements IBalanceSheetStatementRepository {
             ),
           );
         },
-        orElse: () => proceedDebitCards(ticker: ticker),
+        orElse: () => _fetchBalanceSheetStatements(ticker: ticker),
       );
     });
   }
 
-  Future<Payload<BalanceSheetStatements>> proceedDebitCards({required String ticker}) async {
+  Future<Payload<BalanceSheetStatements>> _fetchBalanceSheetStatements({required String ticker}) async {
     final Payload<List<BalanceSheetStatementModel>> payload = await _service.getBalanceSheetStatement(ticker: ticker);
     return payload.fold(
       (Failure failure) {

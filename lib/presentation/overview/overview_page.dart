@@ -3,9 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 import 'package:stockz/application/overview/overview_cubit.dart';
 import 'package:stockz/domain/balance_sheet_statement/entities/balance_sheet_statements.dart';
+import 'package:stockz/domain/cash_flow_statement/entities/cash_flow_statements.dart';
 import 'package:stockz/domain/core/value_objects/failures/failure.dart';
 import 'package:stockz/domain/core/value_objects/payload.dart';
 import 'package:stockz/infrastructure/balance_sheet_statement/repository/i_balance_sheet_statement_repository.dart';
+import 'package:stockz/infrastructure/cash_flow_statement/repository/i_cash_flow_statement_repository.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 import 'package:stockz/setup.dart';
 
@@ -32,6 +34,19 @@ class _OverviewPageState extends State<OverviewPage> {
             Logger().e(failure);
           },
           (BalanceSheetStatements value) {
+            Logger().i(value);
+          },
+        );
+      },
+    );
+
+    getIt<ICashFlowStatementRepository>().getCashFlowStatements(ticker: "AAPL").then(
+      (Payload<CashFlowStatements> payload) {
+        payload.fold(
+          (Failure failure) {
+            Logger().e(failure);
+          },
+          (CashFlowStatements value) {
             Logger().i(value);
           },
         );

@@ -19,13 +19,17 @@ final class _$CashFlowStatementChopperService
   final Type definitionType = CashFlowStatementChopperService;
 
   @override
-  Future<Response<List<CashFlowStatementModel>>> getCashFlowStatement(
-      {required String ticker}) {
+  Future<Response<List<CashFlowStatementModel>>> getCashFlowStatement({
+    required String ticker,
+    String period = "annual",
+  }) {
     final Uri $url = Uri.parse('/api/v3/cash-flow-statement/${ticker}');
+    final Map<String, dynamic> $params = <String, dynamic>{'period': period};
     final Request $request = Request(
-      'POST',
+      'GET',
       $url,
       client.baseUrl,
+      parameters: $params,
     );
     return client
         .send<List<CashFlowStatementModel>, CashFlowStatementModel>($request);

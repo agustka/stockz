@@ -10,8 +10,9 @@ abstract class CashFlowStatementChopperService extends ChopperService {
 
   static CashFlowStatementChopperService create([ChopperClient? client]) => _$CashFlowStatementChopperService(client);
 
-  @Post(path: "/{ticker}", optionalBody: true)
+  @Get(path: "/{ticker}", optionalBody: true)
   Future<Response<List<CashFlowStatementModel>>> getCashFlowStatement({
     @Path("ticker") required String ticker,
+    @Query("period") String period = "annual",
   });
 }

@@ -1,5 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stockz/domain/cash_flow_statement/entities/cash_flow_statements.dart';
+import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
+import 'package:stockz/domain/core/value_objects/date_value_object.dart';
+import 'package:stockz/domain/core/value_objects/int_value_object.dart';
+import 'package:stockz/domain/core/value_objects/number_value_object.dart';
+import 'package:stockz/domain/core/value_objects/statement_period_value_object.dart';
+import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
+import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 part 'cash_flow_statement_model.g.dart';
@@ -141,4 +149,49 @@ class CashFlowStatementModel {
   }
 
   Map<String, dynamic> toJson() => _$CashFlowStatementModelToJson(this);
+
+  CashFlowStatement toDomain() {
+    return CashFlowStatement(
+      date: DateValueObject.fromString(date),
+      symbol: StringIdValueObject(symbol),
+      reportedCurrency: CurrencyValueObject(reportedCurrency),
+      cik: StringIdValueObject(cik),
+      fillingDate: DateValueObject.fromString(fillingDate),
+      acceptedDate: DateValueObject.fromString(acceptedDate),
+      calendarYear: IntValueObject.fromString(calendarYear),
+      period: StatementPeriodValueObject(period),
+      netIncome: NumberValueObject(netIncome),
+      depreciationAndAmortization: NumberValueObject(depreciationAndAmortization),
+      deferredIncomeTax: NumberValueObject(deferredIncomeTax),
+      stockBasedCompensation: NumberValueObject(stockBasedCompensation),
+      changeInWorkingCapital: NumberValueObject(changeInWorkingCapital),
+      accountsReceivables: NumberValueObject(accountsReceivables),
+      inventory: NumberValueObject(inventory),
+      accountsPayables: NumberValueObject(accountsPayables),
+      otherWorkingCapital: NumberValueObject(otherWorkingCapital),
+      otherNonCashItems: NumberValueObject(otherNonCashItems),
+      netCashProvidedByOperatingActivities: NumberValueObject(netCashProvidedByOperatingActivities),
+      investmentsInPropertyPlantAndEquipment: NumberValueObject(investmentsInPropertyPlantAndEquipment),
+      acquisitionsNet: NumberValueObject(acquisitionsNet),
+      purchasesOfInvestments: NumberValueObject(purchasesOfInvestments),
+      salesMaturitiesOfInvestments: NumberValueObject(salesMaturitiesOfInvestments),
+      otherInvestingActivites: NumberValueObject(otherInvestingActivites),
+      netCashUsedForInvestingActivites: NumberValueObject(netCashUsedForInvestingActivites),
+      debtRepayment: NumberValueObject(debtRepayment),
+      commonStockIssued: NumberValueObject(commonStockIssued),
+      commonStockRepurchased: NumberValueObject(commonStockRepurchased),
+      dividendsPaid: NumberValueObject(dividendsPaid),
+      otherFinancingActivites: NumberValueObject(otherFinancingActivites),
+      netCashUsedProvidedByFinancingActivities: NumberValueObject(netCashUsedProvidedByFinancingActivities),
+      effectOfForexChangesOnCash: NumberValueObject(effectOfForexChangesOnCash),
+      netChangeInCash: NumberValueObject(netChangeInCash),
+      cashAtEndOfPeriod: NumberValueObject(cashAtEndOfPeriod),
+      cashAtBeginningOfPeriod: NumberValueObject(cashAtBeginningOfPeriod),
+      operatingCashFlow: NumberValueObject(operatingCashFlow),
+      capitalExpenditure: NumberValueObject(capitalExpenditure),
+      freeCashFlow: NumberValueObject(freeCashFlow),
+      link: UrlValueObject(link),
+      finalLink: UrlValueObject(finalLink),
+    );
+  }
 }

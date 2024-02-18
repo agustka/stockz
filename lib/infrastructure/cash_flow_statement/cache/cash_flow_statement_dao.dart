@@ -1,7 +1,5 @@
 import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
-import 'package:stockz/infrastructure/balance_sheet_statement/cache/tables/balance_sheet_statement_definition.dart';
-import 'package:stockz/infrastructure/balance_sheet_statement/models/balance_sheet_statement_model.dart';
 import 'package:stockz/infrastructure/cash_flow_statement/cache/tables/cash_flow_statement_definition.dart';
 import 'package:stockz/infrastructure/cash_flow_statement/models/cash_flow_statement_model.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';

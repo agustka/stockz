@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:stockz/domain/balance_sheet_statement/entities/balance_sheet_statements.dart';
-import 'package:stockz/domain/balance_sheet_statement/value_objects/balance_sheet_period_value_object.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
 import 'package:stockz/domain/core/value_objects/int_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
+import 'package:stockz/domain/core/value_objects/statement_period_value_object.dart';
 import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
@@ -215,7 +215,7 @@ class BalanceSheetStatementModel {
       fillingDate: DateValueObject.fromString(fillingDate),
       acceptedDate: DateValueObject.fromString(acceptedDate),
       calendarYear: IntValueObject.fromString(calendarYear),
-      period: BalanceSheetPeriodValueObject(period),
+      period: StatementPeriodValueObject(period),
       cashAndCashEquivalents: NumberValueObject(cashAndCashEquivalents),
       shortTermInvestments: NumberValueObject(shortTermInvestments),
       cashAndShortTermInvestments: NumberValueObject(cashAndShortTermInvestments),

@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart';
-import 'package:stockz/domain/balance_sheet_statement/value_objects/balance_sheet_period_value_object.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
 import 'package:stockz/domain/core/value_objects/int_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
+import 'package:stockz/domain/core/value_objects/statement_period_value_object.dart';
 import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 
@@ -23,7 +23,7 @@ class BalanceSheetStatement {
   final DateValueObject fillingDate;
   final DateValueObject acceptedDate;
   final IntValueObject calendarYear;
-  final BalanceSheetPeriodValueObject period;
+  final StatementPeriodValueObject period;
   final NumberValueObject cashAndCashEquivalents;
   final NumberValueObject shortTermInvestments;
   final NumberValueObject cashAndShortTermInvestments;

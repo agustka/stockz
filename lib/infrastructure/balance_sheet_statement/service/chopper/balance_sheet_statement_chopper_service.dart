@@ -14,6 +14,6 @@ abstract class BalanceSheetStatementChopperService extends ChopperService {
   @Get(path: "/{ticker}", optionalBody: true)
   Future<Response<List<BalanceSheetStatementModel>>> getBalanceSheetStatement({
     @Path("ticker") required String ticker,
-    @Path("period") String period = "annual",
+    @Query("period") String period = "annual",
   });
 }
