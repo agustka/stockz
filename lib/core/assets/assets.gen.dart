@@ -76,11 +76,11 @@ class $AssetsTestGen {
 
   $AssetsTestOfflineDataGen get offlineData => const $AssetsTestOfflineDataGen();
 
-  /// File path: assets/test/test_user.json
-  String get testUser => 'assets/test/test_user.json';
+  /// File path: assets/test/test_access.json
+  String get testAccess => 'assets/test/test_access.json';
 
   /// List of all assets
-  List<String> get values => [testUser];
+  List<String> get values => [testAccess];
 }
 
 class $AssetsTestOfflineDataGen {

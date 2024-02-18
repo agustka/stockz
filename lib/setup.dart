@@ -75,7 +75,7 @@ Future<void> configureInjection(Environment env, {bool shouldResetFirst = false}
 Future<void> _configureFlavors({required BuildEnvironment environment}) async {
   Locale locale = const Locale("is", "IS");
 
-  final String testUser = await rootBundle.loadString(AppAssets.test.testUser);
+  final String testUser = await rootBundle.loadString(AppAssets.test.testAccess);
   final Map<String, dynamic> userMap = json.decode(testUser) as Map<String, dynamic>;
   if (userMap.containsKey("overrideLocale")) {
     final String overrideLocale = userMap["overrideLocale"].toString();

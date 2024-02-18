@@ -111,9 +111,9 @@ import 'package:stockz/infrastructure/core/service/timer/poll_and_debounce.dart'
 import 'package:stockz/infrastructure/core/test_runner_determiner/i_test_runner_determiner.dart'
     as _i25;
 import 'package:stockz/infrastructure/core/test_runner_determiner/offline/offline_test_runner_determiner.dart'
-    as _i26;
-import 'package:stockz/infrastructure/core/test_runner_determiner/test_runner_determiner.dart'
     as _i27;
+import 'package:stockz/infrastructure/core/test_runner_determiner/test_runner_determiner.dart'
+    as _i26;
 import 'package:stockz/infrastructure/income_statement/cache/i_income_statement_cache.dart'
     as _i57;
 import 'package:stockz/infrastructure/income_statement/cache/income_statement_cache.dart'
@@ -199,12 +199,12 @@ extension GetItInjectableX on _i1.GetIt {
       registerFor: {_offline},
     );
     gh.factory<_i25.ITestRunnerDeterminer>(
-      () => _i26.OfflineTestRunnerDeterminer(),
-      registerFor: {_offline},
+      () => _i26.TestRunnerDeterminer(),
+      registerFor: {_online},
     );
     gh.factory<_i25.ITestRunnerDeterminer>(
-      () => _i27.TestRunnerDeterminer(),
-      registerFor: {_online},
+      () => _i27.OfflineTestRunnerDeterminer(),
+      registerFor: {_offline},
     );
     gh.factory<_i28.IncomeStatementChopperService>(
         () => incomeStatementServiceModule.incomeStatementChopperService);
