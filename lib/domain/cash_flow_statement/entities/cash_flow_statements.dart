@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:stockz/domain/company/entities/statement.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
 import 'package:stockz/domain/core/value_objects/int_value_object.dart';
@@ -9,13 +10,18 @@ import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 
 @immutable
-class CashFlowStatements extends Equatable {
+class CashFlowStatements extends Equatable implements Statements {
   final List<CashFlowStatement> statements;
   final bool valid;
 
   const CashFlowStatements({required this.statements, this.valid = true});
 
   const factory CashFlowStatements.invalid() = _$InvalidCashFlowStatements;
+
+  @override
+  bool hasYear(int year) {
+    return statements.where((CashFlowStatement e) => e.calendarYear.get == year).isNotEmpty;
+  }
 
   @override
   List<Object?> get props => [statements, valid];
@@ -26,7 +32,7 @@ class _$InvalidCashFlowStatements extends CashFlowStatements {
 }
 
 @immutable
-class CashFlowStatement extends Equatable {
+class CashFlowStatement extends Equatable implements Statement {
   final DateValueObject date;
   final StringIdValueObject symbol;
   final CurrencyValueObject reportedCurrency;
@@ -68,6 +74,9 @@ class CashFlowStatement extends Equatable {
   final UrlValueObject link;
   final UrlValueObject finalLink;
   final bool valid;
+
+  @override
+  IntValueObject get statementYear => calendarYear;
 
   const CashFlowStatement({
     required this.date,
@@ -112,6 +121,11 @@ class CashFlowStatement extends Equatable {
     required this.finalLink,
     this.valid = true,
   });
+
+  @override
+  String toString() {
+    return "Filing date: ${fillingDate.get.year}";
+  }
 
   @override
   List<Object?> get props => [

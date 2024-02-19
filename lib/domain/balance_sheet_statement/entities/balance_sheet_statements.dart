@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:stockz/domain/company/entities/statement.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
 import 'package:stockz/domain/core/value_objects/int_value_object.dart';
@@ -9,13 +10,27 @@ import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
 
 @immutable
-class BalanceSheetStatements extends Equatable {
+class BalanceSheetStatements extends Equatable implements Statements {
   final List<BalanceSheetStatement> statements;
   final bool valid;
 
   const BalanceSheetStatements({required this.statements, this.valid = true});
 
   const factory BalanceSheetStatements.invalid() = _$InvalidBalanceSheetStatements;
+
+  BalanceSheetStatement getWithYear(int year) {
+    final List<BalanceSheetStatement> ofYear =
+        statements.where((BalanceSheetStatement e) => e.fillingDate.get.year == year).toList();
+    if (ofYear.isEmpty) {
+      return const BalanceSheetStatement.invalid();
+    }
+    return ofYear.first;
+  }
+
+  @override
+  bool hasYear(int year) {
+    return statements.where((BalanceSheetStatement e) => e.fillingDate.get.year == year).isNotEmpty;
+  }
 
   @override
   List<Object?> get props => [statements, valid];
@@ -26,7 +41,7 @@ class _$InvalidBalanceSheetStatements extends BalanceSheetStatements {
 }
 
 @immutable
-class BalanceSheetStatement extends Equatable {
+class BalanceSheetStatement extends Equatable implements Statement {
   final DateValueObject date;
   final StringIdValueObject symbol;
   final CurrencyValueObject reportedCurrency;
@@ -82,6 +97,11 @@ class BalanceSheetStatement extends Equatable {
   final UrlValueObject link;
   final UrlValueObject finalLink;
   final bool valid;
+
+  bool get isInvalid => !valid;
+
+  @override
+  IntValueObject get statementYear => calendarYear;
 
   const BalanceSheetStatement({
     required this.date,
@@ -141,6 +161,13 @@ class BalanceSheetStatement extends Equatable {
     this.valid = true,
   });
 
+  const factory BalanceSheetStatement.invalid() = _$InvalidBalanceSheetStatement;
+
+  @override
+  String toString() {
+    return "Filing date: ${fillingDate.get.year}";
+  }
+
   @override
   List<Object?> get props => [
         date,
@@ -199,4 +226,65 @@ class BalanceSheetStatement extends Equatable {
         finalLink,
         valid,
       ];
+}
+
+class _$InvalidBalanceSheetStatement extends BalanceSheetStatement {
+  const _$InvalidBalanceSheetStatement()
+      : super(
+          date: const DateValueObject.invalid(),
+          symbol: const StringIdValueObject.invalid(),
+          reportedCurrency: const CurrencyValueObject.invalid(),
+          cik: const StringIdValueObject.invalid(),
+          fillingDate: const DateValueObject.invalid(),
+          acceptedDate: const DateValueObject.invalid(),
+          calendarYear: const IntValueObject.invalid(),
+          period: const StatementPeriodValueObject.invalid(),
+          cashAndCashEquivalents: const NumberValueObject.invalid(),
+          shortTermInvestments: const NumberValueObject.invalid(),
+          cashAndShortTermInvestments: const NumberValueObject.invalid(),
+          netReceivables: const NumberValueObject.invalid(),
+          inventory: const NumberValueObject.invalid(),
+          otherCurrentAssets: const NumberValueObject.invalid(),
+          totalCurrentAssets: const NumberValueObject.invalid(),
+          propertyPlantEquipmentNet: const NumberValueObject.invalid(),
+          goodwill: const NumberValueObject.invalid(),
+          intangibleAssets: const NumberValueObject.invalid(),
+          goodwillAndIntangibleAssets: const NumberValueObject.invalid(),
+          longTermInvestments: const NumberValueObject.invalid(),
+          taxAssets: const NumberValueObject.invalid(),
+          otherNonCurrentAssets: const NumberValueObject.invalid(),
+          totalNonCurrentAssets: const NumberValueObject.invalid(),
+          otherAssets: const NumberValueObject.invalid(),
+          totalAssets: const NumberValueObject.invalid(),
+          accountPayables: const NumberValueObject.invalid(),
+          shortTermDebt: const NumberValueObject.invalid(),
+          taxPayables: const NumberValueObject.invalid(),
+          deferredRevenue: const NumberValueObject.invalid(),
+          otherCurrentLiabilities: const NumberValueObject.invalid(),
+          totalCurrentLiabilities: const NumberValueObject.invalid(),
+          longTermDebt: const NumberValueObject.invalid(),
+          deferredRevenueNonCurrent: const NumberValueObject.invalid(),
+          deferredTaxLiabilitiesNonCurrent: const NumberValueObject.invalid(),
+          otherNonCurrentLiabilities: const NumberValueObject.invalid(),
+          totalNonCurrentLiabilities: const NumberValueObject.invalid(),
+          otherLiabilities: const NumberValueObject.invalid(),
+          capitalLeaseObligations: const NumberValueObject.invalid(),
+          totalLiabilities: const NumberValueObject.invalid(),
+          preferredStock: const NumberValueObject.invalid(),
+          commonStock: const NumberValueObject.invalid(),
+          retainedEarnings: const NumberValueObject.invalid(),
+          accumulatedOtherComprehensiveIncomeLoss: const NumberValueObject.invalid(),
+          othertotalStockholdersEquity: const NumberValueObject.invalid(),
+          totalStockholdersEquity: const NumberValueObject.invalid(),
+          totalEquity: const NumberValueObject.invalid(),
+          totalLiabilitiesAndStockholdersEquity: const NumberValueObject.invalid(),
+          minorityInterest: const NumberValueObject.invalid(),
+          totalLiabilitiesAndTotalEquity: const NumberValueObject.invalid(),
+          totalInvestments: const NumberValueObject.invalid(),
+          totalDebt: const NumberValueObject.invalid(),
+          netDebt: const NumberValueObject.invalid(),
+          link: const UrlValueObject.invalid(),
+          finalLink: const UrlValueObject.invalid(),
+          valid: false,
+        );
 }
