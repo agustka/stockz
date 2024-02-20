@@ -98,7 +98,9 @@ class BalanceSheetStatement extends Equatable implements Statement {
   final UrlValueObject finalLink;
   final bool valid;
 
-  bool get isInvalid => !valid;
+  bool get isInvalid {
+    return !valid || _allNumbersZero();
+  }
 
   @override
   IntValueObject get statementYear => calendarYear;
@@ -162,6 +164,62 @@ class BalanceSheetStatement extends Equatable implements Statement {
   });
 
   const factory BalanceSheetStatement.invalid() = _$InvalidBalanceSheetStatement;
+
+  bool _allNumbersZero() {
+    final List<num> values = [
+      cashAndCashEquivalents.get,
+      shortTermInvestments.get,
+      cashAndShortTermInvestments.get,
+      netReceivables.get,
+      inventory.get,
+      otherCurrentAssets.get,
+      totalCurrentAssets.get,
+      propertyPlantEquipmentNet.get,
+      goodwill.get,
+      intangibleAssets.get,
+      goodwillAndIntangibleAssets.get,
+      longTermInvestments.get,
+      taxAssets.get,
+      otherNonCurrentAssets.get,
+      totalNonCurrentAssets.get,
+      otherAssets.get,
+      totalAssets.get,
+      accountPayables.get,
+      shortTermDebt.get,
+      taxPayables.get,
+      deferredRevenue.get,
+      otherCurrentLiabilities.get,
+      totalCurrentLiabilities.get,
+      longTermDebt.get,
+      deferredRevenueNonCurrent.get,
+      deferredTaxLiabilitiesNonCurrent.get,
+      otherNonCurrentLiabilities.get,
+      totalNonCurrentLiabilities.get,
+      otherLiabilities.get,
+      capitalLeaseObligations.get,
+      totalLiabilities.get,
+      preferredStock.get,
+      commonStock.get,
+      retainedEarnings.get,
+      accumulatedOtherComprehensiveIncomeLoss.get,
+      othertotalStockholdersEquity.get,
+      totalStockholdersEquity.get,
+      totalEquity.get,
+      totalLiabilitiesAndStockholdersEquity.get,
+      minorityInterest.get,
+      totalLiabilitiesAndTotalEquity.get,
+      totalInvestments.get,
+      totalDebt.get,
+      netDebt.get,
+    ];
+
+    for (final num val in values) {
+      if (val != 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   @override
   String toString() {

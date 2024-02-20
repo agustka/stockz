@@ -24,12 +24,33 @@ class Company extends Equatable {
 
   const factory Company.invalid() = _$InvalidCompany;
 
-  double getPiotroskiFScore() {
-    final double roa = _fScoreRoa();
-    return roa;
+  double getPiotroskiFScore({bool strict = false}) {
+    final double roa = _fScoreRoa(strict: strict);
+    final double operatingCashFlow = _fScoreOperatingCashFlow(strict: strict);
+    return roa + operatingCashFlow;
   }
 
-  double _fScoreRoa() {
+  double _fScoreOperatingCashFlow({required bool strict}) {
+    final int mostRecent = DateTime.now().year;
+    CashFlowStatement flow = cashFlowStatements.getWithYear(mostRecent);
+    double oldStatementPenalty = flow.isInvalid ? 0.5 : 1;
+    if (flow.isInvalid) {
+      flow = cashFlowStatements.getWithYear(mostRecent - 1);
+      oldStatementPenalty = flow.isInvalid ? 0 : oldStatementPenalty;
+    }
+    if (flow.isInvalid) {
+      return 0;
+    }
+
+    if (strict) {
+      oldStatementPenalty = 1;
+    }
+
+    final double score = oldStatementPenalty * (flow.operatingCashFlow.get > 0 ? 1 : 0);
+    return score;
+  }
+
+  double _fScoreRoa({required bool strict}) {
     final int mostRecent = DateTime.now().year;
     IncomeStatement income = incomeStatements.getWithYear(mostRecent);
     double oldIncomeStatementPenalty = income.isInvalid ? 0.5 : 1;
@@ -37,12 +58,23 @@ class Company extends Equatable {
       income = incomeStatements.getWithYear(mostRecent - 1);
       oldIncomeStatementPenalty = income.isInvalid ? 0 : oldIncomeStatementPenalty;
     }
+    if (income.isInvalid) {
+      return 0;
+    }
 
     BalanceSheetStatement balance = balanceSheetStatements.getWithYear(mostRecent);
     double oldBalanceStatementPenalty = balance.isInvalid ? 0.5 : 1;
     if (balance.isInvalid) {
       balance = balanceSheetStatements.getWithYear(mostRecent - 1);
       oldBalanceStatementPenalty = balance.isInvalid ? 0 : oldBalanceStatementPenalty;
+    }
+    if (balance.isInvalid) {
+      return 0;
+    }
+
+    if (strict) {
+      oldIncomeStatementPenalty = 1;
+      oldBalanceStatementPenalty = 1;
     }
 
     final double roa = income.netIncome.get.toDouble() / balance.totalAssets.get.toDouble();

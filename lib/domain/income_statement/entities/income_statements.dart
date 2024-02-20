@@ -19,7 +19,8 @@ class IncomeStatements extends Equatable implements Statements {
   const factory IncomeStatements.invalid() = _$InvalidIncomeStatements;
 
   IncomeStatement getWithYear(int year) {
-    final List<IncomeStatement> ofYear = statements.where((IncomeStatement e) => e.fillingDate.get.year == year).toList();
+    final List<IncomeStatement> ofYear =
+        statements.where((IncomeStatement e) => e.fillingDate.get.year == year).toList();
     if (ofYear.isEmpty) {
       return const IncomeStatement.invalid();
     }
@@ -81,7 +82,9 @@ class IncomeStatement extends Equatable implements Statement {
   final UrlValueObject finalLink;
   final bool valid;
 
-  bool get isInvalid => !valid;
+  bool get isInvalid {
+    return !valid || _allNumbersZero();
+  }
 
   @override
   IntValueObject get statementYear => calendarYear;
@@ -128,6 +131,53 @@ class IncomeStatement extends Equatable implements Statement {
     this.valid = true,
   });
 
+  const factory IncomeStatement.invalid() = _$InvalidIncomeStatement;
+
+  bool _allNumbersZero() {
+    final List<num> values = [
+      revenue.get,
+      costOfRevenue.get,
+      grossProfit.get,
+      grossProfitRatio.get,
+      researchAndDevelopmentExpenses.get,
+      generalAndAdministrativeExpenses.get,
+      sellingAndMarketingExpenses.get,
+      sellingGeneralAndAdministrativeExpenses.get,
+      otherExpenses.get,
+      operatingExpenses.get,
+      costAndExpenses.get,
+      interestIncome.get,
+      interestExpense.get,
+      depreciationAndAmortization.get,
+      ebitda.get,
+      ebitdaratio.get,
+      operatingIncome.get,
+      operatingIncomeRatio.get,
+      totalOtherIncomeExpensesNet.get,
+      incomeBeforeTax.get,
+      incomeBeforeTaxRatio.get,
+      incomeTaxExpense.get,
+      netIncome.get,
+      netIncomeRatio.get,
+      eps.get,
+      epsdiluted.get,
+      weightedAverageShsOut.get,
+      weightedAverageShsOutDil.get,
+    ];
+
+    for (final num val in values) {
+      if (val != 0) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  @override
+  String toString() {
+    return "Filing date: ${fillingDate.get.year}";
+  }
+
   @override
   // TODO: implement props
   List<Object?> get props => [
@@ -171,13 +221,6 @@ class IncomeStatement extends Equatable implements Statement {
         finalLink,
         valid,
       ];
-
-  @override
-  String toString() {
-    return "Filing date: ${fillingDate.get.year}";
-  }
-
-  const factory IncomeStatement.invalid() = _$InvalidIncomeStatement;
 }
 
 class _$InvalidIncomeStatement extends IncomeStatement {

@@ -18,6 +18,15 @@ class CashFlowStatements extends Equatable implements Statements {
 
   const factory CashFlowStatements.invalid() = _$InvalidCashFlowStatements;
 
+  CashFlowStatement getWithYear(int year) {
+    final List<CashFlowStatement> ofYear =
+        statements.where((CashFlowStatement e) => e.fillingDate.get.year == year).toList();
+    if (ofYear.isEmpty) {
+      return const CashFlowStatement.invalid();
+    }
+    return ofYear.first;
+  }
+
   @override
   bool hasYear(int year) {
     return statements.where((CashFlowStatement e) => e.calendarYear.get == year).isNotEmpty;
@@ -75,6 +84,10 @@ class CashFlowStatement extends Equatable implements Statement {
   final UrlValueObject finalLink;
   final bool valid;
 
+  bool get isInvalid {
+    return !valid || _allNumbersZero();
+  }
+
   @override
   IntValueObject get statementYear => calendarYear;
 
@@ -121,6 +134,49 @@ class CashFlowStatement extends Equatable implements Statement {
     required this.finalLink,
     this.valid = true,
   });
+
+  const factory CashFlowStatement.invalid() = _$InvalidCashFlowStatement;
+
+  bool _allNumbersZero() {
+    final List<num> values = [
+      netIncome.get,
+      depreciationAndAmortization.get,
+      deferredIncomeTax.get,
+      stockBasedCompensation.get,
+      changeInWorkingCapital.get,
+      accountsReceivables.get,
+      inventory.get,
+      accountsPayables.get,
+      otherWorkingCapital.get,
+      otherNonCashItems.get,
+      netCashProvidedByOperatingActivities.get,
+      investmentsInPropertyPlantAndEquipment.get,
+      acquisitionsNet.get,
+      purchasesOfInvestments.get,
+      salesMaturitiesOfInvestments.get,
+      otherInvestingActivites.get,
+      netCashUsedForInvestingActivites.get,
+      debtRepayment.get,
+      commonStockIssued.get,
+      commonStockRepurchased.get,
+      dividendsPaid.get,
+      otherFinancingActivites.get,
+      netCashUsedProvidedByFinancingActivities.get,
+      effectOfForexChangesOnCash.get,
+      netChangeInCash.get,
+      cashAtEndOfPeriod.get,
+      cashAtBeginningOfPeriod.get,
+      operatingCashFlow.get,
+      capitalExpenditure.get,
+      freeCashFlow.get,
+    ];
+    for (final num val in values) {
+      if (val != 0) {
+        return false;
+      }
+    }
+    return true;
+  }
 
   @override
   String toString() {
@@ -171,4 +227,51 @@ class CashFlowStatement extends Equatable implements Statement {
         finalLink,
         valid,
       ];
+}
+
+class _$InvalidCashFlowStatement extends CashFlowStatement {
+  const _$InvalidCashFlowStatement()
+      : super(
+          date: const DateValueObject.invalid(),
+          symbol: const StringIdValueObject.invalid(),
+          reportedCurrency: const CurrencyValueObject.invalid(),
+          cik: const StringIdValueObject.invalid(),
+          fillingDate: const DateValueObject.invalid(),
+          acceptedDate: const DateValueObject.invalid(),
+          calendarYear: const IntValueObject.invalid(),
+          period: const StatementPeriodValueObject.invalid(),
+          netIncome: const NumberValueObject.invalid(),
+          depreciationAndAmortization: const NumberValueObject.invalid(),
+          deferredIncomeTax: const NumberValueObject.invalid(),
+          stockBasedCompensation: const NumberValueObject.invalid(),
+          changeInWorkingCapital: const NumberValueObject.invalid(),
+          accountsReceivables: const NumberValueObject.invalid(),
+          inventory: const NumberValueObject.invalid(),
+          accountsPayables: const NumberValueObject.invalid(),
+          otherWorkingCapital: const NumberValueObject.invalid(),
+          otherNonCashItems: const NumberValueObject.invalid(),
+          netCashProvidedByOperatingActivities: const NumberValueObject.invalid(),
+          investmentsInPropertyPlantAndEquipment: const NumberValueObject.invalid(),
+          acquisitionsNet: const NumberValueObject.invalid(),
+          purchasesOfInvestments: const NumberValueObject.invalid(),
+          salesMaturitiesOfInvestments: const NumberValueObject.invalid(),
+          otherInvestingActivites: const NumberValueObject.invalid(),
+          netCashUsedForInvestingActivites: const NumberValueObject.invalid(),
+          debtRepayment: const NumberValueObject.invalid(),
+          commonStockIssued: const NumberValueObject.invalid(),
+          commonStockRepurchased: const NumberValueObject.invalid(),
+          dividendsPaid: const NumberValueObject.invalid(),
+          otherFinancingActivites: const NumberValueObject.invalid(),
+          netCashUsedProvidedByFinancingActivities: const NumberValueObject.invalid(),
+          effectOfForexChangesOnCash: const NumberValueObject.invalid(),
+          netChangeInCash: const NumberValueObject.invalid(),
+          cashAtEndOfPeriod: const NumberValueObject.invalid(),
+          cashAtBeginningOfPeriod: const NumberValueObject.invalid(),
+          operatingCashFlow: const NumberValueObject.invalid(),
+          capitalExpenditure: const NumberValueObject.invalid(),
+          freeCashFlow: const NumberValueObject.invalid(),
+          link: const UrlValueObject.invalid(),
+          finalLink: const UrlValueObject.invalid(),
+          valid: false,
+        );
 }
