@@ -8,6 +8,8 @@ import 'package:stockz/domain/income_statement/entities/income_statements.dart';
 
 @immutable
 class Company extends Equatable {
+  static const double _stalePenalty = 0.9;
+
   final CompanyProfile profile;
   final BalanceSheetStatements balanceSheetStatements;
   final CashFlowStatements cashFlowStatements;
@@ -27,13 +29,45 @@ class Company extends Equatable {
   double getPiotroskiFScore({bool strict = false}) {
     final double roa = _fScoreRoa(strict: strict);
     final double operatingCashFlow = _fScoreOperatingCashFlow(strict: strict);
-    return roa + operatingCashFlow;
+    final double changeInRoa = _fScoreChangeInRoa(strict: strict);
+    return roa + operatingCashFlow + changeInRoa;
+  }
+
+  double _fScoreChangeInRoa({required bool strict}) {
+    double oldStatementPenalty = 1;
+    int year = DateTime.now().year;
+    double? currentYearRoa = findRoa(year: year);
+    if (currentYearRoa == null) {
+      oldStatementPenalty = _stalePenalty;
+      year--;
+      currentYearRoa = findRoa(year: year);
+      if (currentYearRoa == null) {
+        return 0;
+      }
+    }
+    year--;
+    double? previousYearRoa = findRoa(year: year);
+    if (previousYearRoa == null) {
+      oldStatementPenalty *= _stalePenalty;
+      year--;
+      previousYearRoa = findRoa(year: year);
+      if (previousYearRoa == null) {
+        return 0;
+      }
+    }
+
+    if (strict) {
+      oldStatementPenalty = 1;
+    }
+
+    final double score = currentYearRoa > previousYearRoa ? 1 : 0;
+    return score * oldStatementPenalty;
   }
 
   double _fScoreOperatingCashFlow({required bool strict}) {
     final int mostRecent = DateTime.now().year;
     CashFlowStatement flow = cashFlowStatements.getWithYear(mostRecent);
-    double oldStatementPenalty = flow.isInvalid ? 0.5 : 1;
+    double oldStatementPenalty = flow.isInvalid ? _stalePenalty : 1;
     if (flow.isInvalid) {
       flow = cashFlowStatements.getWithYear(mostRecent - 1);
       oldStatementPenalty = flow.isInvalid ? 0 : oldStatementPenalty;
@@ -53,7 +87,7 @@ class Company extends Equatable {
   double _fScoreRoa({required bool strict}) {
     final int mostRecent = DateTime.now().year;
     IncomeStatement income = incomeStatements.getWithYear(mostRecent);
-    double oldIncomeStatementPenalty = income.isInvalid ? 0.5 : 1;
+    double oldIncomeStatementPenalty = income.isInvalid ? _stalePenalty : 1;
     if (income.isInvalid) {
       income = incomeStatements.getWithYear(mostRecent - 1);
       oldIncomeStatementPenalty = income.isInvalid ? 0 : oldIncomeStatementPenalty;
@@ -63,7 +97,7 @@ class Company extends Equatable {
     }
 
     BalanceSheetStatement balance = balanceSheetStatements.getWithYear(mostRecent);
-    double oldBalanceStatementPenalty = balance.isInvalid ? 0.5 : 1;
+    double oldBalanceStatementPenalty = balance.isInvalid ? _stalePenalty : 1;
     if (balance.isInvalid) {
       balance = balanceSheetStatements.getWithYear(mostRecent - 1);
       oldBalanceStatementPenalty = balance.isInvalid ? 0 : oldBalanceStatementPenalty;
@@ -84,31 +118,14 @@ class Company extends Equatable {
     return 0;
   }
 
-  List<StatementPair> joinAndSortStatements(List<Statement> list1, List<Statement> list2) {
-    // Combine all years into a set to eliminate duplicates and sort them
-    final List<int> allYears = {
-      ...list1.map((Statement e) => e.statementYear.get),
-      ...list2.map((Statement e) => e.statementYear.get),
-    }.toList();
-    allYears.sort();
+  double? findRoa({required int year}) {
+    final IncomeStatement incomeStatement = incomeStatements.getWithYear(year);
+    final BalanceSheetStatement balanceSheetStatement = balanceSheetStatements.getWithYear(year);
 
-    // Map each list by year for easy access
-    final Map<int, Statement> map1 = {for (final Statement statement in list1) statement.statementYear.get: statement};
-    final Map<int, Statement> map2 = {for (final Statement statement in list2) statement.statementYear.get: statement};
-
-    // Create a list of StatementPairs
-    final List<StatementPair> result = [];
-
-    for (final int year in allYears) {
-      result.add(
-        StatementPair(
-          first: map1[year],
-          second: map2[year],
-        ),
-      );
+    if (!incomeStatement.isInvalid && !balanceSheetStatement.isInvalid) {
+      return incomeStatement.netIncome.get.toDouble() / balanceSheetStatement.totalAssets.get.toDouble();
     }
-
-    return result.reversed.toList();
+    return null;
   }
 
   @override
