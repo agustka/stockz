@@ -30,11 +30,47 @@ class Company extends Equatable {
     final double roa = _fScoreRoa(strict: strict);
     final double operatingCashFlow = _fScoreOperatingCashFlow(strict: strict);
     final double changeInRoa = _fScoreChangeInRoa(strict: strict);
-    return roa + operatingCashFlow + changeInRoa;
+    final double accruals = _fScoreAccruals(strict: strict);
+    return roa + operatingCashFlow + changeInRoa + accruals;
+  }
+
+  double _fScoreAccruals({required bool strict}) {
+    double oldRoaPenalty = 1;
+    int year = DateTime.now().year;
+    double? currentYearRoa = findRoa(year: year);
+    if (currentYearRoa == null) {
+      oldRoaPenalty = _stalePenalty;
+      year--;
+      currentYearRoa = findRoa(year: year);
+      if (currentYearRoa == null) {
+        return 0;
+      }
+    }
+
+    double oldRatioPenalty = 1;
+    year = DateTime.now().year;
+    double? operatingCashFlowToTotalAssetsRatio = findOperatingCashFlowToTotalAssetsRatio(year: year);
+    if (operatingCashFlowToTotalAssetsRatio == null) {
+      oldRatioPenalty *= _stalePenalty;
+      year--;
+      operatingCashFlowToTotalAssetsRatio = findRoa(year: year);
+      if (operatingCashFlowToTotalAssetsRatio == null) {
+        return 0;
+      }
+    }
+
+    if (strict) {
+      oldRoaPenalty = 1;
+      oldRatioPenalty = 1;
+    }
+
+    final double score = operatingCashFlowToTotalAssetsRatio > currentYearRoa ? 1 : 0;
+    return score * oldRoaPenalty * oldRatioPenalty;
   }
 
   double _fScoreChangeInRoa({required bool strict}) {
     double oldStatementPenalty = 1;
+
     int year = DateTime.now().year;
     double? currentYearRoa = findRoa(year: year);
     if (currentYearRoa == null) {
@@ -81,6 +117,9 @@ class Company extends Equatable {
     }
 
     final double score = oldStatementPenalty * (flow.operatingCashFlow.get > 0 ? 1 : 0);
+    if (score > 0) {
+      return score;
+    }
     return score;
   }
 
@@ -124,6 +163,16 @@ class Company extends Equatable {
 
     if (!incomeStatement.isInvalid && !balanceSheetStatement.isInvalid) {
       return incomeStatement.netIncome.get.toDouble() / balanceSheetStatement.totalAssets.get.toDouble();
+    }
+    return null;
+  }
+
+  double? findOperatingCashFlowToTotalAssetsRatio({required int year}) {
+    final CashFlowStatement cashFlowStatement = cashFlowStatements.getWithYear(year);
+    final BalanceSheetStatement balanceSheetStatement = balanceSheetStatements.getWithYear(year);
+
+    if (!cashFlowStatement.isInvalid && !balanceSheetStatement.isInvalid) {
+      return cashFlowStatement.operatingCashFlow.get.toDouble() / balanceSheetStatement.totalAssets.get.toDouble();
     }
     return null;
   }
