@@ -31,7 +31,36 @@ class Company extends Equatable {
     final double operatingCashFlow = _fScoreOperatingCashFlow(strict: strict);
     final double changeInRoa = _fScoreChangeInRoa(strict: strict);
     final double accruals = _fScoreAccruals(strict: strict);
-    return roa + operatingCashFlow + changeInRoa + accruals;
+
+    final double changeInLeverage = _fScoreChangeInLeverage(strict: strict);
+
+    return roa + operatingCashFlow + changeInRoa + accruals + changeInLeverage;
+  }
+
+  double _fScoreChangeInLeverage({required bool strict}) {
+    double oldStatementPenalty = 1;
+    int year = DateTime.now().year;
+    double? currentYearRatio = balanceSheetStatements. findLongTermDebtToAssetsRatio(year: year);
+    if (currentYearRatio == null) {
+      oldStatementPenalty = _stalePenalty;
+      year--;
+      currentYearRatio = balanceSheetStatements. findLongTermDebtToAssetsRatio(year: year);
+      if (currentYearRatio == null) {
+        return 0;
+      }
+    }
+    year--;
+    final double? previousYearRatio = balanceSheetStatements.findLongTermDebtToAssetsRatio(year: year);
+    if (previousYearRatio == null) {
+      return 0;
+    }
+
+    if (strict) {
+      oldStatementPenalty = 1;
+    }
+
+    final double score = currentYearRatio < previousYearRatio ? 1.0 : 0.0;
+    return score * oldStatementPenalty;
   }
 
   double _fScoreAccruals({required bool strict}) {
