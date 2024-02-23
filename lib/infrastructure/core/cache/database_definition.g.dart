@@ -7962,6 +7962,448 @@ class IncomeStatementTableRowDefinitionCompanion
   }
 }
 
+class $MovingAverageDayTableRowDefinitionTable
+    extends MovingAverageDayTableRowDefinition
+    with
+        TableInfo<$MovingAverageDayTableRowDefinitionTable,
+            MovingAverageDayTableRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $MovingAverageDayTableRowDefinitionTable(this.attachedDatabase,
+      [this._alias]);
+  static const VerificationMeta _dateMeta = const VerificationMeta('date');
+  @override
+  late final GeneratedColumn<String> date = GeneratedColumn<String>(
+      'date', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _symbolMeta = const VerificationMeta('symbol');
+  @override
+  late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
+      'symbol', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _openMeta = const VerificationMeta('open');
+  @override
+  late final GeneratedColumn<double> open = GeneratedColumn<double>(
+      'open', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _highMeta = const VerificationMeta('high');
+  @override
+  late final GeneratedColumn<double> high = GeneratedColumn<double>(
+      'high', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _lowMeta = const VerificationMeta('low');
+  @override
+  late final GeneratedColumn<double> low = GeneratedColumn<double>(
+      'low', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _closeMeta = const VerificationMeta('close');
+  @override
+  late final GeneratedColumn<double> close = GeneratedColumn<double>(
+      'close', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _volumeMeta = const VerificationMeta('volume');
+  @override
+  late final GeneratedColumn<int> volume = GeneratedColumn<int>(
+      'volume', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _emaMeta = const VerificationMeta('ema');
+  @override
+  late final GeneratedColumn<double> ema = GeneratedColumn<double>(
+      'ema', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _expiresMeta =
+      const VerificationMeta('expires');
+  @override
+  late final GeneratedColumn<DateTime> expires = GeneratedColumn<DateTime>(
+      'expires', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [date, symbol, open, high, low, close, volume, ema, expires];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'moving_average_day_table_row_definition';
+  @override
+  VerificationContext validateIntegrity(
+      Insertable<MovingAverageDayTableRow> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('date')) {
+      context.handle(
+          _dateMeta, date.isAcceptableOrUnknown(data['date']!, _dateMeta));
+    } else if (isInserting) {
+      context.missing(_dateMeta);
+    }
+    if (data.containsKey('symbol')) {
+      context.handle(_symbolMeta,
+          symbol.isAcceptableOrUnknown(data['symbol']!, _symbolMeta));
+    } else if (isInserting) {
+      context.missing(_symbolMeta);
+    }
+    if (data.containsKey('open')) {
+      context.handle(
+          _openMeta, open.isAcceptableOrUnknown(data['open']!, _openMeta));
+    }
+    if (data.containsKey('high')) {
+      context.handle(
+          _highMeta, high.isAcceptableOrUnknown(data['high']!, _highMeta));
+    }
+    if (data.containsKey('low')) {
+      context.handle(
+          _lowMeta, low.isAcceptableOrUnknown(data['low']!, _lowMeta));
+    }
+    if (data.containsKey('close')) {
+      context.handle(
+          _closeMeta, close.isAcceptableOrUnknown(data['close']!, _closeMeta));
+    }
+    if (data.containsKey('volume')) {
+      context.handle(_volumeMeta,
+          volume.isAcceptableOrUnknown(data['volume']!, _volumeMeta));
+    }
+    if (data.containsKey('ema')) {
+      context.handle(
+          _emaMeta, ema.isAcceptableOrUnknown(data['ema']!, _emaMeta));
+    }
+    if (data.containsKey('expires')) {
+      context.handle(_expiresMeta,
+          expires.isAcceptableOrUnknown(data['expires']!, _expiresMeta));
+    } else if (isInserting) {
+      context.missing(_expiresMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {symbol, date};
+  @override
+  MovingAverageDayTableRow map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return MovingAverageDayTableRow(
+      date: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}date'])!,
+      symbol: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}symbol'])!,
+      open: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}open']),
+      high: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}high']),
+      low: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}low']),
+      close: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}close']),
+      volume: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}volume']),
+      ema: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}ema']),
+      expires: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}expires'])!,
+    );
+  }
+
+  @override
+  $MovingAverageDayTableRowDefinitionTable createAlias(String alias) {
+    return $MovingAverageDayTableRowDefinitionTable(attachedDatabase, alias);
+  }
+}
+
+class MovingAverageDayTableRow extends DataClass
+    implements Insertable<MovingAverageDayTableRow> {
+  final String date;
+  final String symbol;
+  final double? open;
+  final double? high;
+  final double? low;
+  final double? close;
+  final int? volume;
+  final double? ema;
+  final DateTime expires;
+  const MovingAverageDayTableRow(
+      {required this.date,
+      required this.symbol,
+      this.open,
+      this.high,
+      this.low,
+      this.close,
+      this.volume,
+      this.ema,
+      required this.expires});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['date'] = Variable<String>(date);
+    map['symbol'] = Variable<String>(symbol);
+    if (!nullToAbsent || open != null) {
+      map['open'] = Variable<double>(open);
+    }
+    if (!nullToAbsent || high != null) {
+      map['high'] = Variable<double>(high);
+    }
+    if (!nullToAbsent || low != null) {
+      map['low'] = Variable<double>(low);
+    }
+    if (!nullToAbsent || close != null) {
+      map['close'] = Variable<double>(close);
+    }
+    if (!nullToAbsent || volume != null) {
+      map['volume'] = Variable<int>(volume);
+    }
+    if (!nullToAbsent || ema != null) {
+      map['ema'] = Variable<double>(ema);
+    }
+    map['expires'] = Variable<DateTime>(expires);
+    return map;
+  }
+
+  MovingAverageDayTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
+    return MovingAverageDayTableRowDefinitionCompanion(
+      date: Value(date),
+      symbol: Value(symbol),
+      open: open == null && nullToAbsent ? const Value.absent() : Value(open),
+      high: high == null && nullToAbsent ? const Value.absent() : Value(high),
+      low: low == null && nullToAbsent ? const Value.absent() : Value(low),
+      close:
+          close == null && nullToAbsent ? const Value.absent() : Value(close),
+      volume:
+          volume == null && nullToAbsent ? const Value.absent() : Value(volume),
+      ema: ema == null && nullToAbsent ? const Value.absent() : Value(ema),
+      expires: Value(expires),
+    );
+  }
+
+  factory MovingAverageDayTableRow.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return MovingAverageDayTableRow(
+      date: serializer.fromJson<String>(json['date']),
+      symbol: serializer.fromJson<String>(json['symbol']),
+      open: serializer.fromJson<double?>(json['open']),
+      high: serializer.fromJson<double?>(json['high']),
+      low: serializer.fromJson<double?>(json['low']),
+      close: serializer.fromJson<double?>(json['close']),
+      volume: serializer.fromJson<int?>(json['volume']),
+      ema: serializer.fromJson<double?>(json['ema']),
+      expires: serializer.fromJson<DateTime>(json['expires']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'date': serializer.toJson<String>(date),
+      'symbol': serializer.toJson<String>(symbol),
+      'open': serializer.toJson<double?>(open),
+      'high': serializer.toJson<double?>(high),
+      'low': serializer.toJson<double?>(low),
+      'close': serializer.toJson<double?>(close),
+      'volume': serializer.toJson<int?>(volume),
+      'ema': serializer.toJson<double?>(ema),
+      'expires': serializer.toJson<DateTime>(expires),
+    };
+  }
+
+  MovingAverageDayTableRow copyWith(
+          {String? date,
+          String? symbol,
+          Value<double?> open = const Value.absent(),
+          Value<double?> high = const Value.absent(),
+          Value<double?> low = const Value.absent(),
+          Value<double?> close = const Value.absent(),
+          Value<int?> volume = const Value.absent(),
+          Value<double?> ema = const Value.absent(),
+          DateTime? expires}) =>
+      MovingAverageDayTableRow(
+        date: date ?? this.date,
+        symbol: symbol ?? this.symbol,
+        open: open.present ? open.value : this.open,
+        high: high.present ? high.value : this.high,
+        low: low.present ? low.value : this.low,
+        close: close.present ? close.value : this.close,
+        volume: volume.present ? volume.value : this.volume,
+        ema: ema.present ? ema.value : this.ema,
+        expires: expires ?? this.expires,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('MovingAverageDayTableRow(')
+          ..write('date: $date, ')
+          ..write('symbol: $symbol, ')
+          ..write('open: $open, ')
+          ..write('high: $high, ')
+          ..write('low: $low, ')
+          ..write('close: $close, ')
+          ..write('volume: $volume, ')
+          ..write('ema: $ema, ')
+          ..write('expires: $expires')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(date, symbol, open, high, low, close, volume, ema, expires);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is MovingAverageDayTableRow &&
+          other.date == this.date &&
+          other.symbol == this.symbol &&
+          other.open == this.open &&
+          other.high == this.high &&
+          other.low == this.low &&
+          other.close == this.close &&
+          other.volume == this.volume &&
+          other.ema == this.ema &&
+          other.expires == this.expires);
+}
+
+class MovingAverageDayTableRowDefinitionCompanion
+    extends UpdateCompanion<MovingAverageDayTableRow> {
+  final Value<String> date;
+  final Value<String> symbol;
+  final Value<double?> open;
+  final Value<double?> high;
+  final Value<double?> low;
+  final Value<double?> close;
+  final Value<int?> volume;
+  final Value<double?> ema;
+  final Value<DateTime> expires;
+  final Value<int> rowid;
+  const MovingAverageDayTableRowDefinitionCompanion({
+    this.date = const Value.absent(),
+    this.symbol = const Value.absent(),
+    this.open = const Value.absent(),
+    this.high = const Value.absent(),
+    this.low = const Value.absent(),
+    this.close = const Value.absent(),
+    this.volume = const Value.absent(),
+    this.ema = const Value.absent(),
+    this.expires = const Value.absent(),
+    this.rowid = const Value.absent(),
+  });
+  MovingAverageDayTableRowDefinitionCompanion.insert({
+    required String date,
+    required String symbol,
+    this.open = const Value.absent(),
+    this.high = const Value.absent(),
+    this.low = const Value.absent(),
+    this.close = const Value.absent(),
+    this.volume = const Value.absent(),
+    this.ema = const Value.absent(),
+    required DateTime expires,
+    this.rowid = const Value.absent(),
+  })  : date = Value(date),
+        symbol = Value(symbol),
+        expires = Value(expires);
+  static Insertable<MovingAverageDayTableRow> custom({
+    Expression<String>? date,
+    Expression<String>? symbol,
+    Expression<double>? open,
+    Expression<double>? high,
+    Expression<double>? low,
+    Expression<double>? close,
+    Expression<int>? volume,
+    Expression<double>? ema,
+    Expression<DateTime>? expires,
+    Expression<int>? rowid,
+  }) {
+    return RawValuesInsertable({
+      if (date != null) 'date': date,
+      if (symbol != null) 'symbol': symbol,
+      if (open != null) 'open': open,
+      if (high != null) 'high': high,
+      if (low != null) 'low': low,
+      if (close != null) 'close': close,
+      if (volume != null) 'volume': volume,
+      if (ema != null) 'ema': ema,
+      if (expires != null) 'expires': expires,
+      if (rowid != null) 'rowid': rowid,
+    });
+  }
+
+  MovingAverageDayTableRowDefinitionCompanion copyWith(
+      {Value<String>? date,
+      Value<String>? symbol,
+      Value<double?>? open,
+      Value<double?>? high,
+      Value<double?>? low,
+      Value<double?>? close,
+      Value<int?>? volume,
+      Value<double?>? ema,
+      Value<DateTime>? expires,
+      Value<int>? rowid}) {
+    return MovingAverageDayTableRowDefinitionCompanion(
+      date: date ?? this.date,
+      symbol: symbol ?? this.symbol,
+      open: open ?? this.open,
+      high: high ?? this.high,
+      low: low ?? this.low,
+      close: close ?? this.close,
+      volume: volume ?? this.volume,
+      ema: ema ?? this.ema,
+      expires: expires ?? this.expires,
+      rowid: rowid ?? this.rowid,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (date.present) {
+      map['date'] = Variable<String>(date.value);
+    }
+    if (symbol.present) {
+      map['symbol'] = Variable<String>(symbol.value);
+    }
+    if (open.present) {
+      map['open'] = Variable<double>(open.value);
+    }
+    if (high.present) {
+      map['high'] = Variable<double>(high.value);
+    }
+    if (low.present) {
+      map['low'] = Variable<double>(low.value);
+    }
+    if (close.present) {
+      map['close'] = Variable<double>(close.value);
+    }
+    if (volume.present) {
+      map['volume'] = Variable<int>(volume.value);
+    }
+    if (ema.present) {
+      map['ema'] = Variable<double>(ema.value);
+    }
+    if (expires.present) {
+      map['expires'] = Variable<DateTime>(expires.value);
+    }
+    if (rowid.present) {
+      map['rowid'] = Variable<int>(rowid.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('MovingAverageDayTableRowDefinitionCompanion(')
+          ..write('date: $date, ')
+          ..write('symbol: $symbol, ')
+          ..write('open: $open, ')
+          ..write('high: $high, ')
+          ..write('low: $low, ')
+          ..write('close: $close, ')
+          ..write('volume: $volume, ')
+          ..write('ema: $ema, ')
+          ..write('expires: $expires, ')
+          ..write('rowid: $rowid')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$DriftDb extends GeneratedDatabase {
   _$DriftDb(QueryExecutor e) : super(e);
   late final $CompanyProfileTableRowDefinitionTable
@@ -7976,6 +8418,9 @@ abstract class _$DriftDb extends GeneratedDatabase {
   late final $IncomeStatementTableRowDefinitionTable
       incomeStatementTableRowDefinition =
       $IncomeStatementTableRowDefinitionTable(this);
+  late final $MovingAverageDayTableRowDefinitionTable
+      movingAverageDayTableRowDefinition =
+      $MovingAverageDayTableRowDefinitionTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -7984,6 +8429,7 @@ abstract class _$DriftDb extends GeneratedDatabase {
         companyProfileTableRowDefinition,
         balanceSheetStatementTableRowDefinition,
         cashFlowStatementTableRowDefinition,
-        incomeStatementTableRowDefinition
+        incomeStatementTableRowDefinition,
+        movingAverageDayTableRowDefinition
       ];
 }

@@ -8,29 +8,29 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:drift/drift.dart' as _i35;
+import 'package:drift/drift.dart' as _i39;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
-import 'package:stockz/application/core/analytics/analytics_cubit.dart' as _i39;
-import 'package:stockz/application/core/caching/caching_cubit.dart' as _i61;
+import 'package:stockz/application/core/analytics/analytics_cubit.dart' as _i43;
+import 'package:stockz/application/core/caching/caching_cubit.dart' as _i65;
 import 'package:stockz/application/core/initialization/initialization_cubit.dart'
-    as _i30;
-import 'package:stockz/application/core/language/language_cubit.dart' as _i31;
-import 'package:stockz/application/core/navigation/navigation_cubit.dart'
     as _i33;
-import 'package:stockz/application/overview/overview_cubit.dart' as _i34;
+import 'package:stockz/application/core/language/language_cubit.dart' as _i34;
+import 'package:stockz/application/core/navigation/navigation_cubit.dart'
+    as _i37;
+import 'package:stockz/application/overview/overview_cubit.dart' as _i38;
 import 'package:stockz/infrastructure/balance_sheet_statement/cache/balance_sheet_cache.dart'
-    as _i44;
+    as _i48;
 import 'package:stockz/infrastructure/balance_sheet_statement/cache/balance_sheet_statement_dao.dart'
-    as _i40;
+    as _i44;
 import 'package:stockz/infrastructure/balance_sheet_statement/cache/i_balance_sheet_cache.dart'
-    as _i43;
+    as _i47;
 import 'package:stockz/infrastructure/balance_sheet_statement/repository/balance_sheet_statement_repository.dart'
-    as _i46;
+    as _i50;
 import 'package:stockz/infrastructure/balance_sheet_statement/repository/i_balance_sheet_statement_repository.dart'
-    as _i45;
+    as _i49;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/balance_sheet_statement_module.dart'
-    as _i66;
+    as _i70;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/balance_sheet_statement_service.dart'
     as _i14;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/chopper/balance_sheet_statement_chopper_service.dart'
@@ -38,17 +38,17 @@ import 'package:stockz/infrastructure/balance_sheet_statement/service/chopper/ba
 import 'package:stockz/infrastructure/balance_sheet_statement/service/i_balance_sheet_statement_service.dart'
     as _i13;
 import 'package:stockz/infrastructure/cash_flow_statement/cache/cash_flow_statement_cache.dart'
-    as _i50;
+    as _i54;
 import 'package:stockz/infrastructure/cash_flow_statement/cache/cash_flow_statement_dao.dart'
-    as _i41;
+    as _i45;
 import 'package:stockz/infrastructure/cash_flow_statement/cache/i_cash_flow_statement_cache.dart'
-    as _i49;
+    as _i53;
 import 'package:stockz/infrastructure/cash_flow_statement/repository/cash_flow_statement_repository.dart'
-    as _i52;
+    as _i56;
 import 'package:stockz/infrastructure/cash_flow_statement/repository/i_cash_flow_statement_repository.dart'
-    as _i51;
+    as _i55;
 import 'package:stockz/infrastructure/cash_flow_statement/service/cash_flow_statement_module.dart'
-    as _i67;
+    as _i71;
 import 'package:stockz/infrastructure/cash_flow_statement/service/cash_flow_statement_service.dart'
     as _i19;
 import 'package:stockz/infrastructure/cash_flow_statement/service/chopper/cash_flow_statement_chopper_service.dart'
@@ -56,25 +56,25 @@ import 'package:stockz/infrastructure/cash_flow_statement/service/chopper/cash_f
 import 'package:stockz/infrastructure/cash_flow_statement/service/i_cash_flow_statement_service.dart'
     as _i18;
 import 'package:stockz/infrastructure/company/repository/company_repository.dart'
-    as _i65;
+    as _i69;
 import 'package:stockz/infrastructure/company/repository/i_company_repository.dart'
-    as _i64;
+    as _i68;
 import 'package:stockz/infrastructure/company_profile/cache/company_profile_cache.dart'
-    as _i54;
+    as _i58;
 import 'package:stockz/infrastructure/company_profile/cache/company_profile_dao.dart'
-    as _i42;
+    as _i46;
 import 'package:stockz/infrastructure/company_profile/cache/i_company_profile_cache.dart'
-    as _i53;
+    as _i57;
 import 'package:stockz/infrastructure/company_profile/repository/company_profile_repository.dart'
-    as _i56;
+    as _i60;
 import 'package:stockz/infrastructure/company_profile/repository/i_company_profile_repository.dart'
-    as _i55;
+    as _i59;
 import 'package:stockz/infrastructure/company_profile/service/chopper/company_profile_chopper_service.dart'
     as _i6;
 import 'package:stockz/infrastructure/company_profile/service/company_profile_service.dart'
     as _i21;
 import 'package:stockz/infrastructure/company_profile/service/company_profile_service_module.dart'
-    as _i68;
+    as _i72;
 import 'package:stockz/infrastructure/company_profile/service/i_company_profile_service.dart'
     as _i20;
 import 'package:stockz/infrastructure/core/analytics/repository/analytics_repository.dart'
@@ -83,61 +83,69 @@ import 'package:stockz/infrastructure/core/analytics/repository/i_analytics_repo
     as _i11;
 import 'package:stockz/infrastructure/core/cache/database_definition.dart'
     as _i7;
-import 'package:stockz/infrastructure/core/cache/database_module.dart' as _i70;
+import 'package:stockz/infrastructure/core/cache/database_module.dart' as _i74;
 import 'package:stockz/infrastructure/core/cache/offline/offline_database_definition.dart'
     as _i8;
 import 'package:stockz/infrastructure/core/cache/repository/cache_repository.dart'
-    as _i48;
+    as _i52;
 import 'package:stockz/infrastructure/core/cache/repository/i_cache_repository.dart'
-    as _i47;
+    as _i51;
 import 'package:stockz/infrastructure/core/cache/service/cache_service.dart'
-    as _i17;
+    as _i16;
 import 'package:stockz/infrastructure/core/cache/service/i_cache_service.dart'
     as _i15;
 import 'package:stockz/infrastructure/core/cache/service/offline/offline_cache_service.dart'
-    as _i16;
+    as _i17;
 import 'package:stockz/infrastructure/core/prefs/offline/offline_shared_prefs_provider.dart'
-    as _i38;
+    as _i42;
 import 'package:stockz/infrastructure/core/prefs/shared_prefs_wrapper.dart'
-    as _i37;
+    as _i41;
 import 'package:stockz/infrastructure/core/service/interceptors/auth_request_interceptor.dart'
     as _i3;
 import 'package:stockz/infrastructure/core/service/interceptors/headers_request_interceptor.dart'
     as _i10;
 import 'package:stockz/infrastructure/core/service/interceptors/logging_interceptor.dart'
-    as _i32;
+    as _i35;
 import 'package:stockz/infrastructure/core/service/timer/i_poll_and_debounce.dart'
-    as _i22;
-import 'package:stockz/infrastructure/core/service/timer/offline/offline_poll_and_debounce.dart'
-    as _i24;
-import 'package:stockz/infrastructure/core/service/timer/poll_and_debounce.dart'
-    as _i23;
-import 'package:stockz/infrastructure/core/test_runner_determiner/i_test_runner_determiner.dart'
     as _i25;
-import 'package:stockz/infrastructure/core/test_runner_determiner/offline/offline_test_runner_determiner.dart'
-    as _i26;
-import 'package:stockz/infrastructure/core/test_runner_determiner/test_runner_determiner.dart'
+import 'package:stockz/infrastructure/core/service/timer/offline/offline_poll_and_debounce.dart'
     as _i27;
-import 'package:stockz/infrastructure/income_statement/cache/i_income_statement_cache.dart'
-    as _i57;
-import 'package:stockz/infrastructure/income_statement/cache/income_statement_cache.dart'
-    as _i58;
-import 'package:stockz/infrastructure/income_statement/cache/income_statement_dao.dart'
-    as _i29;
-import 'package:stockz/infrastructure/income_statement/repository/i_income_statement_repository.dart'
-    as _i62;
-import 'package:stockz/infrastructure/income_statement/repository/income_statement_repository.dart'
-    as _i63;
-import 'package:stockz/infrastructure/income_statement/service/chopper/income_statement_chopper_service.dart'
+import 'package:stockz/infrastructure/core/service/timer/poll_and_debounce.dart'
+    as _i26;
+import 'package:stockz/infrastructure/core/test_runner_determiner/i_test_runner_determiner.dart'
     as _i28;
+import 'package:stockz/infrastructure/core/test_runner_determiner/offline/offline_test_runner_determiner.dart'
+    as _i30;
+import 'package:stockz/infrastructure/core/test_runner_determiner/test_runner_determiner.dart'
+    as _i29;
+import 'package:stockz/infrastructure/income_statement/cache/i_income_statement_cache.dart'
+    as _i61;
+import 'package:stockz/infrastructure/income_statement/cache/income_statement_cache.dart'
+    as _i62;
+import 'package:stockz/infrastructure/income_statement/cache/income_statement_dao.dart'
+    as _i32;
+import 'package:stockz/infrastructure/income_statement/repository/i_income_statement_repository.dart'
+    as _i66;
+import 'package:stockz/infrastructure/income_statement/repository/income_statement_repository.dart'
+    as _i67;
+import 'package:stockz/infrastructure/income_statement/service/chopper/income_statement_chopper_service.dart'
+    as _i31;
 import 'package:stockz/infrastructure/income_statement/service/i_income_statement_service.dart'
-    as _i59;
+    as _i63;
 import 'package:stockz/infrastructure/income_statement/service/income_statement_module.dart'
-    as _i69;
+    as _i73;
 import 'package:stockz/infrastructure/income_statement/service/income_statement_service.dart'
-    as _i60;
+    as _i64;
+import 'package:stockz/infrastructure/moving_average/cache/moving_average_dao.dart'
+    as _i36;
+import 'package:stockz/infrastructure/moving_average/service/chopper/moving_average_chopper_service.dart'
+    as _i24;
+import 'package:stockz/infrastructure/moving_average/service/i_moving_average_service.dart'
+    as _i22;
+import 'package:stockz/infrastructure/moving_average/service/moving_average_service.dart'
+    as _i23;
 import 'package:stockz/presentation/core/global_navigator_key.dart' as _i9;
-import 'package:stockz/presentation/core/route_observer_provider.dart' as _i36;
+import 'package:stockz/presentation/core/route_observer_provider.dart' as _i40;
 
 const String _offline = 'offline';
 const String _online = 'online';
@@ -182,12 +190,12 @@ extension GetItInjectableX on _i1.GetIt {
       registerFor: {_online},
     );
     gh.lazySingleton<_i15.ICacheService>(
-      () => _i16.OfflineCacheService(),
-      registerFor: {_offline},
+      () => _i16.CacheService(),
+      registerFor: {_online},
     );
     gh.lazySingleton<_i15.ICacheService>(
-      () => _i17.CacheService(),
-      registerFor: {_online},
+      () => _i17.OfflineCacheService(),
+      registerFor: {_offline},
     );
     gh.factory<_i18.ICashFlowStatementService>(
       () => _i19.CashFlowStatementService(
@@ -198,119 +206,125 @@ extension GetItInjectableX on _i1.GetIt {
       () => _i21.CompanyProfileService(gh<_i6.CompanyProfileChopperService>()),
       registerFor: {_online},
     );
-    gh.factory<_i22.IPollAndDebounce>(
-      () => _i23.PollAndDebounce(),
+    gh.factory<_i22.IMovingAverageService>(
+      () => _i23.MovingAverageService(gh<_i24.MovingAverageChopperService>()),
       registerFor: {_online},
     );
-    gh.factory<_i22.IPollAndDebounce>(
-      () => _i24.OfflinePollAndDebounce(),
-      registerFor: {_offline},
-    );
-    gh.factory<_i25.ITestRunnerDeterminer>(
-      () => _i26.OfflineTestRunnerDeterminer(),
-      registerFor: {_offline},
-    );
-    gh.factory<_i25.ITestRunnerDeterminer>(
-      () => _i27.TestRunnerDeterminer(),
+    gh.factory<_i25.IPollAndDebounce>(
+      () => _i26.PollAndDebounce(),
       registerFor: {_online},
     );
-    gh.factory<_i28.IncomeStatementChopperService>(
+    gh.factory<_i25.IPollAndDebounce>(
+      () => _i27.OfflinePollAndDebounce(),
+      registerFor: {_offline},
+    );
+    gh.factory<_i28.ITestRunnerDeterminer>(
+      () => _i29.TestRunnerDeterminer(),
+      registerFor: {_online},
+    );
+    gh.factory<_i28.ITestRunnerDeterminer>(
+      () => _i30.OfflineTestRunnerDeterminer(),
+      registerFor: {_offline},
+    );
+    gh.factory<_i31.IncomeStatementChopperService>(
         () => incomeStatementServiceModule.incomeStatementChopperService);
-    gh.factory<_i29.IncomeStatementDao>(
-        () => _i29.IncomeStatementDao(gh<_i7.DriftDb>()));
-    gh.lazySingleton<_i30.InitializationCubit>(
-        () => _i30.InitializationCubit());
-    gh.factory<_i31.LanguageCubit>(() => _i31.LanguageCubit());
-    gh.lazySingleton<_i32.LoggingInterceptor>(() => _i32.LoggingInterceptor());
-    gh.singleton<_i33.NavigationCubit>(_i33.NavigationCubit(
+    gh.factory<_i32.IncomeStatementDao>(
+        () => _i32.IncomeStatementDao(gh<_i7.DriftDb>()));
+    gh.lazySingleton<_i33.InitializationCubit>(
+        () => _i33.InitializationCubit());
+    gh.factory<_i34.LanguageCubit>(() => _i34.LanguageCubit());
+    gh.lazySingleton<_i35.LoggingInterceptor>(() => _i35.LoggingInterceptor());
+    gh.factory<_i36.MovingAverageDao>(
+        () => _i36.MovingAverageDao(gh<_i7.DriftDb>()));
+    gh.singleton<_i37.NavigationCubit>(_i37.NavigationCubit(
       gh<_i11.IAnalyticsRepository>(),
-      gh<_i22.IPollAndDebounce>(),
+      gh<_i25.IPollAndDebounce>(),
     ));
-    gh.lazySingleton<_i32.NoBodyLoggingInterceptor>(
-        () => _i32.NoBodyLoggingInterceptor());
-    gh.factory<_i34.OverviewCubit>(() => _i34.OverviewCubit());
-    gh.singleton<_i35.QueryExecutor>(databaseModule.queryExecutorOnline);
-    gh.lazySingleton<_i36.RouteObserverProvider>(
-        () => _i36.RouteObserverProvider());
-    gh.lazySingleton<_i37.SharedPrefsProvider>(
-      () => _i38.OfflineSharedPrefsProvider(),
+    gh.lazySingleton<_i35.NoBodyLoggingInterceptor>(
+        () => _i35.NoBodyLoggingInterceptor());
+    gh.factory<_i38.OverviewCubit>(() => _i38.OverviewCubit());
+    gh.singleton<_i39.QueryExecutor>(databaseModule.queryExecutorOnline);
+    gh.lazySingleton<_i40.RouteObserverProvider>(
+        () => _i40.RouteObserverProvider());
+    gh.lazySingleton<_i41.SharedPrefsProvider>(
+      () => _i42.OfflineSharedPrefsProvider(),
       registerFor: {_offline},
     );
-    gh.lazySingleton<_i37.SharedPrefsProvider>(
-      () => _i37.SharedPrefsProvider(),
+    gh.lazySingleton<_i41.SharedPrefsProvider>(
+      () => _i41.SharedPrefsProvider(),
       registerFor: {_online},
     );
-    gh.lazySingleton<_i39.AnalyticsCubit>(
-        () => _i39.AnalyticsCubit(gh<_i11.IAnalyticsRepository>()));
-    gh.factory<_i40.BalanceSheetStatementDao>(
-        () => _i40.BalanceSheetStatementDao(gh<_i7.DriftDb>()));
-    gh.factory<_i41.CashFlowStatementDao>(
-        () => _i41.CashFlowStatementDao(gh<_i7.DriftDb>()));
-    gh.factory<_i42.CompanyProfileDao>(
-        () => _i42.CompanyProfileDao(gh<_i7.DriftDb>()));
+    gh.lazySingleton<_i43.AnalyticsCubit>(
+        () => _i43.AnalyticsCubit(gh<_i11.IAnalyticsRepository>()));
+    gh.factory<_i44.BalanceSheetStatementDao>(
+        () => _i44.BalanceSheetStatementDao(gh<_i7.DriftDb>()));
+    gh.factory<_i45.CashFlowStatementDao>(
+        () => _i45.CashFlowStatementDao(gh<_i7.DriftDb>()));
+    gh.factory<_i46.CompanyProfileDao>(
+        () => _i46.CompanyProfileDao(gh<_i7.DriftDb>()));
     gh.lazySingleton<_i7.DriftDb>(
-      () => _i7.DriftDb(executor: gh<_i35.QueryExecutor>()),
+      () => _i7.DriftDb(executor: gh<_i39.QueryExecutor>()),
       registerFor: {_online},
     );
-    gh.factory<_i43.IBalanceSheetStatementCache>(() =>
-        _i44.BalanceSheetStatementCache(gh<_i40.BalanceSheetStatementDao>()));
-    gh.lazySingleton<_i45.IBalanceSheetStatementRepository>(
-        () => _i46.BalanceSheetStatementRepository(
+    gh.factory<_i47.IBalanceSheetStatementCache>(() =>
+        _i48.BalanceSheetStatementCache(gh<_i44.BalanceSheetStatementDao>()));
+    gh.lazySingleton<_i49.IBalanceSheetStatementRepository>(
+        () => _i50.BalanceSheetStatementRepository(
               gh<_i13.IBalanceSheetStatementService>(),
-              gh<_i43.IBalanceSheetStatementCache>(),
+              gh<_i47.IBalanceSheetStatementCache>(),
             ));
-    gh.lazySingleton<_i47.ICacheRepository>(
-        () => _i48.CacheRepository(gh<_i15.ICacheService>()));
-    gh.factory<_i49.ICashFlowStatementCache>(
-        () => _i50.CashFlowStatementCache(gh<_i41.CashFlowStatementDao>()));
-    gh.lazySingleton<_i51.ICashFlowStatementRepository>(
-        () => _i52.CashFlowStatementRepository(
+    gh.lazySingleton<_i51.ICacheRepository>(
+        () => _i52.CacheRepository(gh<_i15.ICacheService>()));
+    gh.factory<_i53.ICashFlowStatementCache>(
+        () => _i54.CashFlowStatementCache(gh<_i45.CashFlowStatementDao>()));
+    gh.lazySingleton<_i55.ICashFlowStatementRepository>(
+        () => _i56.CashFlowStatementRepository(
               gh<_i18.ICashFlowStatementService>(),
-              gh<_i49.ICashFlowStatementCache>(),
+              gh<_i53.ICashFlowStatementCache>(),
             ));
-    gh.factory<_i53.ICompanyProfileCache>(
-        () => _i54.CompanyProfileCache(gh<_i42.CompanyProfileDao>()));
-    gh.lazySingleton<_i55.ICompanyProfileRepository>(
-        () => _i56.CompanyProfileRepository(
+    gh.factory<_i57.ICompanyProfileCache>(
+        () => _i58.CompanyProfileCache(gh<_i46.CompanyProfileDao>()));
+    gh.lazySingleton<_i59.ICompanyProfileRepository>(
+        () => _i60.CompanyProfileRepository(
               gh<_i20.ICompanyProfileService>(),
-              gh<_i53.ICompanyProfileCache>(),
+              gh<_i57.ICompanyProfileCache>(),
             ));
-    gh.factory<_i57.IIncomeStatementCache>(
-        () => _i58.IncomeStatementCache(gh<_i29.IncomeStatementDao>()));
-    gh.factory<_i59.IIncomeStatementService>(
+    gh.factory<_i61.IIncomeStatementCache>(
+        () => _i62.IncomeStatementCache(gh<_i32.IncomeStatementDao>()));
+    gh.factory<_i63.IIncomeStatementService>(
       () =>
-          _i60.IncomeStatementService(gh<_i28.IncomeStatementChopperService>()),
+          _i64.IncomeStatementService(gh<_i31.IncomeStatementChopperService>()),
       registerFor: {_online},
     );
-    gh.factory<_i61.CachingCubit>(() => _i61.CachingCubit(
+    gh.factory<_i65.CachingCubit>(() => _i65.CachingCubit(
           gh<_i7.DriftDb>(),
-          gh<_i47.ICacheRepository>(),
-          gh<_i37.SharedPrefsProvider>(),
+          gh<_i51.ICacheRepository>(),
+          gh<_i41.SharedPrefsProvider>(),
         ));
-    gh.lazySingleton<_i62.IIncomeStatementRepository>(
-        () => _i63.IncomeStatementRepository(
-              gh<_i59.IIncomeStatementService>(),
-              gh<_i57.IIncomeStatementCache>(),
+    gh.lazySingleton<_i66.IIncomeStatementRepository>(
+        () => _i67.IncomeStatementRepository(
+              gh<_i63.IIncomeStatementService>(),
+              gh<_i61.IIncomeStatementCache>(),
             ));
-    gh.lazySingleton<_i64.ICompanyRepository>(() => _i65.CompanyRepository(
-          gh<_i45.IBalanceSheetStatementRepository>(),
-          gh<_i51.ICashFlowStatementRepository>(),
-          gh<_i55.ICompanyProfileRepository>(),
-          gh<_i62.IIncomeStatementRepository>(),
+    gh.lazySingleton<_i68.ICompanyRepository>(() => _i69.CompanyRepository(
+          gh<_i49.IBalanceSheetStatementRepository>(),
+          gh<_i55.ICashFlowStatementRepository>(),
+          gh<_i59.ICompanyProfileRepository>(),
+          gh<_i66.IIncomeStatementRepository>(),
         ));
     return this;
   }
 }
 
 class _$BalanceSheetStatementServiceModule
-    extends _i66.BalanceSheetStatementServiceModule {}
+    extends _i70.BalanceSheetStatementServiceModule {}
 
 class _$CashFlowStatementServiceModule
-    extends _i67.CashFlowStatementServiceModule {}
+    extends _i71.CashFlowStatementServiceModule {}
 
-class _$CompanyProfileServiceModule extends _i68.CompanyProfileServiceModule {}
+class _$CompanyProfileServiceModule extends _i72.CompanyProfileServiceModule {}
 
 class _$IncomeStatementServiceModule
-    extends _i69.IncomeStatementServiceModule {}
+    extends _i73.IncomeStatementServiceModule {}
 
-class _$DatabaseModule extends _i70.DatabaseModule {}
+class _$DatabaseModule extends _i74.DatabaseModule {}

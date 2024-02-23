@@ -36,43 +36,98 @@ class Company extends Equatable {
     final double changeInCurrentRatio = _fScoreChangeInCurrentRatio(strict: strict);
     final double changeInNumberOfShares = _fScoreChangeInNumberOfShares(strict: strict);
 
+    final double changeInGrossMargin = _fScoreChangeInGrossMargin(strict: strict);
+    final double changeInAssetTurnoverRatio = _fScoreChangeInAssetTurnoverRatio(strict: strict);
+
     return roa +
         operatingCashFlow +
         changeInRoa +
         accruals +
         changeInLeverage +
         changeInCurrentRatio +
-        changeInNumberOfShares;
+        changeInNumberOfShares +
+        changeInGrossMargin +
+        changeInAssetTurnoverRatio;
   }
 
-  double _fScoreChangeInNumberOfShares({required bool strict}) {
+  double _fScoreChangeInAssetTurnoverRatio({required bool strict}) {
     double oldStatementPenalty = 1;
     int year = DateTime.now().year;
-    double score = 0;
-    double? currentYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
-    if (currentYearIssuance == null) {
+    double? currentYearRatio = findAssetTurnoverRatio(year: year);
+    if (currentYearRatio == null) {
       oldStatementPenalty = _stalePenalty;
       year--;
-      currentYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+      currentYearRatio = findAssetTurnoverRatio(year: year);
+      if (currentYearRatio == null) {
+        return 0;
+      }
     }
     year--;
-    final double? previousYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+    final double? previousYearRatio = findAssetTurnoverRatio(year: year);
+    if (previousYearRatio == null) {
+      return 0;
+    }
 
     if (strict) {
       oldStatementPenalty = 1;
     }
 
-    if (currentYearIssuance != null && previousYearIssuance != null) {
-      // Check if no new shares were issued by comparing this year's issuance to last year's
-      if (currentYearIssuance <= previousYearIssuance) {
-        score = 1; // No new shares were issued
-      } else {
-        score = 0;
+    // 1 point if the ratio improved, 0 otherwise
+    final double score = currentYearRatio > previousYearRatio ? 1.0 : 0.0;
+    return score * oldStatementPenalty;
+  }
+
+  double _fScoreChangeInGrossMargin({required bool strict}) {
+    double oldStatementPenalty = 1;
+    int year = DateTime.now().year;
+    double? currentYearMargin = incomeStatements.findGrossMargin(year: year);
+    if (currentYearMargin == null) {
+      oldStatementPenalty = _stalePenalty;
+      year--;
+      currentYearMargin = incomeStatements.findGrossMargin(year: year);
+      if (currentYearMargin == null) {
+        return 0;
       }
-    } else {
-      score = 1;
+    }
+    year--;
+    final double? previousYearMargin = incomeStatements.findGrossMargin(year: year);
+    if (previousYearMargin == null) {
+      return 0;
     }
 
+    if (strict) {
+      oldStatementPenalty = 1;
+    }
+
+    // 1 point if the margin improved, 0 otherwise
+    final double score = currentYearMargin > previousYearMargin ? 1.0 : 0.0;
+    return score * oldStatementPenalty; // Return 0 if there's insufficient data to calculate the change in gross margin
+  }
+
+  double _fScoreChangeInNumberOfShares({required bool strict}) {
+    double oldStatementPenalty = 1;
+    int year = DateTime.now().year;
+    double? currentYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+    if (currentYearIssuance == null) {
+      oldStatementPenalty = _stalePenalty;
+      year--;
+      currentYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+      if (currentYearIssuance == null) {
+        return 0;
+      }
+    }
+    year--;
+    final double? previousYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+    if (previousYearIssuance == null) {
+      return 0;
+    }
+
+    if (strict) {
+      oldStatementPenalty = 1;
+    }
+
+    // Check if no new shares were issued by comparing this year's issuance to last year's
+    final double score = currentYearIssuance <= previousYearIssuance ? 1.0 : 0.0;
     return score * oldStatementPenalty;
   }
 
@@ -210,7 +265,8 @@ class Company extends Equatable {
       oldStatementPenalty = 1;
     }
 
-    final double score = oldStatementPenalty * (flow.operatingCashFlow.get > 0 ? 1 : 0);
+    final double operatingCashFlow = flow.operatingCashFlow.get.toDouble();
+    final double score = oldStatementPenalty * (operatingCashFlow > 0 ? 1 : 0);
     if (score > 0) {
       return score;
     }
@@ -269,6 +325,19 @@ class Company extends Equatable {
       return cashFlowStatement.operatingCashFlow.get.toDouble() / balanceSheetStatement.totalAssets.get.toDouble();
     }
     return null;
+  }
+
+  double? findAssetTurnoverRatio({required int year}) {
+    final IncomeStatement incomeStatement = incomeStatements.getWithYear(year);
+    final BalanceSheetStatement balanceSheetStatement = balanceSheetStatements.getWithYear(year);
+
+    if (incomeStatement.valid && balanceSheetStatement.valid) {
+      // Ensure total assets is not zero to avoid division by zero
+      if (balanceSheetStatement.totalAssets.get.toDouble() > 0) {
+        return incomeStatement.revenue.get.toDouble() / balanceSheetStatement.totalAssets.get.toDouble();
+      }
+    }
+    return null; // Return null if the statements are invalid or total assets are zero
   }
 
   @override
