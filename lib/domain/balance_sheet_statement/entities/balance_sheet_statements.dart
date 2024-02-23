@@ -27,6 +27,17 @@ class BalanceSheetStatements extends Equatable implements Statements {
     return ofYear.first;
   }
 
+  double? findCurrentRatio({required int year}) {
+    final BalanceSheetStatement balanceSheetStatement = getWithYear(year);
+
+    if (balanceSheetStatement.valid) {
+      final double currentAssets = balanceSheetStatement.totalCurrentAssets.get.toDouble();
+      final double currentLiabilities = balanceSheetStatement.totalCurrentLiabilities.get.toDouble();
+      return currentAssets / currentLiabilities;
+    }
+    return null;
+  }
+
   double? findLongTermDebtToAssetsRatio({required int year}) {
     final BalanceSheetStatement balanceSheetStatement = getWithYear(year);
 

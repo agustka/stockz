@@ -33,18 +33,45 @@ class Company extends Equatable {
     final double accruals = _fScoreAccruals(strict: strict);
 
     final double changeInLeverage = _fScoreChangeInLeverage(strict: strict);
+    final double changeInCurrentRatio = _fScoreChangeInCurrentRatio(strict: strict);
 
-    return roa + operatingCashFlow + changeInRoa + accruals + changeInLeverage;
+    return roa + operatingCashFlow + changeInRoa + accruals + changeInLeverage + changeInCurrentRatio;
+  }
+
+  double _fScoreChangeInCurrentRatio({required bool strict}) {
+    double oldStatementPenalty = 1;
+    int year = DateTime.now().year;
+    double? currentYearRatio = balanceSheetStatements.findCurrentRatio(year: year);
+    if (currentYearRatio == null) {
+      oldStatementPenalty = _stalePenalty;
+      year--;
+      currentYearRatio = balanceSheetStatements.findCurrentRatio(year: year);
+      if (currentYearRatio == null) {
+        return 0;
+      }
+    }
+    year--;
+    final double? previousYearRatio = balanceSheetStatements.findCurrentRatio(year: year);
+    if (previousYearRatio == null) {
+      return 0;
+    }
+
+    if (strict) {
+      oldStatementPenalty = 1;
+    }
+
+    final double score = currentYearRatio > previousYearRatio ? 1.0 : 0.0;
+    return score * oldStatementPenalty;
   }
 
   double _fScoreChangeInLeverage({required bool strict}) {
     double oldStatementPenalty = 1;
     int year = DateTime.now().year;
-    double? currentYearRatio = balanceSheetStatements. findLongTermDebtToAssetsRatio(year: year);
+    double? currentYearRatio = balanceSheetStatements.findLongTermDebtToAssetsRatio(year: year);
     if (currentYearRatio == null) {
       oldStatementPenalty = _stalePenalty;
       year--;
-      currentYearRatio = balanceSheetStatements. findLongTermDebtToAssetsRatio(year: year);
+      currentYearRatio = balanceSheetStatements.findLongTermDebtToAssetsRatio(year: year);
       if (currentYearRatio == null) {
         return 0;
       }

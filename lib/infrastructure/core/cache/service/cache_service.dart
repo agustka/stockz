@@ -26,23 +26,7 @@ class CacheService implements ICacheService {
     return file;
   }
 
-  Future _deleteCachedFiles() async {
-    final Directory isbCacheFolder = await _createIsbCachedFolder();
-    return _deletePdfFilesFrom(isbCacheFolder);
-  }
-
-  Future<void> _deletePdfFilesFrom(Directory dir) async {
-    try {
-      final List<FileSystemEntity> files = dir.listSync(recursive: true);
-      for (final FileSystemEntity file in files) {
-        if (await FileSystemEntity.isFile(file.path)) {
-          _deleteFileIfPdf(file);
-        }
-      }
-    } catch (ex) {
-      err("_deletePdfFilesFrom: Error deleting file: $ex");
-    }
-  }
+  Future _deleteCachedFiles() async {}
 
   void _deleteFileIfPdf(FileSystemEntity file) {
     try {
