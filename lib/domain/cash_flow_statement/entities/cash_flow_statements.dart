@@ -27,6 +27,15 @@ class CashFlowStatements extends Equatable implements Statements {
     return ofYear.first;
   }
 
+  double? findCommonStockIssued({required int year}) {
+    final CashFlowStatement cashFlowStatement = getWithYear(year);
+
+    if (cashFlowStatement.valid) {
+      return cashFlowStatement.commonStockIssued.get.toDouble();
+    }
+    return null;
+  }
+
   @override
   bool hasYear(int year) {
     return statements.where((CashFlowStatement e) => e.calendarYear.get == year).isNotEmpty;

@@ -85,7 +85,7 @@ class _OverviewPageState extends State<OverviewPage> {
               Logger().e(failure);
             },
             (Company value) {
-              final double fScore = value.getPiotroskiFScore(strict: false);
+              final double fScore = value.getPiotroskiFScore();
               print("${value.profile.companyName.get}: F score: $fScore");
             },
           );

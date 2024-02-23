@@ -34,8 +34,46 @@ class Company extends Equatable {
 
     final double changeInLeverage = _fScoreChangeInLeverage(strict: strict);
     final double changeInCurrentRatio = _fScoreChangeInCurrentRatio(strict: strict);
+    final double changeInNumberOfShares = _fScoreChangeInNumberOfShares(strict: strict);
 
-    return roa + operatingCashFlow + changeInRoa + accruals + changeInLeverage + changeInCurrentRatio;
+    return roa +
+        operatingCashFlow +
+        changeInRoa +
+        accruals +
+        changeInLeverage +
+        changeInCurrentRatio +
+        changeInNumberOfShares;
+  }
+
+  double _fScoreChangeInNumberOfShares({required bool strict}) {
+    double oldStatementPenalty = 1;
+    int year = DateTime.now().year;
+    double score = 0;
+    double? currentYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+    if (currentYearIssuance == null) {
+      oldStatementPenalty = _stalePenalty;
+      year--;
+      currentYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+    }
+    year--;
+    final double? previousYearIssuance = cashFlowStatements.findCommonStockIssued(year: year);
+
+    if (strict) {
+      oldStatementPenalty = 1;
+    }
+
+    if (currentYearIssuance != null && previousYearIssuance != null) {
+      // Check if no new shares were issued by comparing this year's issuance to last year's
+      if (currentYearIssuance <= previousYearIssuance) {
+        score = 1; // No new shares were issued
+      } else {
+        score = 0;
+      }
+    } else {
+      score = 1;
+    }
+
+    return score * oldStatementPenalty;
   }
 
   double _fScoreChangeInCurrentRatio({required bool strict}) {

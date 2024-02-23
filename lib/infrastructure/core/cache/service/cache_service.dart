@@ -13,7 +13,6 @@ class CacheService implements ICacheService {
 
   @override
   Future deleteCachedFiles() async {
-    _deletePreMigrationCachedFiles();
     _deleteCachedFiles();
   }
 
@@ -38,27 +37,6 @@ class CacheService implements ICacheService {
       }
     } catch (ex) {
       err("_deleteFileIfPdf: Error deleting file: $ex");
-    }
-  }
-
-  Future<void> _deletePreMigrationCachedFiles() async {
-    try {
-      final Directory dir = await getTemporaryDirectory();
-      final List<FileSystemEntity> files = dir.listSync(recursive: true);
-      for (final FileSystemEntity file in files) {
-        {
-          if (await FileSystemEntity.isDirectory(file.path)) {
-            final Directory directory = Directory(file.path);
-            _deletePdfFilesFrom(directory);
-          } else {
-            if (await FileSystemEntity.isFile(file.path)) {
-              _deleteFileIfPdf(file);
-            }
-          }
-        }
-      }
-    } catch (ex) {
-      err("Error deleting pre-migration cached file: $ex");
     }
   }
 
