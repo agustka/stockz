@@ -5,6 +5,7 @@ import 'package:stockz/domain/cash_flow_statement/entities/cash_flow_statements.
 import 'package:stockz/domain/company/entities/statement.dart';
 import 'package:stockz/domain/company_profile/entities/company_profile.dart';
 import 'package:stockz/domain/income_statement/entities/income_statements.dart';
+import 'package:stockz/domain/moving_average/entities/moving_average.dart';
 
 @immutable
 class Company extends Equatable {
@@ -14,6 +15,8 @@ class Company extends Equatable {
   final BalanceSheetStatements balanceSheetStatements;
   final CashFlowStatements cashFlowStatements;
   final IncomeStatements incomeStatements;
+  final MovingAverage ema12;
+  final MovingAverage ema26;
   final bool valid;
 
   const Company({
@@ -21,6 +24,8 @@ class Company extends Equatable {
     required this.balanceSheetStatements,
     required this.cashFlowStatements,
     required this.incomeStatements,
+    required this.ema12,
+    required this.ema26,
     this.valid = true,
   });
 
@@ -357,6 +362,8 @@ class _$InvalidCompany extends Company {
           balanceSheetStatements: const BalanceSheetStatements.invalid(),
           cashFlowStatements: const CashFlowStatements.invalid(),
           incomeStatements: const IncomeStatements.invalid(),
+          ema12: const MovingAverage.invalid(),
+          ema26: const MovingAverage.invalid(),
           valid: false,
         );
 }

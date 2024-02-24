@@ -1,5 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:stockz/domain/core/value_objects/date_value_object.dart';
+import 'package:stockz/domain/core/value_objects/int_value_object.dart';
+import 'package:stockz/domain/core/value_objects/number_value_object.dart';
+import 'package:stockz/domain/moving_average/entities/moving_average.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 
 part 'moving_average_day_model.g.dart';
@@ -42,4 +46,16 @@ class MovingAverageDayModel {
   }
 
   Map<String, dynamic> toJson() => _$MovingAverageDayModelToJson(this);
+
+  MovingAverageDay toDomain() {
+    return MovingAverageDay(
+      date: DateValueObject.fromString(date),
+      open: NumberValueObject(open),
+      high: NumberValueObject(high),
+      low: NumberValueObject(low),
+      close: NumberValueObject(close),
+      volume: IntValueObject(volume),
+      ema: NumberValueObject(ema),
+    );
+  }
 }

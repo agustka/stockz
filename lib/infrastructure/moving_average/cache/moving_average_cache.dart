@@ -12,6 +12,9 @@ import 'package:stockz/infrastructure/moving_average/models/moving_average_day_m
 class MovingAverageCache with BaseCache implements IMovingAverageCache {
   final MovingAverageDao movingAverageDao;
 
+  @override
+  Duration get timeToLive => const Duration(hours: 8);
+
   MovingAverageCache(this.movingAverageDao);
 
   @override

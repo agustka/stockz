@@ -26,7 +26,7 @@ class _OverviewPageState extends State<OverviewPage> {
     super.initState();
     final List<String> tickers = [
       'MO',
-      'AMCX',
+      /*'AMCX',
       'ARCT',
       'ASRT',
       'BTMD',
@@ -74,7 +74,7 @@ class _OverviewPageState extends State<OverviewPage> {
       'UIS',
       'UNTC',
       'VYGR',
-      'ZYME',
+      'ZYME',*/
     ];
 
     for (final String ticker in tickers) {
@@ -92,6 +92,11 @@ class _OverviewPageState extends State<OverviewPage> {
         },
       );
     }
+
+    getIt<ICompanyRepository>().getCompany(ticker: tickers.first).then((value) {
+      final company = value.getOr(const Company.invalid());
+      print(company.ema12.days.first);
+    });
   }
 
   @override
