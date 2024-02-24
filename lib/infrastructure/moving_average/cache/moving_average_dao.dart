@@ -15,10 +15,12 @@ part 'moving_average_dao.g.dart';
 class MovingAverageDao extends DatabaseAccessor<DriftDb> with _$MovingAverageDaoMixin {
   MovingAverageDao(super.db);
 
-  Future<List<MovingAverageDayTableRow>> getMovingAverageDays({required String ticker}) async {
+  Future<List<MovingAverageDayTableRow>> getMovingAverageDays({required String ticker, required int period}) async {
     return (select(movingAverageDayTableRowDefinition)
           ..where(
-            ($MovingAverageDayTableRowDefinitionTable tbl) => tbl.symbol.equals(ticker),
+            ($MovingAverageDayTableRowDefinitionTable tbl) {
+              return tbl.symbol.equals(ticker) & tbl.period.equals(period);
+            },
           ))
         .get();
   }
@@ -26,6 +28,7 @@ class MovingAverageDao extends DatabaseAccessor<DriftDb> with _$MovingAverageDao
   Future<void> addMovingAverageDays({
     required List<MovingAverageDayModel> days,
     required String ticker,
+    required int period,
     required int ttlSeconds,
   }) async {
     final List<MovingAverageDayModel> cloneList = days.toList();
@@ -33,7 +36,9 @@ class MovingAverageDao extends DatabaseAccessor<DriftDb> with _$MovingAverageDao
       (Batch batch) {
         batch.deleteWhere(
           movingAverageDayTableRowDefinition,
-          ($MovingAverageDayTableRowDefinitionTable tbl) => tbl.symbol.equals(ticker),
+          ($MovingAverageDayTableRowDefinitionTable tbl) {
+            return tbl.symbol.equals(ticker) & tbl.period.equals(period);
+          },
         );
         batch.insertAll(
           movingAverageDayTableRowDefinition,
@@ -42,6 +47,7 @@ class MovingAverageDao extends DatabaseAccessor<DriftDb> with _$MovingAverageDao
                 (MovingAverageDayModel day) => MovingAverageDayTableRowDefinitionCompanion.insert(
                   symbol: ticker,
                   date: day.date!,
+                  period: period,
                   open: Value(day.open),
                   high: Value(day.high),
                   low: Value(day.low),

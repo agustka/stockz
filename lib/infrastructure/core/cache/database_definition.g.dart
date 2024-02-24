@@ -7982,6 +7982,11 @@ class $MovingAverageDayTableRowDefinitionTable
   late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
       'symbol', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _periodMeta = const VerificationMeta('period');
+  @override
+  late final GeneratedColumn<int> period = GeneratedColumn<int>(
+      'period', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
   static const VerificationMeta _openMeta = const VerificationMeta('open');
   @override
   late final GeneratedColumn<double> open = GeneratedColumn<double>(
@@ -8020,7 +8025,7 @@ class $MovingAverageDayTableRowDefinitionTable
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [date, symbol, open, high, low, close, volume, ema, expires];
+      [date, symbol, period, open, high, low, close, volume, ema, expires];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -8043,6 +8048,12 @@ class $MovingAverageDayTableRowDefinitionTable
           symbol.isAcceptableOrUnknown(data['symbol']!, _symbolMeta));
     } else if (isInserting) {
       context.missing(_symbolMeta);
+    }
+    if (data.containsKey('period')) {
+      context.handle(_periodMeta,
+          period.isAcceptableOrUnknown(data['period']!, _periodMeta));
+    } else if (isInserting) {
+      context.missing(_periodMeta);
     }
     if (data.containsKey('open')) {
       context.handle(
@@ -8078,7 +8089,7 @@ class $MovingAverageDayTableRowDefinitionTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {symbol, date};
+  Set<GeneratedColumn> get $primaryKey => {symbol, date, period};
   @override
   MovingAverageDayTableRow map(Map<String, dynamic> data,
       {String? tablePrefix}) {
@@ -8088,6 +8099,8 @@ class $MovingAverageDayTableRowDefinitionTable
           .read(DriftSqlType.string, data['${effectivePrefix}date'])!,
       symbol: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}symbol'])!,
+      period: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}period'])!,
       open: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}open']),
       high: attachedDatabase.typeMapping
@@ -8115,6 +8128,7 @@ class MovingAverageDayTableRow extends DataClass
     implements Insertable<MovingAverageDayTableRow> {
   final String date;
   final String symbol;
+  final int period;
   final double? open;
   final double? high;
   final double? low;
@@ -8125,6 +8139,7 @@ class MovingAverageDayTableRow extends DataClass
   const MovingAverageDayTableRow(
       {required this.date,
       required this.symbol,
+      required this.period,
       this.open,
       this.high,
       this.low,
@@ -8137,6 +8152,7 @@ class MovingAverageDayTableRow extends DataClass
     final map = <String, Expression>{};
     map['date'] = Variable<String>(date);
     map['symbol'] = Variable<String>(symbol);
+    map['period'] = Variable<int>(period);
     if (!nullToAbsent || open != null) {
       map['open'] = Variable<double>(open);
     }
@@ -8163,6 +8179,7 @@ class MovingAverageDayTableRow extends DataClass
     return MovingAverageDayTableRowDefinitionCompanion(
       date: Value(date),
       symbol: Value(symbol),
+      period: Value(period),
       open: open == null && nullToAbsent ? const Value.absent() : Value(open),
       high: high == null && nullToAbsent ? const Value.absent() : Value(high),
       low: low == null && nullToAbsent ? const Value.absent() : Value(low),
@@ -8181,6 +8198,7 @@ class MovingAverageDayTableRow extends DataClass
     return MovingAverageDayTableRow(
       date: serializer.fromJson<String>(json['date']),
       symbol: serializer.fromJson<String>(json['symbol']),
+      period: serializer.fromJson<int>(json['period']),
       open: serializer.fromJson<double?>(json['open']),
       high: serializer.fromJson<double?>(json['high']),
       low: serializer.fromJson<double?>(json['low']),
@@ -8196,6 +8214,7 @@ class MovingAverageDayTableRow extends DataClass
     return <String, dynamic>{
       'date': serializer.toJson<String>(date),
       'symbol': serializer.toJson<String>(symbol),
+      'period': serializer.toJson<int>(period),
       'open': serializer.toJson<double?>(open),
       'high': serializer.toJson<double?>(high),
       'low': serializer.toJson<double?>(low),
@@ -8209,6 +8228,7 @@ class MovingAverageDayTableRow extends DataClass
   MovingAverageDayTableRow copyWith(
           {String? date,
           String? symbol,
+          int? period,
           Value<double?> open = const Value.absent(),
           Value<double?> high = const Value.absent(),
           Value<double?> low = const Value.absent(),
@@ -8219,6 +8239,7 @@ class MovingAverageDayTableRow extends DataClass
       MovingAverageDayTableRow(
         date: date ?? this.date,
         symbol: symbol ?? this.symbol,
+        period: period ?? this.period,
         open: open.present ? open.value : this.open,
         high: high.present ? high.value : this.high,
         low: low.present ? low.value : this.low,
@@ -8232,6 +8253,7 @@ class MovingAverageDayTableRow extends DataClass
     return (StringBuffer('MovingAverageDayTableRow(')
           ..write('date: $date, ')
           ..write('symbol: $symbol, ')
+          ..write('period: $period, ')
           ..write('open: $open, ')
           ..write('high: $high, ')
           ..write('low: $low, ')
@@ -8244,14 +8266,15 @@ class MovingAverageDayTableRow extends DataClass
   }
 
   @override
-  int get hashCode =>
-      Object.hash(date, symbol, open, high, low, close, volume, ema, expires);
+  int get hashCode => Object.hash(
+      date, symbol, period, open, high, low, close, volume, ema, expires);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is MovingAverageDayTableRow &&
           other.date == this.date &&
           other.symbol == this.symbol &&
+          other.period == this.period &&
           other.open == this.open &&
           other.high == this.high &&
           other.low == this.low &&
@@ -8265,6 +8288,7 @@ class MovingAverageDayTableRowDefinitionCompanion
     extends UpdateCompanion<MovingAverageDayTableRow> {
   final Value<String> date;
   final Value<String> symbol;
+  final Value<int> period;
   final Value<double?> open;
   final Value<double?> high;
   final Value<double?> low;
@@ -8276,6 +8300,7 @@ class MovingAverageDayTableRowDefinitionCompanion
   const MovingAverageDayTableRowDefinitionCompanion({
     this.date = const Value.absent(),
     this.symbol = const Value.absent(),
+    this.period = const Value.absent(),
     this.open = const Value.absent(),
     this.high = const Value.absent(),
     this.low = const Value.absent(),
@@ -8288,6 +8313,7 @@ class MovingAverageDayTableRowDefinitionCompanion
   MovingAverageDayTableRowDefinitionCompanion.insert({
     required String date,
     required String symbol,
+    required int period,
     this.open = const Value.absent(),
     this.high = const Value.absent(),
     this.low = const Value.absent(),
@@ -8298,10 +8324,12 @@ class MovingAverageDayTableRowDefinitionCompanion
     this.rowid = const Value.absent(),
   })  : date = Value(date),
         symbol = Value(symbol),
+        period = Value(period),
         expires = Value(expires);
   static Insertable<MovingAverageDayTableRow> custom({
     Expression<String>? date,
     Expression<String>? symbol,
+    Expression<int>? period,
     Expression<double>? open,
     Expression<double>? high,
     Expression<double>? low,
@@ -8314,6 +8342,7 @@ class MovingAverageDayTableRowDefinitionCompanion
     return RawValuesInsertable({
       if (date != null) 'date': date,
       if (symbol != null) 'symbol': symbol,
+      if (period != null) 'period': period,
       if (open != null) 'open': open,
       if (high != null) 'high': high,
       if (low != null) 'low': low,
@@ -8328,6 +8357,7 @@ class MovingAverageDayTableRowDefinitionCompanion
   MovingAverageDayTableRowDefinitionCompanion copyWith(
       {Value<String>? date,
       Value<String>? symbol,
+      Value<int>? period,
       Value<double?>? open,
       Value<double?>? high,
       Value<double?>? low,
@@ -8339,6 +8369,7 @@ class MovingAverageDayTableRowDefinitionCompanion
     return MovingAverageDayTableRowDefinitionCompanion(
       date: date ?? this.date,
       symbol: symbol ?? this.symbol,
+      period: period ?? this.period,
       open: open ?? this.open,
       high: high ?? this.high,
       low: low ?? this.low,
@@ -8358,6 +8389,9 @@ class MovingAverageDayTableRowDefinitionCompanion
     }
     if (symbol.present) {
       map['symbol'] = Variable<String>(symbol.value);
+    }
+    if (period.present) {
+      map['period'] = Variable<int>(period.value);
     }
     if (open.present) {
       map['open'] = Variable<double>(open.value);
@@ -8391,6 +8425,7 @@ class MovingAverageDayTableRowDefinitionCompanion
     return (StringBuffer('MovingAverageDayTableRowDefinitionCompanion(')
           ..write('date: $date, ')
           ..write('symbol: $symbol, ')
+          ..write('period: $period, ')
           ..write('open: $open, ')
           ..write('high: $high, ')
           ..write('low: $low, ')

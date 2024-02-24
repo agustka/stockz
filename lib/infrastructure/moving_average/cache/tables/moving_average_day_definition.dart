@@ -4,6 +4,7 @@ import 'package:drift/drift.dart';
 class MovingAverageDayTableRowDefinition extends Table {
   TextColumn get date => text()();
   TextColumn get symbol => text()();
+  IntColumn get period => integer()();
   RealColumn get open => real().nullable()();
   RealColumn get high => real().nullable()();
   RealColumn get low => real().nullable()();
@@ -14,5 +15,5 @@ class MovingAverageDayTableRowDefinition extends Table {
   DateTimeColumn get expires => dateTime()();
 
   @override
-  Set<Column> get primaryKey => {symbol, date};
+  Set<Column> get primaryKey => {symbol, date, period};
 }
