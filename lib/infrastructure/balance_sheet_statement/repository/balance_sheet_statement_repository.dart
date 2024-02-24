@@ -20,13 +20,13 @@ class BalanceSheetStatementRepository implements IBalanceSheetStatementRepositor
 
   @override
   Future<Payload<BalanceSheetStatements>> getBalanceSheetStatements({
-    required String ticker,
+    required String symbol,
     bool forceGet = false,
   }) async {
     if (forceGet) {
-      return _fetchBalanceSheetStatements(ticker: ticker);
+      return _fetchBalanceSheetStatements(ticker: symbol);
     }
-    return _cache.getBalanceSheetStatements(ticker: ticker, policy: CachingPolicy.onlyServeNotExpired).then((
+    return _cache.getBalanceSheetStatements(ticker: symbol, policy: CachingPolicy.onlyServeNotExpired).then((
       Cache<List<BalanceSheetStatementModel>> cache,
     ) {
       return cache.maybeMap(
@@ -37,7 +37,7 @@ class BalanceSheetStatementRepository implements IBalanceSheetStatementRepositor
             ),
           );
         },
-        orElse: () => _fetchBalanceSheetStatements(ticker: ticker),
+        orElse: () => _fetchBalanceSheetStatements(ticker: symbol),
       );
     });
   }

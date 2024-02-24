@@ -21,21 +21,21 @@ class CompanyProfileRepository implements ICompanyProfileRepository {
 
   @override
   Future<Payload<CompanyProfile>> getCompanyProfile({
-    required String ticker,
+    required String symbol,
     bool forceGet = false,
   }) async {
     if (forceGet) {
-      return _fetchCompanyProfile(ticker: ticker);
+      return _fetchCompanyProfile(ticker: symbol);
     }
     return _cache
-        .getCompanyProfile(ticker: ticker, policy: CachingPolicy.onlyServeNotExpired)
+        .getCompanyProfile(ticker: symbol, policy: CachingPolicy.onlyServeNotExpired)
         .then((Cache<CompanyProfileModel> cache) {
       return cache.maybeMap(
         available: (CacheAvailable<CompanyProfileModel> available) {
           return Payload.success(available.data.toDomain());
         },
         orElse: () {
-          return _fetchCompanyProfile(ticker: ticker);
+          return _fetchCompanyProfile(ticker: symbol);
         },
       );
     });

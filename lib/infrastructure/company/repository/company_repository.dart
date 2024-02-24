@@ -3,18 +3,18 @@ import 'dart:async';
 import 'package:injectable/injectable.dart';
 import 'package:stockz/domain/balance_sheet_statement/entities/balance_sheet_statements.dart';
 import 'package:stockz/domain/cash_flow_statement/entities/cash_flow_statements.dart';
+import 'package:stockz/domain/chart/entities/chart.dart';
 import 'package:stockz/domain/company/entities/company.dart';
 import 'package:stockz/domain/company_profile/entities/company_profile.dart';
 import 'package:stockz/domain/core/value_objects/failures/failure.dart';
 import 'package:stockz/domain/core/value_objects/payload.dart';
 import 'package:stockz/domain/income_statement/entities/income_statements.dart';
-import 'package:stockz/domain/moving_average/entities/moving_average.dart';
 import 'package:stockz/infrastructure/balance_sheet_statement/repository/i_balance_sheet_statement_repository.dart';
 import 'package:stockz/infrastructure/cash_flow_statement/repository/i_cash_flow_statement_repository.dart';
+import 'package:stockz/infrastructure/chart/repository/i_chart_repository.dart';
 import 'package:stockz/infrastructure/company/repository/i_company_repository.dart';
 import 'package:stockz/infrastructure/company_profile/repository/i_company_profile_repository.dart';
 import 'package:stockz/infrastructure/income_statement/repository/i_income_statement_repository.dart';
-import 'package:stockz/infrastructure/moving_average/repository/i_moving_average_repository.dart';
 
 @LazySingleton(as: ICompanyRepository)
 class CompanyRepository implements ICompanyRepository {
@@ -22,30 +22,35 @@ class CompanyRepository implements ICompanyRepository {
   final ICashFlowStatementRepository _cashFlowRepo;
   final ICompanyProfileRepository _companyProfileRepo;
   final IIncomeStatementRepository _incomeRepo;
-  final IMovingAverageRepository _movingAverageRepo;
+  final IChartRepository _chartRepo;
 
   CompanyRepository(
     this._balanceSheetRepo,
     this._cashFlowRepo,
     this._companyProfileRepo,
     this._incomeRepo,
-    this._movingAverageRepo,
+    this._chartRepo,
   );
 
   @override
   Future<Payload<Company>> getCompany({
-    required String ticker,
+    required String symbol,
     bool forceGet = false,
   }) async {
     final List<Future<Payload>> futures = [];
 
-    futures.add(_balanceSheetRepo.getBalanceSheetStatements(ticker: ticker));
-    futures.add(_cashFlowRepo.getCashFlowStatements(ticker: ticker));
-    futures.add(_companyProfileRepo.getCompanyProfile(ticker: ticker));
-    futures.add(_incomeRepo.getIncomeStatements(ticker: ticker));
+    futures.add(_balanceSheetRepo.getBalanceSheetStatements(symbol: symbol));
+    futures.add(_cashFlowRepo.getCashFlowStatements(symbol: symbol));
+    futures.add(_companyProfileRepo.getCompanyProfile(symbol: symbol));
+    futures.add(_incomeRepo.getIncomeStatements(symbol: symbol));
 
-    futures.add(_movingAverageRepo.getMovingAverage(ticker: ticker, period: 12));
-    futures.add(_movingAverageRepo.getMovingAverage(ticker: ticker, period: 26));
+    futures.add(
+      _chartRepo.getChart(
+        symbol: symbol,
+        from: DateTime.now().subtract(const Duration(days: 31)),
+        to: DateTime.now(),
+      ),
+    );
 
     final List<dynamic> results = await Future.wait(futures);
 
@@ -53,8 +58,7 @@ class CompanyRepository implements ICompanyRepository {
     final Payload<CashFlowStatements> cashflowPayload = results[1] as Payload<CashFlowStatements>;
     final Payload<CompanyProfile> profilePayload = results[2] as Payload<CompanyProfile>;
     final Payload<IncomeStatements> incomePayload = results[3] as Payload<IncomeStatements>;
-    final Payload<MovingAverage> ema12Payload = results[4] as Payload<MovingAverage>;
-    final Payload<MovingAverage> ema26Payload = results[5] as Payload<MovingAverage>;
+    final Payload<Chart> chartPayload = results[4] as Payload<Chart>;
 
     final bool allFailed =
         balanceSheetPayload.failed && cashflowPayload.failed && profilePayload.failed && incomePayload.failed;
@@ -66,8 +70,7 @@ class CompanyRepository implements ICompanyRepository {
     final CashFlowStatements cashflow = cashflowPayload.getOr(const CashFlowStatements.invalid());
     final CompanyProfile profile = profilePayload.getOr(const CompanyProfile.invalid());
     final IncomeStatements income = incomePayload.getOr(const IncomeStatements.invalid());
-    final MovingAverage ema12 = ema12Payload.getOr(const MovingAverage.invalid());
-    final MovingAverage ema26 = ema26Payload.getOr(const MovingAverage.invalid());
+    final Chart chart = chartPayload.getOr(const Chart.invalid());
 
     return Payload.success(
       Company(
@@ -75,8 +78,7 @@ class CompanyRepository implements ICompanyRepository {
         balanceSheetStatements: balanceSheet,
         cashFlowStatements: cashflow,
         incomeStatements: income,
-        ema12: ema12,
-        ema26: ema26,
+        chart: chart,
       ),
     );
   }

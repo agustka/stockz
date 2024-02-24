@@ -20,13 +20,13 @@ class CashFlowStatementRepository implements ICashFlowStatementRepository {
 
   @override
   Future<Payload<CashFlowStatements>> getCashFlowStatements({
-    required String ticker,
+    required String symbol,
     bool forceGet = false,
   }) async {
     if (forceGet) {
-      return _fetchCashFlowStatements(ticker: ticker);
+      return _fetchCashFlowStatements(ticker: symbol);
     }
-    return _cache.getCashFlowStatements(ticker: ticker, policy: CachingPolicy.onlyServeNotExpired).then((
+    return _cache.getCashFlowStatements(ticker: symbol, policy: CachingPolicy.onlyServeNotExpired).then((
         Cache<List<CashFlowStatementModel>> cache,
         ) {
       return cache.maybeMap(
@@ -37,7 +37,7 @@ class CashFlowStatementRepository implements ICashFlowStatementRepository {
             ),
           );
         },
-        orElse: () => _fetchCashFlowStatements(ticker: ticker),
+        orElse: () => _fetchCashFlowStatements(ticker: symbol),
       );
     });
   }

@@ -78,7 +78,7 @@ class _OverviewPageState extends State<OverviewPage> {
     ];
 
     for (final String ticker in tickers) {
-      getIt<ICompanyRepository>().getCompany(ticker: ticker).then(
+      getIt<ICompanyRepository>().getCompany(symbol: ticker).then(
         (Payload<Company> payload) {
           payload.fold(
             (Failure failure) {
@@ -86,17 +86,13 @@ class _OverviewPageState extends State<OverviewPage> {
             },
             (Company value) {
               final double fScore = value.getPiotroskiFScore();
-              print("${value.profile.companyName.get}: F score: $fScore");
+              print("${value.profile.companyName.get} (${value.profile.symbol.get}): F score: $fScore");
+              print("${value.profile.companyName.get} (${value.profile.symbol.get}): EMA: ${value.chart.historical.first}");
             },
           );
         },
       );
     }
-
-    getIt<ICompanyRepository>().getCompany(ticker: tickers.first).then((value) {
-      final company = value.getOr(const Company.invalid());
-      print(company.ema12.days.first);
-    });
   }
 
   @override

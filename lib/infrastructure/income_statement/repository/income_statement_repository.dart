@@ -20,13 +20,13 @@ class IncomeStatementRepository implements IIncomeStatementRepository {
 
   @override
   Future<Payload<IncomeStatements>> getIncomeStatements({
-    required String ticker,
+    required String symbol,
     bool forceGet = false,
   }) async {
     if (forceGet) {
-      return _fetchIncomeStatements(ticker: ticker);
+      return _fetchIncomeStatements(ticker: symbol);
     }
-    return _cache.getIncomeStatements(ticker: ticker, policy: CachingPolicy.onlyServeNotExpired).then((
+    return _cache.getIncomeStatements(ticker: symbol, policy: CachingPolicy.onlyServeNotExpired).then((
         Cache<List<IncomeStatementModel>> cache,
         ) {
       return cache.maybeMap(
@@ -37,7 +37,7 @@ class IncomeStatementRepository implements IIncomeStatementRepository {
             ),
           );
         },
-        orElse: () => _fetchIncomeStatements(ticker: ticker),
+        orElse: () => _fetchIncomeStatements(ticker: symbol),
       );
     });
   }

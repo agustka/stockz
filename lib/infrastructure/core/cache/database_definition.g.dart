@@ -7962,31 +7962,33 @@ class IncomeStatementTableRowDefinitionCompanion
   }
 }
 
-class $MovingAverageDayTableRowDefinitionTable
-    extends MovingAverageDayTableRowDefinition
-    with
-        TableInfo<$MovingAverageDayTableRowDefinitionTable,
-            MovingAverageDayTableRow> {
+class $ChartEodItemTableRowDefinitionTable
+    extends ChartEodItemTableRowDefinition
+    with TableInfo<$ChartEodItemTableRowDefinitionTable, ChartEodItemTableRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $MovingAverageDayTableRowDefinitionTable(this.attachedDatabase,
-      [this._alias]);
-  static const VerificationMeta _dateMeta = const VerificationMeta('date');
-  @override
-  late final GeneratedColumn<String> date = GeneratedColumn<String>(
-      'date', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
+  $ChartEodItemTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _symbolMeta = const VerificationMeta('symbol');
   @override
   late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
       'symbol', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _periodMeta = const VerificationMeta('period');
+  static const VerificationMeta _fromMeta = const VerificationMeta('from');
   @override
-  late final GeneratedColumn<int> period = GeneratedColumn<int>(
-      'period', aliasedName, false,
-      type: DriftSqlType.int, requiredDuringInsert: true);
+  late final GeneratedColumn<String> from = GeneratedColumn<String>(
+      'from', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _toMeta = const VerificationMeta('to');
+  @override
+  late final GeneratedColumn<String> to = GeneratedColumn<String>(
+      'to', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _dateMeta = const VerificationMeta('date');
+  @override
+  late final GeneratedColumn<String> date = GeneratedColumn<String>(
+      'date', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _openMeta = const VerificationMeta('open');
   @override
   late final GeneratedColumn<double> open = GeneratedColumn<double>(
@@ -8007,15 +8009,49 @@ class $MovingAverageDayTableRowDefinitionTable
   late final GeneratedColumn<double> close = GeneratedColumn<double>(
       'close', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _adjCloseMeta =
+      const VerificationMeta('adjClose');
+  @override
+  late final GeneratedColumn<double> adjClose = GeneratedColumn<double>(
+      'adj_close', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _volumeMeta = const VerificationMeta('volume');
   @override
   late final GeneratedColumn<int> volume = GeneratedColumn<int>(
       'volume', aliasedName, true,
       type: DriftSqlType.int, requiredDuringInsert: false);
-  static const VerificationMeta _emaMeta = const VerificationMeta('ema');
+  static const VerificationMeta _unadjustedVolumeMeta =
+      const VerificationMeta('unadjustedVolume');
   @override
-  late final GeneratedColumn<double> ema = GeneratedColumn<double>(
-      'ema', aliasedName, true,
+  late final GeneratedColumn<int> unadjustedVolume = GeneratedColumn<int>(
+      'unadjusted_volume', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
+  static const VerificationMeta _changeMeta = const VerificationMeta('change');
+  @override
+  late final GeneratedColumn<double> change = GeneratedColumn<double>(
+      'change', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _changePercentMeta =
+      const VerificationMeta('changePercent');
+  @override
+  late final GeneratedColumn<double> changePercent = GeneratedColumn<double>(
+      'change_percent', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _vwapMeta = const VerificationMeta('vwap');
+  @override
+  late final GeneratedColumn<double> vwap = GeneratedColumn<double>(
+      'vwap', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _labelMeta = const VerificationMeta('label');
+  @override
+  late final GeneratedColumn<String> label = GeneratedColumn<String>(
+      'label', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _changeOverTimeMeta =
+      const VerificationMeta('changeOverTime');
+  @override
+  late final GeneratedColumn<double> changeOverTime = GeneratedColumn<double>(
+      'change_over_time', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _expiresMeta =
       const VerificationMeta('expires');
@@ -8024,36 +8060,58 @@ class $MovingAverageDayTableRowDefinitionTable
       'expires', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns =>
-      [date, symbol, period, open, high, low, close, volume, ema, expires];
+  List<GeneratedColumn> get $columns => [
+        symbol,
+        from,
+        to,
+        date,
+        open,
+        high,
+        low,
+        close,
+        adjClose,
+        volume,
+        unadjustedVolume,
+        change,
+        changePercent,
+        vwap,
+        label,
+        changeOverTime,
+        expires
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'moving_average_day_table_row_definition';
+  static const String $name = 'chart_eod_item_table_row_definition';
   @override
   VerificationContext validateIntegrity(
-      Insertable<MovingAverageDayTableRow> instance,
+      Insertable<ChartEodItemTableRow> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
-    if (data.containsKey('date')) {
-      context.handle(
-          _dateMeta, date.isAcceptableOrUnknown(data['date']!, _dateMeta));
-    } else if (isInserting) {
-      context.missing(_dateMeta);
-    }
     if (data.containsKey('symbol')) {
       context.handle(_symbolMeta,
           symbol.isAcceptableOrUnknown(data['symbol']!, _symbolMeta));
     } else if (isInserting) {
       context.missing(_symbolMeta);
     }
-    if (data.containsKey('period')) {
-      context.handle(_periodMeta,
-          period.isAcceptableOrUnknown(data['period']!, _periodMeta));
+    if (data.containsKey('from')) {
+      context.handle(
+          _fromMeta, from.isAcceptableOrUnknown(data['from']!, _fromMeta));
     } else if (isInserting) {
-      context.missing(_periodMeta);
+      context.missing(_fromMeta);
+    }
+    if (data.containsKey('to')) {
+      context.handle(_toMeta, to.isAcceptableOrUnknown(data['to']!, _toMeta));
+    } else if (isInserting) {
+      context.missing(_toMeta);
+    }
+    if (data.containsKey('date')) {
+      context.handle(
+          _dateMeta, date.isAcceptableOrUnknown(data['date']!, _dateMeta));
+    } else if (isInserting) {
+      context.missing(_dateMeta);
     }
     if (data.containsKey('open')) {
       context.handle(
@@ -8071,13 +8129,43 @@ class $MovingAverageDayTableRowDefinitionTable
       context.handle(
           _closeMeta, close.isAcceptableOrUnknown(data['close']!, _closeMeta));
     }
+    if (data.containsKey('adj_close')) {
+      context.handle(_adjCloseMeta,
+          adjClose.isAcceptableOrUnknown(data['adj_close']!, _adjCloseMeta));
+    }
     if (data.containsKey('volume')) {
       context.handle(_volumeMeta,
           volume.isAcceptableOrUnknown(data['volume']!, _volumeMeta));
     }
-    if (data.containsKey('ema')) {
+    if (data.containsKey('unadjusted_volume')) {
       context.handle(
-          _emaMeta, ema.isAcceptableOrUnknown(data['ema']!, _emaMeta));
+          _unadjustedVolumeMeta,
+          unadjustedVolume.isAcceptableOrUnknown(
+              data['unadjusted_volume']!, _unadjustedVolumeMeta));
+    }
+    if (data.containsKey('change')) {
+      context.handle(_changeMeta,
+          change.isAcceptableOrUnknown(data['change']!, _changeMeta));
+    }
+    if (data.containsKey('change_percent')) {
+      context.handle(
+          _changePercentMeta,
+          changePercent.isAcceptableOrUnknown(
+              data['change_percent']!, _changePercentMeta));
+    }
+    if (data.containsKey('vwap')) {
+      context.handle(
+          _vwapMeta, vwap.isAcceptableOrUnknown(data['vwap']!, _vwapMeta));
+    }
+    if (data.containsKey('label')) {
+      context.handle(
+          _labelMeta, label.isAcceptableOrUnknown(data['label']!, _labelMeta));
+    }
+    if (data.containsKey('change_over_time')) {
+      context.handle(
+          _changeOverTimeMeta,
+          changeOverTime.isAcceptableOrUnknown(
+              data['change_over_time']!, _changeOverTimeMeta));
     }
     if (data.containsKey('expires')) {
       context.handle(_expiresMeta,
@@ -8089,18 +8177,19 @@ class $MovingAverageDayTableRowDefinitionTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {symbol, date, period};
+  Set<GeneratedColumn> get $primaryKey => {symbol, date, from, to};
   @override
-  MovingAverageDayTableRow map(Map<String, dynamic> data,
-      {String? tablePrefix}) {
+  ChartEodItemTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return MovingAverageDayTableRow(
-      date: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}date'])!,
+    return ChartEodItemTableRow(
       symbol: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}symbol'])!,
-      period: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}period'])!,
+      from: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}from'])!,
+      to: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}to'])!,
+      date: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}date'])!,
       open: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}open']),
       high: attachedDatabase.typeMapping
@@ -8109,50 +8198,77 @@ class $MovingAverageDayTableRowDefinitionTable
           .read(DriftSqlType.double, data['${effectivePrefix}low']),
       close: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}close']),
+      adjClose: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}adj_close']),
       volume: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}volume']),
-      ema: attachedDatabase.typeMapping
-          .read(DriftSqlType.double, data['${effectivePrefix}ema']),
+      unadjustedVolume: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}unadjusted_volume']),
+      change: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}change']),
+      changePercent: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}change_percent']),
+      vwap: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}vwap']),
+      label: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}label']),
+      changeOverTime: attachedDatabase.typeMapping.read(
+          DriftSqlType.double, data['${effectivePrefix}change_over_time']),
       expires: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}expires'])!,
     );
   }
 
   @override
-  $MovingAverageDayTableRowDefinitionTable createAlias(String alias) {
-    return $MovingAverageDayTableRowDefinitionTable(attachedDatabase, alias);
+  $ChartEodItemTableRowDefinitionTable createAlias(String alias) {
+    return $ChartEodItemTableRowDefinitionTable(attachedDatabase, alias);
   }
 }
 
-class MovingAverageDayTableRow extends DataClass
-    implements Insertable<MovingAverageDayTableRow> {
-  final String date;
+class ChartEodItemTableRow extends DataClass
+    implements Insertable<ChartEodItemTableRow> {
   final String symbol;
-  final int period;
+  final String from;
+  final String to;
+  final String date;
   final double? open;
   final double? high;
   final double? low;
   final double? close;
+  final double? adjClose;
   final int? volume;
-  final double? ema;
+  final int? unadjustedVolume;
+  final double? change;
+  final double? changePercent;
+  final double? vwap;
+  final String? label;
+  final double? changeOverTime;
   final DateTime expires;
-  const MovingAverageDayTableRow(
-      {required this.date,
-      required this.symbol,
-      required this.period,
+  const ChartEodItemTableRow(
+      {required this.symbol,
+      required this.from,
+      required this.to,
+      required this.date,
       this.open,
       this.high,
       this.low,
       this.close,
+      this.adjClose,
       this.volume,
-      this.ema,
+      this.unadjustedVolume,
+      this.change,
+      this.changePercent,
+      this.vwap,
+      this.label,
+      this.changeOverTime,
       required this.expires});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    map['date'] = Variable<String>(date);
     map['symbol'] = Variable<String>(symbol);
-    map['period'] = Variable<int>(period);
+    map['from'] = Variable<String>(from);
+    map['to'] = Variable<String>(to);
+    map['date'] = Variable<String>(date);
     if (!nullToAbsent || open != null) {
       map['open'] = Variable<double>(open);
     }
@@ -8165,46 +8281,88 @@ class MovingAverageDayTableRow extends DataClass
     if (!nullToAbsent || close != null) {
       map['close'] = Variable<double>(close);
     }
+    if (!nullToAbsent || adjClose != null) {
+      map['adj_close'] = Variable<double>(adjClose);
+    }
     if (!nullToAbsent || volume != null) {
       map['volume'] = Variable<int>(volume);
     }
-    if (!nullToAbsent || ema != null) {
-      map['ema'] = Variable<double>(ema);
+    if (!nullToAbsent || unadjustedVolume != null) {
+      map['unadjusted_volume'] = Variable<int>(unadjustedVolume);
+    }
+    if (!nullToAbsent || change != null) {
+      map['change'] = Variable<double>(change);
+    }
+    if (!nullToAbsent || changePercent != null) {
+      map['change_percent'] = Variable<double>(changePercent);
+    }
+    if (!nullToAbsent || vwap != null) {
+      map['vwap'] = Variable<double>(vwap);
+    }
+    if (!nullToAbsent || label != null) {
+      map['label'] = Variable<String>(label);
+    }
+    if (!nullToAbsent || changeOverTime != null) {
+      map['change_over_time'] = Variable<double>(changeOverTime);
     }
     map['expires'] = Variable<DateTime>(expires);
     return map;
   }
 
-  MovingAverageDayTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
-    return MovingAverageDayTableRowDefinitionCompanion(
-      date: Value(date),
+  ChartEodItemTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
+    return ChartEodItemTableRowDefinitionCompanion(
       symbol: Value(symbol),
-      period: Value(period),
+      from: Value(from),
+      to: Value(to),
+      date: Value(date),
       open: open == null && nullToAbsent ? const Value.absent() : Value(open),
       high: high == null && nullToAbsent ? const Value.absent() : Value(high),
       low: low == null && nullToAbsent ? const Value.absent() : Value(low),
       close:
           close == null && nullToAbsent ? const Value.absent() : Value(close),
+      adjClose: adjClose == null && nullToAbsent
+          ? const Value.absent()
+          : Value(adjClose),
       volume:
           volume == null && nullToAbsent ? const Value.absent() : Value(volume),
-      ema: ema == null && nullToAbsent ? const Value.absent() : Value(ema),
+      unadjustedVolume: unadjustedVolume == null && nullToAbsent
+          ? const Value.absent()
+          : Value(unadjustedVolume),
+      change:
+          change == null && nullToAbsent ? const Value.absent() : Value(change),
+      changePercent: changePercent == null && nullToAbsent
+          ? const Value.absent()
+          : Value(changePercent),
+      vwap: vwap == null && nullToAbsent ? const Value.absent() : Value(vwap),
+      label:
+          label == null && nullToAbsent ? const Value.absent() : Value(label),
+      changeOverTime: changeOverTime == null && nullToAbsent
+          ? const Value.absent()
+          : Value(changeOverTime),
       expires: Value(expires),
     );
   }
 
-  factory MovingAverageDayTableRow.fromJson(Map<String, dynamic> json,
+  factory ChartEodItemTableRow.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return MovingAverageDayTableRow(
-      date: serializer.fromJson<String>(json['date']),
+    return ChartEodItemTableRow(
       symbol: serializer.fromJson<String>(json['symbol']),
-      period: serializer.fromJson<int>(json['period']),
+      from: serializer.fromJson<String>(json['from']),
+      to: serializer.fromJson<String>(json['to']),
+      date: serializer.fromJson<String>(json['date']),
       open: serializer.fromJson<double?>(json['open']),
       high: serializer.fromJson<double?>(json['high']),
       low: serializer.fromJson<double?>(json['low']),
       close: serializer.fromJson<double?>(json['close']),
+      adjClose: serializer.fromJson<double?>(json['adjClose']),
       volume: serializer.fromJson<int?>(json['volume']),
-      ema: serializer.fromJson<double?>(json['ema']),
+      unadjustedVolume: serializer.fromJson<int?>(json['unadjustedVolume']),
+      change: serializer.fromJson<double?>(json['change']),
+      changePercent: serializer.fromJson<double?>(json['changePercent']),
+      vwap: serializer.fromJson<double?>(json['vwap']),
+      label: serializer.fromJson<String?>(json['label']),
+      changeOverTime: serializer.fromJson<double?>(json['changeOverTime']),
       expires: serializer.fromJson<DateTime>(json['expires']),
     );
   }
@@ -8212,54 +8370,86 @@ class MovingAverageDayTableRow extends DataClass
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
-      'date': serializer.toJson<String>(date),
       'symbol': serializer.toJson<String>(symbol),
-      'period': serializer.toJson<int>(period),
+      'from': serializer.toJson<String>(from),
+      'to': serializer.toJson<String>(to),
+      'date': serializer.toJson<String>(date),
       'open': serializer.toJson<double?>(open),
       'high': serializer.toJson<double?>(high),
       'low': serializer.toJson<double?>(low),
       'close': serializer.toJson<double?>(close),
+      'adjClose': serializer.toJson<double?>(adjClose),
       'volume': serializer.toJson<int?>(volume),
-      'ema': serializer.toJson<double?>(ema),
+      'unadjustedVolume': serializer.toJson<int?>(unadjustedVolume),
+      'change': serializer.toJson<double?>(change),
+      'changePercent': serializer.toJson<double?>(changePercent),
+      'vwap': serializer.toJson<double?>(vwap),
+      'label': serializer.toJson<String?>(label),
+      'changeOverTime': serializer.toJson<double?>(changeOverTime),
       'expires': serializer.toJson<DateTime>(expires),
     };
   }
 
-  MovingAverageDayTableRow copyWith(
-          {String? date,
-          String? symbol,
-          int? period,
+  ChartEodItemTableRow copyWith(
+          {String? symbol,
+          String? from,
+          String? to,
+          String? date,
           Value<double?> open = const Value.absent(),
           Value<double?> high = const Value.absent(),
           Value<double?> low = const Value.absent(),
           Value<double?> close = const Value.absent(),
+          Value<double?> adjClose = const Value.absent(),
           Value<int?> volume = const Value.absent(),
-          Value<double?> ema = const Value.absent(),
+          Value<int?> unadjustedVolume = const Value.absent(),
+          Value<double?> change = const Value.absent(),
+          Value<double?> changePercent = const Value.absent(),
+          Value<double?> vwap = const Value.absent(),
+          Value<String?> label = const Value.absent(),
+          Value<double?> changeOverTime = const Value.absent(),
           DateTime? expires}) =>
-      MovingAverageDayTableRow(
-        date: date ?? this.date,
+      ChartEodItemTableRow(
         symbol: symbol ?? this.symbol,
-        period: period ?? this.period,
+        from: from ?? this.from,
+        to: to ?? this.to,
+        date: date ?? this.date,
         open: open.present ? open.value : this.open,
         high: high.present ? high.value : this.high,
         low: low.present ? low.value : this.low,
         close: close.present ? close.value : this.close,
+        adjClose: adjClose.present ? adjClose.value : this.adjClose,
         volume: volume.present ? volume.value : this.volume,
-        ema: ema.present ? ema.value : this.ema,
+        unadjustedVolume: unadjustedVolume.present
+            ? unadjustedVolume.value
+            : this.unadjustedVolume,
+        change: change.present ? change.value : this.change,
+        changePercent:
+            changePercent.present ? changePercent.value : this.changePercent,
+        vwap: vwap.present ? vwap.value : this.vwap,
+        label: label.present ? label.value : this.label,
+        changeOverTime:
+            changeOverTime.present ? changeOverTime.value : this.changeOverTime,
         expires: expires ?? this.expires,
       );
   @override
   String toString() {
-    return (StringBuffer('MovingAverageDayTableRow(')
-          ..write('date: $date, ')
+    return (StringBuffer('ChartEodItemTableRow(')
           ..write('symbol: $symbol, ')
-          ..write('period: $period, ')
+          ..write('from: $from, ')
+          ..write('to: $to, ')
+          ..write('date: $date, ')
           ..write('open: $open, ')
           ..write('high: $high, ')
           ..write('low: $low, ')
           ..write('close: $close, ')
+          ..write('adjClose: $adjClose, ')
           ..write('volume: $volume, ')
-          ..write('ema: $ema, ')
+          ..write('unadjustedVolume: $unadjustedVolume, ')
+          ..write('change: $change, ')
+          ..write('changePercent: $changePercent, ')
+          ..write('vwap: $vwap, ')
+          ..write('label: $label, ')
+          ..write('changeOverTime: $changeOverTime, ')
           ..write('expires: $expires')
           ..write(')'))
         .toString();
@@ -8267,115 +8457,188 @@ class MovingAverageDayTableRow extends DataClass
 
   @override
   int get hashCode => Object.hash(
-      date, symbol, period, open, high, low, close, volume, ema, expires);
+      symbol,
+      from,
+      to,
+      date,
+      open,
+      high,
+      low,
+      close,
+      adjClose,
+      volume,
+      unadjustedVolume,
+      change,
+      changePercent,
+      vwap,
+      label,
+      changeOverTime,
+      expires);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is MovingAverageDayTableRow &&
-          other.date == this.date &&
+      (other is ChartEodItemTableRow &&
           other.symbol == this.symbol &&
-          other.period == this.period &&
+          other.from == this.from &&
+          other.to == this.to &&
+          other.date == this.date &&
           other.open == this.open &&
           other.high == this.high &&
           other.low == this.low &&
           other.close == this.close &&
+          other.adjClose == this.adjClose &&
           other.volume == this.volume &&
-          other.ema == this.ema &&
+          other.unadjustedVolume == this.unadjustedVolume &&
+          other.change == this.change &&
+          other.changePercent == this.changePercent &&
+          other.vwap == this.vwap &&
+          other.label == this.label &&
+          other.changeOverTime == this.changeOverTime &&
           other.expires == this.expires);
 }
 
-class MovingAverageDayTableRowDefinitionCompanion
-    extends UpdateCompanion<MovingAverageDayTableRow> {
-  final Value<String> date;
+class ChartEodItemTableRowDefinitionCompanion
+    extends UpdateCompanion<ChartEodItemTableRow> {
   final Value<String> symbol;
-  final Value<int> period;
+  final Value<String> from;
+  final Value<String> to;
+  final Value<String> date;
   final Value<double?> open;
   final Value<double?> high;
   final Value<double?> low;
   final Value<double?> close;
+  final Value<double?> adjClose;
   final Value<int?> volume;
-  final Value<double?> ema;
+  final Value<int?> unadjustedVolume;
+  final Value<double?> change;
+  final Value<double?> changePercent;
+  final Value<double?> vwap;
+  final Value<String?> label;
+  final Value<double?> changeOverTime;
   final Value<DateTime> expires;
   final Value<int> rowid;
-  const MovingAverageDayTableRowDefinitionCompanion({
-    this.date = const Value.absent(),
+  const ChartEodItemTableRowDefinitionCompanion({
     this.symbol = const Value.absent(),
-    this.period = const Value.absent(),
+    this.from = const Value.absent(),
+    this.to = const Value.absent(),
+    this.date = const Value.absent(),
     this.open = const Value.absent(),
     this.high = const Value.absent(),
     this.low = const Value.absent(),
     this.close = const Value.absent(),
+    this.adjClose = const Value.absent(),
     this.volume = const Value.absent(),
-    this.ema = const Value.absent(),
+    this.unadjustedVolume = const Value.absent(),
+    this.change = const Value.absent(),
+    this.changePercent = const Value.absent(),
+    this.vwap = const Value.absent(),
+    this.label = const Value.absent(),
+    this.changeOverTime = const Value.absent(),
     this.expires = const Value.absent(),
     this.rowid = const Value.absent(),
   });
-  MovingAverageDayTableRowDefinitionCompanion.insert({
-    required String date,
+  ChartEodItemTableRowDefinitionCompanion.insert({
     required String symbol,
-    required int period,
+    required String from,
+    required String to,
+    required String date,
     this.open = const Value.absent(),
     this.high = const Value.absent(),
     this.low = const Value.absent(),
     this.close = const Value.absent(),
+    this.adjClose = const Value.absent(),
     this.volume = const Value.absent(),
-    this.ema = const Value.absent(),
+    this.unadjustedVolume = const Value.absent(),
+    this.change = const Value.absent(),
+    this.changePercent = const Value.absent(),
+    this.vwap = const Value.absent(),
+    this.label = const Value.absent(),
+    this.changeOverTime = const Value.absent(),
     required DateTime expires,
     this.rowid = const Value.absent(),
-  })  : date = Value(date),
-        symbol = Value(symbol),
-        period = Value(period),
+  })  : symbol = Value(symbol),
+        from = Value(from),
+        to = Value(to),
+        date = Value(date),
         expires = Value(expires);
-  static Insertable<MovingAverageDayTableRow> custom({
-    Expression<String>? date,
+  static Insertable<ChartEodItemTableRow> custom({
     Expression<String>? symbol,
-    Expression<int>? period,
+    Expression<String>? from,
+    Expression<String>? to,
+    Expression<String>? date,
     Expression<double>? open,
     Expression<double>? high,
     Expression<double>? low,
     Expression<double>? close,
+    Expression<double>? adjClose,
     Expression<int>? volume,
-    Expression<double>? ema,
+    Expression<int>? unadjustedVolume,
+    Expression<double>? change,
+    Expression<double>? changePercent,
+    Expression<double>? vwap,
+    Expression<String>? label,
+    Expression<double>? changeOverTime,
     Expression<DateTime>? expires,
     Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
-      if (date != null) 'date': date,
       if (symbol != null) 'symbol': symbol,
-      if (period != null) 'period': period,
+      if (from != null) 'from': from,
+      if (to != null) 'to': to,
+      if (date != null) 'date': date,
       if (open != null) 'open': open,
       if (high != null) 'high': high,
       if (low != null) 'low': low,
       if (close != null) 'close': close,
+      if (adjClose != null) 'adj_close': adjClose,
       if (volume != null) 'volume': volume,
-      if (ema != null) 'ema': ema,
+      if (unadjustedVolume != null) 'unadjusted_volume': unadjustedVolume,
+      if (change != null) 'change': change,
+      if (changePercent != null) 'change_percent': changePercent,
+      if (vwap != null) 'vwap': vwap,
+      if (label != null) 'label': label,
+      if (changeOverTime != null) 'change_over_time': changeOverTime,
       if (expires != null) 'expires': expires,
       if (rowid != null) 'rowid': rowid,
     });
   }
 
-  MovingAverageDayTableRowDefinitionCompanion copyWith(
-      {Value<String>? date,
-      Value<String>? symbol,
-      Value<int>? period,
+  ChartEodItemTableRowDefinitionCompanion copyWith(
+      {Value<String>? symbol,
+      Value<String>? from,
+      Value<String>? to,
+      Value<String>? date,
       Value<double?>? open,
       Value<double?>? high,
       Value<double?>? low,
       Value<double?>? close,
+      Value<double?>? adjClose,
       Value<int?>? volume,
-      Value<double?>? ema,
+      Value<int?>? unadjustedVolume,
+      Value<double?>? change,
+      Value<double?>? changePercent,
+      Value<double?>? vwap,
+      Value<String?>? label,
+      Value<double?>? changeOverTime,
       Value<DateTime>? expires,
       Value<int>? rowid}) {
-    return MovingAverageDayTableRowDefinitionCompanion(
-      date: date ?? this.date,
+    return ChartEodItemTableRowDefinitionCompanion(
       symbol: symbol ?? this.symbol,
-      period: period ?? this.period,
+      from: from ?? this.from,
+      to: to ?? this.to,
+      date: date ?? this.date,
       open: open ?? this.open,
       high: high ?? this.high,
       low: low ?? this.low,
       close: close ?? this.close,
+      adjClose: adjClose ?? this.adjClose,
       volume: volume ?? this.volume,
-      ema: ema ?? this.ema,
+      unadjustedVolume: unadjustedVolume ?? this.unadjustedVolume,
+      change: change ?? this.change,
+      changePercent: changePercent ?? this.changePercent,
+      vwap: vwap ?? this.vwap,
+      label: label ?? this.label,
+      changeOverTime: changeOverTime ?? this.changeOverTime,
       expires: expires ?? this.expires,
       rowid: rowid ?? this.rowid,
     );
@@ -8384,14 +8647,17 @@ class MovingAverageDayTableRowDefinitionCompanion
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
-    if (date.present) {
-      map['date'] = Variable<String>(date.value);
-    }
     if (symbol.present) {
       map['symbol'] = Variable<String>(symbol.value);
     }
-    if (period.present) {
-      map['period'] = Variable<int>(period.value);
+    if (from.present) {
+      map['from'] = Variable<String>(from.value);
+    }
+    if (to.present) {
+      map['to'] = Variable<String>(to.value);
+    }
+    if (date.present) {
+      map['date'] = Variable<String>(date.value);
     }
     if (open.present) {
       map['open'] = Variable<double>(open.value);
@@ -8405,11 +8671,29 @@ class MovingAverageDayTableRowDefinitionCompanion
     if (close.present) {
       map['close'] = Variable<double>(close.value);
     }
+    if (adjClose.present) {
+      map['adj_close'] = Variable<double>(adjClose.value);
+    }
     if (volume.present) {
       map['volume'] = Variable<int>(volume.value);
     }
-    if (ema.present) {
-      map['ema'] = Variable<double>(ema.value);
+    if (unadjustedVolume.present) {
+      map['unadjusted_volume'] = Variable<int>(unadjustedVolume.value);
+    }
+    if (change.present) {
+      map['change'] = Variable<double>(change.value);
+    }
+    if (changePercent.present) {
+      map['change_percent'] = Variable<double>(changePercent.value);
+    }
+    if (vwap.present) {
+      map['vwap'] = Variable<double>(vwap.value);
+    }
+    if (label.present) {
+      map['label'] = Variable<String>(label.value);
+    }
+    if (changeOverTime.present) {
+      map['change_over_time'] = Variable<double>(changeOverTime.value);
     }
     if (expires.present) {
       map['expires'] = Variable<DateTime>(expires.value);
@@ -8422,16 +8706,23 @@ class MovingAverageDayTableRowDefinitionCompanion
 
   @override
   String toString() {
-    return (StringBuffer('MovingAverageDayTableRowDefinitionCompanion(')
-          ..write('date: $date, ')
+    return (StringBuffer('ChartEodItemTableRowDefinitionCompanion(')
           ..write('symbol: $symbol, ')
-          ..write('period: $period, ')
+          ..write('from: $from, ')
+          ..write('to: $to, ')
+          ..write('date: $date, ')
           ..write('open: $open, ')
           ..write('high: $high, ')
           ..write('low: $low, ')
           ..write('close: $close, ')
+          ..write('adjClose: $adjClose, ')
           ..write('volume: $volume, ')
-          ..write('ema: $ema, ')
+          ..write('unadjustedVolume: $unadjustedVolume, ')
+          ..write('change: $change, ')
+          ..write('changePercent: $changePercent, ')
+          ..write('vwap: $vwap, ')
+          ..write('label: $label, ')
+          ..write('changeOverTime: $changeOverTime, ')
           ..write('expires: $expires, ')
           ..write('rowid: $rowid')
           ..write(')'))
@@ -8453,9 +8744,9 @@ abstract class _$DriftDb extends GeneratedDatabase {
   late final $IncomeStatementTableRowDefinitionTable
       incomeStatementTableRowDefinition =
       $IncomeStatementTableRowDefinitionTable(this);
-  late final $MovingAverageDayTableRowDefinitionTable
-      movingAverageDayTableRowDefinition =
-      $MovingAverageDayTableRowDefinitionTable(this);
+  late final $ChartEodItemTableRowDefinitionTable
+      chartEodItemTableRowDefinition =
+      $ChartEodItemTableRowDefinitionTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -8465,6 +8756,6 @@ abstract class _$DriftDb extends GeneratedDatabase {
         balanceSheetStatementTableRowDefinition,
         cashFlowStatementTableRowDefinition,
         incomeStatementTableRowDefinition,
-        movingAverageDayTableRowDefinition
+        chartEodItemTableRowDefinition
       ];
 }
