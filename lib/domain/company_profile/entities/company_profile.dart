@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stockz/domain/company_profile/value_objects/company_country_value_object.dart';
-import 'package:stockz/domain/company_profile/value_objects/company_exchange_value_object.dart';
 import 'package:stockz/domain/company_profile/value_objects/company_industry_value_object.dart';
 import 'package:stockz/domain/company_profile/value_objects/company_sector_value_object.dart';
 import 'package:stockz/domain/core/value_objects/bool_value_object.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
+import 'package:stockz/domain/core/value_objects/exchange_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
 import 'package:stockz/domain/core/value_objects/rage_value_object.dart';
 import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
@@ -28,7 +28,7 @@ class CompanyProfile extends Equatable {
   final StringIdValueObject cik;
   final StringIdValueObject isin;
   final StringIdValueObject cusip;
-  final CompanyExchangeValueObject exchange;
+  final ExchangeValueObject exchange;
   final TextValueObject exchangeName;
   final TextValueObject exchangeShortName;
   final CompanyIndustryValueObject industry;
@@ -156,7 +156,7 @@ class _$InvalidCompanyProfile extends CompanyProfile {
           cik: const StringIdValueObject.invalid(),
           isin: const StringIdValueObject.invalid(),
           cusip: const StringIdValueObject.invalid(),
-          exchange: const CompanyExchangeValueObject.invalid(),
+          exchange: const ExchangeValueObject.invalid(),
           exchangeName: const TextValueObject.invalid(),
           exchangeShortName: const TextValueObject.invalid(),
           industry: const CompanyIndustryValueObject.invalid(),

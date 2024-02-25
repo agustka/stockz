@@ -39,10 +39,19 @@ class BalanceSheetStatements extends Equatable implements Statements {
   }
 
   double? findLongTermDebtToAssetsRatio({required int year}) {
-    final BalanceSheetStatement balanceSheetStatement = getWithYear(year);
+    final BalanceSheetStatement statement = getWithYear(year);
 
-    if (!balanceSheetStatement.isInvalid) {
-      return balanceSheetStatement.longTermDebt.get.toDouble() / balanceSheetStatement.totalAssets.get.toDouble();
+    if (!statement.isInvalid) {
+      return statement.longTermDebt.get.toDouble() / statement.totalAssets.get.toDouble();
+    }
+    return null;
+  }
+
+  double? findTotalAssets(int year) {
+    final BalanceSheetStatement statement = getWithYear(year);
+
+    if (!statement.isInvalid) {
+      return statement.totalAssets.get.toDouble();
     }
     return null;
   }

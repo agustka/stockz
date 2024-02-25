@@ -2,16 +2,16 @@ import 'package:stockz/domain/core/value_objects/failures/failure.dart';
 import 'package:stockz/domain/core/value_objects/value_object.dart';
 import 'package:stockz/infrastructure/core/error_handling/error_handler.dart';
 
-class CompanyExchangeValueObject extends ValueObject<CompanyExchange> {
+class ExchangeValueObject extends ValueObject<CompanyExchange> {
   CompanyExchange get get => getOr(CompanyExchange.invalid);
 
-  factory CompanyExchangeValueObject(String? input, {bool logError = true}) {
-    return CompanyExchangeValueObject._(_parse(input, logError: logError), _validate(input));
+  factory ExchangeValueObject(String? input, {bool logError = true}) {
+    return ExchangeValueObject._(_parse(input, logError: logError), _validate(input));
   }
 
-  const factory CompanyExchangeValueObject.invalid() = _$InvalidCardIssuer;
+  const factory ExchangeValueObject.invalid() = _$InvalidCardIssuer;
 
-  const CompanyExchangeValueObject._(CompanyExchange super.input, Failure<String>? super.failure);
+  const ExchangeValueObject._(CompanyExchange super.input, Failure<String>? super.failure);
 
   static Failure<String>? _validate(String? input) {
     if (input == null) {
@@ -47,7 +47,7 @@ class CompanyExchangeValueObject extends ValueObject<CompanyExchange> {
   }
 }
 
-class _$InvalidCardIssuer extends CompanyExchangeValueObject {
+class _$InvalidCardIssuer extends ExchangeValueObject {
   const _$InvalidCardIssuer()
       : super._(CompanyExchange.invalid, const Failure.invalidValue(message: "Null/invalid value"));
 }

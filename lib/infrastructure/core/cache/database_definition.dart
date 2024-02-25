@@ -13,6 +13,7 @@ import 'package:stockz/infrastructure/company_profile/cache/tables/company_profi
 import 'package:stockz/infrastructure/core/cache/database_module.dart';
 import 'package:stockz/infrastructure/core/error_handling/error_handler.dart';
 import 'package:stockz/infrastructure/income_statement/cache/tables/income_statement_definition.dart';
+import 'package:stockz/infrastructure/stock_listing/cache/tables/stock_listing_definition.dart';
 import 'package:stockz/setup.dart';
 
 part 'database_definition.g.dart';
@@ -26,13 +27,14 @@ part 'database_definition.g.dart';
     CashFlowStatementTableRowDefinition,
     IncomeStatementTableRowDefinition,
     ChartEodItemTableRowDefinition,
+    StockListingTableRowDefinition,
   ],
 )
 class DriftDb extends _$DriftDb with AnalyticsHelper {
   DriftDb({required QueryExecutor executor}) : super(executor);
 
   @override
-  int get schemaVersion => 3;
+  int get schemaVersion => 4;
 
   @override
   MigrationStrategy get migration => destructiveFallback;

@@ -1,0 +1,58 @@
+import 'dart:async';
+
+import 'package:injectable/injectable.dart';
+import 'package:stockz/domain/core/value_objects/failures/failure.dart';
+import 'package:stockz/domain/core/value_objects/payload.dart';
+import 'package:stockz/domain/stock_listing/entities/stock_listings.dart';
+import 'package:stockz/infrastructure/core/cache/base_cache.dart';
+import 'package:stockz/infrastructure/core/cache/cache.dart';
+import 'package:stockz/infrastructure/stock_listing/cache/i_stock_listings_cache.dart';
+import 'package:stockz/infrastructure/stock_listing/models/stock_listing_model.dart';
+import 'package:stockz/infrastructure/stock_listing/repository/i_stock_listings_repository.dart';
+import 'package:stockz/infrastructure/stock_listing/service/i_stock_listings_service.dart';
+
+@LazySingleton(as: IStockListingsRepository)
+class StockListingsRepository implements IStockListingsRepository {
+  final IStockListingsService _service;
+  final IStockListingsCache _cache;
+
+  StockListingsRepository(this._service, this._cache);
+
+  @override
+  Future<Payload<StockListings>> getStockListings({bool forceGet = false}) async {
+    if (forceGet) {
+      return _fetchStockListings();
+    }
+    return _cache.getStockListings(policy: CachingPolicy.onlyServeNotExpired).then((
+      Cache<List<StockListingModel>> cache,
+    ) {
+      return cache.maybeMap(
+        available: (CacheAvailable<List<StockListingModel>> available) {
+          return Payload.success(
+            StockListings(
+              listings: available.data.map((StockListingModel e) => e.toDomain()).toList(),
+            ),
+          );
+        },
+        orElse: () => _fetchStockListings(),
+      );
+    });
+  }
+
+  Future<Payload<StockListings>> _fetchStockListings() async {
+    final Payload<List<StockListingModel>> payload = await _service.getStockListings();
+    return payload.fold(
+      (Failure failure) {
+        return Payload.failure(failure);
+      },
+      (List<StockListingModel> value) {
+        _cache.addStockListings(listings: value);
+        return Payload.success(
+          StockListings(
+            listings: value.map((StockListingModel e) => e.toDomain()).toList(),
+          ),
+        );
+      },
+    );
+  }
+}

@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 import 'package:stockz/application/overview/overview_cubit.dart';
+import 'package:stockz/domain/analysis_rules/f_score.dart';
+import 'package:stockz/domain/analysis_rules/magic_formula.dart';
 import 'package:stockz/domain/company/entities/company.dart';
 import 'package:stockz/domain/core/value_objects/failures/failure.dart';
 import 'package:stockz/domain/core/value_objects/payload.dart';
+import 'package:stockz/domain/stock_listing/entities/stock_listings.dart';
 import 'package:stockz/infrastructure/company/repository/i_company_repository.dart';
+import 'package:stockz/infrastructure/stock_listing/repository/i_stock_listings_repository.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 import 'package:stockz/setup.dart';
 
@@ -26,7 +30,7 @@ class _OverviewPageState extends State<OverviewPage> {
     super.initState();
     final List<String> tickers = [
       'MO',
-      /*'AMCX',
+      'AMCX',
       'ARCT',
       'ASRT',
       'BTMD',
@@ -74,8 +78,14 @@ class _OverviewPageState extends State<OverviewPage> {
       'UIS',
       'UNTC',
       'VYGR',
-      'ZYME',*/
+      'ZYME',
     ];
+
+    /*getIt<IStockListingsRepository>().getStockListings().then(
+      (Payload<StockListings> value) {
+        //print(value);
+      },
+    );*/
 
     for (final String ticker in tickers) {
       getIt<ICompanyRepository>().getCompany(symbol: ticker).then(
@@ -85,9 +95,9 @@ class _OverviewPageState extends State<OverviewPage> {
               Logger().e(failure);
             },
             (Company value) {
-              final double fScore = value.getPiotroskiFScore();
-              print("${value.profile.companyName.get} (${value.profile.symbol.get}): F score: $fScore");
-              print("${value.profile.companyName.get} (${value.profile.symbol.get}): EMA: ${value.chart.historical.first}");
+              final double fScore = FScore(company: value).getFScore();
+              final double magicFormula = MagicFormula(company: value).getMagicFormulaScore();
+              print("${value.profile.companyName.get} (${value.profile.symbol.get}): F score: $fScore, Magic formula score: $magicFormula");
             },
           );
         },

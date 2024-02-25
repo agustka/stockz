@@ -28,12 +28,21 @@ class IncomeStatements extends Equatable implements Statements {
   }
 
   double? findGrossMargin({required int year}) {
-    final IncomeStatement incomeStatement = getWithYear(year);
+    final IncomeStatement statement = getWithYear(year);
 
-    if (incomeStatement.valid) {
-      if (incomeStatement.revenue.get.toDouble() > 0) { // Ensure revenue is not zero to avoid division by zero
-        return incomeStatement.grossProfit.get.toDouble() / incomeStatement.revenue.get.toDouble();
+    if (statement.valid) {
+      if (statement.revenue.get.toDouble() > 0) { // Ensure revenue is not zero to avoid division by zero
+        return statement.grossProfit.get.toDouble() / statement.revenue.get.toDouble();
       }
+    }
+    return null;
+  }
+
+  double? findNetIncome(int year) {
+    final IncomeStatement statement = getWithYear(year);
+
+    if (statement.valid) {
+      return statement.netIncome.get.toDouble();
     }
     return null;
   }
