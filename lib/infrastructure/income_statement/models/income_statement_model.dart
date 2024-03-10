@@ -31,7 +31,7 @@ class IncomeStatementModel {
   final int? generalAndAdministrativeExpenses;
   final int? sellingAndMarketingExpenses;
   final int? sellingGeneralAndAdministrativeExpenses;
-  final int? otherExpenses;
+  final double? otherExpenses;
   final int? operatingExpenses;
   final int? costAndExpenses;
   final int? interestIncome;

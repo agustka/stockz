@@ -60,7 +60,7 @@ class _OverviewPageState extends State<OverviewPage> {
       'MAN',
       'MCFT',
       'MED',
-      'MLI',
+      /*'MLI',
       'NATH',
       'OCUP',
       'OMC',
@@ -81,16 +81,16 @@ class _OverviewPageState extends State<OverviewPage> {
       'UIS',
       'UNTC',
       'VYGR',
-      'ZYME',
+      'ZYME',*/
     ];
 
-    getIt<IStockListingsRepository>().getStockListings().then(
+    /*getIt<IStockListingsRepository>().getStockListings().then(
       (Payload<StockListings> value) {
         print(value);
       },
-    );
+    );*/
 
-    /*for (final String ticker in tickers) {
+    for (final String ticker in tickers) {
       getIt<ICompanyRepository>().getCompany(symbol: ticker).then(
         (Payload<Company> payload) {
           payload.fold(
@@ -105,7 +105,7 @@ class _OverviewPageState extends State<OverviewPage> {
           );
         },
       );
-    }*/
+    }
   }
 
   @override

@@ -18,7 +18,7 @@ class IncomeStatementTableRowDefinition extends Table {
   IntColumn get generalAndAdministrativeExpenses => integer().nullable()();
   IntColumn get sellingAndMarketingExpenses => integer().nullable()();
   IntColumn get sellingGeneralAndAdministrativeExpenses => integer().nullable()();
-  IntColumn get otherExpenses => integer().nullable()();
+  RealColumn get otherExpenses => real().nullable()();
   IntColumn get operatingExpenses => integer().nullable()();
   IntColumn get costAndExpenses => integer().nullable()();
   IntColumn get interestIncome => integer().nullable()();

@@ -32,13 +32,13 @@ import 'package:stockz/infrastructure/balance_sheet_statement/repository/i_balan
 import 'package:stockz/infrastructure/balance_sheet_statement/service/balance_sheet_statement_module.dart'
     as _i87;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/balance_sheet_statement_service.dart'
-    as _i15;
+    as _i16;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/chopper/balance_sheet_statement_chopper_service.dart'
     as _i4;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/i_balance_sheet_statement_service.dart'
     as _i14;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/offline/offline_balance_sheet_service.dart'
-    as _i16;
+    as _i15;
 import 'package:stockz/infrastructure/cash_flow_statement/cache/cash_flow_statement_cache.dart'
     as _i62;
 import 'package:stockz/infrastructure/cash_flow_statement/cache/cash_flow_statement_dao.dart'
@@ -52,13 +52,13 @@ import 'package:stockz/infrastructure/cash_flow_statement/repository/i_cash_flow
 import 'package:stockz/infrastructure/cash_flow_statement/service/cash_flow_statement_module.dart'
     as _i88;
 import 'package:stockz/infrastructure/cash_flow_statement/service/cash_flow_statement_service.dart'
-    as _i21;
+    as _i22;
 import 'package:stockz/infrastructure/cash_flow_statement/service/chopper/cash_flow_statement_chopper_service.dart'
     as _i5;
 import 'package:stockz/infrastructure/cash_flow_statement/service/i_cash_flow_statement_service.dart'
     as _i20;
 import 'package:stockz/infrastructure/cash_flow_statement/service/offline/offline_cash_flow_statement_service.dart'
-    as _i22;
+    as _i21;
 import 'package:stockz/infrastructure/chart/cache/chart_cache.dart' as _i66;
 import 'package:stockz/infrastructure/chart/cache/chart_dao.dart' as _i53;
 import 'package:stockz/infrastructure/chart/cache/i_chart_cache.dart' as _i65;
@@ -66,7 +66,7 @@ import 'package:stockz/infrastructure/chart/repository/chart_repository.dart'
     as _i68;
 import 'package:stockz/infrastructure/chart/repository/i_chart_repository.dart'
     as _i67;
-import 'package:stockz/infrastructure/chart/service/chart_service.dart' as _i25;
+import 'package:stockz/infrastructure/chart/service/chart_service.dart' as _i24;
 import 'package:stockz/infrastructure/chart/service/chopper/chart_chopper_service.dart'
     as _i6;
 import 'package:stockz/infrastructure/chart/service/i_chart_service.dart'
@@ -74,7 +74,7 @@ import 'package:stockz/infrastructure/chart/service/i_chart_service.dart'
 import 'package:stockz/infrastructure/chart/service/moving_average_service_module.dart'
     as _i89;
 import 'package:stockz/infrastructure/chart/service/offline/offline_chart_service.dart'
-    as _i24;
+    as _i25;
 import 'package:stockz/infrastructure/company/repository/company_repository.dart'
     as _i84;
 import 'package:stockz/infrastructure/company/repository/i_company_repository.dart'
@@ -92,13 +92,13 @@ import 'package:stockz/infrastructure/company_profile/repository/i_company_profi
 import 'package:stockz/infrastructure/company_profile/service/chopper/company_profile_chopper_service.dart'
     as _i7;
 import 'package:stockz/infrastructure/company_profile/service/company_profile_service.dart'
-    as _i27;
+    as _i28;
 import 'package:stockz/infrastructure/company_profile/service/company_profile_service_module.dart'
     as _i90;
 import 'package:stockz/infrastructure/company_profile/service/i_company_profile_service.dart'
     as _i26;
 import 'package:stockz/infrastructure/company_profile/service/offline/offline_company_profile_service.dart'
-    as _i28;
+    as _i27;
 import 'package:stockz/infrastructure/core/analytics/repository/analytics_repository.dart'
     as _i13;
 import 'package:stockz/infrastructure/core/analytics/repository/i_analytics_repository.dart'
@@ -223,13 +223,13 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i12.IAnalyticsRepository>(
         () => _i13.AnalyticsRepository());
     gh.factory<_i14.IBalanceSheetStatementService>(
-      () => _i15.BalanceSheetStatementService(
-          gh<_i4.BalanceSheetStatementChopperService>()),
-      registerFor: {_online},
+      () => _i15.OfflineBalanceSheetStatementService(),
+      registerFor: {_offline},
     );
     gh.factory<_i14.IBalanceSheetStatementService>(
-      () => _i16.OfflineBalanceSheetStatementService(),
-      registerFor: {_offline},
+      () => _i16.BalanceSheetStatementService(
+          gh<_i4.BalanceSheetStatementChopperService>()),
+      registerFor: {_online},
     );
     gh.lazySingleton<_i17.ICacheService>(
       () => _i18.CacheService(),
@@ -240,29 +240,29 @@ extension GetItInjectableX on _i1.GetIt {
       registerFor: {_offline},
     );
     gh.factory<_i20.ICashFlowStatementService>(
-      () => _i21.CashFlowStatementService(
+      () => _i21.OfflineCashFlowStatementService(),
+      registerFor: {_offline},
+    );
+    gh.factory<_i20.ICashFlowStatementService>(
+      () => _i22.CashFlowStatementService(
           gh<_i5.CashFlowStatementChopperService>()),
       registerFor: {_online},
     );
-    gh.factory<_i20.ICashFlowStatementService>(
-      () => _i22.OfflineCashFlowStatementService(),
-      registerFor: {_offline},
-    );
     gh.factory<_i23.IChartService>(
-      () => _i24.OfflineChartService(),
-      registerFor: {_offline},
-    );
-    gh.factory<_i23.IChartService>(
-      () => _i25.ChartService(gh<_i6.ChartChopperService>()),
+      () => _i24.ChartService(gh<_i6.ChartChopperService>()),
       registerFor: {_online},
     );
-    gh.factory<_i26.ICompanyProfileService>(
-      () => _i27.CompanyProfileService(gh<_i7.CompanyProfileChopperService>()),
-      registerFor: {_online},
+    gh.factory<_i23.IChartService>(
+      () => _i25.OfflineChartService(),
+      registerFor: {_offline},
     );
     gh.factory<_i26.ICompanyProfileService>(
-      () => _i28.OfflineCompanyProfileService(),
+      () => _i27.OfflineCompanyProfileService(),
       registerFor: {_offline},
+    );
+    gh.factory<_i26.ICompanyProfileService>(
+      () => _i28.CompanyProfileService(gh<_i7.CompanyProfileChopperService>()),
+      registerFor: {_online},
     );
     gh.factory<_i29.IIncomeStatementService>(
       () => _i30.OfflineIncomeStatementService(),
@@ -303,12 +303,12 @@ extension GetItInjectableX on _i1.GetIt {
     gh.lazySingleton<_i45.RouteObserverProvider>(
         () => _i45.RouteObserverProvider());
     gh.lazySingleton<_i46.SharedPrefsProvider>(
-      () => _i47.OfflineSharedPrefsProvider(),
-      registerFor: {_offline},
-    );
-    gh.lazySingleton<_i46.SharedPrefsProvider>(
       () => _i46.SharedPrefsProvider(),
       registerFor: {_online},
+    );
+    gh.lazySingleton<_i46.SharedPrefsProvider>(
+      () => _i47.OfflineSharedPrefsProvider(),
+      registerFor: {_offline},
     );
     gh.factory<_i48.StockListingsChopperService>(
         () => stockListingsServiceModule.stockListingsChopperService);

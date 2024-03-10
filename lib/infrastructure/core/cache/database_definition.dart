@@ -34,7 +34,7 @@ class DriftDb extends _$DriftDb with AnalyticsHelper {
   DriftDb({required QueryExecutor executor}) : super(executor);
 
   @override
-  int get schemaVersion => 6;
+  int get schemaVersion => 7;
 
   @override
   MigrationStrategy get migration => destructiveFallback;

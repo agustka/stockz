@@ -6244,9 +6244,9 @@ class $IncomeStatementTableRowDefinitionTable
   static const VerificationMeta _otherExpensesMeta =
       const VerificationMeta('otherExpenses');
   @override
-  late final GeneratedColumn<int> otherExpenses = GeneratedColumn<int>(
+  late final GeneratedColumn<double> otherExpenses = GeneratedColumn<double>(
       'other_expenses', aliasedName, true,
-      type: DriftSqlType.int, requiredDuringInsert: false);
+      type: DriftSqlType.double, requiredDuringInsert: false);
   static const VerificationMeta _operatingExpensesMeta =
       const VerificationMeta('operatingExpenses');
   @override
@@ -6702,7 +6702,7 @@ class $IncomeStatementTableRowDefinitionTable
           data[
               '${effectivePrefix}selling_general_and_administrative_expenses']),
       otherExpenses: attachedDatabase.typeMapping
-          .read(DriftSqlType.int, data['${effectivePrefix}other_expenses']),
+          .read(DriftSqlType.double, data['${effectivePrefix}other_expenses']),
       operatingExpenses: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}operating_expenses']),
       costAndExpenses: attachedDatabase.typeMapping
@@ -6779,7 +6779,7 @@ class IncomeStatementTableRow extends DataClass
   final int? generalAndAdministrativeExpenses;
   final int? sellingAndMarketingExpenses;
   final int? sellingGeneralAndAdministrativeExpenses;
-  final int? otherExpenses;
+  final double? otherExpenses;
   final int? operatingExpenses;
   final int? costAndExpenses;
   final int? interestIncome;
@@ -6894,7 +6894,7 @@ class IncomeStatementTableRow extends DataClass
           Variable<int>(sellingGeneralAndAdministrativeExpenses);
     }
     if (!nullToAbsent || otherExpenses != null) {
-      map['other_expenses'] = Variable<int>(otherExpenses);
+      map['other_expenses'] = Variable<double>(otherExpenses);
     }
     if (!nullToAbsent || operatingExpenses != null) {
       map['operating_expenses'] = Variable<int>(operatingExpenses);
@@ -7104,7 +7104,7 @@ class IncomeStatementTableRow extends DataClass
           serializer.fromJson<int?>(json['sellingAndMarketingExpenses']),
       sellingGeneralAndAdministrativeExpenses: serializer
           .fromJson<int?>(json['sellingGeneralAndAdministrativeExpenses']),
-      otherExpenses: serializer.fromJson<int?>(json['otherExpenses']),
+      otherExpenses: serializer.fromJson<double?>(json['otherExpenses']),
       operatingExpenses: serializer.fromJson<int?>(json['operatingExpenses']),
       costAndExpenses: serializer.fromJson<int?>(json['costAndExpenses']),
       interestIncome: serializer.fromJson<int?>(json['interestIncome']),
@@ -7159,7 +7159,7 @@ class IncomeStatementTableRow extends DataClass
           serializer.toJson<int?>(sellingAndMarketingExpenses),
       'sellingGeneralAndAdministrativeExpenses':
           serializer.toJson<int?>(sellingGeneralAndAdministrativeExpenses),
-      'otherExpenses': serializer.toJson<int?>(otherExpenses),
+      'otherExpenses': serializer.toJson<double?>(otherExpenses),
       'operatingExpenses': serializer.toJson<int?>(operatingExpenses),
       'costAndExpenses': serializer.toJson<int?>(costAndExpenses),
       'interestIncome': serializer.toJson<int?>(interestIncome),
@@ -7206,7 +7206,7 @@ class IncomeStatementTableRow extends DataClass
           Value<int?> sellingAndMarketingExpenses = const Value.absent(),
           Value<int?> sellingGeneralAndAdministrativeExpenses =
               const Value.absent(),
-          Value<int?> otherExpenses = const Value.absent(),
+          Value<double?> otherExpenses = const Value.absent(),
           Value<int?> operatingExpenses = const Value.absent(),
           Value<int?> costAndExpenses = const Value.absent(),
           Value<int?> interestIncome = const Value.absent(),
@@ -7474,7 +7474,7 @@ class IncomeStatementTableRowDefinitionCompanion
   final Value<int?> generalAndAdministrativeExpenses;
   final Value<int?> sellingAndMarketingExpenses;
   final Value<int?> sellingGeneralAndAdministrativeExpenses;
-  final Value<int?> otherExpenses;
+  final Value<double?> otherExpenses;
   final Value<int?> operatingExpenses;
   final Value<int?> costAndExpenses;
   final Value<int?> interestIncome;
@@ -7601,7 +7601,7 @@ class IncomeStatementTableRowDefinitionCompanion
     Expression<int>? generalAndAdministrativeExpenses,
     Expression<int>? sellingAndMarketingExpenses,
     Expression<int>? sellingGeneralAndAdministrativeExpenses,
-    Expression<int>? otherExpenses,
+    Expression<double>? otherExpenses,
     Expression<int>? operatingExpenses,
     Expression<int>? costAndExpenses,
     Expression<int>? interestIncome,
@@ -7698,7 +7698,7 @@ class IncomeStatementTableRowDefinitionCompanion
       Value<int?>? generalAndAdministrativeExpenses,
       Value<int?>? sellingAndMarketingExpenses,
       Value<int?>? sellingGeneralAndAdministrativeExpenses,
-      Value<int?>? otherExpenses,
+      Value<double?>? otherExpenses,
       Value<int?>? operatingExpenses,
       Value<int?>? costAndExpenses,
       Value<int?>? interestIncome,
@@ -7831,7 +7831,7 @@ class IncomeStatementTableRowDefinitionCompanion
           Variable<int>(sellingGeneralAndAdministrativeExpenses.value);
     }
     if (otherExpenses.present) {
-      map['other_expenses'] = Variable<int>(otherExpenses.value);
+      map['other_expenses'] = Variable<double>(otherExpenses.value);
     }
     if (operatingExpenses.present) {
       map['operating_expenses'] = Variable<int>(operatingExpenses.value);

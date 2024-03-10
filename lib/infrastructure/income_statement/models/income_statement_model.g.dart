@@ -28,7 +28,7 @@ IncomeStatementModel _$IncomeStatementModelFromJson(
       sellingAndMarketingExpenses: json['sellingAndMarketingExpenses'] as int?,
       sellingGeneralAndAdministrativeExpenses:
           json['sellingGeneralAndAdministrativeExpenses'] as int?,
-      otherExpenses: json['otherExpenses'] as int?,
+      otherExpenses: (json['otherExpenses'] as num?)?.toDouble(),
       operatingExpenses: json['operatingExpenses'] as int?,
       costAndExpenses: json['costAndExpenses'] as int?,
       interestIncome: json['interestIncome'] as int?,
