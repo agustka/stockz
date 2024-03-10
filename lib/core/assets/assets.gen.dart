@@ -86,11 +86,24 @@ class $AssetsTestGen {
 class $AssetsTestOfflineDataGen {
   const $AssetsTestOfflineDataGen();
 
+  /// File path: assets/test/offline_data/get_balance_sheet_statement.json
+  String get getBalanceSheetStatement => 'assets/test/offline_data/get_balance_sheet_statement.json';
+
+  /// File path: assets/test/offline_data/get_cash_flow_statement.json
+  String get getCashFlowStatement => 'assets/test/offline_data/get_cash_flow_statement.json';
+
+  /// File path: assets/test/offline_data/get_chart.json
+  String get getChart => 'assets/test/offline_data/get_chart.json';
+
   /// File path: assets/test/offline_data/get_company_profile.json
   String get getCompanyProfile => 'assets/test/offline_data/get_company_profile.json';
 
+  /// File path: assets/test/offline_data/get_income_statement.json
+  String get getIncomeStatement => 'assets/test/offline_data/get_income_statement.json';
+
   /// List of all assets
-  List<String> get values => [getCompanyProfile];
+  List<String> get values =>
+      [getBalanceSheetStatement, getCashFlowStatement, getChart, getCompanyProfile, getIncomeStatement];
 }
 
 class AppAssets {

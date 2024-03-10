@@ -10,6 +10,7 @@ abstract class ChartChopperService extends ChopperService {
 
   static ChartChopperService create([ChopperClient? client]) => _$ChartChopperService(client);
 
+  /// https://site.financialmodelingprep.com/developer/docs/daily-chart-charts
   @Get(path: "/{symbol}", optionalBody: true)
   Future<Response<ChartModel>> getChart({
     @Path("symbol") required String symbol,

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:stockz/domain/core/value_objects/exchange_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
 import 'package:stockz/domain/core/value_objects/security_type_value_object.dart';
+import 'package:stockz/domain/core/value_objects/stock_exchange_value_object.dart';
 import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/text_value_object.dart';
 import 'package:stockz/domain/stock_listing/entities/stock_listings.dart';
@@ -51,7 +51,7 @@ class StockListingModel {
       symbol: StringIdValueObject(symbol),
       name: TextValueObject(name),
       price: NumberValueObject(price),
-      exchange: ExchangeValueObject(exchange),
+      exchange: StockExchangeValueObject(exchange),
       exchangeShortName: TextValueObject(exchangeShortName),
       type: SecurityTypeValueObject(type),
     );

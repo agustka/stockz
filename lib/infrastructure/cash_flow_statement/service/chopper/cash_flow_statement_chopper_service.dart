@@ -10,6 +10,7 @@ abstract class CashFlowStatementChopperService extends ChopperService {
 
   static CashFlowStatementChopperService create([ChopperClient? client]) => _$CashFlowStatementChopperService(client);
 
+  /// https://site.financialmodelingprep.com/developer/docs/cashflow-statements-financial-statements
   @Get(path: "/{ticker}", optionalBody: true)
   Future<Response<List<CashFlowStatementModel>>> getCashFlowStatement({
     @Path("ticker") required String ticker,

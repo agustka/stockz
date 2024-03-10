@@ -32,9 +32,11 @@ void err(dynamic error, {StackTrace? trace}) {
   ErrorHandler._instance?.logError(errorMessage, trace);
 }
 
+int cnt = 0;
 void errEnum({required String type, required dynamic input}) {
   if (input != null) {
-    err("Could not parse $type: '$input'");
+    cnt++;
+    err("$cnt) Could not parse $type: '$input'");
   }
 }
 

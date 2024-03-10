@@ -6,10 +6,10 @@ import 'package:stockz/domain/core/value_objects/payload.dart';
 import 'package:stockz/domain/stock_listing/entities/stock_listings.dart';
 import 'package:stockz/infrastructure/core/cache/base_cache.dart';
 import 'package:stockz/infrastructure/core/cache/cache.dart';
-import 'package:stockz/infrastructure/stock_listing/cache/i_stock_listings_cache.dart';
-import 'package:stockz/infrastructure/stock_listing/models/stock_listing_model.dart';
-import 'package:stockz/infrastructure/stock_listing/repository/i_stock_listings_repository.dart';
-import 'package:stockz/infrastructure/stock_listing/service/i_stock_listings_service.dart';
+import 'package:stockz/infrastructure/stock_listings/cache/i_stock_listings_cache.dart';
+import 'package:stockz/infrastructure/stock_listings/models/stock_listing_model.dart';
+import 'package:stockz/infrastructure/stock_listings/repository/i_stock_listings_repository.dart';
+import 'package:stockz/infrastructure/stock_listings/service/i_stock_listings_service.dart';
 
 @LazySingleton(as: IStockListingsRepository)
 class StockListingsRepository implements IStockListingsRepository {

@@ -43,7 +43,6 @@ class CompanyRepository implements ICompanyRepository {
     futures.add(_cashFlowRepo.getCashFlowStatements(symbol: symbol));
     futures.add(_companyProfileRepo.getCompanyProfile(symbol: symbol));
     futures.add(_incomeRepo.getIncomeStatements(symbol: symbol));
-
     futures.add(
       _chartRepo.getChart(
         symbol: symbol,

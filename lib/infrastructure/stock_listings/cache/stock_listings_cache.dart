@@ -4,9 +4,9 @@ import 'package:injectable/injectable.dart';
 import 'package:stockz/infrastructure/core/cache/base_cache.dart';
 import 'package:stockz/infrastructure/core/cache/cache.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
-import 'package:stockz/infrastructure/stock_listing/cache/i_stock_listings_cache.dart';
-import 'package:stockz/infrastructure/stock_listing/cache/stock_listings_dao.dart';
-import 'package:stockz/infrastructure/stock_listing/models/stock_listing_model.dart';
+import 'package:stockz/infrastructure/stock_listings/cache/i_stock_listings_cache.dart';
+import 'package:stockz/infrastructure/stock_listings/cache/stock_listings_dao.dart';
+import 'package:stockz/infrastructure/stock_listings/models/stock_listing_model.dart';
 
 @Injectable(as: IStockListingsCache)
 class StockListingsCache with BaseCache implements IStockListingsCache {
@@ -37,7 +37,7 @@ class StockListingsCache with BaseCache implements IStockListingsCache {
   Future addStockListings({
     required List<StockListingModel> listings,
   }) {
-    final Future added = stockListingsDao.addStockListingss(
+    final Future added = stockListingsDao.addStockListings(
       listings: listings,
       ttlSeconds: timeToLive.inSeconds,
     );

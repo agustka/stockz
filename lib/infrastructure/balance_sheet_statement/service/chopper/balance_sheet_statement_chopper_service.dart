@@ -11,6 +11,7 @@ abstract class BalanceSheetStatementChopperService extends ChopperService {
   static BalanceSheetStatementChopperService create([ChopperClient? client]) =>
       _$BalanceSheetStatementChopperService(client);
 
+  /// https://site.financialmodelingprep.com/developer/docs/balance-sheet-statements-financial-statements
   @Get(path: "/{ticker}", optionalBody: true)
   Future<Response<List<BalanceSheetStatementModel>>> getBalanceSheetStatement({
     @Path("ticker") required String ticker,

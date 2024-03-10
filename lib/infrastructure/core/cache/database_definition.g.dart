@@ -8737,10 +8737,25 @@ class $StockListingTableRowDefinitionTable
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
   $StockListingTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
   static const VerificationMeta _symbolMeta = const VerificationMeta('symbol');
   @override
   late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
       'symbol', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _exchangeMeta =
+      const VerificationMeta('exchange');
+  @override
+  late final GeneratedColumn<String> exchange = GeneratedColumn<String>(
+      'exchange', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
@@ -8752,12 +8767,6 @@ class $StockListingTableRowDefinitionTable
   late final GeneratedColumn<double> price = GeneratedColumn<double>(
       'price', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
-  static const VerificationMeta _exchangeMeta =
-      const VerificationMeta('exchange');
-  @override
-  late final GeneratedColumn<String> exchange = GeneratedColumn<String>(
-      'exchange', aliasedName, true,
-      type: DriftSqlType.string, requiredDuringInsert: false);
   static const VerificationMeta _exchangeShortNameMeta =
       const VerificationMeta('exchangeShortName');
   @override
@@ -8777,7 +8786,7 @@ class $StockListingTableRowDefinitionTable
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [symbol, name, price, exchange, exchangeShortName, type, expires];
+      [id, symbol, exchange, name, price, exchangeShortName, type, expires];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -8789,11 +8798,20 @@ class $StockListingTableRowDefinitionTable
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
     if (data.containsKey('symbol')) {
       context.handle(_symbolMeta,
           symbol.isAcceptableOrUnknown(data['symbol']!, _symbolMeta));
     } else if (isInserting) {
       context.missing(_symbolMeta);
+    }
+    if (data.containsKey('exchange')) {
+      context.handle(_exchangeMeta,
+          exchange.isAcceptableOrUnknown(data['exchange']!, _exchangeMeta));
+    } else if (isInserting) {
+      context.missing(_exchangeMeta);
     }
     if (data.containsKey('name')) {
       context.handle(
@@ -8802,10 +8820,6 @@ class $StockListingTableRowDefinitionTable
     if (data.containsKey('price')) {
       context.handle(
           _priceMeta, price.isAcceptableOrUnknown(data['price']!, _priceMeta));
-    }
-    if (data.containsKey('exchange')) {
-      context.handle(_exchangeMeta,
-          exchange.isAcceptableOrUnknown(data['exchange']!, _exchangeMeta));
     }
     if (data.containsKey('exchange_short_name')) {
       context.handle(
@@ -8827,19 +8841,21 @@ class $StockListingTableRowDefinitionTable
   }
 
   @override
-  Set<GeneratedColumn> get $primaryKey => {symbol};
+  Set<GeneratedColumn> get $primaryKey => {id};
   @override
   StockListingTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
     return StockListingTableRow(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       symbol: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}symbol'])!,
+      exchange: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}exchange'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name']),
       price: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}price']),
-      exchange: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}exchange']),
       exchangeShortName: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}exchange_short_name']),
       type: attachedDatabase.typeMapping
@@ -8857,33 +8873,34 @@ class $StockListingTableRowDefinitionTable
 
 class StockListingTableRow extends DataClass
     implements Insertable<StockListingTableRow> {
+  final int id;
   final String symbol;
+  final String exchange;
   final String? name;
   final double? price;
-  final String? exchange;
   final String? exchangeShortName;
   final String? type;
   final DateTime expires;
   const StockListingTableRow(
-      {required this.symbol,
+      {required this.id,
+      required this.symbol,
+      required this.exchange,
       this.name,
       this.price,
-      this.exchange,
       this.exchangeShortName,
       this.type,
       required this.expires});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
     map['symbol'] = Variable<String>(symbol);
+    map['exchange'] = Variable<String>(exchange);
     if (!nullToAbsent || name != null) {
       map['name'] = Variable<String>(name);
     }
     if (!nullToAbsent || price != null) {
       map['price'] = Variable<double>(price);
-    }
-    if (!nullToAbsent || exchange != null) {
-      map['exchange'] = Variable<String>(exchange);
     }
     if (!nullToAbsent || exchangeShortName != null) {
       map['exchange_short_name'] = Variable<String>(exchangeShortName);
@@ -8897,13 +8914,12 @@ class StockListingTableRow extends DataClass
 
   StockListingTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
     return StockListingTableRowDefinitionCompanion(
+      id: Value(id),
       symbol: Value(symbol),
+      exchange: Value(exchange),
       name: name == null && nullToAbsent ? const Value.absent() : Value(name),
       price:
           price == null && nullToAbsent ? const Value.absent() : Value(price),
-      exchange: exchange == null && nullToAbsent
-          ? const Value.absent()
-          : Value(exchange),
       exchangeShortName: exchangeShortName == null && nullToAbsent
           ? const Value.absent()
           : Value(exchangeShortName),
@@ -8916,10 +8932,11 @@ class StockListingTableRow extends DataClass
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return StockListingTableRow(
+      id: serializer.fromJson<int>(json['id']),
       symbol: serializer.fromJson<String>(json['symbol']),
+      exchange: serializer.fromJson<String>(json['exchange']),
       name: serializer.fromJson<String?>(json['name']),
       price: serializer.fromJson<double?>(json['price']),
-      exchange: serializer.fromJson<String?>(json['exchange']),
       exchangeShortName:
           serializer.fromJson<String?>(json['exchangeShortName']),
       type: serializer.fromJson<String?>(json['type']),
@@ -8930,10 +8947,11 @@ class StockListingTableRow extends DataClass
   Map<String, dynamic> toJson({ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
       'symbol': serializer.toJson<String>(symbol),
+      'exchange': serializer.toJson<String>(exchange),
       'name': serializer.toJson<String?>(name),
       'price': serializer.toJson<double?>(price),
-      'exchange': serializer.toJson<String?>(exchange),
       'exchangeShortName': serializer.toJson<String?>(exchangeShortName),
       'type': serializer.toJson<String?>(type),
       'expires': serializer.toJson<DateTime>(expires),
@@ -8941,18 +8959,20 @@ class StockListingTableRow extends DataClass
   }
 
   StockListingTableRow copyWith(
-          {String? symbol,
+          {int? id,
+          String? symbol,
+          String? exchange,
           Value<String?> name = const Value.absent(),
           Value<double?> price = const Value.absent(),
-          Value<String?> exchange = const Value.absent(),
           Value<String?> exchangeShortName = const Value.absent(),
           Value<String?> type = const Value.absent(),
           DateTime? expires}) =>
       StockListingTableRow(
+        id: id ?? this.id,
         symbol: symbol ?? this.symbol,
+        exchange: exchange ?? this.exchange,
         name: name.present ? name.value : this.name,
         price: price.present ? price.value : this.price,
-        exchange: exchange.present ? exchange.value : this.exchange,
         exchangeShortName: exchangeShortName.present
             ? exchangeShortName.value
             : this.exchangeShortName,
@@ -8962,10 +8982,11 @@ class StockListingTableRow extends DataClass
   @override
   String toString() {
     return (StringBuffer('StockListingTableRow(')
+          ..write('id: $id, ')
           ..write('symbol: $symbol, ')
+          ..write('exchange: $exchange, ')
           ..write('name: $name, ')
           ..write('price: $price, ')
-          ..write('exchange: $exchange, ')
           ..write('exchangeShortName: $exchangeShortName, ')
           ..write('type: $type, ')
           ..write('expires: $expires')
@@ -8975,15 +8996,16 @@ class StockListingTableRow extends DataClass
 
   @override
   int get hashCode => Object.hash(
-      symbol, name, price, exchange, exchangeShortName, type, expires);
+      id, symbol, exchange, name, price, exchangeShortName, type, expires);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is StockListingTableRow &&
+          other.id == this.id &&
           other.symbol == this.symbol &&
+          other.exchange == this.exchange &&
           other.name == this.name &&
           other.price == this.price &&
-          other.exchange == this.exchange &&
           other.exchangeShortName == this.exchangeShortName &&
           other.type == this.type &&
           other.expires == this.expires);
@@ -8991,92 +9013,96 @@ class StockListingTableRow extends DataClass
 
 class StockListingTableRowDefinitionCompanion
     extends UpdateCompanion<StockListingTableRow> {
+  final Value<int> id;
   final Value<String> symbol;
+  final Value<String> exchange;
   final Value<String?> name;
   final Value<double?> price;
-  final Value<String?> exchange;
   final Value<String?> exchangeShortName;
   final Value<String?> type;
   final Value<DateTime> expires;
-  final Value<int> rowid;
   const StockListingTableRowDefinitionCompanion({
+    this.id = const Value.absent(),
     this.symbol = const Value.absent(),
+    this.exchange = const Value.absent(),
     this.name = const Value.absent(),
     this.price = const Value.absent(),
-    this.exchange = const Value.absent(),
     this.exchangeShortName = const Value.absent(),
     this.type = const Value.absent(),
     this.expires = const Value.absent(),
-    this.rowid = const Value.absent(),
   });
   StockListingTableRowDefinitionCompanion.insert({
+    this.id = const Value.absent(),
     required String symbol,
+    required String exchange,
     this.name = const Value.absent(),
     this.price = const Value.absent(),
-    this.exchange = const Value.absent(),
     this.exchangeShortName = const Value.absent(),
     this.type = const Value.absent(),
     required DateTime expires,
-    this.rowid = const Value.absent(),
   })  : symbol = Value(symbol),
+        exchange = Value(exchange),
         expires = Value(expires);
   static Insertable<StockListingTableRow> custom({
+    Expression<int>? id,
     Expression<String>? symbol,
+    Expression<String>? exchange,
     Expression<String>? name,
     Expression<double>? price,
-    Expression<String>? exchange,
     Expression<String>? exchangeShortName,
     Expression<String>? type,
     Expression<DateTime>? expires,
-    Expression<int>? rowid,
   }) {
     return RawValuesInsertable({
+      if (id != null) 'id': id,
       if (symbol != null) 'symbol': symbol,
+      if (exchange != null) 'exchange': exchange,
       if (name != null) 'name': name,
       if (price != null) 'price': price,
-      if (exchange != null) 'exchange': exchange,
       if (exchangeShortName != null) 'exchange_short_name': exchangeShortName,
       if (type != null) 'type': type,
       if (expires != null) 'expires': expires,
-      if (rowid != null) 'rowid': rowid,
     });
   }
 
   StockListingTableRowDefinitionCompanion copyWith(
-      {Value<String>? symbol,
+      {Value<int>? id,
+      Value<String>? symbol,
+      Value<String>? exchange,
       Value<String?>? name,
       Value<double?>? price,
-      Value<String?>? exchange,
       Value<String?>? exchangeShortName,
       Value<String?>? type,
-      Value<DateTime>? expires,
-      Value<int>? rowid}) {
+      Value<DateTime>? expires}) {
     return StockListingTableRowDefinitionCompanion(
+      id: id ?? this.id,
       symbol: symbol ?? this.symbol,
+      exchange: exchange ?? this.exchange,
       name: name ?? this.name,
       price: price ?? this.price,
-      exchange: exchange ?? this.exchange,
       exchangeShortName: exchangeShortName ?? this.exchangeShortName,
       type: type ?? this.type,
       expires: expires ?? this.expires,
-      rowid: rowid ?? this.rowid,
     );
   }
 
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
     if (symbol.present) {
       map['symbol'] = Variable<String>(symbol.value);
+    }
+    if (exchange.present) {
+      map['exchange'] = Variable<String>(exchange.value);
     }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
     if (price.present) {
       map['price'] = Variable<double>(price.value);
-    }
-    if (exchange.present) {
-      map['exchange'] = Variable<String>(exchange.value);
     }
     if (exchangeShortName.present) {
       map['exchange_short_name'] = Variable<String>(exchangeShortName.value);
@@ -9087,23 +9113,20 @@ class StockListingTableRowDefinitionCompanion
     if (expires.present) {
       map['expires'] = Variable<DateTime>(expires.value);
     }
-    if (rowid.present) {
-      map['rowid'] = Variable<int>(rowid.value);
-    }
     return map;
   }
 
   @override
   String toString() {
     return (StringBuffer('StockListingTableRowDefinitionCompanion(')
+          ..write('id: $id, ')
           ..write('symbol: $symbol, ')
+          ..write('exchange: $exchange, ')
           ..write('name: $name, ')
           ..write('price: $price, ')
-          ..write('exchange: $exchange, ')
           ..write('exchangeShortName: $exchangeShortName, ')
           ..write('type: $type, ')
-          ..write('expires: $expires, ')
-          ..write('rowid: $rowid')
+          ..write('expires: $expires')
           ..write(')'))
         .toString();
   }

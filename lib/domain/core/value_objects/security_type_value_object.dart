@@ -30,6 +30,10 @@ class SecurityTypeValueObject extends ValueObject<SecurityType> {
         return SecurityType.stock;
       case "etf":
         return SecurityType.etf;
+      case "trust":
+        return SecurityType.trust;
+      case "fund":
+        return SecurityType.fund;
       default:
         if (logError) {
           errEnum(type: "SecurityType", input: input);
@@ -47,5 +51,7 @@ class _$InvalidCardIssuer extends SecurityTypeValueObject {
 enum SecurityType {
   stock,
   etf,
+  trust,
+  fund,
   invalid,
 }

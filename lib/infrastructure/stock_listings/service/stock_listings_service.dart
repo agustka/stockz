@@ -2,9 +2,9 @@ import 'package:chopper/chopper.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stockz/domain/core/value_objects/payload.dart';
 import 'package:stockz/infrastructure/core/service/base_service.dart';
-import 'package:stockz/infrastructure/stock_listing/models/stock_listing_model.dart';
-import 'package:stockz/infrastructure/stock_listing/service/chopper/stock_listings_chopper_service.dart';
-import 'package:stockz/infrastructure/stock_listing/service/i_stock_listings_service.dart';
+import 'package:stockz/infrastructure/stock_listings/models/stock_listing_model.dart';
+import 'package:stockz/infrastructure/stock_listings/service/chopper/stock_listings_chopper_service.dart';
+import 'package:stockz/infrastructure/stock_listings/service/i_stock_listings_service.dart';
 import 'package:stockz/setup.dart';
 
 @InjectableEnv.online

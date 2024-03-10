@@ -55,14 +55,12 @@ mixin BaseCache {
   void handleInsertionErrors(Future insertionFuture, {String origination = ""}) {
     insertionFuture.catchError((error) {
       err("From: $origination: $error");
-      getIt<DriftDb>().recreate();
     });
   }
 
   void handleDeletionErrors(Future deletedFuture) {
     deletedFuture.catchError((error) {
       err(error);
-      getIt<DriftDb>().recreate();
     });
   }
 }

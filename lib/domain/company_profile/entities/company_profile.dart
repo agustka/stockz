@@ -6,9 +6,9 @@ import 'package:stockz/domain/company_profile/value_objects/company_sector_value
 import 'package:stockz/domain/core/value_objects/bool_value_object.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
-import 'package:stockz/domain/core/value_objects/exchange_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
 import 'package:stockz/domain/core/value_objects/rage_value_object.dart';
+import 'package:stockz/domain/core/value_objects/stock_exchange_value_object.dart';
 import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/text_value_object.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
@@ -28,7 +28,7 @@ class CompanyProfile extends Equatable {
   final StringIdValueObject cik;
   final StringIdValueObject isin;
   final StringIdValueObject cusip;
-  final ExchangeValueObject exchange;
+  final StockExchangeValueObject exchange;
   final TextValueObject exchangeName;
   final TextValueObject exchangeShortName;
   final CompanyIndustryValueObject industry;
@@ -156,7 +156,7 @@ class _$InvalidCompanyProfile extends CompanyProfile {
           cik: const StringIdValueObject.invalid(),
           isin: const StringIdValueObject.invalid(),
           cusip: const StringIdValueObject.invalid(),
-          exchange: const ExchangeValueObject.invalid(),
+          exchange: const StockExchangeValueObject.invalid(),
           exchangeName: const TextValueObject.invalid(),
           exchangeShortName: const TextValueObject.invalid(),
           industry: const CompanyIndustryValueObject.invalid(),

@@ -1,8 +1,8 @@
 import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
-import 'package:stockz/infrastructure/stock_listing/cache/tables/stock_listing_definition.dart';
-import 'package:stockz/infrastructure/stock_listing/models/stock_listing_model.dart';
+import 'package:stockz/infrastructure/stock_listings/cache/tables/stock_listing_definition.dart';
+import 'package:stockz/infrastructure/stock_listings/models/stock_listing_model.dart';
 
 part 'stock_listings_dao.g.dart';
 
@@ -19,12 +19,12 @@ class StockListingsDao extends DatabaseAccessor<DriftDb> with _$StockListingsDao
     return select(stockListingTableRowDefinition).get();
   }
 
-  Future<void> addStockListingss({
+  Future<void> addStockListings({
     required List<StockListingModel> listings,
     required int ttlSeconds,
   }) async {
     final List<StockListingModel> cloneList = listings.toList();
-    return batch(
+    await batch(
       (Batch batch) {
         batch.deleteAll(stockListingTableRowDefinition);
         batch.insertAll(
@@ -33,9 +33,9 @@ class StockListingsDao extends DatabaseAccessor<DriftDb> with _$StockListingsDao
               .map(
                 (StockListingModel listing) => StockListingTableRowDefinitionCompanion.insert(
                   symbol: listing.symbol!,
+                  exchange: listing.exchange ?? "invalid",
                   name: Value(listing.name),
                   price: Value(listing.price),
-                  exchange: Value(listing.exchange),
                   exchangeShortName: Value(listing.exchangeShortName),
                   type: Value(listing.type),
                   expires: DateTime.now().add(Duration(seconds: ttlSeconds)),

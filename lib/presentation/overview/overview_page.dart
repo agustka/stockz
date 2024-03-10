@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
@@ -9,7 +12,7 @@ import 'package:stockz/domain/core/value_objects/failures/failure.dart';
 import 'package:stockz/domain/core/value_objects/payload.dart';
 import 'package:stockz/domain/stock_listing/entities/stock_listings.dart';
 import 'package:stockz/infrastructure/company/repository/i_company_repository.dart';
-import 'package:stockz/infrastructure/stock_listing/repository/i_stock_listings_repository.dart';
+import 'package:stockz/infrastructure/stock_listings/repository/i_stock_listings_repository.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 import 'package:stockz/setup.dart';
 
@@ -81,13 +84,13 @@ class _OverviewPageState extends State<OverviewPage> {
       'ZYME',
     ];
 
-    /*getIt<IStockListingsRepository>().getStockListings().then(
+    getIt<IStockListingsRepository>().getStockListings().then(
       (Payload<StockListings> value) {
-        //print(value);
+        print(value);
       },
-    );*/
+    );
 
-    for (final String ticker in tickers) {
+    /*for (final String ticker in tickers) {
       getIt<ICompanyRepository>().getCompany(symbol: ticker).then(
         (Payload<Company> payload) {
           payload.fold(
@@ -102,7 +105,7 @@ class _OverviewPageState extends State<OverviewPage> {
           );
         },
       );
-    }
+    }*/
   }
 
   @override

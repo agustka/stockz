@@ -7,9 +7,9 @@ import 'package:stockz/domain/company_profile/value_objects/company_sector_value
 import 'package:stockz/domain/core/value_objects/bool_value_object.dart';
 import 'package:stockz/domain/core/value_objects/currency_value_object.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
-import 'package:stockz/domain/core/value_objects/exchange_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
 import 'package:stockz/domain/core/value_objects/rage_value_object.dart';
+import 'package:stockz/domain/core/value_objects/stock_exchange_value_object.dart';
 import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/text_value_object.dart';
 import 'package:stockz/domain/core/value_objects/url_value_object.dart';
@@ -158,7 +158,7 @@ class CompanyProfileModel {
       cik: StringIdValueObject(cik),
       isin: StringIdValueObject(isin),
       cusip: StringIdValueObject(cusip),
-      exchange: ExchangeValueObject(exchange),
+      exchange: StockExchangeValueObject(exchange),
       exchangeName: TextValueObject(exchange),
       exchangeShortName: TextValueObject(exchangeShortName),
       industry: CompanyIndustryValueObject(industry),

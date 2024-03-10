@@ -10,6 +10,7 @@ abstract class CompanyProfileChopperService extends ChopperService {
 
   static CompanyProfileChopperService create([ChopperClient? client]) => _$CompanyProfileChopperService(client);
 
+  /// https://site.financialmodelingprep.com/developer/docs/companies-key-stats-free-api/?direct=true
   @Get(path: "/{ticker}")
   Future<Response<List<CompanyProfileModel>>> getCompanyProfile({@Path("ticker") required String ticker});
 }
