@@ -3,7 +3,7 @@ import 'package:stockz/infrastructure/core/test_runner_determiner/i_test_runner_
 import 'package:stockz/setup.dart';
 
 @InjectableEnv.online
-@Injectable(as: ITestRunnerDeterminer)
+@Singleton(as: ITestRunnerDeterminer)
 class TestRunnerDeterminer implements ITestRunnerDeterminer {
   @override
   bool get isRunningOffline => false;

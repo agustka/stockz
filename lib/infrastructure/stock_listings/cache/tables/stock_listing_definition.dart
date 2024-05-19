@@ -11,7 +11,4 @@ class StockListingTableRowDefinition extends Table {
   TextColumn get type => text().nullable()();
 
   DateTimeColumn get expires => dateTime()();
-
-  @override
-  Set<Column> get primaryKey => {id};
 }

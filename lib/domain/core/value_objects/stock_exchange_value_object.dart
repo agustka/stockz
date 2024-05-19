@@ -105,6 +105,8 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
       case "bombay stock exchange":
       case "bse":
         return StockExchange.bombayStockExchange;
+      case "mcx":
+        return StockExchange.multiCommodityExchangeOfIndia;
       case "kse":
         return StockExchange.kse;
 
@@ -190,6 +192,8 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
         return StockExchange.riga;
       case "iceland":
         return StockExchange.iceland;
+      case "nordic growth market":
+        return StockExchange.nordicGrowthMarket;
 
       case "invalid":
         return StockExchange.invalid;
@@ -248,6 +252,7 @@ enum StockExchange {
   jakartaStockExchange,
   nationalStockExchangeOfIndia,
   bombayStockExchange,
+  multiCommodityExchangeOfIndia,
   kse, //Pakistan
 
   australianSecuritiesExchange,
@@ -292,6 +297,7 @@ enum StockExchange {
   budapest,
   riga,
   iceland,
+  nordicGrowthMarket,
 
   invalid,
 }

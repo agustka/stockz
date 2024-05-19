@@ -46,7 +46,7 @@ class CompanyRepository implements ICompanyRepository {
     futures.add(
       _chartRepo.getChart(
         symbol: symbol,
-        from: DateTime.now().subtract(const Duration(days: 31)),
+        from: DateTime.now().subtract(const Duration(days: 120)),
         to: DateTime.now(),
       ),
     );

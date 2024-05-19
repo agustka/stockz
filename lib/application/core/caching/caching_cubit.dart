@@ -44,7 +44,6 @@ class CachingCubit extends Cubit<CachingState> {
   }
 
   Future<void> clearCache() async {
-    await _database.purge();
     await _cacheRepo.deleteAllCachedFiles();
   }
 

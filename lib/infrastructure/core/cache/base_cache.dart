@@ -38,11 +38,6 @@ mixin BaseCache {
       );
     } catch (e) {
       err(e);
-      try {
-        await getIt<DriftDb>().recreate();
-      } catch (ex2) {
-        err(ex2);
-      }
       return Future.value(const Cache.notAvailable());
     }
   }

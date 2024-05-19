@@ -9134,6 +9134,7 @@ class StockListingTableRowDefinitionCompanion
 
 abstract class _$DriftDb extends GeneratedDatabase {
   _$DriftDb(QueryExecutor e) : super(e);
+  _$DriftDbManager get managers => _$DriftDbManager(this);
   late final $CompanyProfileTableRowDefinitionTable
       companyProfileTableRowDefinition =
       $CompanyProfileTableRowDefinitionTable(this);
@@ -9164,4 +9165,3663 @@ abstract class _$DriftDb extends GeneratedDatabase {
         chartEodItemTableRowDefinition,
         stockListingTableRowDefinition
       ];
+}
+
+typedef $$CompanyProfileTableRowDefinitionTableInsertCompanionBuilder
+    = CompanyProfileTableRowDefinitionCompanion Function({
+  required String symbol,
+  Value<double?> price,
+  Value<double?> beta,
+  Value<int?> volAvg,
+  Value<int?> mktCap,
+  Value<double?> lastDiv,
+  Value<String?> range,
+  Value<double?> changes,
+  Value<String?> companyName,
+  Value<String?> currency,
+  Value<String?> cik,
+  Value<String?> isin,
+  Value<String?> cusip,
+  Value<String?> exchange,
+  Value<String?> exchangeShortName,
+  Value<String?> industry,
+  Value<String?> website,
+  Value<String?> description,
+  Value<String?> ceo,
+  Value<String?> sector,
+  Value<String?> country,
+  Value<String?> fullTimeEmployees,
+  Value<String?> phone,
+  Value<String?> address,
+  Value<String?> city,
+  Value<String?> state,
+  Value<String?> zip,
+  Value<double?> dcfDiff,
+  Value<double?> dcf,
+  Value<String?> image,
+  Value<String?> ipoDate,
+  Value<bool?> defaultImage,
+  Value<bool?> isEtf,
+  Value<bool?> isActivelyTrading,
+  Value<bool?> isAdr,
+  Value<bool?> isFund,
+  required DateTime expires,
+  Value<int> rowid,
+});
+typedef $$CompanyProfileTableRowDefinitionTableUpdateCompanionBuilder
+    = CompanyProfileTableRowDefinitionCompanion Function({
+  Value<String> symbol,
+  Value<double?> price,
+  Value<double?> beta,
+  Value<int?> volAvg,
+  Value<int?> mktCap,
+  Value<double?> lastDiv,
+  Value<String?> range,
+  Value<double?> changes,
+  Value<String?> companyName,
+  Value<String?> currency,
+  Value<String?> cik,
+  Value<String?> isin,
+  Value<String?> cusip,
+  Value<String?> exchange,
+  Value<String?> exchangeShortName,
+  Value<String?> industry,
+  Value<String?> website,
+  Value<String?> description,
+  Value<String?> ceo,
+  Value<String?> sector,
+  Value<String?> country,
+  Value<String?> fullTimeEmployees,
+  Value<String?> phone,
+  Value<String?> address,
+  Value<String?> city,
+  Value<String?> state,
+  Value<String?> zip,
+  Value<double?> dcfDiff,
+  Value<double?> dcf,
+  Value<String?> image,
+  Value<String?> ipoDate,
+  Value<bool?> defaultImage,
+  Value<bool?> isEtf,
+  Value<bool?> isActivelyTrading,
+  Value<bool?> isAdr,
+  Value<bool?> isFund,
+  Value<DateTime> expires,
+  Value<int> rowid,
+});
+
+class $$CompanyProfileTableRowDefinitionTableTableManager
+    extends RootTableManager<
+        _$DriftDb,
+        $CompanyProfileTableRowDefinitionTable,
+        CompanyProfileTableRow,
+        $$CompanyProfileTableRowDefinitionTableFilterComposer,
+        $$CompanyProfileTableRowDefinitionTableOrderingComposer,
+        $$CompanyProfileTableRowDefinitionTableProcessedTableManager,
+        $$CompanyProfileTableRowDefinitionTableInsertCompanionBuilder,
+        $$CompanyProfileTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$CompanyProfileTableRowDefinitionTableTableManager(
+      _$DriftDb db, $CompanyProfileTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$CompanyProfileTableRowDefinitionTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$CompanyProfileTableRowDefinitionTableOrderingComposer(
+                  ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$CompanyProfileTableRowDefinitionTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<String> symbol = const Value.absent(),
+            Value<double?> price = const Value.absent(),
+            Value<double?> beta = const Value.absent(),
+            Value<int?> volAvg = const Value.absent(),
+            Value<int?> mktCap = const Value.absent(),
+            Value<double?> lastDiv = const Value.absent(),
+            Value<String?> range = const Value.absent(),
+            Value<double?> changes = const Value.absent(),
+            Value<String?> companyName = const Value.absent(),
+            Value<String?> currency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> isin = const Value.absent(),
+            Value<String?> cusip = const Value.absent(),
+            Value<String?> exchange = const Value.absent(),
+            Value<String?> exchangeShortName = const Value.absent(),
+            Value<String?> industry = const Value.absent(),
+            Value<String?> website = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+            Value<String?> ceo = const Value.absent(),
+            Value<String?> sector = const Value.absent(),
+            Value<String?> country = const Value.absent(),
+            Value<String?> fullTimeEmployees = const Value.absent(),
+            Value<String?> phone = const Value.absent(),
+            Value<String?> address = const Value.absent(),
+            Value<String?> city = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<String?> zip = const Value.absent(),
+            Value<double?> dcfDiff = const Value.absent(),
+            Value<double?> dcf = const Value.absent(),
+            Value<String?> image = const Value.absent(),
+            Value<String?> ipoDate = const Value.absent(),
+            Value<bool?> defaultImage = const Value.absent(),
+            Value<bool?> isEtf = const Value.absent(),
+            Value<bool?> isActivelyTrading = const Value.absent(),
+            Value<bool?> isAdr = const Value.absent(),
+            Value<bool?> isFund = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CompanyProfileTableRowDefinitionCompanion(
+            symbol: symbol,
+            price: price,
+            beta: beta,
+            volAvg: volAvg,
+            mktCap: mktCap,
+            lastDiv: lastDiv,
+            range: range,
+            changes: changes,
+            companyName: companyName,
+            currency: currency,
+            cik: cik,
+            isin: isin,
+            cusip: cusip,
+            exchange: exchange,
+            exchangeShortName: exchangeShortName,
+            industry: industry,
+            website: website,
+            description: description,
+            ceo: ceo,
+            sector: sector,
+            country: country,
+            fullTimeEmployees: fullTimeEmployees,
+            phone: phone,
+            address: address,
+            city: city,
+            state: state,
+            zip: zip,
+            dcfDiff: dcfDiff,
+            dcf: dcf,
+            image: image,
+            ipoDate: ipoDate,
+            defaultImage: defaultImage,
+            isEtf: isEtf,
+            isActivelyTrading: isActivelyTrading,
+            isAdr: isAdr,
+            isFund: isFund,
+            expires: expires,
+            rowid: rowid,
+          ),
+          getInsertCompanionBuilder: ({
+            required String symbol,
+            Value<double?> price = const Value.absent(),
+            Value<double?> beta = const Value.absent(),
+            Value<int?> volAvg = const Value.absent(),
+            Value<int?> mktCap = const Value.absent(),
+            Value<double?> lastDiv = const Value.absent(),
+            Value<String?> range = const Value.absent(),
+            Value<double?> changes = const Value.absent(),
+            Value<String?> companyName = const Value.absent(),
+            Value<String?> currency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> isin = const Value.absent(),
+            Value<String?> cusip = const Value.absent(),
+            Value<String?> exchange = const Value.absent(),
+            Value<String?> exchangeShortName = const Value.absent(),
+            Value<String?> industry = const Value.absent(),
+            Value<String?> website = const Value.absent(),
+            Value<String?> description = const Value.absent(),
+            Value<String?> ceo = const Value.absent(),
+            Value<String?> sector = const Value.absent(),
+            Value<String?> country = const Value.absent(),
+            Value<String?> fullTimeEmployees = const Value.absent(),
+            Value<String?> phone = const Value.absent(),
+            Value<String?> address = const Value.absent(),
+            Value<String?> city = const Value.absent(),
+            Value<String?> state = const Value.absent(),
+            Value<String?> zip = const Value.absent(),
+            Value<double?> dcfDiff = const Value.absent(),
+            Value<double?> dcf = const Value.absent(),
+            Value<String?> image = const Value.absent(),
+            Value<String?> ipoDate = const Value.absent(),
+            Value<bool?> defaultImage = const Value.absent(),
+            Value<bool?> isEtf = const Value.absent(),
+            Value<bool?> isActivelyTrading = const Value.absent(),
+            Value<bool?> isAdr = const Value.absent(),
+            Value<bool?> isFund = const Value.absent(),
+            required DateTime expires,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CompanyProfileTableRowDefinitionCompanion.insert(
+            symbol: symbol,
+            price: price,
+            beta: beta,
+            volAvg: volAvg,
+            mktCap: mktCap,
+            lastDiv: lastDiv,
+            range: range,
+            changes: changes,
+            companyName: companyName,
+            currency: currency,
+            cik: cik,
+            isin: isin,
+            cusip: cusip,
+            exchange: exchange,
+            exchangeShortName: exchangeShortName,
+            industry: industry,
+            website: website,
+            description: description,
+            ceo: ceo,
+            sector: sector,
+            country: country,
+            fullTimeEmployees: fullTimeEmployees,
+            phone: phone,
+            address: address,
+            city: city,
+            state: state,
+            zip: zip,
+            dcfDiff: dcfDiff,
+            dcf: dcf,
+            image: image,
+            ipoDate: ipoDate,
+            defaultImage: defaultImage,
+            isEtf: isEtf,
+            isActivelyTrading: isActivelyTrading,
+            isAdr: isAdr,
+            isFund: isFund,
+            expires: expires,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$CompanyProfileTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $CompanyProfileTableRowDefinitionTable,
+        CompanyProfileTableRow,
+        $$CompanyProfileTableRowDefinitionTableFilterComposer,
+        $$CompanyProfileTableRowDefinitionTableOrderingComposer,
+        $$CompanyProfileTableRowDefinitionTableProcessedTableManager,
+        $$CompanyProfileTableRowDefinitionTableInsertCompanionBuilder,
+        $$CompanyProfileTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$CompanyProfileTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$CompanyProfileTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $CompanyProfileTableRowDefinitionTable> {
+  $$CompanyProfileTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get price => $state.composableBuilder(
+      column: $state.table.price,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get beta => $state.composableBuilder(
+      column: $state.table.beta,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get volAvg => $state.composableBuilder(
+      column: $state.table.volAvg,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get mktCap => $state.composableBuilder(
+      column: $state.table.mktCap,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get lastDiv => $state.composableBuilder(
+      column: $state.table.lastDiv,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get range => $state.composableBuilder(
+      column: $state.table.range,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get changes => $state.composableBuilder(
+      column: $state.table.changes,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get companyName => $state.composableBuilder(
+      column: $state.table.companyName,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get currency => $state.composableBuilder(
+      column: $state.table.currency,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get isin => $state.composableBuilder(
+      column: $state.table.isin,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get cusip => $state.composableBuilder(
+      column: $state.table.cusip,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get exchange => $state.composableBuilder(
+      column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get exchangeShortName => $state.composableBuilder(
+      column: $state.table.exchangeShortName,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get industry => $state.composableBuilder(
+      column: $state.table.industry,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get website => $state.composableBuilder(
+      column: $state.table.website,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get ceo => $state.composableBuilder(
+      column: $state.table.ceo,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get sector => $state.composableBuilder(
+      column: $state.table.sector,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get country => $state.composableBuilder(
+      column: $state.table.country,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get fullTimeEmployees => $state.composableBuilder(
+      column: $state.table.fullTimeEmployees,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get phone => $state.composableBuilder(
+      column: $state.table.phone,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get address => $state.composableBuilder(
+      column: $state.table.address,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get city => $state.composableBuilder(
+      column: $state.table.city,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get state => $state.composableBuilder(
+      column: $state.table.state,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get zip => $state.composableBuilder(
+      column: $state.table.zip,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get dcfDiff => $state.composableBuilder(
+      column: $state.table.dcfDiff,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get dcf => $state.composableBuilder(
+      column: $state.table.dcf,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get image => $state.composableBuilder(
+      column: $state.table.image,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get ipoDate => $state.composableBuilder(
+      column: $state.table.ipoDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get defaultImage => $state.composableBuilder(
+      column: $state.table.defaultImage,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isEtf => $state.composableBuilder(
+      column: $state.table.isEtf,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isActivelyTrading => $state.composableBuilder(
+      column: $state.table.isActivelyTrading,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isAdr => $state.composableBuilder(
+      column: $state.table.isAdr,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isFund => $state.composableBuilder(
+      column: $state.table.isFund,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$CompanyProfileTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb,
+        $CompanyProfileTableRowDefinitionTable> {
+  $$CompanyProfileTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get price => $state.composableBuilder(
+      column: $state.table.price,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get beta => $state.composableBuilder(
+      column: $state.table.beta,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get volAvg => $state.composableBuilder(
+      column: $state.table.volAvg,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get mktCap => $state.composableBuilder(
+      column: $state.table.mktCap,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get lastDiv => $state.composableBuilder(
+      column: $state.table.lastDiv,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get range => $state.composableBuilder(
+      column: $state.table.range,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get changes => $state.composableBuilder(
+      column: $state.table.changes,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get companyName => $state.composableBuilder(
+      column: $state.table.companyName,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get currency => $state.composableBuilder(
+      column: $state.table.currency,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get isin => $state.composableBuilder(
+      column: $state.table.isin,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get cusip => $state.composableBuilder(
+      column: $state.table.cusip,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get exchange => $state.composableBuilder(
+      column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get exchangeShortName => $state.composableBuilder(
+      column: $state.table.exchangeShortName,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get industry => $state.composableBuilder(
+      column: $state.table.industry,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get website => $state.composableBuilder(
+      column: $state.table.website,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get description => $state.composableBuilder(
+      column: $state.table.description,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get ceo => $state.composableBuilder(
+      column: $state.table.ceo,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get sector => $state.composableBuilder(
+      column: $state.table.sector,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get country => $state.composableBuilder(
+      column: $state.table.country,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get fullTimeEmployees => $state.composableBuilder(
+      column: $state.table.fullTimeEmployees,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get phone => $state.composableBuilder(
+      column: $state.table.phone,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get address => $state.composableBuilder(
+      column: $state.table.address,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get city => $state.composableBuilder(
+      column: $state.table.city,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get state => $state.composableBuilder(
+      column: $state.table.state,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get zip => $state.composableBuilder(
+      column: $state.table.zip,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get dcfDiff => $state.composableBuilder(
+      column: $state.table.dcfDiff,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get dcf => $state.composableBuilder(
+      column: $state.table.dcf,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get image => $state.composableBuilder(
+      column: $state.table.image,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get ipoDate => $state.composableBuilder(
+      column: $state.table.ipoDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get defaultImage => $state.composableBuilder(
+      column: $state.table.defaultImage,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isEtf => $state.composableBuilder(
+      column: $state.table.isEtf,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isActivelyTrading => $state.composableBuilder(
+      column: $state.table.isActivelyTrading,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isAdr => $state.composableBuilder(
+      column: $state.table.isAdr,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isFund => $state.composableBuilder(
+      column: $state.table.isFund,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$BalanceSheetStatementTableRowDefinitionTableInsertCompanionBuilder
+    = BalanceSheetStatementTableRowDefinitionCompanion Function({
+  required String date,
+  required String symbol,
+  Value<String?> reportedCurrency,
+  Value<String?> cik,
+  Value<String?> fillingDate,
+  Value<String?> acceptedDate,
+  Value<String?> calendarYear,
+  Value<String?> period,
+  Value<int?> cashAndCashEquivalents,
+  Value<int?> shortTermInvestments,
+  Value<int?> cashAndShortTermInvestments,
+  Value<int?> netReceivables,
+  Value<int?> inventory,
+  Value<int?> otherCurrentAssets,
+  Value<int?> totalCurrentAssets,
+  Value<int?> propertyPlantEquipmentNet,
+  Value<int?> goodwill,
+  Value<int?> intangibleAssets,
+  Value<int?> goodwillAndIntangibleAssets,
+  Value<int?> longTermInvestments,
+  Value<int?> taxAssets,
+  Value<int?> otherNonCurrentAssets,
+  Value<int?> totalNonCurrentAssets,
+  Value<int?> otherAssets,
+  Value<int?> totalAssets,
+  Value<int?> accountPayables,
+  Value<int?> shortTermDebt,
+  Value<int?> taxPayables,
+  Value<int?> deferredRevenue,
+  Value<int?> otherCurrentLiabilities,
+  Value<int?> totalCurrentLiabilities,
+  Value<int?> longTermDebt,
+  Value<int?> deferredRevenueNonCurrent,
+  Value<int?> deferredTaxLiabilitiesNonCurrent,
+  Value<int?> otherNonCurrentLiabilities,
+  Value<int?> totalNonCurrentLiabilities,
+  Value<int?> otherLiabilities,
+  Value<int?> capitalLeaseObligations,
+  Value<int?> totalLiabilities,
+  Value<int?> preferredStock,
+  Value<int?> commonStock,
+  Value<int?> retainedEarnings,
+  Value<int?> accumulatedOtherComprehensiveIncomeLoss,
+  Value<int?> othertotalStockholdersEquity,
+  Value<int?> totalStockholdersEquity,
+  Value<int?> totalEquity,
+  Value<int?> totalLiabilitiesAndStockholdersEquity,
+  Value<int?> minorityInterest,
+  Value<int?> totalLiabilitiesAndTotalEquity,
+  Value<int?> totalInvestments,
+  Value<int?> totalDebt,
+  Value<int?> netDebt,
+  Value<String?> link,
+  Value<String?> finalLink,
+  required DateTime expires,
+  Value<int> rowid,
+});
+typedef $$BalanceSheetStatementTableRowDefinitionTableUpdateCompanionBuilder
+    = BalanceSheetStatementTableRowDefinitionCompanion Function({
+  Value<String> date,
+  Value<String> symbol,
+  Value<String?> reportedCurrency,
+  Value<String?> cik,
+  Value<String?> fillingDate,
+  Value<String?> acceptedDate,
+  Value<String?> calendarYear,
+  Value<String?> period,
+  Value<int?> cashAndCashEquivalents,
+  Value<int?> shortTermInvestments,
+  Value<int?> cashAndShortTermInvestments,
+  Value<int?> netReceivables,
+  Value<int?> inventory,
+  Value<int?> otherCurrentAssets,
+  Value<int?> totalCurrentAssets,
+  Value<int?> propertyPlantEquipmentNet,
+  Value<int?> goodwill,
+  Value<int?> intangibleAssets,
+  Value<int?> goodwillAndIntangibleAssets,
+  Value<int?> longTermInvestments,
+  Value<int?> taxAssets,
+  Value<int?> otherNonCurrentAssets,
+  Value<int?> totalNonCurrentAssets,
+  Value<int?> otherAssets,
+  Value<int?> totalAssets,
+  Value<int?> accountPayables,
+  Value<int?> shortTermDebt,
+  Value<int?> taxPayables,
+  Value<int?> deferredRevenue,
+  Value<int?> otherCurrentLiabilities,
+  Value<int?> totalCurrentLiabilities,
+  Value<int?> longTermDebt,
+  Value<int?> deferredRevenueNonCurrent,
+  Value<int?> deferredTaxLiabilitiesNonCurrent,
+  Value<int?> otherNonCurrentLiabilities,
+  Value<int?> totalNonCurrentLiabilities,
+  Value<int?> otherLiabilities,
+  Value<int?> capitalLeaseObligations,
+  Value<int?> totalLiabilities,
+  Value<int?> preferredStock,
+  Value<int?> commonStock,
+  Value<int?> retainedEarnings,
+  Value<int?> accumulatedOtherComprehensiveIncomeLoss,
+  Value<int?> othertotalStockholdersEquity,
+  Value<int?> totalStockholdersEquity,
+  Value<int?> totalEquity,
+  Value<int?> totalLiabilitiesAndStockholdersEquity,
+  Value<int?> minorityInterest,
+  Value<int?> totalLiabilitiesAndTotalEquity,
+  Value<int?> totalInvestments,
+  Value<int?> totalDebt,
+  Value<int?> netDebt,
+  Value<String?> link,
+  Value<String?> finalLink,
+  Value<DateTime> expires,
+  Value<int> rowid,
+});
+
+class $$BalanceSheetStatementTableRowDefinitionTableTableManager
+    extends RootTableManager<
+        _$DriftDb,
+        $BalanceSheetStatementTableRowDefinitionTable,
+        BalanceSheetStatementTableRow,
+        $$BalanceSheetStatementTableRowDefinitionTableFilterComposer,
+        $$BalanceSheetStatementTableRowDefinitionTableOrderingComposer,
+        $$BalanceSheetStatementTableRowDefinitionTableProcessedTableManager,
+        $$BalanceSheetStatementTableRowDefinitionTableInsertCompanionBuilder,
+        $$BalanceSheetStatementTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$BalanceSheetStatementTableRowDefinitionTableTableManager(
+      _$DriftDb db, $BalanceSheetStatementTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$BalanceSheetStatementTableRowDefinitionTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$BalanceSheetStatementTableRowDefinitionTableOrderingComposer(
+                  ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$BalanceSheetStatementTableRowDefinitionTableProcessedTableManager(
+                  p),
+          getUpdateCompanionBuilder: ({
+            Value<String> date = const Value.absent(),
+            Value<String> symbol = const Value.absent(),
+            Value<String?> reportedCurrency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> fillingDate = const Value.absent(),
+            Value<String?> acceptedDate = const Value.absent(),
+            Value<String?> calendarYear = const Value.absent(),
+            Value<String?> period = const Value.absent(),
+            Value<int?> cashAndCashEquivalents = const Value.absent(),
+            Value<int?> shortTermInvestments = const Value.absent(),
+            Value<int?> cashAndShortTermInvestments = const Value.absent(),
+            Value<int?> netReceivables = const Value.absent(),
+            Value<int?> inventory = const Value.absent(),
+            Value<int?> otherCurrentAssets = const Value.absent(),
+            Value<int?> totalCurrentAssets = const Value.absent(),
+            Value<int?> propertyPlantEquipmentNet = const Value.absent(),
+            Value<int?> goodwill = const Value.absent(),
+            Value<int?> intangibleAssets = const Value.absent(),
+            Value<int?> goodwillAndIntangibleAssets = const Value.absent(),
+            Value<int?> longTermInvestments = const Value.absent(),
+            Value<int?> taxAssets = const Value.absent(),
+            Value<int?> otherNonCurrentAssets = const Value.absent(),
+            Value<int?> totalNonCurrentAssets = const Value.absent(),
+            Value<int?> otherAssets = const Value.absent(),
+            Value<int?> totalAssets = const Value.absent(),
+            Value<int?> accountPayables = const Value.absent(),
+            Value<int?> shortTermDebt = const Value.absent(),
+            Value<int?> taxPayables = const Value.absent(),
+            Value<int?> deferredRevenue = const Value.absent(),
+            Value<int?> otherCurrentLiabilities = const Value.absent(),
+            Value<int?> totalCurrentLiabilities = const Value.absent(),
+            Value<int?> longTermDebt = const Value.absent(),
+            Value<int?> deferredRevenueNonCurrent = const Value.absent(),
+            Value<int?> deferredTaxLiabilitiesNonCurrent = const Value.absent(),
+            Value<int?> otherNonCurrentLiabilities = const Value.absent(),
+            Value<int?> totalNonCurrentLiabilities = const Value.absent(),
+            Value<int?> otherLiabilities = const Value.absent(),
+            Value<int?> capitalLeaseObligations = const Value.absent(),
+            Value<int?> totalLiabilities = const Value.absent(),
+            Value<int?> preferredStock = const Value.absent(),
+            Value<int?> commonStock = const Value.absent(),
+            Value<int?> retainedEarnings = const Value.absent(),
+            Value<int?> accumulatedOtherComprehensiveIncomeLoss =
+                const Value.absent(),
+            Value<int?> othertotalStockholdersEquity = const Value.absent(),
+            Value<int?> totalStockholdersEquity = const Value.absent(),
+            Value<int?> totalEquity = const Value.absent(),
+            Value<int?> totalLiabilitiesAndStockholdersEquity =
+                const Value.absent(),
+            Value<int?> minorityInterest = const Value.absent(),
+            Value<int?> totalLiabilitiesAndTotalEquity = const Value.absent(),
+            Value<int?> totalInvestments = const Value.absent(),
+            Value<int?> totalDebt = const Value.absent(),
+            Value<int?> netDebt = const Value.absent(),
+            Value<String?> link = const Value.absent(),
+            Value<String?> finalLink = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              BalanceSheetStatementTableRowDefinitionCompanion(
+            date: date,
+            symbol: symbol,
+            reportedCurrency: reportedCurrency,
+            cik: cik,
+            fillingDate: fillingDate,
+            acceptedDate: acceptedDate,
+            calendarYear: calendarYear,
+            period: period,
+            cashAndCashEquivalents: cashAndCashEquivalents,
+            shortTermInvestments: shortTermInvestments,
+            cashAndShortTermInvestments: cashAndShortTermInvestments,
+            netReceivables: netReceivables,
+            inventory: inventory,
+            otherCurrentAssets: otherCurrentAssets,
+            totalCurrentAssets: totalCurrentAssets,
+            propertyPlantEquipmentNet: propertyPlantEquipmentNet,
+            goodwill: goodwill,
+            intangibleAssets: intangibleAssets,
+            goodwillAndIntangibleAssets: goodwillAndIntangibleAssets,
+            longTermInvestments: longTermInvestments,
+            taxAssets: taxAssets,
+            otherNonCurrentAssets: otherNonCurrentAssets,
+            totalNonCurrentAssets: totalNonCurrentAssets,
+            otherAssets: otherAssets,
+            totalAssets: totalAssets,
+            accountPayables: accountPayables,
+            shortTermDebt: shortTermDebt,
+            taxPayables: taxPayables,
+            deferredRevenue: deferredRevenue,
+            otherCurrentLiabilities: otherCurrentLiabilities,
+            totalCurrentLiabilities: totalCurrentLiabilities,
+            longTermDebt: longTermDebt,
+            deferredRevenueNonCurrent: deferredRevenueNonCurrent,
+            deferredTaxLiabilitiesNonCurrent: deferredTaxLiabilitiesNonCurrent,
+            otherNonCurrentLiabilities: otherNonCurrentLiabilities,
+            totalNonCurrentLiabilities: totalNonCurrentLiabilities,
+            otherLiabilities: otherLiabilities,
+            capitalLeaseObligations: capitalLeaseObligations,
+            totalLiabilities: totalLiabilities,
+            preferredStock: preferredStock,
+            commonStock: commonStock,
+            retainedEarnings: retainedEarnings,
+            accumulatedOtherComprehensiveIncomeLoss:
+                accumulatedOtherComprehensiveIncomeLoss,
+            othertotalStockholdersEquity: othertotalStockholdersEquity,
+            totalStockholdersEquity: totalStockholdersEquity,
+            totalEquity: totalEquity,
+            totalLiabilitiesAndStockholdersEquity:
+                totalLiabilitiesAndStockholdersEquity,
+            minorityInterest: minorityInterest,
+            totalLiabilitiesAndTotalEquity: totalLiabilitiesAndTotalEquity,
+            totalInvestments: totalInvestments,
+            totalDebt: totalDebt,
+            netDebt: netDebt,
+            link: link,
+            finalLink: finalLink,
+            expires: expires,
+            rowid: rowid,
+          ),
+          getInsertCompanionBuilder: ({
+            required String date,
+            required String symbol,
+            Value<String?> reportedCurrency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> fillingDate = const Value.absent(),
+            Value<String?> acceptedDate = const Value.absent(),
+            Value<String?> calendarYear = const Value.absent(),
+            Value<String?> period = const Value.absent(),
+            Value<int?> cashAndCashEquivalents = const Value.absent(),
+            Value<int?> shortTermInvestments = const Value.absent(),
+            Value<int?> cashAndShortTermInvestments = const Value.absent(),
+            Value<int?> netReceivables = const Value.absent(),
+            Value<int?> inventory = const Value.absent(),
+            Value<int?> otherCurrentAssets = const Value.absent(),
+            Value<int?> totalCurrentAssets = const Value.absent(),
+            Value<int?> propertyPlantEquipmentNet = const Value.absent(),
+            Value<int?> goodwill = const Value.absent(),
+            Value<int?> intangibleAssets = const Value.absent(),
+            Value<int?> goodwillAndIntangibleAssets = const Value.absent(),
+            Value<int?> longTermInvestments = const Value.absent(),
+            Value<int?> taxAssets = const Value.absent(),
+            Value<int?> otherNonCurrentAssets = const Value.absent(),
+            Value<int?> totalNonCurrentAssets = const Value.absent(),
+            Value<int?> otherAssets = const Value.absent(),
+            Value<int?> totalAssets = const Value.absent(),
+            Value<int?> accountPayables = const Value.absent(),
+            Value<int?> shortTermDebt = const Value.absent(),
+            Value<int?> taxPayables = const Value.absent(),
+            Value<int?> deferredRevenue = const Value.absent(),
+            Value<int?> otherCurrentLiabilities = const Value.absent(),
+            Value<int?> totalCurrentLiabilities = const Value.absent(),
+            Value<int?> longTermDebt = const Value.absent(),
+            Value<int?> deferredRevenueNonCurrent = const Value.absent(),
+            Value<int?> deferredTaxLiabilitiesNonCurrent = const Value.absent(),
+            Value<int?> otherNonCurrentLiabilities = const Value.absent(),
+            Value<int?> totalNonCurrentLiabilities = const Value.absent(),
+            Value<int?> otherLiabilities = const Value.absent(),
+            Value<int?> capitalLeaseObligations = const Value.absent(),
+            Value<int?> totalLiabilities = const Value.absent(),
+            Value<int?> preferredStock = const Value.absent(),
+            Value<int?> commonStock = const Value.absent(),
+            Value<int?> retainedEarnings = const Value.absent(),
+            Value<int?> accumulatedOtherComprehensiveIncomeLoss =
+                const Value.absent(),
+            Value<int?> othertotalStockholdersEquity = const Value.absent(),
+            Value<int?> totalStockholdersEquity = const Value.absent(),
+            Value<int?> totalEquity = const Value.absent(),
+            Value<int?> totalLiabilitiesAndStockholdersEquity =
+                const Value.absent(),
+            Value<int?> minorityInterest = const Value.absent(),
+            Value<int?> totalLiabilitiesAndTotalEquity = const Value.absent(),
+            Value<int?> totalInvestments = const Value.absent(),
+            Value<int?> totalDebt = const Value.absent(),
+            Value<int?> netDebt = const Value.absent(),
+            Value<String?> link = const Value.absent(),
+            Value<String?> finalLink = const Value.absent(),
+            required DateTime expires,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              BalanceSheetStatementTableRowDefinitionCompanion.insert(
+            date: date,
+            symbol: symbol,
+            reportedCurrency: reportedCurrency,
+            cik: cik,
+            fillingDate: fillingDate,
+            acceptedDate: acceptedDate,
+            calendarYear: calendarYear,
+            period: period,
+            cashAndCashEquivalents: cashAndCashEquivalents,
+            shortTermInvestments: shortTermInvestments,
+            cashAndShortTermInvestments: cashAndShortTermInvestments,
+            netReceivables: netReceivables,
+            inventory: inventory,
+            otherCurrentAssets: otherCurrentAssets,
+            totalCurrentAssets: totalCurrentAssets,
+            propertyPlantEquipmentNet: propertyPlantEquipmentNet,
+            goodwill: goodwill,
+            intangibleAssets: intangibleAssets,
+            goodwillAndIntangibleAssets: goodwillAndIntangibleAssets,
+            longTermInvestments: longTermInvestments,
+            taxAssets: taxAssets,
+            otherNonCurrentAssets: otherNonCurrentAssets,
+            totalNonCurrentAssets: totalNonCurrentAssets,
+            otherAssets: otherAssets,
+            totalAssets: totalAssets,
+            accountPayables: accountPayables,
+            shortTermDebt: shortTermDebt,
+            taxPayables: taxPayables,
+            deferredRevenue: deferredRevenue,
+            otherCurrentLiabilities: otherCurrentLiabilities,
+            totalCurrentLiabilities: totalCurrentLiabilities,
+            longTermDebt: longTermDebt,
+            deferredRevenueNonCurrent: deferredRevenueNonCurrent,
+            deferredTaxLiabilitiesNonCurrent: deferredTaxLiabilitiesNonCurrent,
+            otherNonCurrentLiabilities: otherNonCurrentLiabilities,
+            totalNonCurrentLiabilities: totalNonCurrentLiabilities,
+            otherLiabilities: otherLiabilities,
+            capitalLeaseObligations: capitalLeaseObligations,
+            totalLiabilities: totalLiabilities,
+            preferredStock: preferredStock,
+            commonStock: commonStock,
+            retainedEarnings: retainedEarnings,
+            accumulatedOtherComprehensiveIncomeLoss:
+                accumulatedOtherComprehensiveIncomeLoss,
+            othertotalStockholdersEquity: othertotalStockholdersEquity,
+            totalStockholdersEquity: totalStockholdersEquity,
+            totalEquity: totalEquity,
+            totalLiabilitiesAndStockholdersEquity:
+                totalLiabilitiesAndStockholdersEquity,
+            minorityInterest: minorityInterest,
+            totalLiabilitiesAndTotalEquity: totalLiabilitiesAndTotalEquity,
+            totalInvestments: totalInvestments,
+            totalDebt: totalDebt,
+            netDebt: netDebt,
+            link: link,
+            finalLink: finalLink,
+            expires: expires,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$BalanceSheetStatementTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $BalanceSheetStatementTableRowDefinitionTable,
+        BalanceSheetStatementTableRow,
+        $$BalanceSheetStatementTableRowDefinitionTableFilterComposer,
+        $$BalanceSheetStatementTableRowDefinitionTableOrderingComposer,
+        $$BalanceSheetStatementTableRowDefinitionTableProcessedTableManager,
+        $$BalanceSheetStatementTableRowDefinitionTableInsertCompanionBuilder,
+        $$BalanceSheetStatementTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$BalanceSheetStatementTableRowDefinitionTableProcessedTableManager(
+      super.$state);
+}
+
+class $$BalanceSheetStatementTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb,
+        $BalanceSheetStatementTableRowDefinitionTable> {
+  $$BalanceSheetStatementTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get reportedCurrency => $state.composableBuilder(
+      column: $state.table.reportedCurrency,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get fillingDate => $state.composableBuilder(
+      column: $state.table.fillingDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get acceptedDate => $state.composableBuilder(
+      column: $state.table.acceptedDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get calendarYear => $state.composableBuilder(
+      column: $state.table.calendarYear,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get period => $state.composableBuilder(
+      column: $state.table.period,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cashAndCashEquivalents => $state.composableBuilder(
+      column: $state.table.cashAndCashEquivalents,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get shortTermInvestments => $state.composableBuilder(
+      column: $state.table.shortTermInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cashAndShortTermInvestments =>
+      $state.composableBuilder(
+          column: $state.table.cashAndShortTermInvestments,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netReceivables => $state.composableBuilder(
+      column: $state.table.netReceivables,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get inventory => $state.composableBuilder(
+      column: $state.table.inventory,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherCurrentAssets => $state.composableBuilder(
+      column: $state.table.otherCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalCurrentAssets => $state.composableBuilder(
+      column: $state.table.totalCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get propertyPlantEquipmentNet => $state.composableBuilder(
+      column: $state.table.propertyPlantEquipmentNet,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get goodwill => $state.composableBuilder(
+      column: $state.table.goodwill,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get intangibleAssets => $state.composableBuilder(
+      column: $state.table.intangibleAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get goodwillAndIntangibleAssets =>
+      $state.composableBuilder(
+          column: $state.table.goodwillAndIntangibleAssets,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get longTermInvestments => $state.composableBuilder(
+      column: $state.table.longTermInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get taxAssets => $state.composableBuilder(
+      column: $state.table.taxAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherNonCurrentAssets => $state.composableBuilder(
+      column: $state.table.otherNonCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalNonCurrentAssets => $state.composableBuilder(
+      column: $state.table.totalNonCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherAssets => $state.composableBuilder(
+      column: $state.table.otherAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalAssets => $state.composableBuilder(
+      column: $state.table.totalAssets,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get accountPayables => $state.composableBuilder(
+      column: $state.table.accountPayables,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get shortTermDebt => $state.composableBuilder(
+      column: $state.table.shortTermDebt,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get taxPayables => $state.composableBuilder(
+      column: $state.table.taxPayables,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get deferredRevenue => $state.composableBuilder(
+      column: $state.table.deferredRevenue,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherCurrentLiabilities => $state.composableBuilder(
+      column: $state.table.otherCurrentLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalCurrentLiabilities => $state.composableBuilder(
+      column: $state.table.totalCurrentLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get longTermDebt => $state.composableBuilder(
+      column: $state.table.longTermDebt,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get deferredRevenueNonCurrent => $state.composableBuilder(
+      column: $state.table.deferredRevenueNonCurrent,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get deferredTaxLiabilitiesNonCurrent =>
+      $state.composableBuilder(
+          column: $state.table.deferredTaxLiabilitiesNonCurrent,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherNonCurrentLiabilities => $state.composableBuilder(
+      column: $state.table.otherNonCurrentLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalNonCurrentLiabilities => $state.composableBuilder(
+      column: $state.table.totalNonCurrentLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherLiabilities => $state.composableBuilder(
+      column: $state.table.otherLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get capitalLeaseObligations => $state.composableBuilder(
+      column: $state.table.capitalLeaseObligations,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalLiabilities => $state.composableBuilder(
+      column: $state.table.totalLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get preferredStock => $state.composableBuilder(
+      column: $state.table.preferredStock,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get commonStock => $state.composableBuilder(
+      column: $state.table.commonStock,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get retainedEarnings => $state.composableBuilder(
+      column: $state.table.retainedEarnings,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get accumulatedOtherComprehensiveIncomeLoss =>
+      $state.composableBuilder(
+          column: $state.table.accumulatedOtherComprehensiveIncomeLoss,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get othertotalStockholdersEquity =>
+      $state.composableBuilder(
+          column: $state.table.othertotalStockholdersEquity,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalStockholdersEquity => $state.composableBuilder(
+      column: $state.table.totalStockholdersEquity,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalEquity => $state.composableBuilder(
+      column: $state.table.totalEquity,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalLiabilitiesAndStockholdersEquity =>
+      $state.composableBuilder(
+          column: $state.table.totalLiabilitiesAndStockholdersEquity,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get minorityInterest => $state.composableBuilder(
+      column: $state.table.minorityInterest,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalLiabilitiesAndTotalEquity => $state
+      .composableBuilder(
+          column: $state.table.totalLiabilitiesAndTotalEquity,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalInvestments => $state.composableBuilder(
+      column: $state.table.totalInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalDebt => $state.composableBuilder(
+      column: $state.table.totalDebt,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netDebt => $state.composableBuilder(
+      column: $state.table.netDebt,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get link => $state.composableBuilder(
+      column: $state.table.link,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get finalLink => $state.composableBuilder(
+      column: $state.table.finalLink,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$BalanceSheetStatementTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb,
+        $BalanceSheetStatementTableRowDefinitionTable> {
+  $$BalanceSheetStatementTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get reportedCurrency => $state.composableBuilder(
+      column: $state.table.reportedCurrency,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get fillingDate => $state.composableBuilder(
+      column: $state.table.fillingDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get acceptedDate => $state.composableBuilder(
+      column: $state.table.acceptedDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get calendarYear => $state.composableBuilder(
+      column: $state.table.calendarYear,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get period => $state.composableBuilder(
+      column: $state.table.period,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cashAndCashEquivalents => $state.composableBuilder(
+      column: $state.table.cashAndCashEquivalents,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get shortTermInvestments => $state.composableBuilder(
+      column: $state.table.shortTermInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cashAndShortTermInvestments =>
+      $state.composableBuilder(
+          column: $state.table.cashAndShortTermInvestments,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netReceivables => $state.composableBuilder(
+      column: $state.table.netReceivables,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get inventory => $state.composableBuilder(
+      column: $state.table.inventory,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherCurrentAssets => $state.composableBuilder(
+      column: $state.table.otherCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalCurrentAssets => $state.composableBuilder(
+      column: $state.table.totalCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get propertyPlantEquipmentNet =>
+      $state.composableBuilder(
+          column: $state.table.propertyPlantEquipmentNet,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get goodwill => $state.composableBuilder(
+      column: $state.table.goodwill,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get intangibleAssets => $state.composableBuilder(
+      column: $state.table.intangibleAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get goodwillAndIntangibleAssets =>
+      $state.composableBuilder(
+          column: $state.table.goodwillAndIntangibleAssets,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get longTermInvestments => $state.composableBuilder(
+      column: $state.table.longTermInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get taxAssets => $state.composableBuilder(
+      column: $state.table.taxAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherNonCurrentAssets => $state.composableBuilder(
+      column: $state.table.otherNonCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalNonCurrentAssets => $state.composableBuilder(
+      column: $state.table.totalNonCurrentAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherAssets => $state.composableBuilder(
+      column: $state.table.otherAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalAssets => $state.composableBuilder(
+      column: $state.table.totalAssets,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get accountPayables => $state.composableBuilder(
+      column: $state.table.accountPayables,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get shortTermDebt => $state.composableBuilder(
+      column: $state.table.shortTermDebt,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get taxPayables => $state.composableBuilder(
+      column: $state.table.taxPayables,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get deferredRevenue => $state.composableBuilder(
+      column: $state.table.deferredRevenue,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherCurrentLiabilities => $state.composableBuilder(
+      column: $state.table.otherCurrentLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalCurrentLiabilities => $state.composableBuilder(
+      column: $state.table.totalCurrentLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get longTermDebt => $state.composableBuilder(
+      column: $state.table.longTermDebt,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get deferredRevenueNonCurrent =>
+      $state.composableBuilder(
+          column: $state.table.deferredRevenueNonCurrent,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get deferredTaxLiabilitiesNonCurrent =>
+      $state.composableBuilder(
+          column: $state.table.deferredTaxLiabilitiesNonCurrent,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherNonCurrentLiabilities =>
+      $state.composableBuilder(
+          column: $state.table.otherNonCurrentLiabilities,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalNonCurrentLiabilities =>
+      $state.composableBuilder(
+          column: $state.table.totalNonCurrentLiabilities,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherLiabilities => $state.composableBuilder(
+      column: $state.table.otherLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get capitalLeaseObligations => $state.composableBuilder(
+      column: $state.table.capitalLeaseObligations,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalLiabilities => $state.composableBuilder(
+      column: $state.table.totalLiabilities,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get preferredStock => $state.composableBuilder(
+      column: $state.table.preferredStock,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get commonStock => $state.composableBuilder(
+      column: $state.table.commonStock,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get retainedEarnings => $state.composableBuilder(
+      column: $state.table.retainedEarnings,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get accumulatedOtherComprehensiveIncomeLoss =>
+      $state.composableBuilder(
+          column: $state.table.accumulatedOtherComprehensiveIncomeLoss,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get othertotalStockholdersEquity => $state
+      .composableBuilder(
+          column: $state.table.othertotalStockholdersEquity,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalStockholdersEquity => $state.composableBuilder(
+      column: $state.table.totalStockholdersEquity,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalEquity => $state.composableBuilder(
+      column: $state.table.totalEquity,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalLiabilitiesAndStockholdersEquity =>
+      $state.composableBuilder(
+          column: $state.table.totalLiabilitiesAndStockholdersEquity,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get minorityInterest => $state.composableBuilder(
+      column: $state.table.minorityInterest,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalLiabilitiesAndTotalEquity =>
+      $state.composableBuilder(
+          column: $state.table.totalLiabilitiesAndTotalEquity,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalInvestments => $state.composableBuilder(
+      column: $state.table.totalInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalDebt => $state.composableBuilder(
+      column: $state.table.totalDebt,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netDebt => $state.composableBuilder(
+      column: $state.table.netDebt,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get link => $state.composableBuilder(
+      column: $state.table.link,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get finalLink => $state.composableBuilder(
+      column: $state.table.finalLink,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$CashFlowStatementTableRowDefinitionTableInsertCompanionBuilder
+    = CashFlowStatementTableRowDefinitionCompanion Function({
+  required String date,
+  required String symbol,
+  Value<String?> reportedCurrency,
+  Value<String?> cik,
+  Value<String?> fillingDate,
+  Value<String?> acceptedDate,
+  Value<String?> calendarYear,
+  Value<String?> period,
+  Value<int?> netIncome,
+  Value<int?> depreciationAndAmortization,
+  Value<int?> deferredIncomeTax,
+  Value<int?> stockBasedCompensation,
+  Value<int?> changeInWorkingCapital,
+  Value<int?> accountsReceivables,
+  Value<int?> inventory,
+  Value<int?> accountsPayables,
+  Value<int?> otherWorkingCapital,
+  Value<int?> otherNonCashItems,
+  Value<int?> netCashProvidedByOperatingActivities,
+  Value<int?> investmentsInPropertyPlantAndEquipment,
+  Value<int?> acquisitionsNet,
+  Value<int?> purchasesOfInvestments,
+  Value<int?> salesMaturitiesOfInvestments,
+  Value<int?> otherInvestingActivites,
+  Value<int?> netCashUsedForInvestingActivites,
+  Value<int?> debtRepayment,
+  Value<int?> commonStockIssued,
+  Value<int?> commonStockRepurchased,
+  Value<int?> dividendsPaid,
+  Value<int?> otherFinancingActivites,
+  Value<int?> netCashUsedProvidedByFinancingActivities,
+  Value<int?> effectOfForexChangesOnCash,
+  Value<int?> netChangeInCash,
+  Value<int?> cashAtEndOfPeriod,
+  Value<int?> cashAtBeginningOfPeriod,
+  Value<int?> operatingCashFlow,
+  Value<int?> capitalExpenditure,
+  Value<int?> freeCashFlow,
+  Value<String?> link,
+  Value<String?> finalLink,
+  required DateTime expires,
+  Value<int> rowid,
+});
+typedef $$CashFlowStatementTableRowDefinitionTableUpdateCompanionBuilder
+    = CashFlowStatementTableRowDefinitionCompanion Function({
+  Value<String> date,
+  Value<String> symbol,
+  Value<String?> reportedCurrency,
+  Value<String?> cik,
+  Value<String?> fillingDate,
+  Value<String?> acceptedDate,
+  Value<String?> calendarYear,
+  Value<String?> period,
+  Value<int?> netIncome,
+  Value<int?> depreciationAndAmortization,
+  Value<int?> deferredIncomeTax,
+  Value<int?> stockBasedCompensation,
+  Value<int?> changeInWorkingCapital,
+  Value<int?> accountsReceivables,
+  Value<int?> inventory,
+  Value<int?> accountsPayables,
+  Value<int?> otherWorkingCapital,
+  Value<int?> otherNonCashItems,
+  Value<int?> netCashProvidedByOperatingActivities,
+  Value<int?> investmentsInPropertyPlantAndEquipment,
+  Value<int?> acquisitionsNet,
+  Value<int?> purchasesOfInvestments,
+  Value<int?> salesMaturitiesOfInvestments,
+  Value<int?> otherInvestingActivites,
+  Value<int?> netCashUsedForInvestingActivites,
+  Value<int?> debtRepayment,
+  Value<int?> commonStockIssued,
+  Value<int?> commonStockRepurchased,
+  Value<int?> dividendsPaid,
+  Value<int?> otherFinancingActivites,
+  Value<int?> netCashUsedProvidedByFinancingActivities,
+  Value<int?> effectOfForexChangesOnCash,
+  Value<int?> netChangeInCash,
+  Value<int?> cashAtEndOfPeriod,
+  Value<int?> cashAtBeginningOfPeriod,
+  Value<int?> operatingCashFlow,
+  Value<int?> capitalExpenditure,
+  Value<int?> freeCashFlow,
+  Value<String?> link,
+  Value<String?> finalLink,
+  Value<DateTime> expires,
+  Value<int> rowid,
+});
+
+class $$CashFlowStatementTableRowDefinitionTableTableManager
+    extends RootTableManager<
+        _$DriftDb,
+        $CashFlowStatementTableRowDefinitionTable,
+        CashFlowStatementTableRow,
+        $$CashFlowStatementTableRowDefinitionTableFilterComposer,
+        $$CashFlowStatementTableRowDefinitionTableOrderingComposer,
+        $$CashFlowStatementTableRowDefinitionTableProcessedTableManager,
+        $$CashFlowStatementTableRowDefinitionTableInsertCompanionBuilder,
+        $$CashFlowStatementTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$CashFlowStatementTableRowDefinitionTableTableManager(
+      _$DriftDb db, $CashFlowStatementTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$CashFlowStatementTableRowDefinitionTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$CashFlowStatementTableRowDefinitionTableOrderingComposer(
+                  ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$CashFlowStatementTableRowDefinitionTableProcessedTableManager(
+                  p),
+          getUpdateCompanionBuilder: ({
+            Value<String> date = const Value.absent(),
+            Value<String> symbol = const Value.absent(),
+            Value<String?> reportedCurrency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> fillingDate = const Value.absent(),
+            Value<String?> acceptedDate = const Value.absent(),
+            Value<String?> calendarYear = const Value.absent(),
+            Value<String?> period = const Value.absent(),
+            Value<int?> netIncome = const Value.absent(),
+            Value<int?> depreciationAndAmortization = const Value.absent(),
+            Value<int?> deferredIncomeTax = const Value.absent(),
+            Value<int?> stockBasedCompensation = const Value.absent(),
+            Value<int?> changeInWorkingCapital = const Value.absent(),
+            Value<int?> accountsReceivables = const Value.absent(),
+            Value<int?> inventory = const Value.absent(),
+            Value<int?> accountsPayables = const Value.absent(),
+            Value<int?> otherWorkingCapital = const Value.absent(),
+            Value<int?> otherNonCashItems = const Value.absent(),
+            Value<int?> netCashProvidedByOperatingActivities =
+                const Value.absent(),
+            Value<int?> investmentsInPropertyPlantAndEquipment =
+                const Value.absent(),
+            Value<int?> acquisitionsNet = const Value.absent(),
+            Value<int?> purchasesOfInvestments = const Value.absent(),
+            Value<int?> salesMaturitiesOfInvestments = const Value.absent(),
+            Value<int?> otherInvestingActivites = const Value.absent(),
+            Value<int?> netCashUsedForInvestingActivites = const Value.absent(),
+            Value<int?> debtRepayment = const Value.absent(),
+            Value<int?> commonStockIssued = const Value.absent(),
+            Value<int?> commonStockRepurchased = const Value.absent(),
+            Value<int?> dividendsPaid = const Value.absent(),
+            Value<int?> otherFinancingActivites = const Value.absent(),
+            Value<int?> netCashUsedProvidedByFinancingActivities =
+                const Value.absent(),
+            Value<int?> effectOfForexChangesOnCash = const Value.absent(),
+            Value<int?> netChangeInCash = const Value.absent(),
+            Value<int?> cashAtEndOfPeriod = const Value.absent(),
+            Value<int?> cashAtBeginningOfPeriod = const Value.absent(),
+            Value<int?> operatingCashFlow = const Value.absent(),
+            Value<int?> capitalExpenditure = const Value.absent(),
+            Value<int?> freeCashFlow = const Value.absent(),
+            Value<String?> link = const Value.absent(),
+            Value<String?> finalLink = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CashFlowStatementTableRowDefinitionCompanion(
+            date: date,
+            symbol: symbol,
+            reportedCurrency: reportedCurrency,
+            cik: cik,
+            fillingDate: fillingDate,
+            acceptedDate: acceptedDate,
+            calendarYear: calendarYear,
+            period: period,
+            netIncome: netIncome,
+            depreciationAndAmortization: depreciationAndAmortization,
+            deferredIncomeTax: deferredIncomeTax,
+            stockBasedCompensation: stockBasedCompensation,
+            changeInWorkingCapital: changeInWorkingCapital,
+            accountsReceivables: accountsReceivables,
+            inventory: inventory,
+            accountsPayables: accountsPayables,
+            otherWorkingCapital: otherWorkingCapital,
+            otherNonCashItems: otherNonCashItems,
+            netCashProvidedByOperatingActivities:
+                netCashProvidedByOperatingActivities,
+            investmentsInPropertyPlantAndEquipment:
+                investmentsInPropertyPlantAndEquipment,
+            acquisitionsNet: acquisitionsNet,
+            purchasesOfInvestments: purchasesOfInvestments,
+            salesMaturitiesOfInvestments: salesMaturitiesOfInvestments,
+            otherInvestingActivites: otherInvestingActivites,
+            netCashUsedForInvestingActivites: netCashUsedForInvestingActivites,
+            debtRepayment: debtRepayment,
+            commonStockIssued: commonStockIssued,
+            commonStockRepurchased: commonStockRepurchased,
+            dividendsPaid: dividendsPaid,
+            otherFinancingActivites: otherFinancingActivites,
+            netCashUsedProvidedByFinancingActivities:
+                netCashUsedProvidedByFinancingActivities,
+            effectOfForexChangesOnCash: effectOfForexChangesOnCash,
+            netChangeInCash: netChangeInCash,
+            cashAtEndOfPeriod: cashAtEndOfPeriod,
+            cashAtBeginningOfPeriod: cashAtBeginningOfPeriod,
+            operatingCashFlow: operatingCashFlow,
+            capitalExpenditure: capitalExpenditure,
+            freeCashFlow: freeCashFlow,
+            link: link,
+            finalLink: finalLink,
+            expires: expires,
+            rowid: rowid,
+          ),
+          getInsertCompanionBuilder: ({
+            required String date,
+            required String symbol,
+            Value<String?> reportedCurrency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> fillingDate = const Value.absent(),
+            Value<String?> acceptedDate = const Value.absent(),
+            Value<String?> calendarYear = const Value.absent(),
+            Value<String?> period = const Value.absent(),
+            Value<int?> netIncome = const Value.absent(),
+            Value<int?> depreciationAndAmortization = const Value.absent(),
+            Value<int?> deferredIncomeTax = const Value.absent(),
+            Value<int?> stockBasedCompensation = const Value.absent(),
+            Value<int?> changeInWorkingCapital = const Value.absent(),
+            Value<int?> accountsReceivables = const Value.absent(),
+            Value<int?> inventory = const Value.absent(),
+            Value<int?> accountsPayables = const Value.absent(),
+            Value<int?> otherWorkingCapital = const Value.absent(),
+            Value<int?> otherNonCashItems = const Value.absent(),
+            Value<int?> netCashProvidedByOperatingActivities =
+                const Value.absent(),
+            Value<int?> investmentsInPropertyPlantAndEquipment =
+                const Value.absent(),
+            Value<int?> acquisitionsNet = const Value.absent(),
+            Value<int?> purchasesOfInvestments = const Value.absent(),
+            Value<int?> salesMaturitiesOfInvestments = const Value.absent(),
+            Value<int?> otherInvestingActivites = const Value.absent(),
+            Value<int?> netCashUsedForInvestingActivites = const Value.absent(),
+            Value<int?> debtRepayment = const Value.absent(),
+            Value<int?> commonStockIssued = const Value.absent(),
+            Value<int?> commonStockRepurchased = const Value.absent(),
+            Value<int?> dividendsPaid = const Value.absent(),
+            Value<int?> otherFinancingActivites = const Value.absent(),
+            Value<int?> netCashUsedProvidedByFinancingActivities =
+                const Value.absent(),
+            Value<int?> effectOfForexChangesOnCash = const Value.absent(),
+            Value<int?> netChangeInCash = const Value.absent(),
+            Value<int?> cashAtEndOfPeriod = const Value.absent(),
+            Value<int?> cashAtBeginningOfPeriod = const Value.absent(),
+            Value<int?> operatingCashFlow = const Value.absent(),
+            Value<int?> capitalExpenditure = const Value.absent(),
+            Value<int?> freeCashFlow = const Value.absent(),
+            Value<String?> link = const Value.absent(),
+            Value<String?> finalLink = const Value.absent(),
+            required DateTime expires,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              CashFlowStatementTableRowDefinitionCompanion.insert(
+            date: date,
+            symbol: symbol,
+            reportedCurrency: reportedCurrency,
+            cik: cik,
+            fillingDate: fillingDate,
+            acceptedDate: acceptedDate,
+            calendarYear: calendarYear,
+            period: period,
+            netIncome: netIncome,
+            depreciationAndAmortization: depreciationAndAmortization,
+            deferredIncomeTax: deferredIncomeTax,
+            stockBasedCompensation: stockBasedCompensation,
+            changeInWorkingCapital: changeInWorkingCapital,
+            accountsReceivables: accountsReceivables,
+            inventory: inventory,
+            accountsPayables: accountsPayables,
+            otherWorkingCapital: otherWorkingCapital,
+            otherNonCashItems: otherNonCashItems,
+            netCashProvidedByOperatingActivities:
+                netCashProvidedByOperatingActivities,
+            investmentsInPropertyPlantAndEquipment:
+                investmentsInPropertyPlantAndEquipment,
+            acquisitionsNet: acquisitionsNet,
+            purchasesOfInvestments: purchasesOfInvestments,
+            salesMaturitiesOfInvestments: salesMaturitiesOfInvestments,
+            otherInvestingActivites: otherInvestingActivites,
+            netCashUsedForInvestingActivites: netCashUsedForInvestingActivites,
+            debtRepayment: debtRepayment,
+            commonStockIssued: commonStockIssued,
+            commonStockRepurchased: commonStockRepurchased,
+            dividendsPaid: dividendsPaid,
+            otherFinancingActivites: otherFinancingActivites,
+            netCashUsedProvidedByFinancingActivities:
+                netCashUsedProvidedByFinancingActivities,
+            effectOfForexChangesOnCash: effectOfForexChangesOnCash,
+            netChangeInCash: netChangeInCash,
+            cashAtEndOfPeriod: cashAtEndOfPeriod,
+            cashAtBeginningOfPeriod: cashAtBeginningOfPeriod,
+            operatingCashFlow: operatingCashFlow,
+            capitalExpenditure: capitalExpenditure,
+            freeCashFlow: freeCashFlow,
+            link: link,
+            finalLink: finalLink,
+            expires: expires,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$CashFlowStatementTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $CashFlowStatementTableRowDefinitionTable,
+        CashFlowStatementTableRow,
+        $$CashFlowStatementTableRowDefinitionTableFilterComposer,
+        $$CashFlowStatementTableRowDefinitionTableOrderingComposer,
+        $$CashFlowStatementTableRowDefinitionTableProcessedTableManager,
+        $$CashFlowStatementTableRowDefinitionTableInsertCompanionBuilder,
+        $$CashFlowStatementTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$CashFlowStatementTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$CashFlowStatementTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb,
+        $CashFlowStatementTableRowDefinitionTable> {
+  $$CashFlowStatementTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get reportedCurrency => $state.composableBuilder(
+      column: $state.table.reportedCurrency,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get fillingDate => $state.composableBuilder(
+      column: $state.table.fillingDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get acceptedDate => $state.composableBuilder(
+      column: $state.table.acceptedDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get calendarYear => $state.composableBuilder(
+      column: $state.table.calendarYear,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get period => $state.composableBuilder(
+      column: $state.table.period,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netIncome => $state.composableBuilder(
+      column: $state.table.netIncome,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get depreciationAndAmortization =>
+      $state.composableBuilder(
+          column: $state.table.depreciationAndAmortization,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get deferredIncomeTax => $state.composableBuilder(
+      column: $state.table.deferredIncomeTax,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get stockBasedCompensation => $state.composableBuilder(
+      column: $state.table.stockBasedCompensation,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get changeInWorkingCapital => $state.composableBuilder(
+      column: $state.table.changeInWorkingCapital,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get accountsReceivables => $state.composableBuilder(
+      column: $state.table.accountsReceivables,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get inventory => $state.composableBuilder(
+      column: $state.table.inventory,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get accountsPayables => $state.composableBuilder(
+      column: $state.table.accountsPayables,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherWorkingCapital => $state.composableBuilder(
+      column: $state.table.otherWorkingCapital,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherNonCashItems => $state.composableBuilder(
+      column: $state.table.otherNonCashItems,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netCashProvidedByOperatingActivities =>
+      $state.composableBuilder(
+          column: $state.table.netCashProvidedByOperatingActivities,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get investmentsInPropertyPlantAndEquipment =>
+      $state.composableBuilder(
+          column: $state.table.investmentsInPropertyPlantAndEquipment,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get acquisitionsNet => $state.composableBuilder(
+      column: $state.table.acquisitionsNet,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get purchasesOfInvestments => $state.composableBuilder(
+      column: $state.table.purchasesOfInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get salesMaturitiesOfInvestments =>
+      $state.composableBuilder(
+          column: $state.table.salesMaturitiesOfInvestments,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherInvestingActivites => $state.composableBuilder(
+      column: $state.table.otherInvestingActivites,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netCashUsedForInvestingActivites =>
+      $state.composableBuilder(
+          column: $state.table.netCashUsedForInvestingActivites,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get debtRepayment => $state.composableBuilder(
+      column: $state.table.debtRepayment,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get commonStockIssued => $state.composableBuilder(
+      column: $state.table.commonStockIssued,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get commonStockRepurchased => $state.composableBuilder(
+      column: $state.table.commonStockRepurchased,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get dividendsPaid => $state.composableBuilder(
+      column: $state.table.dividendsPaid,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get otherFinancingActivites => $state.composableBuilder(
+      column: $state.table.otherFinancingActivites,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netCashUsedProvidedByFinancingActivities =>
+      $state.composableBuilder(
+          column: $state.table.netCashUsedProvidedByFinancingActivities,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get effectOfForexChangesOnCash => $state.composableBuilder(
+      column: $state.table.effectOfForexChangesOnCash,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netChangeInCash => $state.composableBuilder(
+      column: $state.table.netChangeInCash,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cashAtEndOfPeriod => $state.composableBuilder(
+      column: $state.table.cashAtEndOfPeriod,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get cashAtBeginningOfPeriod => $state.composableBuilder(
+      column: $state.table.cashAtBeginningOfPeriod,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get operatingCashFlow => $state.composableBuilder(
+      column: $state.table.operatingCashFlow,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get capitalExpenditure => $state.composableBuilder(
+      column: $state.table.capitalExpenditure,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get freeCashFlow => $state.composableBuilder(
+      column: $state.table.freeCashFlow,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get link => $state.composableBuilder(
+      column: $state.table.link,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get finalLink => $state.composableBuilder(
+      column: $state.table.finalLink,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$CashFlowStatementTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb,
+        $CashFlowStatementTableRowDefinitionTable> {
+  $$CashFlowStatementTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get reportedCurrency => $state.composableBuilder(
+      column: $state.table.reportedCurrency,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get fillingDate => $state.composableBuilder(
+      column: $state.table.fillingDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get acceptedDate => $state.composableBuilder(
+      column: $state.table.acceptedDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get calendarYear => $state.composableBuilder(
+      column: $state.table.calendarYear,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get period => $state.composableBuilder(
+      column: $state.table.period,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netIncome => $state.composableBuilder(
+      column: $state.table.netIncome,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get depreciationAndAmortization =>
+      $state.composableBuilder(
+          column: $state.table.depreciationAndAmortization,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get deferredIncomeTax => $state.composableBuilder(
+      column: $state.table.deferredIncomeTax,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get stockBasedCompensation => $state.composableBuilder(
+      column: $state.table.stockBasedCompensation,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get changeInWorkingCapital => $state.composableBuilder(
+      column: $state.table.changeInWorkingCapital,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get accountsReceivables => $state.composableBuilder(
+      column: $state.table.accountsReceivables,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get inventory => $state.composableBuilder(
+      column: $state.table.inventory,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get accountsPayables => $state.composableBuilder(
+      column: $state.table.accountsPayables,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherWorkingCapital => $state.composableBuilder(
+      column: $state.table.otherWorkingCapital,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherNonCashItems => $state.composableBuilder(
+      column: $state.table.otherNonCashItems,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netCashProvidedByOperatingActivities =>
+      $state.composableBuilder(
+          column: $state.table.netCashProvidedByOperatingActivities,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get investmentsInPropertyPlantAndEquipment =>
+      $state.composableBuilder(
+          column: $state.table.investmentsInPropertyPlantAndEquipment,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get acquisitionsNet => $state.composableBuilder(
+      column: $state.table.acquisitionsNet,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get purchasesOfInvestments => $state.composableBuilder(
+      column: $state.table.purchasesOfInvestments,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get salesMaturitiesOfInvestments => $state
+      .composableBuilder(
+          column: $state.table.salesMaturitiesOfInvestments,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherInvestingActivites => $state.composableBuilder(
+      column: $state.table.otherInvestingActivites,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netCashUsedForInvestingActivites =>
+      $state.composableBuilder(
+          column: $state.table.netCashUsedForInvestingActivites,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get debtRepayment => $state.composableBuilder(
+      column: $state.table.debtRepayment,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get commonStockIssued => $state.composableBuilder(
+      column: $state.table.commonStockIssued,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get commonStockRepurchased => $state.composableBuilder(
+      column: $state.table.commonStockRepurchased,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get dividendsPaid => $state.composableBuilder(
+      column: $state.table.dividendsPaid,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get otherFinancingActivites => $state.composableBuilder(
+      column: $state.table.otherFinancingActivites,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netCashUsedProvidedByFinancingActivities =>
+      $state.composableBuilder(
+          column: $state.table.netCashUsedProvidedByFinancingActivities,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get effectOfForexChangesOnCash =>
+      $state.composableBuilder(
+          column: $state.table.effectOfForexChangesOnCash,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netChangeInCash => $state.composableBuilder(
+      column: $state.table.netChangeInCash,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cashAtEndOfPeriod => $state.composableBuilder(
+      column: $state.table.cashAtEndOfPeriod,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get cashAtBeginningOfPeriod => $state.composableBuilder(
+      column: $state.table.cashAtBeginningOfPeriod,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get operatingCashFlow => $state.composableBuilder(
+      column: $state.table.operatingCashFlow,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get capitalExpenditure => $state.composableBuilder(
+      column: $state.table.capitalExpenditure,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get freeCashFlow => $state.composableBuilder(
+      column: $state.table.freeCashFlow,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get link => $state.composableBuilder(
+      column: $state.table.link,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get finalLink => $state.composableBuilder(
+      column: $state.table.finalLink,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$IncomeStatementTableRowDefinitionTableInsertCompanionBuilder
+    = IncomeStatementTableRowDefinitionCompanion Function({
+  required String date,
+  required String symbol,
+  Value<String?> reportedCurrency,
+  Value<String?> cik,
+  Value<String?> fillingDate,
+  Value<String?> acceptedDate,
+  Value<String?> calendarYear,
+  Value<String?> period,
+  Value<int?> revenue,
+  Value<int?> costOfRevenue,
+  Value<int?> grossProfit,
+  Value<double?> grossProfitRatio,
+  Value<int?> researchAndDevelopmentExpenses,
+  Value<int?> generalAndAdministrativeExpenses,
+  Value<int?> sellingAndMarketingExpenses,
+  Value<int?> sellingGeneralAndAdministrativeExpenses,
+  Value<double?> otherExpenses,
+  Value<int?> operatingExpenses,
+  Value<int?> costAndExpenses,
+  Value<int?> interestIncome,
+  Value<int?> interestExpense,
+  Value<int?> depreciationAndAmortization,
+  Value<int?> ebitda,
+  Value<double?> ebitdaratio,
+  Value<int?> operatingIncome,
+  Value<double?> operatingIncomeRatio,
+  Value<int?> totalOtherIncomeExpensesNet,
+  Value<int?> incomeBeforeTax,
+  Value<double?> incomeBeforeTaxRatio,
+  Value<int?> incomeTaxExpense,
+  Value<int?> netIncome,
+  Value<double?> netIncomeRatio,
+  Value<double?> eps,
+  Value<double?> epsdiluted,
+  Value<int?> weightedAverageShsOut,
+  Value<int?> weightedAverageShsOutDil,
+  Value<String?> link,
+  Value<String?> finalLink,
+  required DateTime expires,
+  Value<int> rowid,
+});
+typedef $$IncomeStatementTableRowDefinitionTableUpdateCompanionBuilder
+    = IncomeStatementTableRowDefinitionCompanion Function({
+  Value<String> date,
+  Value<String> symbol,
+  Value<String?> reportedCurrency,
+  Value<String?> cik,
+  Value<String?> fillingDate,
+  Value<String?> acceptedDate,
+  Value<String?> calendarYear,
+  Value<String?> period,
+  Value<int?> revenue,
+  Value<int?> costOfRevenue,
+  Value<int?> grossProfit,
+  Value<double?> grossProfitRatio,
+  Value<int?> researchAndDevelopmentExpenses,
+  Value<int?> generalAndAdministrativeExpenses,
+  Value<int?> sellingAndMarketingExpenses,
+  Value<int?> sellingGeneralAndAdministrativeExpenses,
+  Value<double?> otherExpenses,
+  Value<int?> operatingExpenses,
+  Value<int?> costAndExpenses,
+  Value<int?> interestIncome,
+  Value<int?> interestExpense,
+  Value<int?> depreciationAndAmortization,
+  Value<int?> ebitda,
+  Value<double?> ebitdaratio,
+  Value<int?> operatingIncome,
+  Value<double?> operatingIncomeRatio,
+  Value<int?> totalOtherIncomeExpensesNet,
+  Value<int?> incomeBeforeTax,
+  Value<double?> incomeBeforeTaxRatio,
+  Value<int?> incomeTaxExpense,
+  Value<int?> netIncome,
+  Value<double?> netIncomeRatio,
+  Value<double?> eps,
+  Value<double?> epsdiluted,
+  Value<int?> weightedAverageShsOut,
+  Value<int?> weightedAverageShsOutDil,
+  Value<String?> link,
+  Value<String?> finalLink,
+  Value<DateTime> expires,
+  Value<int> rowid,
+});
+
+class $$IncomeStatementTableRowDefinitionTableTableManager
+    extends RootTableManager<
+        _$DriftDb,
+        $IncomeStatementTableRowDefinitionTable,
+        IncomeStatementTableRow,
+        $$IncomeStatementTableRowDefinitionTableFilterComposer,
+        $$IncomeStatementTableRowDefinitionTableOrderingComposer,
+        $$IncomeStatementTableRowDefinitionTableProcessedTableManager,
+        $$IncomeStatementTableRowDefinitionTableInsertCompanionBuilder,
+        $$IncomeStatementTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$IncomeStatementTableRowDefinitionTableTableManager(
+      _$DriftDb db, $IncomeStatementTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$IncomeStatementTableRowDefinitionTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$IncomeStatementTableRowDefinitionTableOrderingComposer(
+                  ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$IncomeStatementTableRowDefinitionTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<String> date = const Value.absent(),
+            Value<String> symbol = const Value.absent(),
+            Value<String?> reportedCurrency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> fillingDate = const Value.absent(),
+            Value<String?> acceptedDate = const Value.absent(),
+            Value<String?> calendarYear = const Value.absent(),
+            Value<String?> period = const Value.absent(),
+            Value<int?> revenue = const Value.absent(),
+            Value<int?> costOfRevenue = const Value.absent(),
+            Value<int?> grossProfit = const Value.absent(),
+            Value<double?> grossProfitRatio = const Value.absent(),
+            Value<int?> researchAndDevelopmentExpenses = const Value.absent(),
+            Value<int?> generalAndAdministrativeExpenses = const Value.absent(),
+            Value<int?> sellingAndMarketingExpenses = const Value.absent(),
+            Value<int?> sellingGeneralAndAdministrativeExpenses =
+                const Value.absent(),
+            Value<double?> otherExpenses = const Value.absent(),
+            Value<int?> operatingExpenses = const Value.absent(),
+            Value<int?> costAndExpenses = const Value.absent(),
+            Value<int?> interestIncome = const Value.absent(),
+            Value<int?> interestExpense = const Value.absent(),
+            Value<int?> depreciationAndAmortization = const Value.absent(),
+            Value<int?> ebitda = const Value.absent(),
+            Value<double?> ebitdaratio = const Value.absent(),
+            Value<int?> operatingIncome = const Value.absent(),
+            Value<double?> operatingIncomeRatio = const Value.absent(),
+            Value<int?> totalOtherIncomeExpensesNet = const Value.absent(),
+            Value<int?> incomeBeforeTax = const Value.absent(),
+            Value<double?> incomeBeforeTaxRatio = const Value.absent(),
+            Value<int?> incomeTaxExpense = const Value.absent(),
+            Value<int?> netIncome = const Value.absent(),
+            Value<double?> netIncomeRatio = const Value.absent(),
+            Value<double?> eps = const Value.absent(),
+            Value<double?> epsdiluted = const Value.absent(),
+            Value<int?> weightedAverageShsOut = const Value.absent(),
+            Value<int?> weightedAverageShsOutDil = const Value.absent(),
+            Value<String?> link = const Value.absent(),
+            Value<String?> finalLink = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              IncomeStatementTableRowDefinitionCompanion(
+            date: date,
+            symbol: symbol,
+            reportedCurrency: reportedCurrency,
+            cik: cik,
+            fillingDate: fillingDate,
+            acceptedDate: acceptedDate,
+            calendarYear: calendarYear,
+            period: period,
+            revenue: revenue,
+            costOfRevenue: costOfRevenue,
+            grossProfit: grossProfit,
+            grossProfitRatio: grossProfitRatio,
+            researchAndDevelopmentExpenses: researchAndDevelopmentExpenses,
+            generalAndAdministrativeExpenses: generalAndAdministrativeExpenses,
+            sellingAndMarketingExpenses: sellingAndMarketingExpenses,
+            sellingGeneralAndAdministrativeExpenses:
+                sellingGeneralAndAdministrativeExpenses,
+            otherExpenses: otherExpenses,
+            operatingExpenses: operatingExpenses,
+            costAndExpenses: costAndExpenses,
+            interestIncome: interestIncome,
+            interestExpense: interestExpense,
+            depreciationAndAmortization: depreciationAndAmortization,
+            ebitda: ebitda,
+            ebitdaratio: ebitdaratio,
+            operatingIncome: operatingIncome,
+            operatingIncomeRatio: operatingIncomeRatio,
+            totalOtherIncomeExpensesNet: totalOtherIncomeExpensesNet,
+            incomeBeforeTax: incomeBeforeTax,
+            incomeBeforeTaxRatio: incomeBeforeTaxRatio,
+            incomeTaxExpense: incomeTaxExpense,
+            netIncome: netIncome,
+            netIncomeRatio: netIncomeRatio,
+            eps: eps,
+            epsdiluted: epsdiluted,
+            weightedAverageShsOut: weightedAverageShsOut,
+            weightedAverageShsOutDil: weightedAverageShsOutDil,
+            link: link,
+            finalLink: finalLink,
+            expires: expires,
+            rowid: rowid,
+          ),
+          getInsertCompanionBuilder: ({
+            required String date,
+            required String symbol,
+            Value<String?> reportedCurrency = const Value.absent(),
+            Value<String?> cik = const Value.absent(),
+            Value<String?> fillingDate = const Value.absent(),
+            Value<String?> acceptedDate = const Value.absent(),
+            Value<String?> calendarYear = const Value.absent(),
+            Value<String?> period = const Value.absent(),
+            Value<int?> revenue = const Value.absent(),
+            Value<int?> costOfRevenue = const Value.absent(),
+            Value<int?> grossProfit = const Value.absent(),
+            Value<double?> grossProfitRatio = const Value.absent(),
+            Value<int?> researchAndDevelopmentExpenses = const Value.absent(),
+            Value<int?> generalAndAdministrativeExpenses = const Value.absent(),
+            Value<int?> sellingAndMarketingExpenses = const Value.absent(),
+            Value<int?> sellingGeneralAndAdministrativeExpenses =
+                const Value.absent(),
+            Value<double?> otherExpenses = const Value.absent(),
+            Value<int?> operatingExpenses = const Value.absent(),
+            Value<int?> costAndExpenses = const Value.absent(),
+            Value<int?> interestIncome = const Value.absent(),
+            Value<int?> interestExpense = const Value.absent(),
+            Value<int?> depreciationAndAmortization = const Value.absent(),
+            Value<int?> ebitda = const Value.absent(),
+            Value<double?> ebitdaratio = const Value.absent(),
+            Value<int?> operatingIncome = const Value.absent(),
+            Value<double?> operatingIncomeRatio = const Value.absent(),
+            Value<int?> totalOtherIncomeExpensesNet = const Value.absent(),
+            Value<int?> incomeBeforeTax = const Value.absent(),
+            Value<double?> incomeBeforeTaxRatio = const Value.absent(),
+            Value<int?> incomeTaxExpense = const Value.absent(),
+            Value<int?> netIncome = const Value.absent(),
+            Value<double?> netIncomeRatio = const Value.absent(),
+            Value<double?> eps = const Value.absent(),
+            Value<double?> epsdiluted = const Value.absent(),
+            Value<int?> weightedAverageShsOut = const Value.absent(),
+            Value<int?> weightedAverageShsOutDil = const Value.absent(),
+            Value<String?> link = const Value.absent(),
+            Value<String?> finalLink = const Value.absent(),
+            required DateTime expires,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              IncomeStatementTableRowDefinitionCompanion.insert(
+            date: date,
+            symbol: symbol,
+            reportedCurrency: reportedCurrency,
+            cik: cik,
+            fillingDate: fillingDate,
+            acceptedDate: acceptedDate,
+            calendarYear: calendarYear,
+            period: period,
+            revenue: revenue,
+            costOfRevenue: costOfRevenue,
+            grossProfit: grossProfit,
+            grossProfitRatio: grossProfitRatio,
+            researchAndDevelopmentExpenses: researchAndDevelopmentExpenses,
+            generalAndAdministrativeExpenses: generalAndAdministrativeExpenses,
+            sellingAndMarketingExpenses: sellingAndMarketingExpenses,
+            sellingGeneralAndAdministrativeExpenses:
+                sellingGeneralAndAdministrativeExpenses,
+            otherExpenses: otherExpenses,
+            operatingExpenses: operatingExpenses,
+            costAndExpenses: costAndExpenses,
+            interestIncome: interestIncome,
+            interestExpense: interestExpense,
+            depreciationAndAmortization: depreciationAndAmortization,
+            ebitda: ebitda,
+            ebitdaratio: ebitdaratio,
+            operatingIncome: operatingIncome,
+            operatingIncomeRatio: operatingIncomeRatio,
+            totalOtherIncomeExpensesNet: totalOtherIncomeExpensesNet,
+            incomeBeforeTax: incomeBeforeTax,
+            incomeBeforeTaxRatio: incomeBeforeTaxRatio,
+            incomeTaxExpense: incomeTaxExpense,
+            netIncome: netIncome,
+            netIncomeRatio: netIncomeRatio,
+            eps: eps,
+            epsdiluted: epsdiluted,
+            weightedAverageShsOut: weightedAverageShsOut,
+            weightedAverageShsOutDil: weightedAverageShsOutDil,
+            link: link,
+            finalLink: finalLink,
+            expires: expires,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$IncomeStatementTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $IncomeStatementTableRowDefinitionTable,
+        IncomeStatementTableRow,
+        $$IncomeStatementTableRowDefinitionTableFilterComposer,
+        $$IncomeStatementTableRowDefinitionTableOrderingComposer,
+        $$IncomeStatementTableRowDefinitionTableProcessedTableManager,
+        $$IncomeStatementTableRowDefinitionTableInsertCompanionBuilder,
+        $$IncomeStatementTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$IncomeStatementTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$IncomeStatementTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $IncomeStatementTableRowDefinitionTable> {
+  $$IncomeStatementTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get reportedCurrency => $state.composableBuilder(
+      column: $state.table.reportedCurrency,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get fillingDate => $state.composableBuilder(
+      column: $state.table.fillingDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get acceptedDate => $state.composableBuilder(
+      column: $state.table.acceptedDate,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get calendarYear => $state.composableBuilder(
+      column: $state.table.calendarYear,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get period => $state.composableBuilder(
+      column: $state.table.period,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get revenue => $state.composableBuilder(
+      column: $state.table.revenue,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get costOfRevenue => $state.composableBuilder(
+      column: $state.table.costOfRevenue,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get grossProfit => $state.composableBuilder(
+      column: $state.table.grossProfit,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get grossProfitRatio => $state.composableBuilder(
+      column: $state.table.grossProfitRatio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get researchAndDevelopmentExpenses => $state
+      .composableBuilder(
+          column: $state.table.researchAndDevelopmentExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get generalAndAdministrativeExpenses =>
+      $state.composableBuilder(
+          column: $state.table.generalAndAdministrativeExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get sellingAndMarketingExpenses =>
+      $state.composableBuilder(
+          column: $state.table.sellingAndMarketingExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get sellingGeneralAndAdministrativeExpenses =>
+      $state.composableBuilder(
+          column: $state.table.sellingGeneralAndAdministrativeExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get otherExpenses => $state.composableBuilder(
+      column: $state.table.otherExpenses,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get operatingExpenses => $state.composableBuilder(
+      column: $state.table.operatingExpenses,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get costAndExpenses => $state.composableBuilder(
+      column: $state.table.costAndExpenses,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get interestIncome => $state.composableBuilder(
+      column: $state.table.interestIncome,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get interestExpense => $state.composableBuilder(
+      column: $state.table.interestExpense,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get depreciationAndAmortization =>
+      $state.composableBuilder(
+          column: $state.table.depreciationAndAmortization,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get ebitda => $state.composableBuilder(
+      column: $state.table.ebitda,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get ebitdaratio => $state.composableBuilder(
+      column: $state.table.ebitdaratio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get operatingIncome => $state.composableBuilder(
+      column: $state.table.operatingIncome,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get operatingIncomeRatio => $state.composableBuilder(
+      column: $state.table.operatingIncomeRatio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get totalOtherIncomeExpensesNet =>
+      $state.composableBuilder(
+          column: $state.table.totalOtherIncomeExpensesNet,
+          builder: (column, joinBuilders) =>
+              ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get incomeBeforeTax => $state.composableBuilder(
+      column: $state.table.incomeBeforeTax,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get incomeBeforeTaxRatio => $state.composableBuilder(
+      column: $state.table.incomeBeforeTaxRatio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get incomeTaxExpense => $state.composableBuilder(
+      column: $state.table.incomeTaxExpense,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get netIncome => $state.composableBuilder(
+      column: $state.table.netIncome,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get netIncomeRatio => $state.composableBuilder(
+      column: $state.table.netIncomeRatio,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get eps => $state.composableBuilder(
+      column: $state.table.eps,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get epsdiluted => $state.composableBuilder(
+      column: $state.table.epsdiluted,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get weightedAverageShsOut => $state.composableBuilder(
+      column: $state.table.weightedAverageShsOut,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get weightedAverageShsOutDil => $state.composableBuilder(
+      column: $state.table.weightedAverageShsOutDil,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get link => $state.composableBuilder(
+      column: $state.table.link,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get finalLink => $state.composableBuilder(
+      column: $state.table.finalLink,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$IncomeStatementTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb,
+        $IncomeStatementTableRowDefinitionTable> {
+  $$IncomeStatementTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get reportedCurrency => $state.composableBuilder(
+      column: $state.table.reportedCurrency,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get cik => $state.composableBuilder(
+      column: $state.table.cik,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get fillingDate => $state.composableBuilder(
+      column: $state.table.fillingDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get acceptedDate => $state.composableBuilder(
+      column: $state.table.acceptedDate,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get calendarYear => $state.composableBuilder(
+      column: $state.table.calendarYear,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get period => $state.composableBuilder(
+      column: $state.table.period,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get revenue => $state.composableBuilder(
+      column: $state.table.revenue,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get costOfRevenue => $state.composableBuilder(
+      column: $state.table.costOfRevenue,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get grossProfit => $state.composableBuilder(
+      column: $state.table.grossProfit,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get grossProfitRatio => $state.composableBuilder(
+      column: $state.table.grossProfitRatio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get researchAndDevelopmentExpenses =>
+      $state.composableBuilder(
+          column: $state.table.researchAndDevelopmentExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get generalAndAdministrativeExpenses =>
+      $state.composableBuilder(
+          column: $state.table.generalAndAdministrativeExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get sellingAndMarketingExpenses =>
+      $state.composableBuilder(
+          column: $state.table.sellingAndMarketingExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get sellingGeneralAndAdministrativeExpenses =>
+      $state.composableBuilder(
+          column: $state.table.sellingGeneralAndAdministrativeExpenses,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get otherExpenses => $state.composableBuilder(
+      column: $state.table.otherExpenses,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get operatingExpenses => $state.composableBuilder(
+      column: $state.table.operatingExpenses,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get costAndExpenses => $state.composableBuilder(
+      column: $state.table.costAndExpenses,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get interestIncome => $state.composableBuilder(
+      column: $state.table.interestIncome,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get interestExpense => $state.composableBuilder(
+      column: $state.table.interestExpense,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get depreciationAndAmortization =>
+      $state.composableBuilder(
+          column: $state.table.depreciationAndAmortization,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get ebitda => $state.composableBuilder(
+      column: $state.table.ebitda,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get ebitdaratio => $state.composableBuilder(
+      column: $state.table.ebitdaratio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get operatingIncome => $state.composableBuilder(
+      column: $state.table.operatingIncome,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get operatingIncomeRatio => $state.composableBuilder(
+      column: $state.table.operatingIncomeRatio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get totalOtherIncomeExpensesNet =>
+      $state.composableBuilder(
+          column: $state.table.totalOtherIncomeExpensesNet,
+          builder: (column, joinBuilders) =>
+              ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get incomeBeforeTax => $state.composableBuilder(
+      column: $state.table.incomeBeforeTax,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get incomeBeforeTaxRatio => $state.composableBuilder(
+      column: $state.table.incomeBeforeTaxRatio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get incomeTaxExpense => $state.composableBuilder(
+      column: $state.table.incomeTaxExpense,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get netIncome => $state.composableBuilder(
+      column: $state.table.netIncome,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get netIncomeRatio => $state.composableBuilder(
+      column: $state.table.netIncomeRatio,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get eps => $state.composableBuilder(
+      column: $state.table.eps,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get epsdiluted => $state.composableBuilder(
+      column: $state.table.epsdiluted,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get weightedAverageShsOut => $state.composableBuilder(
+      column: $state.table.weightedAverageShsOut,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get weightedAverageShsOutDil => $state.composableBuilder(
+      column: $state.table.weightedAverageShsOutDil,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get link => $state.composableBuilder(
+      column: $state.table.link,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get finalLink => $state.composableBuilder(
+      column: $state.table.finalLink,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ChartEodItemTableRowDefinitionTableInsertCompanionBuilder
+    = ChartEodItemTableRowDefinitionCompanion Function({
+  required String symbol,
+  required String from,
+  required String to,
+  required String date,
+  Value<double?> open,
+  Value<double?> high,
+  Value<double?> low,
+  Value<double?> close,
+  Value<double?> adjClose,
+  Value<int?> volume,
+  Value<int?> unadjustedVolume,
+  Value<double?> change,
+  Value<double?> changePercent,
+  Value<double?> vwap,
+  Value<String?> label,
+  Value<double?> changeOverTime,
+  required DateTime expires,
+  Value<int> rowid,
+});
+typedef $$ChartEodItemTableRowDefinitionTableUpdateCompanionBuilder
+    = ChartEodItemTableRowDefinitionCompanion Function({
+  Value<String> symbol,
+  Value<String> from,
+  Value<String> to,
+  Value<String> date,
+  Value<double?> open,
+  Value<double?> high,
+  Value<double?> low,
+  Value<double?> close,
+  Value<double?> adjClose,
+  Value<int?> volume,
+  Value<int?> unadjustedVolume,
+  Value<double?> change,
+  Value<double?> changePercent,
+  Value<double?> vwap,
+  Value<String?> label,
+  Value<double?> changeOverTime,
+  Value<DateTime> expires,
+  Value<int> rowid,
+});
+
+class $$ChartEodItemTableRowDefinitionTableTableManager
+    extends RootTableManager<
+        _$DriftDb,
+        $ChartEodItemTableRowDefinitionTable,
+        ChartEodItemTableRow,
+        $$ChartEodItemTableRowDefinitionTableFilterComposer,
+        $$ChartEodItemTableRowDefinitionTableOrderingComposer,
+        $$ChartEodItemTableRowDefinitionTableProcessedTableManager,
+        $$ChartEodItemTableRowDefinitionTableInsertCompanionBuilder,
+        $$ChartEodItemTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ChartEodItemTableRowDefinitionTableTableManager(
+      _$DriftDb db, $ChartEodItemTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ChartEodItemTableRowDefinitionTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$ChartEodItemTableRowDefinitionTableOrderingComposer(
+                  ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$ChartEodItemTableRowDefinitionTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<String> symbol = const Value.absent(),
+            Value<String> from = const Value.absent(),
+            Value<String> to = const Value.absent(),
+            Value<String> date = const Value.absent(),
+            Value<double?> open = const Value.absent(),
+            Value<double?> high = const Value.absent(),
+            Value<double?> low = const Value.absent(),
+            Value<double?> close = const Value.absent(),
+            Value<double?> adjClose = const Value.absent(),
+            Value<int?> volume = const Value.absent(),
+            Value<int?> unadjustedVolume = const Value.absent(),
+            Value<double?> change = const Value.absent(),
+            Value<double?> changePercent = const Value.absent(),
+            Value<double?> vwap = const Value.absent(),
+            Value<String?> label = const Value.absent(),
+            Value<double?> changeOverTime = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ChartEodItemTableRowDefinitionCompanion(
+            symbol: symbol,
+            from: from,
+            to: to,
+            date: date,
+            open: open,
+            high: high,
+            low: low,
+            close: close,
+            adjClose: adjClose,
+            volume: volume,
+            unadjustedVolume: unadjustedVolume,
+            change: change,
+            changePercent: changePercent,
+            vwap: vwap,
+            label: label,
+            changeOverTime: changeOverTime,
+            expires: expires,
+            rowid: rowid,
+          ),
+          getInsertCompanionBuilder: ({
+            required String symbol,
+            required String from,
+            required String to,
+            required String date,
+            Value<double?> open = const Value.absent(),
+            Value<double?> high = const Value.absent(),
+            Value<double?> low = const Value.absent(),
+            Value<double?> close = const Value.absent(),
+            Value<double?> adjClose = const Value.absent(),
+            Value<int?> volume = const Value.absent(),
+            Value<int?> unadjustedVolume = const Value.absent(),
+            Value<double?> change = const Value.absent(),
+            Value<double?> changePercent = const Value.absent(),
+            Value<double?> vwap = const Value.absent(),
+            Value<String?> label = const Value.absent(),
+            Value<double?> changeOverTime = const Value.absent(),
+            required DateTime expires,
+            Value<int> rowid = const Value.absent(),
+          }) =>
+              ChartEodItemTableRowDefinitionCompanion.insert(
+            symbol: symbol,
+            from: from,
+            to: to,
+            date: date,
+            open: open,
+            high: high,
+            low: low,
+            close: close,
+            adjClose: adjClose,
+            volume: volume,
+            unadjustedVolume: unadjustedVolume,
+            change: change,
+            changePercent: changePercent,
+            vwap: vwap,
+            label: label,
+            changeOverTime: changeOverTime,
+            expires: expires,
+            rowid: rowid,
+          ),
+        ));
+}
+
+class $$ChartEodItemTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $ChartEodItemTableRowDefinitionTable,
+        ChartEodItemTableRow,
+        $$ChartEodItemTableRowDefinitionTableFilterComposer,
+        $$ChartEodItemTableRowDefinitionTableOrderingComposer,
+        $$ChartEodItemTableRowDefinitionTableProcessedTableManager,
+        $$ChartEodItemTableRowDefinitionTableInsertCompanionBuilder,
+        $$ChartEodItemTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ChartEodItemTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$ChartEodItemTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $ChartEodItemTableRowDefinitionTable> {
+  $$ChartEodItemTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get from => $state.composableBuilder(
+      column: $state.table.from,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get to => $state.composableBuilder(
+      column: $state.table.to,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get open => $state.composableBuilder(
+      column: $state.table.open,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get high => $state.composableBuilder(
+      column: $state.table.high,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get low => $state.composableBuilder(
+      column: $state.table.low,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get close => $state.composableBuilder(
+      column: $state.table.close,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get adjClose => $state.composableBuilder(
+      column: $state.table.adjClose,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get volume => $state.composableBuilder(
+      column: $state.table.volume,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get unadjustedVolume => $state.composableBuilder(
+      column: $state.table.unadjustedVolume,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get change => $state.composableBuilder(
+      column: $state.table.change,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get changePercent => $state.composableBuilder(
+      column: $state.table.changePercent,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get vwap => $state.composableBuilder(
+      column: $state.table.vwap,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get changeOverTime => $state.composableBuilder(
+      column: $state.table.changeOverTime,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ChartEodItemTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb, $ChartEodItemTableRowDefinitionTable> {
+  $$ChartEodItemTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get from => $state.composableBuilder(
+      column: $state.table.from,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get to => $state.composableBuilder(
+      column: $state.table.to,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get date => $state.composableBuilder(
+      column: $state.table.date,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get open => $state.composableBuilder(
+      column: $state.table.open,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get high => $state.composableBuilder(
+      column: $state.table.high,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get low => $state.composableBuilder(
+      column: $state.table.low,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get close => $state.composableBuilder(
+      column: $state.table.close,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get adjClose => $state.composableBuilder(
+      column: $state.table.adjClose,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get volume => $state.composableBuilder(
+      column: $state.table.volume,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get unadjustedVolume => $state.composableBuilder(
+      column: $state.table.unadjustedVolume,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get change => $state.composableBuilder(
+      column: $state.table.change,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get changePercent => $state.composableBuilder(
+      column: $state.table.changePercent,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get vwap => $state.composableBuilder(
+      column: $state.table.vwap,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get label => $state.composableBuilder(
+      column: $state.table.label,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get changeOverTime => $state.composableBuilder(
+      column: $state.table.changeOverTime,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$StockListingTableRowDefinitionTableInsertCompanionBuilder
+    = StockListingTableRowDefinitionCompanion Function({
+  Value<int> id,
+  required String symbol,
+  required String exchange,
+  Value<String?> name,
+  Value<double?> price,
+  Value<String?> exchangeShortName,
+  Value<String?> type,
+  required DateTime expires,
+});
+typedef $$StockListingTableRowDefinitionTableUpdateCompanionBuilder
+    = StockListingTableRowDefinitionCompanion Function({
+  Value<int> id,
+  Value<String> symbol,
+  Value<String> exchange,
+  Value<String?> name,
+  Value<double?> price,
+  Value<String?> exchangeShortName,
+  Value<String?> type,
+  Value<DateTime> expires,
+});
+
+class $$StockListingTableRowDefinitionTableTableManager
+    extends RootTableManager<
+        _$DriftDb,
+        $StockListingTableRowDefinitionTable,
+        StockListingTableRow,
+        $$StockListingTableRowDefinitionTableFilterComposer,
+        $$StockListingTableRowDefinitionTableOrderingComposer,
+        $$StockListingTableRowDefinitionTableProcessedTableManager,
+        $$StockListingTableRowDefinitionTableInsertCompanionBuilder,
+        $$StockListingTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$StockListingTableRowDefinitionTableTableManager(
+      _$DriftDb db, $StockListingTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$StockListingTableRowDefinitionTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$StockListingTableRowDefinitionTableOrderingComposer(
+                  ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$StockListingTableRowDefinitionTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            Value<String> symbol = const Value.absent(),
+            Value<String> exchange = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<double?> price = const Value.absent(),
+            Value<String?> exchangeShortName = const Value.absent(),
+            Value<String?> type = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+          }) =>
+              StockListingTableRowDefinitionCompanion(
+            id: id,
+            symbol: symbol,
+            exchange: exchange,
+            name: name,
+            price: price,
+            exchangeShortName: exchangeShortName,
+            type: type,
+            expires: expires,
+          ),
+          getInsertCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            required String symbol,
+            required String exchange,
+            Value<String?> name = const Value.absent(),
+            Value<double?> price = const Value.absent(),
+            Value<String?> exchangeShortName = const Value.absent(),
+            Value<String?> type = const Value.absent(),
+            required DateTime expires,
+          }) =>
+              StockListingTableRowDefinitionCompanion.insert(
+            id: id,
+            symbol: symbol,
+            exchange: exchange,
+            name: name,
+            price: price,
+            exchangeShortName: exchangeShortName,
+            type: type,
+            expires: expires,
+          ),
+        ));
+}
+
+class $$StockListingTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $StockListingTableRowDefinitionTable,
+        StockListingTableRow,
+        $$StockListingTableRowDefinitionTableFilterComposer,
+        $$StockListingTableRowDefinitionTableOrderingComposer,
+        $$StockListingTableRowDefinitionTableProcessedTableManager,
+        $$StockListingTableRowDefinitionTableInsertCompanionBuilder,
+        $$StockListingTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$StockListingTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$StockListingTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $StockListingTableRowDefinitionTable> {
+  $$StockListingTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get exchange => $state.composableBuilder(
+      column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get name => $state.composableBuilder(
+      column: $state.table.name,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get price => $state.composableBuilder(
+      column: $state.table.price,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get exchangeShortName => $state.composableBuilder(
+      column: $state.table.exchangeShortName,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get type => $state.composableBuilder(
+      column: $state.table.type,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$StockListingTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb, $StockListingTableRowDefinitionTable> {
+  $$StockListingTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get exchange => $state.composableBuilder(
+      column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get name => $state.composableBuilder(
+      column: $state.table.name,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get price => $state.composableBuilder(
+      column: $state.table.price,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get exchangeShortName => $state.composableBuilder(
+      column: $state.table.exchangeShortName,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get type => $state.composableBuilder(
+      column: $state.table.type,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+class _$DriftDbManager {
+  final _$DriftDb _db;
+  _$DriftDbManager(this._db);
+  $$CompanyProfileTableRowDefinitionTableTableManager
+      get companyProfileTableRowDefinition =>
+          $$CompanyProfileTableRowDefinitionTableTableManager(
+              _db, _db.companyProfileTableRowDefinition);
+  $$BalanceSheetStatementTableRowDefinitionTableTableManager
+      get balanceSheetStatementTableRowDefinition =>
+          $$BalanceSheetStatementTableRowDefinitionTableTableManager(
+              _db, _db.balanceSheetStatementTableRowDefinition);
+  $$CashFlowStatementTableRowDefinitionTableTableManager
+      get cashFlowStatementTableRowDefinition =>
+          $$CashFlowStatementTableRowDefinitionTableTableManager(
+              _db, _db.cashFlowStatementTableRowDefinition);
+  $$IncomeStatementTableRowDefinitionTableTableManager
+      get incomeStatementTableRowDefinition =>
+          $$IncomeStatementTableRowDefinitionTableTableManager(
+              _db, _db.incomeStatementTableRowDefinition);
+  $$ChartEodItemTableRowDefinitionTableTableManager
+      get chartEodItemTableRowDefinition =>
+          $$ChartEodItemTableRowDefinitionTableTableManager(
+              _db, _db.chartEodItemTableRowDefinition);
+  $$StockListingTableRowDefinitionTableTableManager
+      get stockListingTableRowDefinition =>
+          $$StockListingTableRowDefinitionTableTableManager(
+              _db, _db.stockListingTableRowDefinition);
 }

@@ -16,7 +16,8 @@ class StockListingsDao extends DatabaseAccessor<DriftDb> with _$StockListingsDao
   StockListingsDao(super.db);
 
   Future<List<StockListingTableRow>> getStockListings() async {
-    return select(stockListingTableRowDefinition).get();
+    final List<StockListingTableRow> rows = await select(stockListingTableRowDefinition).get();
+    return rows;
   }
 
   Future<void> addStockListings({
