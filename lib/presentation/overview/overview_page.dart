@@ -93,7 +93,7 @@ class _OverviewPageState extends State<OverviewPage> {
     );*/
 
     //for (final String ticker in tickers) {
-    getIt<ICompanyRepository>().getCompany(symbol: "AMCX").then(
+    getIt<ICompanyRepository>().getCompany(symbol: "JILL").then(
       (Payload<Company> payload) {
         payload.fold(
           (Failure failure) {
@@ -105,7 +105,9 @@ class _OverviewPageState extends State<OverviewPage> {
             });
             final double fScore = FScore(company: value).getFScore();
             final double magicFormula = MagicFormula(company: value).getMagicFormulaScore();
-            print("${value.profile.companyName.get} (${value.profile.symbol.get}): F score: $fScore, Magic formula score: $magicFormula");
+            Logger().i(
+              "${value.profile.companyName.get} (${value.profile.symbol.get}): F score: $fScore, Magic formula score: $magicFormula",
+            );
           },
         );
       },
@@ -140,42 +142,20 @@ class MacdChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<double> sma = company.chart.calculateSma(12);
-    final List<double> ema = company.chart.calculateEma(12);
-    final List<double> prices = company.chart.getPrices();
-
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("MACD Chart"),
+    return StScaffold(
+      appBar: const StAppBar(
       ),
-      body: SfCartesianChart(
-        title: const ChartTitle(text: "MACD Chart"),
-        legend: const Legend(isVisible: true),
-        tooltipBehavior: TooltipBehavior(enable: true),
-        //primaryXAxis: const DateTimeAxis(),
-        series: [
-          LineSeries<double, int>(
-            name: "SMA 12 Line",
-            dataSource: sma,
-            xValueMapper: (double data, int index) => index,
-            yValueMapper: (double data, _) => data,
-            dataLabelSettings: const DataLabelSettings(isVisible: true),
-          ),
-          LineSeries<double, int>(
-            name: "EMA 12 Line",
-            dataSource: ema,
-            xValueMapper: (double data, int index) => index,
-            yValueMapper: (double data, _) => data,
-            dataLabelSettings: const DataLabelSettings(isVisible: true),
-          ),
-          LineSeries<double, int>(
-            name: "Price line",
-            dataSource: prices,
-            xValueMapper: (double data, int index) => index,
-            yValueMapper: (double data, int index) => data,
-            dataLabelSettings: const DataLabelSettings(isVisible: true),
-          ),
-        ],
+      child: OrientationBuilder(
+        builder: (BuildContext context, Orientation orientation) {
+          return SfCartesianChart(
+            series: <CartesianSeries>[
+              company.chart.createPriceLineSeries(dampen: 0.3),
+              company.chart.createEmaLineSeries(14, dampen: 0.3),
+              ... company.chart.calculateImpulseMacd().getSeries(),
+            ],
+          );
+
+        },
       ),
     );
   }

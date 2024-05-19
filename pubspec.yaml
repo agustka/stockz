@@ -41,7 +41,6 @@ dev_dependencies:
   freezed: 2.5.2
   injectable_generator: 2.6.1
   lint: 2.3.0
-  sqlite3_flutter_libs: 0.5.21
 
 flutter:
   uses-material-design: true
