@@ -198,8 +198,10 @@ class ImpulseMacd {
     final List<double> signal = _calcSma(macdDifference, lengthSignal);
     final List<double> histogram = List.generate(macdDifference.length, (int i) => macdDifference[i] - signal[i]);
 
-    for (int i = 0; i < lengthSignal; i++) {
-      signal[i] = double.nan;
+    if (close.isNotEmpty) {
+      for (int i = 0; i < lengthSignal; i++) {
+        signal[i] = double.nan;
+      }
     }
 
     // Return the calculated components
@@ -213,6 +215,7 @@ class ImpulseMacd {
   List<CartesianSeries<double, int>> getSeries() {
     return <CartesianSeries<double, int>>[
       LineSeries<double, int>(
+        animationDuration: 200,
         dataSource: macdDifference,
         xValueMapper: (double value, int index) => index,
         yValueMapper: (double value, int index) => value,
@@ -222,6 +225,7 @@ class ImpulseMacd {
         },
       ),
       LineSeries<double, int>(
+        animationDuration: 200,
         dataSource: signal,
         xValueMapper: (double value, int index) => index,
         yValueMapper: (double value, int index) => value,
@@ -231,6 +235,7 @@ class ImpulseMacd {
         },
       ),
       ColumnSeries<double, int>(
+        animationDuration: 200,
         dataSource: histogram,
         xValueMapper: (double value, int index) => index,
         yValueMapper: (double value, _) => value,
@@ -243,6 +248,9 @@ class ImpulseMacd {
   }
 
   static List<double> _calcSmma(List<double> src, int length) {
+    if (src.isEmpty) {
+      return [];
+    }
     final List<double> smma = List.filled(src.length, double.nan);
     smma[0] = src.sublist(0, length).reduce((double a, double b) => a + b) / length;
     for (int i = 1; i < src.length; i++) {
@@ -274,6 +282,9 @@ class ImpulseMacd {
   }
 
   static List<double> _calcEma(List<double> src, int length) {
+    if (src.isEmpty) {
+      return [];
+    }
     final List<double> ema = List.filled(src.length, double.nan);
     final double multiplier = 2 / (length + 1);
     ema[0] = src[0];

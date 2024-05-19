@@ -20,7 +20,7 @@ abstract class DatabaseModule {
     return LazyDatabase(() async {
       final Directory dbFolder = await getApplicationDocumentsDirectory();
       final File file = File(p.join(dbFolder.path, "db.sqlite"));
-      return NativeDatabase(file, logStatements: true, cachePreparedStatements: true);
+      return NativeDatabase(file, cachePreparedStatements: true);
     });
   }
 }

@@ -81,4 +81,13 @@ class CompanyRepository implements ICompanyRepository {
       ),
     );
   }
+
+  @override
+  Future<List<Company>> getCompanies({required List<String> tickers}) async {
+    final List<Future<Payload<Company>>> futures = tickers.map((String symbol) => getCompany(symbol: symbol)).toList();
+    final List<Payload<Company>> result = await Future.wait(futures);
+
+    final List<Company> companies = result.map((Payload<Company> e) => e.getOr(const Company.invalid())).toList();
+    return companies;
+  }
 }

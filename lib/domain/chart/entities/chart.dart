@@ -1,9 +1,7 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stockz/domain/chart/entities/impulse_macd.dart';
-import 'package:stockz/domain/core/extensions/date_time_extensions.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
 import 'package:stockz/domain/core/value_objects/int_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
@@ -26,6 +24,9 @@ class Chart {
 
   List<double> calculateEma(int period, {List<double>? input, double dampen = 1}) {
     final List<double> data = input ?? getPrices(dampen: dampen);
+    if (data.length < period) {
+      return [];
+    }
     final double multiplier = 2 / (period + 1);
     final List<double> ema = List<double>.filled(data.length, 0);
     ema[0] = data[0]; // Initialize with the first data point
@@ -145,6 +146,7 @@ class Chart {
 
   LineSeries<num, int> createPriceLineSeries({double dampen = 1}) {
     return LineSeries<num, int>(
+      animationDuration: 200,
       dataSource: List.generate(historical.length, (index) => historical[index].close.get * dampen),
       xValueMapper: (num value, int index) => index,
       yValueMapper: (num value, int index) => value,
@@ -164,6 +166,7 @@ class Chart {
     }).toList();
 
     return LineSeries<num, int>(
+      animationDuration: 200,
       dataSource: List.generate(rsi.length, (index) => index),
       xValueMapper: (num value, int index) => index,
       yValueMapper: (num value, int index) => rsi[index],
@@ -176,6 +179,7 @@ class Chart {
   LineSeries<num, int> createEmaLineSeries(int period, {double dampen = 1}) {
     final List<double> ema = calculateEma(period, dampen: dampen);
     return LineSeries<num, int>(
+      animationDuration: 200,
       dataSource: ema.padStart(padLength: historical.length - ema.length, padWith: double.nan),
       xValueMapper: (num value, int index) => index,
       yValueMapper: (num value, int index) => value,

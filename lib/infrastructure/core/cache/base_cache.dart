@@ -1,7 +1,5 @@
 import 'package:stockz/infrastructure/core/cache/cache.dart';
-import 'package:stockz/infrastructure/core/cache/database_definition.dart';
 import 'package:stockz/infrastructure/core/error_handling/error_handler.dart';
-import 'package:stockz/setup.dart';
 
 enum CachingPolicy {
   /// Always provide cached data, even if it's expired. A refresh should be performed after serving the expired data

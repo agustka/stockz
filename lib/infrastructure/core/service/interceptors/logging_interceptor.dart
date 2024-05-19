@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:developer' as dev;
 
 import 'package:chopper/chopper.dart';
@@ -10,17 +9,6 @@ import 'package:stockz/setup.dart';
 @LazySingleton()
 class NoBodyLoggingInterceptor extends HttpLoggingInterceptor {
   NoBodyLoggingInterceptor() : super();
-
-  @override
-  FutureOr<Response> onResponse(Response response) {
-    final base = response.base.request;
-    chopperLogger.info("<-- ${response.statusCode} ${base!.url}");
-
-    response.base.headers.forEach((String k, String v) => chopperLogger.info("$k: $v"));
-
-    chopperLogger.info("--> END ${base.method}");
-    return response;
-  }
 }
 
 @LazySingleton()

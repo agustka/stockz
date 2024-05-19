@@ -285,4 +285,9 @@ class FScore {
     }
     return 0;
   }
+
+  @override
+  String toString() {
+    return "${company.profile.companyName.get}: FScore ${getFScore()} - (strict: ${getFScore(strict: true)})";
+  }
 }
