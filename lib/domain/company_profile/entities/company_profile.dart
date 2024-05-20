@@ -138,6 +138,13 @@ class CompanyProfile extends Equatable {
         isFund,
         valid,
       ];
+
+  String getNameOrSymbol() {
+    if (companyName.get.isEmpty) {
+      return symbol.get;
+    }
+    return companyName.get;
+  }
 }
 
 class _$InvalidCompanyProfile extends CompanyProfile {

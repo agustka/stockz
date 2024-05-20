@@ -7,5 +7,9 @@ abstract class IStockListingsCache {
     CachingPolicy policy = CachingPolicy.alwaysProvide,
   });
 
+  Future<Cache<List<String>>> getExchanges({CachingPolicy policy = CachingPolicy.alwaysProvide});
+
   Future addStockListings({required List<StockListingModel> listings});
+
+  Future addExchanges({required List<String> exchanges});
 }

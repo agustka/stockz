@@ -19,3 +19,4 @@ export 'tappable/buttons/button/st_button.dart';
 export 'tappable/st_back.dart';
 export 'tappable/st_cupertino_tappable.dart';
 export 'tappable/st_tap_visual.dart';
+export 'text/st_text.dart';

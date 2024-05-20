@@ -4,6 +4,7 @@ linter:
   rules:
     avoid_dynamic_calls: false
     avoid_classes_with_only_static_members: false
+    always_specify_types: true
 
 analyzer:
   exclude: [
@@ -21,7 +22,6 @@ analyzer:
     lib/presentation/core/localization/l10n.dart,
     lib/**.chopper.dart,
     test/domain/firestore/articles_test.dart,
-    bricks/**,
   ]
 
   errors:

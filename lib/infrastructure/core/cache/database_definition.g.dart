@@ -9132,6 +9132,584 @@ class StockListingTableRowDefinitionCompanion
   }
 }
 
+class $IndexTableRowDefinitionTable extends IndexTableRowDefinition
+    with TableInfo<$IndexTableRowDefinitionTable, IndexTableRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $IndexTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _symbolMeta = const VerificationMeta('symbol');
+  @override
+  late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
+      'symbol', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _nameMeta = const VerificationMeta('name');
+  @override
+  late final GeneratedColumn<String> name = GeneratedColumn<String>(
+      'name', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _currencyMeta =
+      const VerificationMeta('currency');
+  @override
+  late final GeneratedColumn<String> currency = GeneratedColumn<String>(
+      'currency', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _stockExchangeMeta =
+      const VerificationMeta('stockExchange');
+  @override
+  late final GeneratedColumn<String> stockExchange = GeneratedColumn<String>(
+      'stock_exchange', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _exchangeShortNameMeta =
+      const VerificationMeta('exchangeShortName');
+  @override
+  late final GeneratedColumn<String> exchangeShortName =
+      GeneratedColumn<String>('exchange_short_name', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _expiresMeta =
+      const VerificationMeta('expires');
+  @override
+  late final GeneratedColumn<DateTime> expires = GeneratedColumn<DateTime>(
+      'expires', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, symbol, name, currency, stockExchange, exchangeShortName, expires];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'index_table_row_definition';
+  @override
+  VerificationContext validateIntegrity(Insertable<IndexTableRow> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('symbol')) {
+      context.handle(_symbolMeta,
+          symbol.isAcceptableOrUnknown(data['symbol']!, _symbolMeta));
+    } else if (isInserting) {
+      context.missing(_symbolMeta);
+    }
+    if (data.containsKey('name')) {
+      context.handle(
+          _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
+    }
+    if (data.containsKey('currency')) {
+      context.handle(_currencyMeta,
+          currency.isAcceptableOrUnknown(data['currency']!, _currencyMeta));
+    }
+    if (data.containsKey('stock_exchange')) {
+      context.handle(
+          _stockExchangeMeta,
+          stockExchange.isAcceptableOrUnknown(
+              data['stock_exchange']!, _stockExchangeMeta));
+    } else if (isInserting) {
+      context.missing(_stockExchangeMeta);
+    }
+    if (data.containsKey('exchange_short_name')) {
+      context.handle(
+          _exchangeShortNameMeta,
+          exchangeShortName.isAcceptableOrUnknown(
+              data['exchange_short_name']!, _exchangeShortNameMeta));
+    }
+    if (data.containsKey('expires')) {
+      context.handle(_expiresMeta,
+          expires.isAcceptableOrUnknown(data['expires']!, _expiresMeta));
+    } else if (isInserting) {
+      context.missing(_expiresMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  IndexTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return IndexTableRow(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      symbol: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}symbol'])!,
+      name: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}name']),
+      currency: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}currency']),
+      stockExchange: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}stock_exchange'])!,
+      exchangeShortName: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}exchange_short_name']),
+      expires: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}expires'])!,
+    );
+  }
+
+  @override
+  $IndexTableRowDefinitionTable createAlias(String alias) {
+    return $IndexTableRowDefinitionTable(attachedDatabase, alias);
+  }
+}
+
+class IndexTableRow extends DataClass implements Insertable<IndexTableRow> {
+  final int id;
+  final String symbol;
+  final String? name;
+  final String? currency;
+  final String stockExchange;
+  final String? exchangeShortName;
+  final DateTime expires;
+  const IndexTableRow(
+      {required this.id,
+      required this.symbol,
+      this.name,
+      this.currency,
+      required this.stockExchange,
+      this.exchangeShortName,
+      required this.expires});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['symbol'] = Variable<String>(symbol);
+    if (!nullToAbsent || name != null) {
+      map['name'] = Variable<String>(name);
+    }
+    if (!nullToAbsent || currency != null) {
+      map['currency'] = Variable<String>(currency);
+    }
+    map['stock_exchange'] = Variable<String>(stockExchange);
+    if (!nullToAbsent || exchangeShortName != null) {
+      map['exchange_short_name'] = Variable<String>(exchangeShortName);
+    }
+    map['expires'] = Variable<DateTime>(expires);
+    return map;
+  }
+
+  IndexTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
+    return IndexTableRowDefinitionCompanion(
+      id: Value(id),
+      symbol: Value(symbol),
+      name: name == null && nullToAbsent ? const Value.absent() : Value(name),
+      currency: currency == null && nullToAbsent
+          ? const Value.absent()
+          : Value(currency),
+      stockExchange: Value(stockExchange),
+      exchangeShortName: exchangeShortName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(exchangeShortName),
+      expires: Value(expires),
+    );
+  }
+
+  factory IndexTableRow.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return IndexTableRow(
+      id: serializer.fromJson<int>(json['id']),
+      symbol: serializer.fromJson<String>(json['symbol']),
+      name: serializer.fromJson<String?>(json['name']),
+      currency: serializer.fromJson<String?>(json['currency']),
+      stockExchange: serializer.fromJson<String>(json['stockExchange']),
+      exchangeShortName:
+          serializer.fromJson<String?>(json['exchangeShortName']),
+      expires: serializer.fromJson<DateTime>(json['expires']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'symbol': serializer.toJson<String>(symbol),
+      'name': serializer.toJson<String?>(name),
+      'currency': serializer.toJson<String?>(currency),
+      'stockExchange': serializer.toJson<String>(stockExchange),
+      'exchangeShortName': serializer.toJson<String?>(exchangeShortName),
+      'expires': serializer.toJson<DateTime>(expires),
+    };
+  }
+
+  IndexTableRow copyWith(
+          {int? id,
+          String? symbol,
+          Value<String?> name = const Value.absent(),
+          Value<String?> currency = const Value.absent(),
+          String? stockExchange,
+          Value<String?> exchangeShortName = const Value.absent(),
+          DateTime? expires}) =>
+      IndexTableRow(
+        id: id ?? this.id,
+        symbol: symbol ?? this.symbol,
+        name: name.present ? name.value : this.name,
+        currency: currency.present ? currency.value : this.currency,
+        stockExchange: stockExchange ?? this.stockExchange,
+        exchangeShortName: exchangeShortName.present
+            ? exchangeShortName.value
+            : this.exchangeShortName,
+        expires: expires ?? this.expires,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('IndexTableRow(')
+          ..write('id: $id, ')
+          ..write('symbol: $symbol, ')
+          ..write('name: $name, ')
+          ..write('currency: $currency, ')
+          ..write('stockExchange: $stockExchange, ')
+          ..write('exchangeShortName: $exchangeShortName, ')
+          ..write('expires: $expires')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id, symbol, name, currency, stockExchange, exchangeShortName, expires);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is IndexTableRow &&
+          other.id == this.id &&
+          other.symbol == this.symbol &&
+          other.name == this.name &&
+          other.currency == this.currency &&
+          other.stockExchange == this.stockExchange &&
+          other.exchangeShortName == this.exchangeShortName &&
+          other.expires == this.expires);
+}
+
+class IndexTableRowDefinitionCompanion extends UpdateCompanion<IndexTableRow> {
+  final Value<int> id;
+  final Value<String> symbol;
+  final Value<String?> name;
+  final Value<String?> currency;
+  final Value<String> stockExchange;
+  final Value<String?> exchangeShortName;
+  final Value<DateTime> expires;
+  const IndexTableRowDefinitionCompanion({
+    this.id = const Value.absent(),
+    this.symbol = const Value.absent(),
+    this.name = const Value.absent(),
+    this.currency = const Value.absent(),
+    this.stockExchange = const Value.absent(),
+    this.exchangeShortName = const Value.absent(),
+    this.expires = const Value.absent(),
+  });
+  IndexTableRowDefinitionCompanion.insert({
+    this.id = const Value.absent(),
+    required String symbol,
+    this.name = const Value.absent(),
+    this.currency = const Value.absent(),
+    required String stockExchange,
+    this.exchangeShortName = const Value.absent(),
+    required DateTime expires,
+  })  : symbol = Value(symbol),
+        stockExchange = Value(stockExchange),
+        expires = Value(expires);
+  static Insertable<IndexTableRow> custom({
+    Expression<int>? id,
+    Expression<String>? symbol,
+    Expression<String>? name,
+    Expression<String>? currency,
+    Expression<String>? stockExchange,
+    Expression<String>? exchangeShortName,
+    Expression<DateTime>? expires,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (symbol != null) 'symbol': symbol,
+      if (name != null) 'name': name,
+      if (currency != null) 'currency': currency,
+      if (stockExchange != null) 'stock_exchange': stockExchange,
+      if (exchangeShortName != null) 'exchange_short_name': exchangeShortName,
+      if (expires != null) 'expires': expires,
+    });
+  }
+
+  IndexTableRowDefinitionCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? symbol,
+      Value<String?>? name,
+      Value<String?>? currency,
+      Value<String>? stockExchange,
+      Value<String?>? exchangeShortName,
+      Value<DateTime>? expires}) {
+    return IndexTableRowDefinitionCompanion(
+      id: id ?? this.id,
+      symbol: symbol ?? this.symbol,
+      name: name ?? this.name,
+      currency: currency ?? this.currency,
+      stockExchange: stockExchange ?? this.stockExchange,
+      exchangeShortName: exchangeShortName ?? this.exchangeShortName,
+      expires: expires ?? this.expires,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (symbol.present) {
+      map['symbol'] = Variable<String>(symbol.value);
+    }
+    if (name.present) {
+      map['name'] = Variable<String>(name.value);
+    }
+    if (currency.present) {
+      map['currency'] = Variable<String>(currency.value);
+    }
+    if (stockExchange.present) {
+      map['stock_exchange'] = Variable<String>(stockExchange.value);
+    }
+    if (exchangeShortName.present) {
+      map['exchange_short_name'] = Variable<String>(exchangeShortName.value);
+    }
+    if (expires.present) {
+      map['expires'] = Variable<DateTime>(expires.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('IndexTableRowDefinitionCompanion(')
+          ..write('id: $id, ')
+          ..write('symbol: $symbol, ')
+          ..write('name: $name, ')
+          ..write('currency: $currency, ')
+          ..write('stockExchange: $stockExchange, ')
+          ..write('exchangeShortName: $exchangeShortName, ')
+          ..write('expires: $expires')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ExchangeTableRowDefinitionTable extends ExchangeTableRowDefinition
+    with TableInfo<$ExchangeTableRowDefinitionTable, ExchangeTableRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ExchangeTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _symbolMeta = const VerificationMeta('symbol');
+  @override
+  late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
+      'symbol', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _expiresMeta =
+      const VerificationMeta('expires');
+  @override
+  late final GeneratedColumn<DateTime> expires = GeneratedColumn<DateTime>(
+      'expires', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [id, symbol, expires];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'exchange_table_row_definition';
+  @override
+  VerificationContext validateIntegrity(Insertable<ExchangeTableRow> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('symbol')) {
+      context.handle(_symbolMeta,
+          symbol.isAcceptableOrUnknown(data['symbol']!, _symbolMeta));
+    } else if (isInserting) {
+      context.missing(_symbolMeta);
+    }
+    if (data.containsKey('expires')) {
+      context.handle(_expiresMeta,
+          expires.isAcceptableOrUnknown(data['expires']!, _expiresMeta));
+    } else if (isInserting) {
+      context.missing(_expiresMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ExchangeTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ExchangeTableRow(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      symbol: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}symbol'])!,
+      expires: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}expires'])!,
+    );
+  }
+
+  @override
+  $ExchangeTableRowDefinitionTable createAlias(String alias) {
+    return $ExchangeTableRowDefinitionTable(attachedDatabase, alias);
+  }
+}
+
+class ExchangeTableRow extends DataClass
+    implements Insertable<ExchangeTableRow> {
+  final int id;
+  final String symbol;
+  final DateTime expires;
+  const ExchangeTableRow(
+      {required this.id, required this.symbol, required this.expires});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['symbol'] = Variable<String>(symbol);
+    map['expires'] = Variable<DateTime>(expires);
+    return map;
+  }
+
+  ExchangeTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
+    return ExchangeTableRowDefinitionCompanion(
+      id: Value(id),
+      symbol: Value(symbol),
+      expires: Value(expires),
+    );
+  }
+
+  factory ExchangeTableRow.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ExchangeTableRow(
+      id: serializer.fromJson<int>(json['id']),
+      symbol: serializer.fromJson<String>(json['symbol']),
+      expires: serializer.fromJson<DateTime>(json['expires']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'symbol': serializer.toJson<String>(symbol),
+      'expires': serializer.toJson<DateTime>(expires),
+    };
+  }
+
+  ExchangeTableRow copyWith({int? id, String? symbol, DateTime? expires}) =>
+      ExchangeTableRow(
+        id: id ?? this.id,
+        symbol: symbol ?? this.symbol,
+        expires: expires ?? this.expires,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('ExchangeTableRow(')
+          ..write('id: $id, ')
+          ..write('symbol: $symbol, ')
+          ..write('expires: $expires')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, symbol, expires);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ExchangeTableRow &&
+          other.id == this.id &&
+          other.symbol == this.symbol &&
+          other.expires == this.expires);
+}
+
+class ExchangeTableRowDefinitionCompanion
+    extends UpdateCompanion<ExchangeTableRow> {
+  final Value<int> id;
+  final Value<String> symbol;
+  final Value<DateTime> expires;
+  const ExchangeTableRowDefinitionCompanion({
+    this.id = const Value.absent(),
+    this.symbol = const Value.absent(),
+    this.expires = const Value.absent(),
+  });
+  ExchangeTableRowDefinitionCompanion.insert({
+    this.id = const Value.absent(),
+    required String symbol,
+    required DateTime expires,
+  })  : symbol = Value(symbol),
+        expires = Value(expires);
+  static Insertable<ExchangeTableRow> custom({
+    Expression<int>? id,
+    Expression<String>? symbol,
+    Expression<DateTime>? expires,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (symbol != null) 'symbol': symbol,
+      if (expires != null) 'expires': expires,
+    });
+  }
+
+  ExchangeTableRowDefinitionCompanion copyWith(
+      {Value<int>? id, Value<String>? symbol, Value<DateTime>? expires}) {
+    return ExchangeTableRowDefinitionCompanion(
+      id: id ?? this.id,
+      symbol: symbol ?? this.symbol,
+      expires: expires ?? this.expires,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (symbol.present) {
+      map['symbol'] = Variable<String>(symbol.value);
+    }
+    if (expires.present) {
+      map['expires'] = Variable<DateTime>(expires.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ExchangeTableRowDefinitionCompanion(')
+          ..write('id: $id, ')
+          ..write('symbol: $symbol, ')
+          ..write('expires: $expires')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$DriftDb extends GeneratedDatabase {
   _$DriftDb(QueryExecutor e) : super(e);
   _$DriftDbManager get managers => _$DriftDbManager(this);
@@ -9153,6 +9731,10 @@ abstract class _$DriftDb extends GeneratedDatabase {
   late final $StockListingTableRowDefinitionTable
       stockListingTableRowDefinition =
       $StockListingTableRowDefinitionTable(this);
+  late final $IndexTableRowDefinitionTable indexTableRowDefinition =
+      $IndexTableRowDefinitionTable(this);
+  late final $ExchangeTableRowDefinitionTable exchangeTableRowDefinition =
+      $ExchangeTableRowDefinitionTable(this);
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -9163,7 +9745,9 @@ abstract class _$DriftDb extends GeneratedDatabase {
         cashFlowStatementTableRowDefinition,
         incomeStatementTableRowDefinition,
         chartEodItemTableRowDefinition,
-        stockListingTableRowDefinition
+        stockListingTableRowDefinition,
+        indexTableRowDefinition,
+        exchangeTableRowDefinition
       ];
 }
 
@@ -12797,6 +13381,284 @@ class $$StockListingTableRowDefinitionTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+typedef $$IndexTableRowDefinitionTableInsertCompanionBuilder
+    = IndexTableRowDefinitionCompanion Function({
+  Value<int> id,
+  required String symbol,
+  Value<String?> name,
+  Value<String?> currency,
+  required String stockExchange,
+  Value<String?> exchangeShortName,
+  required DateTime expires,
+});
+typedef $$IndexTableRowDefinitionTableUpdateCompanionBuilder
+    = IndexTableRowDefinitionCompanion Function({
+  Value<int> id,
+  Value<String> symbol,
+  Value<String?> name,
+  Value<String?> currency,
+  Value<String> stockExchange,
+  Value<String?> exchangeShortName,
+  Value<DateTime> expires,
+});
+
+class $$IndexTableRowDefinitionTableTableManager extends RootTableManager<
+    _$DriftDb,
+    $IndexTableRowDefinitionTable,
+    IndexTableRow,
+    $$IndexTableRowDefinitionTableFilterComposer,
+    $$IndexTableRowDefinitionTableOrderingComposer,
+    $$IndexTableRowDefinitionTableProcessedTableManager,
+    $$IndexTableRowDefinitionTableInsertCompanionBuilder,
+    $$IndexTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$IndexTableRowDefinitionTableTableManager(
+      _$DriftDb db, $IndexTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$IndexTableRowDefinitionTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$IndexTableRowDefinitionTableOrderingComposer(
+              ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$IndexTableRowDefinitionTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            Value<String> symbol = const Value.absent(),
+            Value<String?> name = const Value.absent(),
+            Value<String?> currency = const Value.absent(),
+            Value<String> stockExchange = const Value.absent(),
+            Value<String?> exchangeShortName = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+          }) =>
+              IndexTableRowDefinitionCompanion(
+            id: id,
+            symbol: symbol,
+            name: name,
+            currency: currency,
+            stockExchange: stockExchange,
+            exchangeShortName: exchangeShortName,
+            expires: expires,
+          ),
+          getInsertCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            required String symbol,
+            Value<String?> name = const Value.absent(),
+            Value<String?> currency = const Value.absent(),
+            required String stockExchange,
+            Value<String?> exchangeShortName = const Value.absent(),
+            required DateTime expires,
+          }) =>
+              IndexTableRowDefinitionCompanion.insert(
+            id: id,
+            symbol: symbol,
+            name: name,
+            currency: currency,
+            stockExchange: stockExchange,
+            exchangeShortName: exchangeShortName,
+            expires: expires,
+          ),
+        ));
+}
+
+class $$IndexTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $IndexTableRowDefinitionTable,
+        IndexTableRow,
+        $$IndexTableRowDefinitionTableFilterComposer,
+        $$IndexTableRowDefinitionTableOrderingComposer,
+        $$IndexTableRowDefinitionTableProcessedTableManager,
+        $$IndexTableRowDefinitionTableInsertCompanionBuilder,
+        $$IndexTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$IndexTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$IndexTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $IndexTableRowDefinitionTable> {
+  $$IndexTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get name => $state.composableBuilder(
+      column: $state.table.name,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get currency => $state.composableBuilder(
+      column: $state.table.currency,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get stockExchange => $state.composableBuilder(
+      column: $state.table.stockExchange,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get exchangeShortName => $state.composableBuilder(
+      column: $state.table.exchangeShortName,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$IndexTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb, $IndexTableRowDefinitionTable> {
+  $$IndexTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get name => $state.composableBuilder(
+      column: $state.table.name,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get currency => $state.composableBuilder(
+      column: $state.table.currency,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get stockExchange => $state.composableBuilder(
+      column: $state.table.stockExchange,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get exchangeShortName => $state.composableBuilder(
+      column: $state.table.exchangeShortName,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
+typedef $$ExchangeTableRowDefinitionTableInsertCompanionBuilder
+    = ExchangeTableRowDefinitionCompanion Function({
+  Value<int> id,
+  required String symbol,
+  required DateTime expires,
+});
+typedef $$ExchangeTableRowDefinitionTableUpdateCompanionBuilder
+    = ExchangeTableRowDefinitionCompanion Function({
+  Value<int> id,
+  Value<String> symbol,
+  Value<DateTime> expires,
+});
+
+class $$ExchangeTableRowDefinitionTableTableManager extends RootTableManager<
+    _$DriftDb,
+    $ExchangeTableRowDefinitionTable,
+    ExchangeTableRow,
+    $$ExchangeTableRowDefinitionTableFilterComposer,
+    $$ExchangeTableRowDefinitionTableOrderingComposer,
+    $$ExchangeTableRowDefinitionTableProcessedTableManager,
+    $$ExchangeTableRowDefinitionTableInsertCompanionBuilder,
+    $$ExchangeTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ExchangeTableRowDefinitionTableTableManager(
+      _$DriftDb db, $ExchangeTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer: $$ExchangeTableRowDefinitionTableFilterComposer(
+              ComposerState(db, table)),
+          orderingComposer: $$ExchangeTableRowDefinitionTableOrderingComposer(
+              ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$ExchangeTableRowDefinitionTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            Value<String> symbol = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+          }) =>
+              ExchangeTableRowDefinitionCompanion(
+            id: id,
+            symbol: symbol,
+            expires: expires,
+          ),
+          getInsertCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            required String symbol,
+            required DateTime expires,
+          }) =>
+              ExchangeTableRowDefinitionCompanion.insert(
+            id: id,
+            symbol: symbol,
+            expires: expires,
+          ),
+        ));
+}
+
+class $$ExchangeTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $ExchangeTableRowDefinitionTable,
+        ExchangeTableRow,
+        $$ExchangeTableRowDefinitionTableFilterComposer,
+        $$ExchangeTableRowDefinitionTableOrderingComposer,
+        $$ExchangeTableRowDefinitionTableProcessedTableManager,
+        $$ExchangeTableRowDefinitionTableInsertCompanionBuilder,
+        $$ExchangeTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ExchangeTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$ExchangeTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $ExchangeTableRowDefinitionTable> {
+  $$ExchangeTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ExchangeTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb, $ExchangeTableRowDefinitionTable> {
+  $$ExchangeTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
 class _$DriftDbManager {
   final _$DriftDb _db;
   _$DriftDbManager(this._db);
@@ -12824,4 +13686,11 @@ class _$DriftDbManager {
       get stockListingTableRowDefinition =>
           $$StockListingTableRowDefinitionTableTableManager(
               _db, _db.stockListingTableRowDefinition);
+  $$IndexTableRowDefinitionTableTableManager get indexTableRowDefinition =>
+      $$IndexTableRowDefinitionTableTableManager(
+          _db, _db.indexTableRowDefinition);
+  $$ExchangeTableRowDefinitionTableTableManager
+      get exchangeTableRowDefinition =>
+          $$ExchangeTableRowDefinitionTableTableManager(
+              _db, _db.exchangeTableRowDefinition);
 }

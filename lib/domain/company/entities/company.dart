@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
+import 'package:stockz/domain/analysis_rules/f_score.dart';
+import 'package:stockz/domain/analysis_rules/magic_formula.dart';
 import 'package:stockz/domain/balance_sheet_statement/entities/balance_sheet_statements.dart';
 import 'package:stockz/domain/cash_flow_statement/entities/cash_flow_statements.dart';
 import 'package:stockz/domain/chart/entities/chart.dart';
@@ -140,6 +142,13 @@ class Company extends Equatable {
 
   double? findTotalAssets({required int year}) {
     return balanceSheetStatements.findTotalAssets(year);
+  }
+
+  String getScoreSummary() {
+    final double fscore = FScore(company: this).getFScore();
+    final double magic = MagicFormula(company: this).getMagicFormulaScore();
+
+    return "FScore: ${fscore.toStringAsFixed(2)} Magic: ${magic.toStringAsFixed(2)}";
   }
 
   @override

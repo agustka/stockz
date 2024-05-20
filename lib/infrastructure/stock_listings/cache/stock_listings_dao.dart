@@ -1,6 +1,8 @@
 import 'package:drift/drift.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stockz/infrastructure/core/cache/database_definition.dart';
+import 'package:stockz/infrastructure/stock_listings/cache/tables/exchange_definition.dart';
+import 'package:stockz/infrastructure/stock_listings/cache/tables/index_definition.dart';
 import 'package:stockz/infrastructure/stock_listings/cache/tables/stock_listing_definition.dart';
 import 'package:stockz/infrastructure/stock_listings/models/stock_listing_model.dart';
 
@@ -9,6 +11,8 @@ part 'stock_listings_dao.g.dart';
 @DriftAccessor(
   tables: [
     StockListingTableRowDefinition,
+    IndexTableRowDefinition,
+    ExchangeTableRowDefinition,
   ],
 )
 @injectable
@@ -17,6 +21,11 @@ class StockListingsDao extends DatabaseAccessor<DriftDb> with _$StockListingsDao
 
   Future<List<StockListingTableRow>> getStockListings() async {
     final List<StockListingTableRow> rows = await select(stockListingTableRowDefinition).get();
+    return rows;
+  }
+
+  Future<List<ExchangeTableRow>> getExchanges() async {
+    final List<ExchangeTableRow> rows = await select(exchangeTableRowDefinition).get();
     return rows;
   }
 
@@ -39,6 +48,29 @@ class StockListingsDao extends DatabaseAccessor<DriftDb> with _$StockListingsDao
                   price: Value(listing.price),
                   exchangeShortName: Value(listing.exchangeShortName),
                   type: Value(listing.type),
+                  expires: DateTime.now().add(Duration(seconds: ttlSeconds)),
+                ),
+              )
+              .toList(),
+        );
+      },
+    );
+  }
+
+  Future<void> addExchanges({
+    required List<String> exchanges,
+    required int ttlSeconds,
+  }) async {
+    final List<String> cloneList = exchanges.toList();
+    await batch(
+      (Batch batch) {
+        batch.deleteAll(exchangeTableRowDefinition);
+        batch.insertAll(
+          exchangeTableRowDefinition,
+          cloneList
+              .map(
+                (String exchange) => ExchangeTableRowDefinitionCompanion.insert(
+                  symbol: exchange,
                   expires: DateTime.now().add(Duration(seconds: ttlSeconds)),
                 ),
               )

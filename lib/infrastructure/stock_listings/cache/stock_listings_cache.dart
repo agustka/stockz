@@ -34,6 +34,20 @@ class StockListingsCache with BaseCache implements IStockListingsCache {
   }
 
   @override
+  Future<Cache<List<String>>> getExchanges({
+    CachingPolicy policy = CachingPolicy.alwaysProvide,
+  }) {
+    return serveCache(
+      policy: policy,
+      getInput: () async => stockListingsDao.getExchanges(),
+      getExpires: (List<ExchangeTableRow> rows) => rows.first.expires,
+      conversionMethod: (List<ExchangeTableRow> rows) {
+        return rows.map((ExchangeTableRow e) => e.symbol).toList();
+      },
+    );
+  }
+
+  @override
   Future addStockListings({
     required List<StockListingModel> listings,
   }) {
@@ -42,6 +56,18 @@ class StockListingsCache with BaseCache implements IStockListingsCache {
       ttlSeconds: timeToLive.inSeconds,
     );
     handleInsertionErrors(added, origination: "addStockListings");
+    return added;
+  }
+
+  @override
+  Future addExchanges({
+    required List<String> exchanges,
+  }) {
+    final Future added = stockListingsDao.addExchanges(
+      exchanges: exchanges,
+      ttlSeconds: timeToLive.inSeconds,
+    );
+    handleInsertionErrors(added, origination: "addExchanges");
     return added;
   }
 }

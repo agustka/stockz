@@ -35,29 +35,36 @@ class CompanyIndustryValueObject extends ValueObject<CompanyIndustry> {
       case "biotechnology":
         return CompanyIndustry.biotechnology;
       case "drug manufacturers—specialty & generic":
+      case "drug manufacturers - specialty & generic":
         return CompanyIndustry.drugManufacturersSpecialtyAndGeneric;
       case "medical care facilities":
+      case "medical - care facilities":
         return CompanyIndustry.medicalCareFacilities;
       case "apparel retail":
+      case "apparel - retail":
         return CompanyIndustry.apparelRetail;
+      case "apparel - footwear & accessories":
+        return CompanyIndustry.apparelFootwearAndAccessories;
       case "specialty retail":
         return CompanyIndustry.specialtyRetail;
       case "internet content & information":
         return CompanyIndustry.internetContentAndInformation;
       case "oil & gas midstream":
         return CompanyIndustry.oilAndGasMidstream;
-      case "software—infrastructure":
-        return CompanyIndustry.softwareInfrastructure;
       case "footwear & accessories":
         return CompanyIndustry.footwearAndAccessories;
       case "healthcare plans":
         return CompanyIndustry.healthcarePlans;
       case "gambling":
         return CompanyIndustry.gambling;
+      case "gambling, resorts & casinos":
+        return CompanyIndustry.gamblingResortsAndCasinos;
       case "auto parts":
+      case "auto - parts":
         return CompanyIndustry.autoParts;
       case "oil & gas e&p":
-        return CompanyIndustry.oilAndGasEAndP;
+      case "oil & gas exploration & production":
+        return CompanyIndustry.oilAndGasExplorationAndProduction;
       case "personal services":
         return CompanyIndustry.personalServices;
       case "staffing & employment services":
@@ -65,7 +72,12 @@ class CompanyIndustryValueObject extends ValueObject<CompanyIndustry> {
       case "computer hardware":
         return CompanyIndustry.computerHardware;
       case "software—application":
+      case "software — application":
+      case "software - application":
         return CompanyIndustry.softwareApplication;
+      case "software - infrastructure":
+      case "software—infrastructure":
+        return CompanyIndustry.softwareInfrastructure;
       case "telecom services":
         return CompanyIndustry.telecomServices;
       case "leisure":
@@ -87,7 +99,10 @@ class CompanyIndustryValueObject extends ValueObject<CompanyIndustry> {
       case "conglomerates":
         return CompanyIndustry.conglomerates;
       case "medical devices":
+      case "medical - devices":
         return CompanyIndustry.medicalDevices;
+      case "medical - healthcare plans":
+        return CompanyIndustry.medicalHealthcarePlans;
       case "luxury goods":
         return CompanyIndustry.luxuryGoods;
       case "specialty business services":
@@ -96,6 +111,14 @@ class CompanyIndustryValueObject extends ValueObject<CompanyIndustry> {
         return CompanyIndustry.informationTechnologyServices;
       case "oil & gas integrated":
         return CompanyIndustry.oilAndGasIntegrated;
+      case "medical - healthcare information services":
+        return CompanyIndustry.medicalHealthcareInformationServices;
+      case "manufacturing - metal fabrication":
+        return CompanyIndustry.manufacturingMetalFabrication;
+      case "personal products & services":
+        return CompanyIndustry.personalProductsAndServices;
+      case "auto - recreational vehicles":
+        return CompanyIndustry.autoRecreationalVehicles;
       default:
         if (logError) {
           errEnum(type: "CompanyIndustry", input: input);
@@ -116,18 +139,23 @@ enum CompanyIndustry {
   entertainment,
   biotechnology,
   drugManufacturersSpecialtyAndGeneric,
+  medicalHealthcareInformationServices,
   medicalCareFacilities,
   apparelRetail,
+  apparelFootwearAndAccessories,
   specialtyRetail,
   internetContentAndInformation,
   oilAndGasMidstream,
+  oilAndGasExplorationAndProduction,
   softwareInfrastructure,
   footwearAndAccessories,
   healthcarePlans,
   gambling,
+  gamblingResortsAndCasinos,
   autoParts,
-  oilAndGasEAndP,
+  autoRecreationalVehicles,
   personalServices,
+  personalProductsAndServices,
   staffingAndEmploymentServices,
   computerHardware,
   softwareApplication,
@@ -142,9 +170,11 @@ enum CompanyIndustry {
   healthInformationServices,
   conglomerates,
   medicalDevices,
+  medicalHealthcarePlans,
   luxuryGoods,
   specialtyBusinessServices,
   informationTechnologyServices,
   oilAndGasIntegrated,
+  manufacturingMetalFabrication,
   invalid,
 }

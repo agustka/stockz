@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:stockz/domain/chart/entities/impulse_macd.dart';
+import 'package:stockz/domain/chart/entities/macd.dart';
+import 'package:stockz/domain/chart/entities/macd_v2.dart';
 import 'package:stockz/domain/core/value_objects/date_value_object.dart';
 import 'package:stockz/domain/core/value_objects/int_value_object.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
@@ -151,7 +153,7 @@ class Chart {
       xValueMapper: (num value, int index) => index,
       yValueMapper: (num value, int index) => value,
       name: "Stock price",
-      color: Colors.grey.withAlpha(120), // Fixed color for the signal line
+      color: Colors.grey.withAlpha(120),
     );
   }
 
@@ -184,7 +186,7 @@ class Chart {
       xValueMapper: (num value, int index) => index,
       yValueMapper: (num value, int index) => value,
       name: "EMA Line",
-      color: Colors.pinkAccent, // Fixed color for the signal line
+      color: Colors.pinkAccent,
     );
   }
 }

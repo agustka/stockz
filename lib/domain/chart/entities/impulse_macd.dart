@@ -1,169 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:stockz/domain/chart/entities/chart.dart';
 import 'package:stockz/presentation/core/theme/st_theme.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-enum ImpulseStatus {
-  bullish,
-  bearish,
-  neutral,
+enum Recommendation {
+  strongBuy,
+  buy,
+  hold,
+  sell,
+  strongSell,
+  reversal,
 }
 
-class Macd {
-  final List<double> macdLine;
-  final List<double> signalLine;
-  final List<double> histogram;
+class TradeRecommendation {
+  final double profitLoss;
+  final Recommendation recommendation;
 
-  Macd({
-    required this.macdLine,
-    required this.signalLine,
-    required this.histogram,
+  TradeRecommendation({
+    required this.profitLoss,
+    required this.recommendation,
   });
 
-  List<ImpulseStatus> determineImpulseStatus() {
-    final List<ImpulseStatus> impulseStatuses = [];
-    for (int i = 1; i < macdLine.length; i++) {
-      if (macdLine[i] > signalLine[i] && macdLine[i] > macdLine[i - 1]) {
-        impulseStatuses.add(ImpulseStatus.bullish);
-      } else if (macdLine[i] < signalLine[i] && macdLine[i] < macdLine[i - 1]) {
-        impulseStatuses.add(ImpulseStatus.bearish);
-      } else {
-        impulseStatuses.add(ImpulseStatus.neutral);
-      }
-    }
-    return impulseStatuses;
+  @override
+  String toString() {
+    return "Profit/Loss: $profitLoss, Recommendation: $recommendation";
   }
 
-  LineSeries<num, int> createMacdLineSeries() {
-    return LineSeries<num, int>(
-      dataSource: List.generate(macdLine.length, (int index) => macdLine[index]),
-      xValueMapper: (num value, int index) => index,
-      yValueMapper: (num value, int index) => value,
-      pointColorMapper: (num value, int index) {
-        if (macdLine[index] > signalLine[index]) {
-          return StTheme.current!.colors.green600; // Buy signal
-        } else if (macdLine[index] < signalLine[index]) {
-          return StTheme.current!.colors.red600; // Sell signal
-        } else {
-          return StTheme.current!.colors.grey400; // Hold signal
-        }
-      },
-      name: "MACD Line",
-    );
-  }
-
-  LineSeries<num, int> createSignalLineSeries() {
-    return LineSeries<num, int>(
-      dataSource: List.generate(signalLine.length, (int index) => signalLine[index]),
-      xValueMapper: (num value, int index) => index,
-      yValueMapper: (num value, int index) => value,
-      name: "Signal Line",
-      color: StTheme.current!.colors.blue600, // Fixed color for the signal line
-    );
-  }
-
-  ColumnSeries<num, int> createHistogramSeries() {
-    return ColumnSeries<num, int>(
-      dataSource: List.generate(histogram.length, (int index) => histogram[index]),
-      xValueMapper: (num value, int index) => index,
-      yValueMapper: (num value, int index) => value,
-      pointColorMapper: (num value, int index) =>
-          value >= 0 ? StTheme.current!.colors.green500 : StTheme.current!.colors.red500,
-      name: "Histogram",
-    );
-  }
-}
-
-class MacdV2 {
-  final List<double> macdLine;
-  final List<double> signalLine;
-  final List<double> histogram;
-  final List<double> rsiValues;
-  final List<ImpulseStatus> impulseColors;
-
-  MacdV2({
-    required this.macdLine,
-    required this.signalLine,
-    required this.histogram,
-    required this.rsiValues,
-    required this.impulseColors,
-  });
-
-  List<LineSeries<_ChartData, int>> getMacdSeries() {
-    final List<_ChartData> macdData = List.generate(macdLine.length, (i) => _ChartData(i, macdLine[i]));
-    final List<_ChartData> signalData = List.generate(signalLine.length, (i) => _ChartData(i, signalLine[i]));
-
-    return [
-      LineSeries<_ChartData, int>(
-        dataSource: macdData,
-        xValueMapper: (data, _) => data.x,
-        yValueMapper: (data, _) => data.y,
-        name: 'MACD',
-        color: Colors.blue,
-      ),
-      LineSeries<_ChartData, int>(
-        dataSource: signalData,
-        xValueMapper: (data, _) => data.x,
-        yValueMapper: (data, _) => data.y,
-        name: 'Signal',
-        color: Colors.orange,
-      ),
-    ];
-  }
-
-  ColumnSeries<_ChartData, int> getHistogramSeries() {
-    final List<_ChartData> histogramData = List.generate(
-      histogram.length,
-      (i) => _ChartData(
-        i,
-        histogram[i],
-        null,
-        histogram[i] >= 0 ? Colors.green : Colors.red,
-      ),
-    );
-
-    return ColumnSeries<_ChartData, int>(
-      dataSource: histogramData,
-      xValueMapper: (data, _) => data.x,
-      yValueMapper: (data, _) => data.y,
-      pointColorMapper: (data, _) => data.histogramColor,
-      name: 'Histogram',
-    );
-  }
-
-  List<LineSeries<_ChartData, int>> getImpulseMacdSeries() {
-    final List<_ChartData> impulseData =
-        List.generate(macdLine.length, (i) => _ChartData(i, macdLine[i], impulseColors[i]));
-
-    return [
-      LineSeries<_ChartData, int>(
-        dataSource: impulseData,
-        xValueMapper: (data, _) => data.x,
-        yValueMapper: (data, _) => data.y,
-        pointColorMapper: (data, _) => _getColor(data.impulse),
-        name: 'Impulse MACD',
-      ),
-    ];
-  }
-
-  Color _getColor(ImpulseStatus? impulse) {
-    switch (impulse ?? ImpulseStatus.neutral) {
-      case ImpulseStatus.bullish:
-        return Colors.green;
-      case ImpulseStatus.bearish:
-        return Colors.red;
-      default:
-        return Colors.grey;
+  String getSummary() {
+    switch (recommendation) {
+      case Recommendation.strongBuy:
+        return "💪📈 Strong buy";
+      case Recommendation.buy:
+        return "📈 Buy";
+      case Recommendation.hold:
+        return "🤔 Hold";
+      case Recommendation.sell:
+        return "📉 Sell";
+      case Recommendation.strongSell:
+        return "⚠️📉 Strong sell";
+      case Recommendation.reversal:
+        return "🔄 Potential reversal";
     }
   }
-}
-
-class _ChartData {
-  final int x;
-  final double y;
-  final ImpulseStatus? impulse;
-  final Color? histogramColor;
-
-  _ChartData(this.x, this.y, [this.impulse, this.histogramColor]);
 }
 
 class ImpulseMacd {
@@ -204,7 +82,6 @@ class ImpulseMacd {
       }
     }
 
-    // Return the calculated components
     return ImpulseMacd._(
       macdDifference: macdDifference,
       signal: signal,
@@ -212,8 +89,77 @@ class ImpulseMacd {
     );
   }
 
+  TradeRecommendation checkTradeOpportunity({
+    required int sharesOwned,
+    required List<ChartEodItem> prices,
+    int trendPeriod = 5,
+  }) {
+    if (histogram.isEmpty || signal.isEmpty) {
+      return TradeRecommendation(profitLoss: 0, recommendation: Recommendation.hold);
+    }
+
+    final double currentPrice = prices.last.close.get.toDouble();
+    final int lastIndex = histogram.length - 1;
+    final double lastHistogram = histogram[lastIndex];
+    final double lastSignal = signal[lastIndex];
+    final double profitLoss = sharesOwned * currentPrice;
+
+    Recommendation recommendation = Recommendation.hold;
+
+    if (lastHistogram > 0 && histogram[lastIndex - 1] <= 0 && lastHistogram > lastSignal) {
+      recommendation = Recommendation.buy;
+    } else if (lastHistogram < 0 && histogram[lastIndex - 1] >= 0 && lastHistogram < lastSignal) {
+      recommendation = Recommendation.sell;
+    }
+
+    bool isHistogramFalling = false;
+    bool isHistogramRising = false;
+
+    // Check short-term trend
+    if (lastIndex >= trendPeriod) {
+      final List<double> recentHistograms = histogram.sublist(lastIndex - trendPeriod + 1, lastIndex + 1);
+      final List<double> recentSignals = signal.sublist(lastIndex - trendPeriod + 1, lastIndex + 1);
+
+      isHistogramRising = recentHistograms.every((double val) => val >= recentHistograms.first);
+      isHistogramFalling = recentHistograms.every((double val) => val <= recentHistograms.first);
+
+      final bool isSignalRising = recentSignals.every((double val) => val >= recentSignals.first);
+      final bool isSignalFalling = recentSignals.every((double val) => val <= recentSignals.first);
+
+      if (isHistogramRising && isSignalRising) {
+        recommendation = Recommendation.strongBuy;
+      } else if (isHistogramFalling && isSignalFalling) {
+        recommendation = Recommendation.strongSell;
+      }
+    }
+
+    // Check for divergence
+    final List<double> recentClose = prices
+        .sublist(lastIndex - trendPeriod + 1, lastIndex + 1)
+        .map((ChartEodItem e) => e.close.get.toDouble())
+        .toList();
+    final bool isPriceRising = recentClose.every((double val) => val >= recentClose.first);
+    final bool isPriceFalling = recentClose.every((double val) => val <= recentClose.first);
+
+    if ((isPriceRising && isHistogramFalling) || (isPriceFalling && isHistogramRising)) {
+      recommendation = Recommendation.reversal;
+    }
+
+    return TradeRecommendation(profitLoss: profitLoss, recommendation: recommendation);
+  }
+
   List<CartesianSeries<double, int>> getSeries() {
     return <CartesianSeries<double, int>>[
+      ColumnSeries<double, int>(
+        animationDuration: 200,
+        dataSource: histogram,
+        xValueMapper: (double value, int index) => index,
+        yValueMapper: (double value, int index) => value,
+        name: "Histogram",
+        pointColorMapper: (num value, int index) {
+          return value > 0 ? StTheme.current!.colors.green600 : StTheme.current!.colors.red600;
+        },
+      ),
       LineSeries<double, int>(
         animationDuration: 200,
         dataSource: macdDifference,
@@ -232,16 +178,6 @@ class ImpulseMacd {
         name: "Signal",
         pointColorMapper: (num value, int index) {
           return Colors.blueAccent;
-        },
-      ),
-      ColumnSeries<double, int>(
-        animationDuration: 200,
-        dataSource: histogram,
-        xValueMapper: (double value, int index) => index,
-        yValueMapper: (double value, _) => value,
-        name: "Histogram",
-        pointColorMapper: (num value, int index) {
-          return value > 0 ? StTheme.current!.colors.green600 : StTheme.current!.colors.red600;
         },
       ),
     ];

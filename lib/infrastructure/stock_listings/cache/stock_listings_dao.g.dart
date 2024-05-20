@@ -6,4 +6,8 @@ part of 'stock_listings_dao.dart';
 mixin _$StockListingsDaoMixin on DatabaseAccessor<DriftDb> {
   $StockListingTableRowDefinitionTable get stockListingTableRowDefinition =>
       attachedDatabase.stockListingTableRowDefinition;
+  $IndexTableRowDefinitionTable get indexTableRowDefinition =>
+      attachedDatabase.indexTableRowDefinition;
+  $ExchangeTableRowDefinitionTable get exchangeTableRowDefinition =>
+      attachedDatabase.exchangeTableRowDefinition;
 }

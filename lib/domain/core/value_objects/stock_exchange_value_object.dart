@@ -39,7 +39,6 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
         return StockExchange.nasdaqGlobalMarket;
       case "nasdaq capital market":
         return StockExchange.nasdaqCapitalMarket;
-
       case "other otc":
         return StockExchange.otherOtc;
       case "international order book":
