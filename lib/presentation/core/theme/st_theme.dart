@@ -1,14 +1,11 @@
-import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:stockz/infrastructure/core/prefs/shared_prefs_wrapper.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 import 'package:stockz/setup.dart';
 
-part 'st_theme_colors.dart';
 part 'st_theme_extensions.dart';
 
 const ThemeMode _defaultThemeMode = ThemeMode.system;
@@ -17,6 +14,7 @@ class StTheme extends ChangeNotifier {
   static const String themeModeKey = "ThemeMode";
   static const double sidePadding = 16;
   static const double bottomPadding = 18;
+  static ColorScheme? _scheme;
 
   static StTheme? current;
 
@@ -28,11 +26,9 @@ class StTheme extends ChangeNotifier {
 
   ThemeMode _themeMode = ThemeMode.system;
 
-  StThemeColors get colors => isDarkMode ? const StDarkThemeColors() : const StLightThemeColors();
+  ColorScheme get scheme => _scheme ?? _createScheme(_themeMode);
 
   StThemeFonts get fonts => _fonts;
-
-  StSystemChromes get chrome => isDarkMode ? const StDarkThemeSystemChromes() : const StLightThemeSystemChromes();
 
   bool get isDarkMode {
     final bool systemSetToDark = WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark;
@@ -42,28 +38,9 @@ class StTheme extends ChangeNotifier {
   ThemeData get theme {
     return ThemeData(
       brightness: Brightness.light,
-      scaffoldBackgroundColor: colors.grey100,
       visualDensity: VisualDensity.comfortable,
-      primaryColor: colors.red600,
-      splashColor: Platform.isIOS ? Colors.transparent : colors.grey100,
-      appBarTheme: const AppBarTheme(
-        scrolledUnderElevation: 0,
-      ),
-      textTheme: TextTheme(
-        displayLarge: TextStyle(fontSize: 48.0, fontWeight: FontWeight.bold, color: colors.grey800),
-        displayMedium: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold, color: colors.grey800),
-        displaySmall: TextStyle(fontSize: 32.0, fontWeight: FontWeight.bold, color: colors.grey800),
-        headlineMedium: TextStyle(fontSize: 22.0, fontWeight: FontWeight.bold, color: colors.grey800),
-        headlineSmall: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: colors.grey800),
-        titleLarge: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w500, color: colors.grey800),
-        titleMedium: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w500, color: colors.grey800),
-        titleSmall: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w400, color: colors.grey800),
-        bodyLarge: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w500, color: colors.grey800),
-        bodyMedium: TextStyle(fontSize: 14.0, fontWeight: FontWeight.w400, color: colors.grey800),
-      ).apply(
-        bodyColor: colors.grey800,
-        displayColor: colors.grey800,
-      ),
+      colorScheme: scheme,
+      appBarTheme: const AppBarTheme(scrolledUnderElevation: 0),
     );
   }
 
@@ -89,6 +66,7 @@ class StTheme extends ChangeNotifier {
     });
 
     _themeMode = themeMode;
+    _createScheme(_themeMode);
     _fonts = StThemeFonts();
 
     notifyListeners();
@@ -114,8 +92,58 @@ class StTheme extends ChangeNotifier {
       return;
     }
 
-    SystemChrome.setSystemUIOverlayStyle(chrome.normal);
     _fonts = StThemeFonts();
+    _createScheme(_themeMode);
     notifyListeners();
+  }
+
+  static ColorScheme _createScheme(ThemeMode theme) {
+    return _scheme ??= ColorScheme(
+      brightness: theme == ThemeMode.dark ? Brightness.dark : Brightness.light,
+      primary: _buildMaterialColor(const Color(0xff114B5F)),
+        primaryFixedDim: _buildMaterialColor(const Color(0xff445566)),
+      onPrimary: _buildMaterialColor(const Color(0xfffafafa)),
+      secondary: _buildMaterialColor(const Color(0xffEC7D10)),
+      onSecondary: _buildMaterialColor(const Color(0xffffffff)),
+      tertiary: _buildMaterialColor(const Color(0xff2E933C)),
+      onTertiary: _buildMaterialColor(const Color(0xffffffff)),
+      error: _buildMaterialColor(const Color(0xff9E2A2B)),
+      onError: _buildMaterialColor(const Color(0xffffffff)),
+      errorContainer: _buildMaterialColor(const Color(0xffFF006E)),
+      onErrorContainer: _buildMaterialColor(const Color(0xffffffff)),
+      surface: _buildMaterialColor(const Color(0xfff3f3f3)),
+      onSurface: _buildMaterialColor(const Color(0xff1d1d1d)),
+      onSurfaceVariant: _buildMaterialColor(const Color(0xff7d7d7d)),
+      surfaceContainerHighest: _buildMaterialColor(const Color(0xffC9DAEA)),
+      scrim: _buildMaterialColor(const Color(0x661d1d1d)),
+    );
+  }
+}
+
+MaterialColor _buildMaterialColor(Color color) {
+  final List<double> strengths = [.05];
+  final Map<int, Color> swatch = {};
+  final int r = color.red;
+  final int g = color.green;
+  final int b = color.blue;
+
+  for (int i = 1; i < 10; i++) {
+    strengths.add(0.1 * i);
+  }
+  for (final double strength in strengths) {
+    final double ds = 0.5 - strength;
+    swatch[(strength * 1000).round()] = Color.fromRGBO(
+      r + ((ds < 0 ? r : (255 - r)) * ds).round(),
+      g + ((ds < 0 ? g : (255 - g)) * ds).round(),
+      b + ((ds < 0 ? b : (255 - b)) * ds).round(),
+      1,
+    );
+  }
+  return MaterialColor(color.value, swatch);
+}
+
+extension ColorExtension on Color {
+  ColorFilter get svg {
+    return ColorFilter.mode(this, BlendMode.srcIn);
   }
 }

@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:stockz/presentation/core/route_observer_provider.dart';
-import 'package:stockz/presentation/core/utils/st_system_chrome.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 import 'package:stockz/presentation/core/widgets/tappable/buttons/bottom_buttons/bottom_buttons_definition.dart';
 import 'package:stockz/setup.dart';
@@ -14,7 +12,6 @@ class StScaffold extends StatefulWidget {
   final Color? backgroundColor;
   final PreferredSizeWidget? appBar;
   final bool useSafeArea;
-  final SystemUiOverlayStyle? systemChrome;
   final bool ignoreKeyboardResizing;
   final Widget? bottomSheet;
   final Widget? bottomContainer;
@@ -29,7 +26,6 @@ class StScaffold extends StatefulWidget {
     this.appBar,
     this.drawer,
     this.backgroundColor,
-    this.systemChrome,
     this.bottomSheet,
     this.bottomButtonsV2,
     this.ignoreKeyboardResizing = false,
@@ -47,8 +43,6 @@ class StScaffold extends StatefulWidget {
 }
 
 class _StScaffoldState extends State<StScaffold> with RouteAware, WidgetsBindingObserver {
-  static SystemUiOverlayStyle? _currentChrome;
-
   @override
   void initState() {
     super.initState();
@@ -69,11 +63,6 @@ class _StScaffoldState extends State<StScaffold> with RouteAware, WidgetsBinding
     final ModalRoute? route = ModalRoute.of(context);
     if (route != null) {
       getIt<RouteObserverProvider>().get().subscribe(this, route);
-    }
-
-    if (widget.systemChrome != null) {
-      StSystemChrome.setSystemUIOverlayStyle(widget.systemChrome!);
-      _currentChrome = widget.systemChrome;
     }
   }
 
@@ -96,12 +85,6 @@ class _StScaffoldState extends State<StScaffold> with RouteAware, WidgetsBinding
 
   @override
   void didPopNext() {
-    final StTheme theme = StTheme.of(context, listen: false);
-    final SystemUiOverlayStyle chrome = widget.systemChrome ?? theme.chrome.normal;
-    if (_currentChrome?.statusBarColor != chrome.statusBarColor) {
-      _currentChrome = chrome;
-      StSystemChrome.setSystemUIOverlayStyle(chrome);
-    }
     widget.onResumed?.call();
   }
 
@@ -119,9 +102,7 @@ class _StScaffoldState extends State<StScaffold> with RouteAware, WidgetsBinding
 
   @override
   Widget build(BuildContext context) {
-    _currentChrome ??= StTheme.of(context).chrome.normal;
-
-    final Color backgroundColor = widget.backgroundColor ?? StTheme.of(context).colors.grey100;
+    final Color backgroundColor = widget.backgroundColor ?? StTheme.of(context).scheme.surface;
 
     final Widget scaffold = Scaffold(
       bottomSheet: widget.bottomSheet,

@@ -205,7 +205,7 @@ class StRefreshIndicatorState extends State<StRefreshIndicator> with TickerProvi
 
   @override
   void didChangeDependencies() {
-    final Color fallbackColor = StTheme.of(context).colors.blue600;
+    final Color fallbackColor = StTheme.of(context).scheme.secondary;
     _valueColor = _positionController.drive(
       ColorTween(
         begin: (widget.color ?? fallbackColor).withOpacity(0.0),
@@ -490,7 +490,7 @@ class StRefreshIndicatorState extends State<StRefreshIndicator> with TickerProvi
                             semanticsValue: widget.semanticsValue,
                             value: showIndeterminateIndicator ? null : _value.value,
                             valueColor: _valueColor,
-                            backgroundColor: widget.backgroundColor ?? StTheme.of(context).colors.grey0,
+                            backgroundColor: widget.backgroundColor ?? StTheme.of(context).scheme.surfaceContainerHighest,
                             strokeWidth: widget.strokeWidth,
                           );
                         }

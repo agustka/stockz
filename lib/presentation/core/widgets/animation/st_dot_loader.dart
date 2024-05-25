@@ -56,7 +56,7 @@ class _IsbDotLoaderState extends State<StDotLoader> with SingleTickerProviderSta
         ? widget.itemBuilder!(context, index)
         : DecoratedBox(
       decoration: BoxDecoration(
-        color: widget.color ?? StTheme.of(context).colors.red600,
+        color: widget.color ?? StTheme.of(context).scheme.error,
         shape: BoxShape.circle,
       ),
     );

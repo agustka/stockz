@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stockz/application/core/navigation/navigation_cubit.dart';
 import 'package:stockz/core/assets/assets.gen.dart';
 import 'package:stockz/presentation/core/localization/l10n.dart';
@@ -43,7 +42,7 @@ class StAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       scrolledUnderElevation: 0,
       leading: _getBackIcon(context),
-      backgroundColor: backgroundColor ?? StTheme.of(context).colors.grey100,
+      backgroundColor: backgroundColor ?? StTheme.of(context).scheme.onSurfaceVariant,
       actions: _getActions(context),
       centerTitle: centerTitle,
       title: _getLabelWidget(context),
@@ -66,9 +65,11 @@ class StAppBar extends StatelessWidget implements PreferredSizeWidget {
             onTap: onClose,
             child: Padding(
               padding: const EdgeInsets.only(left: 12, right: 12),
-              child: SvgPicture.asset(
+              child: StSvg(
                 AppAssets.images.icCancelCross,
-                colorFilter: ColorFilter.mode(closeColor ?? StTheme.of(context).colors.grey400, BlendMode.srcIn),
+                width: 24,
+                height: 24,
+                color: StTheme.of(context).scheme.onSurfaceVariant,
               ),
             ),
           ),
@@ -83,7 +84,7 @@ class StAppBar extends StatelessWidget implements PreferredSizeWidget {
       final dynamic Function() backAction = onBack ?? () => context.read<NavigationCubit>().pop();
 
       return StBack(
-        color: backColor ?? StTheme.of(context).colors.red600,
+        color: backColor ?? StTheme.of(context).scheme.primary,
         onTap: backAction,
         overrideBackIcon: overrideBackIcon,
       );

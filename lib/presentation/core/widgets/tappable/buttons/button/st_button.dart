@@ -92,19 +92,19 @@ class StButton extends StatelessWidget {
   Color _getButtonBorderColor(StTheme theme) {
     switch (buttonStyle) {
       case StButtonStyle.primary:
-        return enabled ? theme.colors.red700 : theme.colors.red400;
+        return enabled ? theme.scheme.primary : theme.scheme.primaryFixedDim;
       case StButtonStyle.secondary:
-        return enabled ? theme.colors.grey400 : theme.colors.grey400;
+        return enabled ? theme.scheme.onSurface : theme.scheme.onSurfaceVariant;
       case StButtonStyle.tertiary:
-        return theme.colors.grey0.withOpacity(0.4);
+        return theme.scheme.surface.withOpacity(0.4);
     }
   }
 
   Widget _getInnerButtonContent(BuildContext context, {required StTheme theme}) {
     if (busy) {
-      Color busyColor = theme.colors.grey0;
+      Color busyColor = theme.scheme.surface;
       if (buttonStyle == StButtonStyle.secondary) {
-        busyColor = theme.colors.grey600;
+        busyColor = theme.scheme.onSurface;
       }
       return StDotLoader(
         color: busyColor,
@@ -144,22 +144,22 @@ class StButton extends StatelessWidget {
   Color _getBackgroundColor(StTheme theme) {
     switch (buttonStyle) {
       case StButtonStyle.primary:
-        return enabled ? theme.colors.red600 : theme.colors.red400;
+        return enabled ? theme.scheme.primary : theme.scheme.primaryFixedDim;
       case StButtonStyle.secondary:
-        return enabled ? theme.colors.grey200 : theme.colors.grey200;
+        return enabled ? theme.scheme.secondaryFixedDim : theme.scheme.secondaryFixedDim;
       case StButtonStyle.tertiary:
-        return theme.colors.grey0;
+        return theme.scheme.onSurfaceVariant;
     }
   }
 
   Color _getTextColor(StTheme theme) {
     switch (buttonStyle) {
       case StButtonStyle.primary:
-        return theme.colors.grey0;
+        return theme.scheme.onPrimary;
       case StButtonStyle.secondary:
-        return enabled ? theme.colors.grey800 : theme.colors.grey500;
+        return enabled ? theme.scheme.onSurface : theme.scheme.onSurfaceVariant;
       case StButtonStyle.tertiary:
-        return theme.colors.red600;
+        return theme.scheme.onTertiary;
     }
   }
 
@@ -169,11 +169,11 @@ class StButton extends StatelessWidget {
     } else {
       if (buttonStyle == StButtonStyle.primary) {
         if (!enabled && onDisabledTap != null) {
-          return theme.colors.red300;
+          return theme.scheme.secondary;
         }
-        return theme.colors.red700;
+        return theme.scheme.tertiary;
       } else {
-        return theme.colors.grey300;
+        return theme.scheme.onSurfaceVariant;
       }
     }
   }

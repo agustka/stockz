@@ -289,7 +289,6 @@ class _AlertDialogPageState extends State<AlertDialogPage> with TickerProviderSt
 
     return StScaffold(
       bottomContainer: _getActionButtons(context),
-      systemChrome: StTheme.of(context).chrome.normal,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: StTheme.sidePadding),
@@ -298,7 +297,7 @@ class _AlertDialogPageState extends State<AlertDialogPage> with TickerProviderSt
               const SizedBox(height: 120),
               Text(
                 widget.data.title,
-                style: StTheme.of(context).fonts.body32.bold.red,
+                style: StTheme.of(context).fonts.body32.bold.primary,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 23),

@@ -24,8 +24,8 @@ class StCard extends StatelessWidget {
         borderRadius: customBorderRadius ?? BorderRadius.circular(8),
       ),
       elevation: elevation,
-      shadowColor: shadowColor ?? StTheme.of(context).colors.grey100.withAlpha(20),
-      color: backgroundColor ?? StTheme.of(context).colors.grey0,
+      shadowColor: shadowColor ?? StTheme.of(context).scheme.onSurfaceVariant.withAlpha(20),
+      color: backgroundColor ?? StTheme.of(context).scheme.surface,
       child: child,
     );
   }

@@ -52,7 +52,7 @@ class _StFeatureErrorState extends State<StFeatureError> {
     final int flex = widget.iosBottomPadding ? 2 : 1;
 
     return ColoredBox(
-      color: widget.backgroundColor ?? StTheme.of(context).colors.grey0,
+      color: widget.backgroundColor ?? StTheme.of(context).scheme.surface,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
@@ -78,9 +78,9 @@ class _StFeatureErrorState extends State<StFeatureError> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           const SizedBox(height: 15),
-                          Text(
+                          StText(
                             _limitTitleLength(widget.title ?? S.of(context).error_loading_feature_heading),
-                            style: StTheme.of(context).fonts.body32.bold.red,
+                            style: StTheme.of(context).fonts.body32.bold.primary,
                           ),
                           const SizedBox(height: 24),
                           Expanded(

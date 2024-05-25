@@ -2,14 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stockz/application/core/navigation/navigation_cubit.dart';
 import 'package:stockz/core/assets/assets.gen.dart';
 import 'package:stockz/domain/core/navigation/route_arguments.dart';
 import 'package:stockz/presentation/core/accessibility/accessibility.dart';
 import 'package:stockz/presentation/core/localization/l10n.dart';
 import 'package:stockz/presentation/core/utils/deep_link_controller.dart';
-import 'package:stockz/presentation/core/utils/st_system_chrome.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 import 'package:stockz/presentation/overview/overview_page.dart';
 
@@ -35,10 +33,6 @@ class _RootPageState extends State<RootPage> {
 
     _controller = PageController();
     _deepLinkController = DeepLinkController(const RouteArguments.empty());
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      StSystemChrome.setSystemUIOverlayStyle(StTheme.of(context, listen: false).chrome.normal);
-    });
   }
 
   @override
@@ -57,7 +51,7 @@ class _RootPageState extends State<RootPage> {
   }
 
   Widget _getBody(NavigationState state) {
-      return _getStandaloneVersion();
+    return _getStandaloneVersion();
   }
 
   Widget _getStandaloneVersion() {
@@ -65,12 +59,12 @@ class _RootPageState extends State<RootPage> {
     const double iconTextSpacing = 8;
 
     final StTheme theme = StTheme.of(context);
-    final Color selCol = theme.colors.red600;
-    final Color unSelCol = theme.colors.grey700;
-    final Color backgroundColor = theme.colors.grey0;
+    final Color selCol = theme.scheme.error;
+    final Color unSelCol = theme.scheme.onSurfaceVariant;
+    final Color backgroundColor = theme.scheme.surfaceContainerHighest;
 
     return Scaffold(
-      backgroundColor: theme.colors.grey0,
+      backgroundColor: theme.scheme.surface,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: selCol,
@@ -80,11 +74,11 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
-              child: SvgPicture.asset(
+              child: StSvg(
                 AppAssets.images.icHome,
                 width: iconSize,
                 height: iconSize,
-                colorFilter: _selPage == 0 ? selCol.svg : unSelCol.svg,
+                color: _selPage == 0 ? selCol : unSelCol,
               ),
             ),
             label: S.of(context).overview,
@@ -93,11 +87,11 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
-              child: SvgPicture.asset(
+              child: StSvg(
                 AppAssets.images.icNavBills,
                 width: iconSize,
                 height: iconSize,
-                colorFilter: _selPage == 1 ? selCol.svg : unSelCol.svg,
+                color: _selPage == 1 ? selCol : unSelCol,
               ),
             ),
             label: "2",
@@ -106,11 +100,11 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
-              child: SvgPicture.asset(
+              child: StSvg(
                 AppAssets.images.icTransfer,
                 width: iconSize,
                 height: iconSize,
-                colorFilter: _selPage == 2 ? selCol.svg : unSelCol.svg,
+                color: _selPage == 2 ? selCol : unSelCol,
               ),
             ),
             label: "3",
@@ -119,11 +113,11 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
-              child: SvgPicture.asset(
+              child: StSvg(
                 AppAssets.images.icNavFrida,
                 width: iconSize,
                 height: iconSize,
-                colorFilter: _selPage == 3 ? selCol.svg : unSelCol.svg,
+                color: _selPage == 3 ? selCol : unSelCol,
               ),
             ),
             label: "4",
@@ -132,11 +126,11 @@ class _RootPageState extends State<RootPage> {
           BottomNavigationBarItem(
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
-              child: SvgPicture.asset(
+              child: StSvg(
                 AppAssets.images.icNavMore,
                 width: iconSize,
                 height: iconSize,
-                colorFilter: _selPage == 4 ? selCol.svg : unSelCol.svg,
+                color: _selPage == 4 ? selCol : unSelCol,
               ),
             ),
             label: S.of(context).more,
@@ -146,8 +140,8 @@ class _RootPageState extends State<RootPage> {
         currentIndex: _selPage,
         elevation: 15,
         backgroundColor: backgroundColor,
-        selectedLabelStyle: StTheme.of(context).fonts.body12.red,
-        unselectedLabelStyle: StTheme.of(context).fonts.body12.grey300,
+        selectedLabelStyle: StTheme.of(context).fonts.body12.error,
+        unselectedLabelStyle: StTheme.of(context).fonts.body12.onSurfaceVariant,
         onTap: (int index) {
           _controller?.animateToPage(index, duration: const Duration(milliseconds: 300), curve: Curves.easeInOutQuad);
           setState(() {

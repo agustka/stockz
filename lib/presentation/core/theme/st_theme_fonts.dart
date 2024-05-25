@@ -47,19 +47,11 @@ extension TextStyleExtension on TextStyle {
 
   TextStyle get dotted => copyWith(decoration: TextDecoration.underline, decorationStyle: TextDecorationStyle.dotted);
 
-  TextStyle get red => copyWith(color: StTheme.current?.colors.red600);
+  TextStyle get error => copyWith(color: StTheme.current?.scheme.error);
 
-  TextStyle get green => copyWith(color: StTheme.current?.colors.green600);
+  TextStyle get primary => copyWith(color: StTheme.current?.scheme.primary);
 
-  TextStyle get bg => copyWith(color: StTheme.current?.colors.grey0);
-  TextStyle get grey0 => copyWith(color: StTheme.current?.colors.grey0);
-  TextStyle get grey100 => copyWith(color: StTheme.current?.colors.grey200);
+  TextStyle get green => copyWith(color: StTheme.current?.scheme.tertiary);
 
-  TextStyle get grey200 => copyWith(color: StTheme.current?.colors.grey300);
-
-  TextStyle get grey300 => copyWith(color: StTheme.current?.colors.grey400);
-
-  TextStyle get grey400 => copyWith(color: StTheme.current?.colors.grey600);
-
-  TextStyle get grey700 => copyWith(color: StTheme.current?.colors.grey700);
+  TextStyle get onSurfaceVariant => copyWith(color: StTheme.current?.scheme.onSurfaceVariant);
 }

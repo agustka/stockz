@@ -4,7 +4,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stockz/core/assets/assets.gen.dart';
 import 'package:stockz/presentation/core/accessibility/accessibility.dart';
@@ -107,9 +106,9 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    StTheme.of(context).colors.grey100.withAlpha(0),
-                    StTheme.of(context).colors.grey100.withAlpha(100),
-                    StTheme.of(context).colors.grey100.withAlpha(210),
+                    StTheme.of(context).scheme.onSurfaceVariant.withAlpha(0),
+                    StTheme.of(context).scheme.onSurfaceVariant.withAlpha(100),
+                    StTheme.of(context).scheme.onSurfaceVariant.withAlpha(210),
                   ],
                 ),
               ),
@@ -123,7 +122,10 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [StTheme.of(context).colors.grey100.withAlpha(210), StTheme.of(context).colors.grey100],
+              colors: [
+                StTheme.of(context).scheme.onSurfaceVariant.withAlpha(210),
+                StTheme.of(context).scheme.onSurfaceVariant,
+              ],
             ),
           ),
           child: Padding(
@@ -169,7 +171,7 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                     (Platform.isIOS ? 0 : MediaQuery.of(context).padding.bottom) -
                     (Platform.isIOS ? 0 : MediaQuery.of(context).padding.top),
                 child: Material(
-                  color: StTheme.of(context).colors.overlay,
+                  color: StTheme.of(context).scheme.scrim,
                 ),
               ),
             ),
@@ -197,7 +199,7 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
             label: S.of(context).semantics_drag_down_to_dismiss_drawer,
             slider: true,
             child: StCard(
-              backgroundColor: StTheme.of(context).colors.grey0,
+              backgroundColor: StTheme.of(context).scheme.surfaceContainerHighest,
               customBorderRadius: const BorderRadius.only(topLeft: Radius.circular(32), topRight: Radius.circular(32)),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -211,11 +213,11 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                       width: size.width - StTheme.sidePadding * 2,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: StTheme.sidePadding),
-                        child: Text(
+                        child: StText(
                           _buttons.drawerHeading,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: _getHeadingTextStyle(context: context).red,
+                          style: _getHeadingTextStyle(context: context).primary,
                         ),
                       ),
                     ),
@@ -309,7 +311,7 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                   child: SvgPicture.asset(
                     AppAssets.images.icThreeDots,
                     width: 24,
-                    colorFilter: StTheme.of(context).colors.grey700.svg,
+                    colorFilter: StTheme.of(context).scheme.onSurfaceVariant.svg,
                   ),
                 ),
               ),
@@ -366,12 +368,13 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                 children: [
                   const SizedBox(width: StTheme.sidePadding),
                   if (button.drawerIcon != null) ...[
-                    SvgPicture.asset(
+                    StSvg(
                       button.drawerIcon ?? AppAssets.images.icTransparent,
                       width: 24,
-                      colorFilter: button.enabled
-                          ? StTheme.of(context).colors.red600.svg
-                          : StTheme.of(context).colors.grey300.svg,
+                      height: 24,
+                      color: button.enabled
+                          ? StTheme.of(context).scheme.primary
+                          : StTheme.of(context).scheme.onSurfaceVariant,
                     ),
                     const SizedBox(width: 16),
                   ],
@@ -381,8 +384,7 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                       overflow: TextOverflow.ellipsis,
                       button.drawerText ?? button.buttonText,
                       style: _getButtonTextStyle(context: context).copyWith(
-                        color:
-                        button.enabled ? StTheme.of(context).colors.grey700 : StTheme.of(context).colors.grey300,
+                        color: button.enabled ? StTheme.of(context).scheme.onSurface : StTheme.of(context).scheme.onSurfaceVariant,
                       ),
                     ),
                   ),
@@ -397,7 +399,7 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: StTheme.sidePadding),
             child: StDivider(
-              color: StTheme.of(context).colors.grey200,
+              color: StTheme.of(context).scheme.onSurfaceVariant,
             ),
           ),
         );
@@ -413,13 +415,6 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
       _drawerOpacity = 1;
       _drawerVisible = true;
     });
-    if (Platform.isAndroid) {
-      Future.delayed(const Duration(milliseconds: 250)).then(
-            (value) {
-          SystemChrome.setSystemUIOverlayStyle(StTheme.of(context, listen: false).chrome.bottomSheetOverlay);
-        },
-      );
-    }
   }
 
   void _dismissDrawer() {
@@ -432,13 +427,6 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
           _drawerOpacity = 0;
         });
       });
-      if (Platform.isAndroid) {
-        Future.delayed(const Duration(milliseconds: 350)).then(
-              (value) {
-            SystemChrome.setSystemUIOverlayStyle(StTheme.of(context, listen: false).chrome.normal);
-          },
-        );
-      }
     }
   }
 

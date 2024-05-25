@@ -157,7 +157,7 @@ class ImpulseMacd {
         yValueMapper: (double value, int index) => value,
         name: "Histogram",
         pointColorMapper: (num value, int index) {
-          return value > 0 ? StTheme.current!.colors.green600 : StTheme.current!.colors.red600;
+          return value > 0 ? StTheme.current!.scheme.secondary : StTheme.current!.scheme.tertiary;
         },
       ),
       LineSeries<double, int>(

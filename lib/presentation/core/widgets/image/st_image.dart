@@ -65,8 +65,8 @@ class _StImageState extends State<StImage> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  StTheme.of(context).colors.red600,
-                  StTheme.of(context).colors.yellow600,
+                  StTheme.of(context).scheme.error,
+                  StTheme.of(context).scheme.secondary,
                 ],
               ),
             ),

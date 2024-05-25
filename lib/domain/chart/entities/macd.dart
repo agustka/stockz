@@ -19,11 +19,11 @@ class Macd {
       yValueMapper: (num value, int index) => value,
       pointColorMapper: (num value, int index) {
         if (macdLine[index] > signalLine[index]) {
-          return StTheme.current!.colors.green600; // Buy signal
+          return StTheme.current!.scheme.tertiary; // Buy signal
         } else if (macdLine[index] < signalLine[index]) {
-          return StTheme.current!.colors.red600; // Sell signal
+          return StTheme.current!.scheme.error; // Sell signal
         } else {
-          return StTheme.current!.colors.grey400; // Hold signal
+          return StTheme.current!.scheme.onSurfaceVariant; // Hold signal
         }
       },
       name: "MACD Line",
@@ -36,7 +36,7 @@ class Macd {
       xValueMapper: (num value, int index) => index,
       yValueMapper: (num value, int index) => value,
       name: "Signal Line",
-      color: StTheme.current!.colors.blue600, // Fixed color for the signal line
+      color: StTheme.current!.scheme.secondary, // Fixed color for the signal line
     );
   }
 
@@ -46,7 +46,7 @@ class Macd {
       xValueMapper: (num value, int index) => index,
       yValueMapper: (num value, int index) => value,
       pointColorMapper: (num value, int index) =>
-      value >= 0 ? StTheme.current!.colors.green500 : StTheme.current!.colors.red500,
+          value >= 0 ? StTheme.current!.scheme.tertiary : StTheme.current!.scheme.error,
       name: "Histogram",
     );
   }

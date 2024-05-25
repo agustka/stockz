@@ -11,7 +11,7 @@ class StDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: color ?? StTheme.of(context).colors.grey200,
+      color: color ?? StTheme.of(context).scheme.onSurfaceVariant,
       thickness: thickness,
       height: height,
     );

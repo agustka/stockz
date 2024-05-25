@@ -67,7 +67,6 @@ class _IsbTapVisualState extends State<StTapVisual> {
     if (!widget.enabled) {
       return widget.child;
     }
-    final BuildContext context = widget.overrideContext ?? defaultContext;
     if (Platform.isIOS) {
       return StCupertinoTappable(
         onTap: () {
@@ -99,8 +98,6 @@ class _IsbTapVisualState extends State<StTapVisual> {
         child: InkWell(
           borderRadius: widget.borderRadius,
           customBorder: widget.customBorder,
-          splashColor:
-          widget.noEffects ? Colors.transparent : widget.splashColor ?? StTheme.of(context).colors.grey200,
           highlightColor: widget.noEffects ? Colors.transparent : widget.highlightColor,
           onTap: () {
             if (widget.useDebounce) {

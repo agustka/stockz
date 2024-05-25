@@ -16,10 +16,10 @@ enum StFeatureHeadingSize {
 
 extension _StFeatureHeadingSizeX on StFeatureHeadingSize {
   TextStyle _getTitleFontStyle(StThemeFonts fonts) => switch (this) {
-    StFeatureHeadingSize.huge => fonts.body30.bold.red,
-    StFeatureHeadingSize.large => fonts.body24.bold.red,
-    StFeatureHeadingSize.medium => fonts.body22.bold.red,
-    StFeatureHeadingSize.small => fonts.body20.bold.red,
+    StFeatureHeadingSize.huge => fonts.body30.bold.primary,
+    StFeatureHeadingSize.large => fonts.body24.bold.primary,
+    StFeatureHeadingSize.medium => fonts.body22.bold.primary,
+    StFeatureHeadingSize.small => fonts.body20.bold.primary,
   };
 
   double _getTrailingIconSize(TextScaler scaler, StThemeFonts fonts) => switch (this) {
@@ -277,7 +277,7 @@ class _IsbFeatureHeadingTrailingIcon extends StatelessWidget {
                   iconPath!,
                   width: (size ?? 8) - 8.0,
                   height: (size ?? 8) - 8.0,
-                  color: StTheme.of(context).colors.red600,
+                  color: StTheme.of(context).scheme.primary,
                 ),
               ),
             ),
