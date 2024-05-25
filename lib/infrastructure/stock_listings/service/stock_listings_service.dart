@@ -2,6 +2,7 @@ import 'package:chopper/chopper.dart';
 import 'package:injectable/injectable.dart';
 import 'package:stockz/domain/core/value_objects/payload.dart';
 import 'package:stockz/infrastructure/core/service/base_service.dart';
+import 'package:stockz/infrastructure/stock_listings/models/exchange_model.dart';
 import 'package:stockz/infrastructure/stock_listings/models/index_model.dart';
 import 'package:stockz/infrastructure/stock_listings/models/stock_listing_model.dart';
 import 'package:stockz/infrastructure/stock_listings/service/chopper/stock_listings_chopper_service.dart';
@@ -16,12 +17,12 @@ class StockListingsService with BaseService implements IStockListingsService {
   StockListingsService(this._service);
 
   @override
-  Future<Payload<List<StockListingModel>>> getAllStockListings({int level = 1}) async {
+  Future<Payload<List<StockListingModel>>> getAllAvailableListings({int level = 1}) async {
     try {
-      final Response<List<StockListingModel>> response = await _service.getStockListings();
+      final Response<List<StockListingModel>> response = await _service.getAllAvailableListings();
 
       if (await needsRetry(response, level)) {
-        return getAllStockListings(level: level + 1);
+        return getAllAvailableListings(level: level + 1);
       }
       return handleResponse(response);
     } on Exception catch (e, stacktrace) {
@@ -58,16 +59,30 @@ class StockListingsService with BaseService implements IStockListingsService {
   }
 
   @override
-  Future<Payload<List<StockListingModel>>> getExchangeListings({required String exchangeSymbol, int level = 1}) async {
+  Future<Payload<ExchangeModel>> getExchange({required String exchangeSymbol, int level = 1}) async {
     try {
-      final Response<List<StockListingModel>> response = await _service.getStockListings();
+      final Response<ExchangeModel> response = await _service.getExchange(exchangeSymbol: exchangeSymbol);
 
       if (await needsRetry(response, level)) {
-        return getExchangeListings(exchangeSymbol: exchangeSymbol, level: level + 1);
+        return getExchange(exchangeSymbol: exchangeSymbol, level: level + 1);
       }
       return handleResponse(response);
     } on Exception catch (e, stacktrace) {
       return handleException(e, stacktrace);
+    }
+  }
+
+  @override
+  Future<Payload<List<StockListingModel>>> getExchangeListings({required String exchangeSymbol, int level = 1}) async {
+    try {
+      final Response<List<StockListingModel>> response = await _service.getExchangeListings(exchangeSymbol: exchangeSymbol);
+
+      if (await needsRetry(response, level)) {
+    return getExchangeListings(exchangeSymbol: exchangeSymbol, level: level + 1);
+    }
+    return handleResponse(response);
+    } on Exception catch (e, stacktrace) {
+    return handleException(e, stacktrace);
     }
   }
 }

@@ -22,9 +22,9 @@ class StockListingsRepository implements IStockListingsRepository {
   StockListingsRepository(this._service, this._cache);
 
   @override
-  Future<Payload<StockListings>> getStockListings({bool forceGet = false}) async {
+  Future<Payload<StockListings>> getAllAvailableListings({bool forceGet = false}) async {
     if (forceGet) {
-      return _fetchStockListings();
+      return _fetchAllAvailableListings();
     }
     return _cache.getStockListings(policy: CachingPolicy.onlyServeNotExpired).then((
       Cache<List<StockListingModel>> cache,
@@ -34,16 +34,17 @@ class StockListingsRepository implements IStockListingsRepository {
           return Payload.success(
             StockListings(
               listings: available.data.map((StockListingModel e) => e.toDomain()).toList(),
+              exchangeSymbol: const StringIdValueObject.invalid(),
             ),
           );
         },
-        orElse: () => _fetchStockListings(),
+        orElse: () => _fetchAllAvailableListings(),
       );
     });
   }
 
-  Future<Payload<StockListings>> _fetchStockListings() async {
-    final Payload<List<StockListingModel>> payload = await _service.getAllStockListings();
+  Future<Payload<StockListings>> _fetchAllAvailableListings() async {
+    final Payload<List<StockListingModel>> payload = await _service.getAllAvailableListings();
     return payload.fold(
       (Failure failure) {
         return Payload.failure(failure);
@@ -53,6 +54,7 @@ class StockListingsRepository implements IStockListingsRepository {
         return Payload.success(
           StockListings(
             listings: value.map((StockListingModel e) => e.toDomain()).toList(),
+            exchangeSymbol: const StringIdValueObject.invalid(),
           ),
         );
       },
@@ -90,18 +92,16 @@ class StockListingsRepository implements IStockListingsRepository {
   }
 
   @override
-  Future<Payload<Exchanges>> getExchange({required String exchangeSymbol, bool forceGet = false}) {
+  Future<Payload<Exchange>> getExchange({required String exchangeSymbol, bool forceGet = false}) {
     if (forceGet) {
       return _fetchExchange(exchangeSymbol: exchangeSymbol);
     }
     return _cache
         .getExchange(exchangeSymbol: exchangeSymbol, policy: CachingPolicy.onlyServeNotExpired)
-        .then((Cache<List<ExchangeModel>> cache) {
+        .then((Cache<ExchangeModel> cache) {
       return cache.maybeMap(
-        available: (CacheAvailable<List<ExchangeModel>> available) {
-          final Payload<Exchanges> payload = Payload.success(
-            Exchanges(exchanges: available.data.map((ExchangeModel e) => e.toDomain()).toList()),
-          );
+        available: (CacheAvailable<ExchangeModel> available) {
+          final Payload<Exchange> payload = Payload.success(available.data.toDomain());
           return payload;
         },
         orElse: () {
@@ -111,5 +111,52 @@ class StockListingsRepository implements IStockListingsRepository {
     });
   }
 
-  Future<Payload<Exchanges>> _fetchExchange({required String exchangeSymbol}) {}
+  Future<Payload<Exchange>> _fetchExchange({required String exchangeSymbol}) async {
+    final Payload<ExchangeModel> payload = await _service.getExchange(exchangeSymbol: exchangeSymbol);
+    return payload.fold(
+      (Failure failure) {
+        return Payload.failure(failure);
+      },
+      (ExchangeModel value) {
+        _cache.addExchange(exchange: value, exchangeSymbol: exchangeSymbol);
+        return Payload.success(value.toDomain());
+      },
+    );
+  }
+
+  @override
+  Future<Payload<StockListings>> getExchangeListings({required String exchangeSymbol, bool forceGet = false}) {
+    if (forceGet) {
+      return _fetchExchangeListings(exchangeSymbol: exchangeSymbol);
+    }
+    return _cache
+        .getExchangeListings(exchangeSymbol: exchangeSymbol, policy: CachingPolicy.onlyServeNotExpired)
+        .then((Cache<List<StockListingModel>> cache) {
+      return cache.maybeMap(
+        available: (CacheAvailable<List<StockListingModel>> available) {
+          final List<StockListing> listings = available.data.map((StockListingModel e) => e.toDomain()).toList();
+          final Payload<StockListings> payload =
+              Payload.success(StockListings(listings: listings, exchangeSymbol: StringIdValueObject(exchangeSymbol)));
+          return payload;
+        },
+        orElse: () {
+          return _fetchExchangeListings(exchangeSymbol: exchangeSymbol);
+        },
+      );
+    });
+  }
+
+  Future<Payload<StockListings>> _fetchExchangeListings({required String exchangeSymbol}) async {
+    final Payload<List<StockListingModel>> payload = await _service.getExchangeListings(exchangeSymbol: exchangeSymbol);
+    return payload.fold(
+      (Failure failure) {
+        return Payload.failure(failure);
+      },
+      (List<StockListingModel> value) {
+        _cache.addExchangeListings(listings: value, exchangeSymbol: exchangeSymbol);
+        final List<StockListing> listings = value.map((StockListingModel e) => e.toDomain()).toList();
+        return Payload.success(StockListings(listings: listings, exchangeSymbol: StringIdValueObject(exchangeSymbol)));
+      },
+    );
+  }
 }

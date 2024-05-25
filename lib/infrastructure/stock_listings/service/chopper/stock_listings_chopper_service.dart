@@ -12,17 +12,22 @@ abstract class StockListingsChopperService extends ChopperService {
 
   static StockListingsChopperService create([ChopperClient? client]) => _$StockListingsChopperService(client);
 
-  @Get(path: "/stock/list", optionalBody: true)
-  Future<Response<List<StockListingModel>>> getStockListings();
-
   @Get(path: "/symbol/available-indexes", optionalBody: true)
   Future<Response<List<IndexModel>>> getIndices();
+
+  @Get(path: "/stock/list", optionalBody: true)
+  Future<Response<List<StockListingModel>>> getAllAvailableListings();
 
   @Get(path: "/exchanges-list", optionalBody: true)
   Future<Response<List<String>>> getExchanges();
 
   @Get(path: "/is-the-market-open?exchange={exchangeSymbol}", optionalBody: true)
   Future<Response<ExchangeModel>> getExchange({
+    @Path("exchangeSymbol") required String exchangeSymbol,
+  });
+
+  @Get(path: "/symbol/{exchangeSymbol}", optionalBody: true)
+  Future<Response<List<StockListingModel>>> getExchangeListings({
     @Path("exchangeSymbol") required String exchangeSymbol,
   });
 }

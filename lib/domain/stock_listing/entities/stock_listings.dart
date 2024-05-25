@@ -7,9 +7,10 @@ import 'package:stockz/domain/core/value_objects/text_value_object.dart';
 
 @immutable
 class StockListings {
+  final StringIdValueObject exchangeSymbol;
   final List<StockListing> listings;
 
-  const StockListings({required this.listings});
+  const StockListings({required this.exchangeSymbol, required this.listings});
 }
 
 @immutable

@@ -10,9 +10,18 @@ abstract class IStockListingsCache {
 
   Future<Cache<List<String>>> getExchanges({CachingPolicy policy = CachingPolicy.alwaysProvide});
 
+  Future<Cache<ExchangeModel>> getExchange({required String exchangeSymbol, required CachingPolicy policy});
+
+  Future<Cache<List<StockListingModel>>> getExchangeListings({
+    required String exchangeSymbol,
+    required CachingPolicy policy,
+  });
+
   Future addStockListings({required List<StockListingModel> listings});
 
   Future addExchanges({required List<String> exchanges});
 
-  Future<Cache<List<ExchangeModel>>> getExchange({required String exchangeSymbol, required CachingPolicy policy});
+  Future addExchange({required ExchangeModel exchange, required String exchangeSymbol});
+
+  Future addExchangeListings({required List<StockListingModel> listings, required String exchangeSymbol});
 }
