@@ -1,35 +1,69 @@
 import 'package:flutter/material.dart';
-import 'package:stockz/presentation/core/widgets/imports.dart';
 
-enum TextType {
-  large,
-  medium,
-  small,
-}
+final class StText extends StatelessWidget {
+  final String data;
+  final TextStyle style;
+  final bool container;
+  final Color? color;
+  final TextAlign? textAlign;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final FontWeight? fontWeight;
+  final double? letterSpacing;
+  final String? semanticsLabel;
 
-class StText extends StatelessWidget {
-  final String text;
-  final TextType type;
-
-  const StText(this.text, this.type, {super.key});
+  const StText(
+      this.data, {
+        super.key,
+        required this.style,
+        this.container = false,
+        this.color,
+        this.textAlign,
+        this.maxLines,
+        this.overflow,
+        this.fontWeight,
+        this.letterSpacing,
+        this.semanticsLabel,
+      });
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      text,
-      style: _getStyle(context),
+    final Widget text = Text(
+      data,
+      style: style.copyWith(color: color),
+      textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: overflow,
+      semanticsLabel: semanticsLabel,
     );
-  }
 
-  TextStyle _getStyle(BuildContext context) {
-    final StTheme theme = StTheme.of(context);
-    switch (type) {
-      case TextType.large:
-        return theme.fonts.body25;
-      case TextType.medium:
-        return theme.fonts.body16;
-      case TextType.small:
-        return theme.fonts.body14;
+    if (container) {
+      return Semantics(
+        container: true,
+        label: semanticsLabel,
+        child: ExcludeSemantics(child: text),
+      );
     }
+
+    return text;
+  }
+}
+
+final class StFittedText extends StText {
+  const StFittedText(
+      super.data, {
+        required super.style,
+        super.color,
+        super.textAlign,
+        super.fontWeight,
+      }) : super(maxLines: 1);
+
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      alignment: Alignment.centerLeft,
+      fit: BoxFit.scaleDown,
+      child: super.build(context),
+    );
   }
 }

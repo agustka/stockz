@@ -189,6 +189,426 @@ class S {
       args: [],
     );
   }
+
+  /// `Bandaríkin`
+  String get US {
+    return Intl.message(
+      'Bandaríkin',
+      name: 'US',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Holland`
+  String get NL {
+    return Intl.message(
+      'Holland',
+      name: 'NL',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kanada`
+  String get CA {
+    return Intl.message(
+      'Kanada',
+      name: 'CA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ástralía`
+  String get AU {
+    return Intl.message(
+      'Ástralía',
+      name: 'AU',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grikkland`
+  String get GR {
+    return Intl.message(
+      'Grikkland',
+      name: 'GR',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Þýskaland`
+  String get DE {
+    return Intl.message(
+      'Þýskaland',
+      name: 'DE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Spánn`
+  String get ES {
+    return Intl.message(
+      'Spánn',
+      name: 'ES',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Belgía`
+  String get BE {
+    return Intl.message(
+      'Belgía',
+      name: 'BE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Indland`
+  String get IN {
+    return Intl.message(
+      'Indland',
+      name: 'IN',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ungverjaland`
+  String get HU {
+    return Intl.message(
+      'Ungverjaland',
+      name: 'HU',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Argentína`
+  String get AR {
+    return Intl.message(
+      'Argentína',
+      name: 'AR',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Egyptaland`
+  String get EG {
+    return Intl.message(
+      'Egyptaland',
+      name: 'EG',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Danmörk`
+  String get DK {
+    return Intl.message(
+      'Danmörk',
+      name: 'DK',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sameinuðu arabísku furstadæmin`
+  String get AE {
+    return Intl.message(
+      'Sameinuðu arabísku furstadæmin',
+      name: 'AE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Katar`
+  String get QA {
+    return Intl.message(
+      'Katar',
+      name: 'QA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Hong Kong`
+  String get HK {
+    return Intl.message(
+      'Hong Kong',
+      name: 'HK',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ísland`
+  String get IS {
+    return Intl.message(
+      'Ísland',
+      name: 'IS',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bretland`
+  String get GB {
+    return Intl.message(
+      'Bretland',
+      name: 'GB',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tyrkland`
+  String get TR {
+    return Intl.message(
+      'Tyrkland',
+      name: 'TR',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Indónesía`
+  String get ID {
+    return Intl.message(
+      'Indónesía',
+      name: 'ID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Suður-Afríka`
+  String get ZA {
+    return Intl.message(
+      'Suður-Afríka',
+      name: 'ZA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Japan`
+  String get JP {
+    return Intl.message(
+      'Japan',
+      name: 'JP',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Malasía`
+  String get MY {
+    return Intl.message(
+      'Malasía',
+      name: 'MY',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kúveit`
+  String get KW {
+    return Intl.message(
+      'Kúveit',
+      name: 'KW',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Rússland`
+  String get RU {
+    return Intl.message(
+      'Rússland',
+      name: 'RU',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mexíkó`
+  String get MX {
+    return Intl.message(
+      'Mexíkó',
+      name: 'MX',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ítalía`
+  String get IT {
+    return Intl.message(
+      'Ítalía',
+      name: 'IT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Nýja-Sjáland`
+  String get NZ {
+    return Intl.message(
+      'Nýja-Sjáland',
+      name: 'NZ',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Noregur`
+  String get NO {
+    return Intl.message(
+      'Noregur',
+      name: 'NO',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Tékkland`
+  String get CZ {
+    return Intl.message(
+      'Tékkland',
+      name: 'CZ',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Brasilía`
+  String get BR {
+    return Intl.message(
+      'Brasilía',
+      name: 'BR',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sádí-Arabía`
+  String get SA {
+    return Intl.message(
+      'Sádí-Arabía',
+      name: 'SA',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Singapúr`
+  String get SG {
+    return Intl.message(
+      'Singapúr',
+      name: 'SG',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Taíland`
+  String get TH {
+    return Intl.message(
+      'Taíland',
+      name: 'TH',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Síle`
+  String get CL {
+    return Intl.message(
+      'Síle',
+      name: 'CL',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Kína`
+  String get CN {
+    return Intl.message(
+      'Kína',
+      name: 'CN',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sviss`
+  String get CH {
+    return Intl.message(
+      'Sviss',
+      name: 'CH',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Svíþjóð`
+  String get SE {
+    return Intl.message(
+      'Svíþjóð',
+      name: 'SE',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Taívan`
+  String get TW {
+    return Intl.message(
+      'Taívan',
+      name: 'TW',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ísrael`
+  String get IL {
+    return Intl.message(
+      'Ísrael',
+      name: 'IL',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Austurríki`
+  String get AT {
+    return Intl.message(
+      'Austurríki',
+      name: 'AT',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pólland`
+  String get PL {
+    return Intl.message(
+      'Pólland',
+      name: 'PL',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

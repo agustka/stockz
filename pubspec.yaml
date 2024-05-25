@@ -12,6 +12,7 @@ dependencies:
   chopper: 8.0.0
   drift: 2.18.0
   equatable: 2.0.5
+  event_bus: 2.0.0
   flutter:
     sdk: flutter
   flutter_localizations:
@@ -46,6 +47,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/flags/
     - assets/config/
     - assets/test/
     - assets/test/offline_data/

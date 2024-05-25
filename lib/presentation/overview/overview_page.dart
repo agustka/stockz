@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stockz/application/overview/overview_cubit.dart';
-import 'package:stockz/domain/analysis_rules/f_score.dart';
 import 'package:stockz/domain/chart/entities/impulse_macd.dart';
 import 'package:stockz/domain/company/entities/company.dart';
-import 'package:stockz/infrastructure/company/repository/i_company_repository.dart';
+import 'package:stockz/domain/exchange_listing/value_objects/exchange_symbol_value_object.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 import 'package:stockz/setup.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -21,81 +20,9 @@ class OverviewPage extends StatefulWidget {
 }
 
 class _OverviewPageState extends State<OverviewPage> {
-  List<Company> _companies = [];
-
   @override
   void initState() {
     super.initState();
-    final List<String> tickers = [
-      'MO',
-      'AMCX',
-      'ARCT',
-      'ASRT',
-      'BTMD',
-      'BKE',
-      'BBW',
-      'CARG',
-      'CPRX',
-      'LNG',
-      'COLL',
-      'CCSI',
-      'CROX',
-      'CVS',
-      'EVRI',
-      'GTX',
-      'GPOR',
-      'HRB',
-      'HRMY',
-      'HSII',
-      'HPQ',
-      'IMMR',
-      'IDCC',
-      'JILL',
-      'JAKK',
-      'MAN',
-      'MCFT',
-      'MED',
-      'MLI',
-      'NATH',
-      'OCUP',
-      'OMC',
-      'MD',
-      'PRDO',
-      'PLTK',
-      'PINC',
-      'RCMT',
-      'RMNI',
-      'SCYX',
-      'SMLR',
-      'SPRO',
-      'STGW',
-      'SURG',
-      'TPR',
-      'TH',
-      'TZOO',
-      'UIS',
-      'UNTC',
-      'VYGR',
-      'ZYME',
-    ];
-
-    /*getIt<IStockListingsRepository>().getStockListings().then(
-      (Payload<StockListings> value) {
-        print(value);
-      },
-    );*/
-
-    getIt<ICompanyRepository>().getCompanies(tickers: tickers).then((List<Company> companies) {
-      final List<Company> fscores = companies.toList()
-        ..sort(
-          (Company left, Company right) {
-            return FScore(company: left).getFScore().compareTo(FScore(company: right).getFScore());
-          },
-        );
-      setState(() {
-        _companies = fscores;
-      });
-    });
   }
 
   @override
@@ -109,8 +36,47 @@ class _OverviewPageState extends State<OverviewPage> {
       create: (BuildContext context) => getIt<OverviewCubit>()..getData(forceGet: false),
       child: BlocBuilder<OverviewCubit, OverviewState>(
         builder: (BuildContext context, OverviewState state) {
-          return StScaffold(
-            child: MacdChart(companies: _companies),
+          switch (state.status) {
+            case OverviewStatus.loading:
+              return const Center(child: StDotLoader());
+            case OverviewStatus.loaded:
+              return _OverviewContent(exchanges: state.exchanges);
+          }
+        },
+      ),
+    );
+  }
+}
+
+class _OverviewContent extends StatelessWidget {
+  final List<ExchangeSymbolValueObject> exchanges;
+
+  const _OverviewContent({super.key, required this.exchanges});
+
+  @override
+  Widget build(BuildContext context) {
+    return StRefreshIndicator(
+      onRefresh: () async {
+        context.read<OverviewCubit>().getData(forceGet: true);
+      },
+      child: ListView.separated(
+        itemCount: exchanges.length,
+        separatorBuilder: (BuildContext context, int index) {
+          return const StDivider();
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return StListTile(
+            onTap: () {
+              context.read<OverviewCubit>().gotoExchange(exchangeSymbol: exchanges[index].get);
+            },
+            leading: StSvgImage(
+              exchanges[index].getExchangeFlag(),
+              width: 24,
+              height: 24,
+            ),
+            leadingText: exchanges[index].getExchangeName(),
+            subLeadingText: exchanges[index].getExchangeCountry(),
+            trailingText: exchanges[index].get,
           );
         },
       ),
@@ -160,10 +126,9 @@ class _MacdChartState extends State<MacdChart> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  StText(company.profile.getNameOrSymbol(), TextType.medium),
-                  StText(company.getScoreSummary(), TextType.small),
-                  StText(trade.getSummary(), TextType.medium),
-
+                  StText(company.profile.getNameOrSymbol(), style: StTheme.of(context).fonts.body16),
+                  StText(company.getScoreSummary(), style: StTheme.of(context).fonts.body16),
+                  StText(trade.getSummary(), style: StTheme.of(context).fonts.body16),
                 ],
               ),
             ),

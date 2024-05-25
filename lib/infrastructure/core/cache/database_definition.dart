@@ -4,10 +4,11 @@ import 'package:stockz/infrastructure/balance_sheet_statement/cache/tables/balan
 import 'package:stockz/infrastructure/cash_flow_statement/cache/tables/cash_flow_statement_definition.dart';
 import 'package:stockz/infrastructure/chart/cache/tables/chart_eod_item_definition.dart';
 import 'package:stockz/infrastructure/company_profile/cache/tables/company_profile_definition.dart';
+import 'package:stockz/infrastructure/exchange_listing/cache/tables/exchange_definition.dart';
+import 'package:stockz/infrastructure/exchange_listing/cache/tables/exchange_listing_definition.dart';
+import 'package:stockz/infrastructure/exchange_listing/cache/tables/exchange_symbol_definition.dart';
+import 'package:stockz/infrastructure/exchange_listing/cache/tables/index_definition.dart';
 import 'package:stockz/infrastructure/income_statement/cache/tables/income_statement_definition.dart';
-import 'package:stockz/infrastructure/stock_listings/cache/tables/exchange_definition.dart';
-import 'package:stockz/infrastructure/stock_listings/cache/tables/index_definition.dart';
-import 'package:stockz/infrastructure/stock_listings/cache/tables/stock_listing_definition.dart';
 import 'package:stockz/setup.dart';
 
 part 'database_definition.g.dart';
@@ -21,8 +22,9 @@ part 'database_definition.g.dart';
     CashFlowStatementTableRowDefinition,
     IncomeStatementTableRowDefinition,
     ChartEodItemTableRowDefinition,
-    StockListingTableRowDefinition,
+    ExchangeListingTableRowDefinition,
     IndexTableRowDefinition,
+    ExchangeSymbolTableRowDefinition,
     ExchangeTableRowDefinition,
   ],
 )
@@ -31,4 +33,6 @@ class DriftDb extends _$DriftDb {
 
   @override
   int get schemaVersion => 9;
+  @override
+  MigrationStrategy get migration => destructiveFallback;
 }

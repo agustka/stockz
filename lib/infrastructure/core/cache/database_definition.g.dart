@@ -8730,13 +8730,15 @@ class ChartEodItemTableRowDefinitionCompanion
   }
 }
 
-class $StockListingTableRowDefinitionTable
-    extends StockListingTableRowDefinition
-    with TableInfo<$StockListingTableRowDefinitionTable, StockListingTableRow> {
+class $ExchangeListingTableRowDefinitionTable
+    extends ExchangeListingTableRowDefinition
+    with
+        TableInfo<$ExchangeListingTableRowDefinitionTable,
+            ExchangeListingTableRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $StockListingTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
+  $ExchangeListingTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
@@ -8766,6 +8768,12 @@ class $StockListingTableRowDefinitionTable
   @override
   late final GeneratedColumn<String> exchange = GeneratedColumn<String>(
       'exchange', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _exchangeSymbolMeta =
+      const VerificationMeta('exchangeSymbol');
+  @override
+  late final GeneratedColumn<String> exchangeSymbol = GeneratedColumn<String>(
+      'exchange_symbol', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _exchangeShortNameMeta =
       const VerificationMeta('exchangeShortName');
@@ -8893,6 +8901,7 @@ class $StockListingTableRowDefinitionTable
         name,
         price,
         exchange,
+        exchangeSymbol,
         exchangeShortName,
         type,
         changesPercentage,
@@ -8919,10 +8928,10 @@ class $StockListingTableRowDefinitionTable
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'stock_listing_table_row_definition';
+  static const String $name = 'exchange_listing_table_row_definition';
   @override
   VerificationContext validateIntegrity(
-      Insertable<StockListingTableRow> instance,
+      Insertable<ExchangeListingTableRow> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -8948,6 +8957,14 @@ class $StockListingTableRowDefinitionTable
           exchange.isAcceptableOrUnknown(data['exchange']!, _exchangeMeta));
     } else if (isInserting) {
       context.missing(_exchangeMeta);
+    }
+    if (data.containsKey('exchange_symbol')) {
+      context.handle(
+          _exchangeSymbolMeta,
+          exchangeSymbol.isAcceptableOrUnknown(
+              data['exchange_symbol']!, _exchangeSymbolMeta));
+    } else if (isInserting) {
+      context.missing(_exchangeSymbolMeta);
     }
     if (data.containsKey('exchange_short_name')) {
       context.handle(
@@ -9054,9 +9071,10 @@ class $StockListingTableRowDefinitionTable
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  StockListingTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ExchangeListingTableRow map(Map<String, dynamic> data,
+      {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return StockListingTableRow(
+    return ExchangeListingTableRow(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       symbol: attachedDatabase.typeMapping
@@ -9067,6 +9085,8 @@ class $StockListingTableRowDefinitionTable
           .read(DriftSqlType.double, data['${effectivePrefix}price']),
       exchange: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}exchange'])!,
+      exchangeSymbol: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}exchange_symbol'])!,
       exchangeShortName: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}exchange_short_name']),
       type: attachedDatabase.typeMapping
@@ -9113,18 +9133,19 @@ class $StockListingTableRowDefinitionTable
   }
 
   @override
-  $StockListingTableRowDefinitionTable createAlias(String alias) {
-    return $StockListingTableRowDefinitionTable(attachedDatabase, alias);
+  $ExchangeListingTableRowDefinitionTable createAlias(String alias) {
+    return $ExchangeListingTableRowDefinitionTable(attachedDatabase, alias);
   }
 }
 
-class StockListingTableRow extends DataClass
-    implements Insertable<StockListingTableRow> {
+class ExchangeListingTableRow extends DataClass
+    implements Insertable<ExchangeListingTableRow> {
   final int id;
   final String symbol;
   final String? name;
   final double? price;
   final String exchange;
+  final String exchangeSymbol;
   final String? exchangeShortName;
   final String? type;
   final double? changesPercentage;
@@ -9146,12 +9167,13 @@ class StockListingTableRow extends DataClass
   final double? sharesOutstanding;
   final int? timestamp;
   final DateTime expires;
-  const StockListingTableRow(
+  const ExchangeListingTableRow(
       {required this.id,
       required this.symbol,
       this.name,
       this.price,
       required this.exchange,
+      required this.exchangeSymbol,
       this.exchangeShortName,
       this.type,
       this.changesPercentage,
@@ -9185,6 +9207,7 @@ class StockListingTableRow extends DataClass
       map['price'] = Variable<double>(price);
     }
     map['exchange'] = Variable<String>(exchange);
+    map['exchange_symbol'] = Variable<String>(exchangeSymbol);
     if (!nullToAbsent || exchangeShortName != null) {
       map['exchange_short_name'] = Variable<String>(exchangeShortName);
     }
@@ -9249,14 +9272,15 @@ class StockListingTableRow extends DataClass
     return map;
   }
 
-  StockListingTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
-    return StockListingTableRowDefinitionCompanion(
+  ExchangeListingTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
+    return ExchangeListingTableRowDefinitionCompanion(
       id: Value(id),
       symbol: Value(symbol),
       name: name == null && nullToAbsent ? const Value.absent() : Value(name),
       price:
           price == null && nullToAbsent ? const Value.absent() : Value(price),
       exchange: Value(exchange),
+      exchangeSymbol: Value(exchangeSymbol),
       exchangeShortName: exchangeShortName == null && nullToAbsent
           ? const Value.absent()
           : Value(exchangeShortName),
@@ -9310,15 +9334,16 @@ class StockListingTableRow extends DataClass
     );
   }
 
-  factory StockListingTableRow.fromJson(Map<String, dynamic> json,
+  factory ExchangeListingTableRow.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return StockListingTableRow(
+    return ExchangeListingTableRow(
       id: serializer.fromJson<int>(json['id']),
       symbol: serializer.fromJson<String>(json['symbol']),
       name: serializer.fromJson<String?>(json['name']),
       price: serializer.fromJson<double?>(json['price']),
       exchange: serializer.fromJson<String>(json['exchange']),
+      exchangeSymbol: serializer.fromJson<String>(json['exchangeSymbol']),
       exchangeShortName:
           serializer.fromJson<String?>(json['exchangeShortName']),
       type: serializer.fromJson<String?>(json['type']),
@@ -9355,6 +9380,7 @@ class StockListingTableRow extends DataClass
       'name': serializer.toJson<String?>(name),
       'price': serializer.toJson<double?>(price),
       'exchange': serializer.toJson<String>(exchange),
+      'exchangeSymbol': serializer.toJson<String>(exchangeSymbol),
       'exchangeShortName': serializer.toJson<String?>(exchangeShortName),
       'type': serializer.toJson<String?>(type),
       'changesPercentage': serializer.toJson<double?>(changesPercentage),
@@ -9379,12 +9405,13 @@ class StockListingTableRow extends DataClass
     };
   }
 
-  StockListingTableRow copyWith(
+  ExchangeListingTableRow copyWith(
           {int? id,
           String? symbol,
           Value<String?> name = const Value.absent(),
           Value<double?> price = const Value.absent(),
           String? exchange,
+          String? exchangeSymbol,
           Value<String?> exchangeShortName = const Value.absent(),
           Value<String?> type = const Value.absent(),
           Value<double?> changesPercentage = const Value.absent(),
@@ -9406,12 +9433,13 @@ class StockListingTableRow extends DataClass
           Value<double?> sharesOutstanding = const Value.absent(),
           Value<int?> timestamp = const Value.absent(),
           DateTime? expires}) =>
-      StockListingTableRow(
+      ExchangeListingTableRow(
         id: id ?? this.id,
         symbol: symbol ?? this.symbol,
         name: name.present ? name.value : this.name,
         price: price.present ? price.value : this.price,
         exchange: exchange ?? this.exchange,
+        exchangeSymbol: exchangeSymbol ?? this.exchangeSymbol,
         exchangeShortName: exchangeShortName.present
             ? exchangeShortName.value
             : this.exchangeShortName,
@@ -9445,12 +9473,13 @@ class StockListingTableRow extends DataClass
       );
   @override
   String toString() {
-    return (StringBuffer('StockListingTableRow(')
+    return (StringBuffer('ExchangeListingTableRow(')
           ..write('id: $id, ')
           ..write('symbol: $symbol, ')
           ..write('name: $name, ')
           ..write('price: $price, ')
           ..write('exchange: $exchange, ')
+          ..write('exchangeSymbol: $exchangeSymbol, ')
           ..write('exchangeShortName: $exchangeShortName, ')
           ..write('type: $type, ')
           ..write('changesPercentage: $changesPercentage, ')
@@ -9483,6 +9512,7 @@ class StockListingTableRow extends DataClass
         name,
         price,
         exchange,
+        exchangeSymbol,
         exchangeShortName,
         type,
         changesPercentage,
@@ -9508,12 +9538,13 @@ class StockListingTableRow extends DataClass
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is StockListingTableRow &&
+      (other is ExchangeListingTableRow &&
           other.id == this.id &&
           other.symbol == this.symbol &&
           other.name == this.name &&
           other.price == this.price &&
           other.exchange == this.exchange &&
+          other.exchangeSymbol == this.exchangeSymbol &&
           other.exchangeShortName == this.exchangeShortName &&
           other.type == this.type &&
           other.changesPercentage == this.changesPercentage &&
@@ -9537,13 +9568,14 @@ class StockListingTableRow extends DataClass
           other.expires == this.expires);
 }
 
-class StockListingTableRowDefinitionCompanion
-    extends UpdateCompanion<StockListingTableRow> {
+class ExchangeListingTableRowDefinitionCompanion
+    extends UpdateCompanion<ExchangeListingTableRow> {
   final Value<int> id;
   final Value<String> symbol;
   final Value<String?> name;
   final Value<double?> price;
   final Value<String> exchange;
+  final Value<String> exchangeSymbol;
   final Value<String?> exchangeShortName;
   final Value<String?> type;
   final Value<double?> changesPercentage;
@@ -9565,12 +9597,13 @@ class StockListingTableRowDefinitionCompanion
   final Value<double?> sharesOutstanding;
   final Value<int?> timestamp;
   final Value<DateTime> expires;
-  const StockListingTableRowDefinitionCompanion({
+  const ExchangeListingTableRowDefinitionCompanion({
     this.id = const Value.absent(),
     this.symbol = const Value.absent(),
     this.name = const Value.absent(),
     this.price = const Value.absent(),
     this.exchange = const Value.absent(),
+    this.exchangeSymbol = const Value.absent(),
     this.exchangeShortName = const Value.absent(),
     this.type = const Value.absent(),
     this.changesPercentage = const Value.absent(),
@@ -9593,12 +9626,13 @@ class StockListingTableRowDefinitionCompanion
     this.timestamp = const Value.absent(),
     this.expires = const Value.absent(),
   });
-  StockListingTableRowDefinitionCompanion.insert({
+  ExchangeListingTableRowDefinitionCompanion.insert({
     this.id = const Value.absent(),
     required String symbol,
     this.name = const Value.absent(),
     this.price = const Value.absent(),
     required String exchange,
+    required String exchangeSymbol,
     this.exchangeShortName = const Value.absent(),
     this.type = const Value.absent(),
     this.changesPercentage = const Value.absent(),
@@ -9622,13 +9656,15 @@ class StockListingTableRowDefinitionCompanion
     required DateTime expires,
   })  : symbol = Value(symbol),
         exchange = Value(exchange),
+        exchangeSymbol = Value(exchangeSymbol),
         expires = Value(expires);
-  static Insertable<StockListingTableRow> custom({
+  static Insertable<ExchangeListingTableRow> custom({
     Expression<int>? id,
     Expression<String>? symbol,
     Expression<String>? name,
     Expression<double>? price,
     Expression<String>? exchange,
+    Expression<String>? exchangeSymbol,
     Expression<String>? exchangeShortName,
     Expression<String>? type,
     Expression<double>? changesPercentage,
@@ -9657,6 +9693,7 @@ class StockListingTableRowDefinitionCompanion
       if (name != null) 'name': name,
       if (price != null) 'price': price,
       if (exchange != null) 'exchange': exchange,
+      if (exchangeSymbol != null) 'exchange_symbol': exchangeSymbol,
       if (exchangeShortName != null) 'exchange_short_name': exchangeShortName,
       if (type != null) 'type': type,
       if (changesPercentage != null) 'changes_percentage': changesPercentage,
@@ -9682,12 +9719,13 @@ class StockListingTableRowDefinitionCompanion
     });
   }
 
-  StockListingTableRowDefinitionCompanion copyWith(
+  ExchangeListingTableRowDefinitionCompanion copyWith(
       {Value<int>? id,
       Value<String>? symbol,
       Value<String?>? name,
       Value<double?>? price,
       Value<String>? exchange,
+      Value<String>? exchangeSymbol,
       Value<String?>? exchangeShortName,
       Value<String?>? type,
       Value<double?>? changesPercentage,
@@ -9709,12 +9747,13 @@ class StockListingTableRowDefinitionCompanion
       Value<double?>? sharesOutstanding,
       Value<int?>? timestamp,
       Value<DateTime>? expires}) {
-    return StockListingTableRowDefinitionCompanion(
+    return ExchangeListingTableRowDefinitionCompanion(
       id: id ?? this.id,
       symbol: symbol ?? this.symbol,
       name: name ?? this.name,
       price: price ?? this.price,
       exchange: exchange ?? this.exchange,
+      exchangeSymbol: exchangeSymbol ?? this.exchangeSymbol,
       exchangeShortName: exchangeShortName ?? this.exchangeShortName,
       type: type ?? this.type,
       changesPercentage: changesPercentage ?? this.changesPercentage,
@@ -9756,6 +9795,9 @@ class StockListingTableRowDefinitionCompanion
     }
     if (exchange.present) {
       map['exchange'] = Variable<String>(exchange.value);
+    }
+    if (exchangeSymbol.present) {
+      map['exchange_symbol'] = Variable<String>(exchangeSymbol.value);
     }
     if (exchangeShortName.present) {
       map['exchange_short_name'] = Variable<String>(exchangeShortName.value);
@@ -9826,12 +9868,13 @@ class StockListingTableRowDefinitionCompanion
 
   @override
   String toString() {
-    return (StringBuffer('StockListingTableRowDefinitionCompanion(')
+    return (StringBuffer('ExchangeListingTableRowDefinitionCompanion(')
           ..write('id: $id, ')
           ..write('symbol: $symbol, ')
           ..write('name: $name, ')
           ..write('price: $price, ')
           ..write('exchange: $exchange, ')
+          ..write('exchangeSymbol: $exchangeSymbol, ')
           ..write('exchangeShortName: $exchangeShortName, ')
           ..write('type: $type, ')
           ..write('changesPercentage: $changesPercentage, ')
@@ -10226,12 +10269,15 @@ class IndexTableRowDefinitionCompanion extends UpdateCompanion<IndexTableRow> {
   }
 }
 
-class $ExchangeTableRowDefinitionTable extends ExchangeTableRowDefinition
-    with TableInfo<$ExchangeTableRowDefinitionTable, ExchangeTableRow> {
+class $ExchangeSymbolTableRowDefinitionTable
+    extends ExchangeSymbolTableRowDefinition
+    with
+        TableInfo<$ExchangeSymbolTableRowDefinitionTable,
+            ExchangeSymbolTableRow> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $ExchangeTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
+  $ExchangeSymbolTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
@@ -10258,9 +10304,10 @@ class $ExchangeTableRowDefinitionTable extends ExchangeTableRowDefinition
   String get aliasedName => _alias ?? actualTableName;
   @override
   String get actualTableName => $name;
-  static const String $name = 'exchange_table_row_definition';
+  static const String $name = 'exchange_symbol_table_row_definition';
   @override
-  VerificationContext validateIntegrity(Insertable<ExchangeTableRow> instance,
+  VerificationContext validateIntegrity(
+      Insertable<ExchangeSymbolTableRow> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -10285,9 +10332,9 @@ class $ExchangeTableRowDefinitionTable extends ExchangeTableRowDefinition
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  ExchangeTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+  ExchangeSymbolTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return ExchangeTableRow(
+    return ExchangeSymbolTableRow(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       symbol: attachedDatabase.typeMapping
@@ -10298,17 +10345,17 @@ class $ExchangeTableRowDefinitionTable extends ExchangeTableRowDefinition
   }
 
   @override
-  $ExchangeTableRowDefinitionTable createAlias(String alias) {
-    return $ExchangeTableRowDefinitionTable(attachedDatabase, alias);
+  $ExchangeSymbolTableRowDefinitionTable createAlias(String alias) {
+    return $ExchangeSymbolTableRowDefinitionTable(attachedDatabase, alias);
   }
 }
 
-class ExchangeTableRow extends DataClass
-    implements Insertable<ExchangeTableRow> {
+class ExchangeSymbolTableRow extends DataClass
+    implements Insertable<ExchangeSymbolTableRow> {
   final int id;
   final String symbol;
   final DateTime expires;
-  const ExchangeTableRow(
+  const ExchangeSymbolTableRow(
       {required this.id, required this.symbol, required this.expires});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
@@ -10319,18 +10366,18 @@ class ExchangeTableRow extends DataClass
     return map;
   }
 
-  ExchangeTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
-    return ExchangeTableRowDefinitionCompanion(
+  ExchangeSymbolTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
+    return ExchangeSymbolTableRowDefinitionCompanion(
       id: Value(id),
       symbol: Value(symbol),
       expires: Value(expires),
     );
   }
 
-  factory ExchangeTableRow.fromJson(Map<String, dynamic> json,
+  factory ExchangeSymbolTableRow.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return ExchangeTableRow(
+    return ExchangeSymbolTableRow(
       id: serializer.fromJson<int>(json['id']),
       symbol: serializer.fromJson<String>(json['symbol']),
       expires: serializer.fromJson<DateTime>(json['expires']),
@@ -10346,15 +10393,16 @@ class ExchangeTableRow extends DataClass
     };
   }
 
-  ExchangeTableRow copyWith({int? id, String? symbol, DateTime? expires}) =>
-      ExchangeTableRow(
+  ExchangeSymbolTableRow copyWith(
+          {int? id, String? symbol, DateTime? expires}) =>
+      ExchangeSymbolTableRow(
         id: id ?? this.id,
         symbol: symbol ?? this.symbol,
         expires: expires ?? this.expires,
       );
   @override
   String toString() {
-    return (StringBuffer('ExchangeTableRow(')
+    return (StringBuffer('ExchangeSymbolTableRow(')
           ..write('id: $id, ')
           ..write('symbol: $symbol, ')
           ..write('expires: $expires')
@@ -10367,29 +10415,29 @@ class ExchangeTableRow extends DataClass
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is ExchangeTableRow &&
+      (other is ExchangeSymbolTableRow &&
           other.id == this.id &&
           other.symbol == this.symbol &&
           other.expires == this.expires);
 }
 
-class ExchangeTableRowDefinitionCompanion
-    extends UpdateCompanion<ExchangeTableRow> {
+class ExchangeSymbolTableRowDefinitionCompanion
+    extends UpdateCompanion<ExchangeSymbolTableRow> {
   final Value<int> id;
   final Value<String> symbol;
   final Value<DateTime> expires;
-  const ExchangeTableRowDefinitionCompanion({
+  const ExchangeSymbolTableRowDefinitionCompanion({
     this.id = const Value.absent(),
     this.symbol = const Value.absent(),
     this.expires = const Value.absent(),
   });
-  ExchangeTableRowDefinitionCompanion.insert({
+  ExchangeSymbolTableRowDefinitionCompanion.insert({
     this.id = const Value.absent(),
     required String symbol,
     required DateTime expires,
   })  : symbol = Value(symbol),
         expires = Value(expires);
-  static Insertable<ExchangeTableRow> custom({
+  static Insertable<ExchangeSymbolTableRow> custom({
     Expression<int>? id,
     Expression<String>? symbol,
     Expression<DateTime>? expires,
@@ -10401,9 +10449,9 @@ class ExchangeTableRowDefinitionCompanion
     });
   }
 
-  ExchangeTableRowDefinitionCompanion copyWith(
+  ExchangeSymbolTableRowDefinitionCompanion copyWith(
       {Value<int>? id, Value<String>? symbol, Value<DateTime>? expires}) {
-    return ExchangeTableRowDefinitionCompanion(
+    return ExchangeSymbolTableRowDefinitionCompanion(
       id: id ?? this.id,
       symbol: symbol ?? this.symbol,
       expires: expires ?? this.expires,
@@ -10427,9 +10475,572 @@ class ExchangeTableRowDefinitionCompanion
 
   @override
   String toString() {
-    return (StringBuffer('ExchangeTableRowDefinitionCompanion(')
+    return (StringBuffer('ExchangeSymbolTableRowDefinitionCompanion(')
           ..write('id: $id, ')
           ..write('symbol: $symbol, ')
+          ..write('expires: $expires')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ExchangeTableRowDefinitionTable extends ExchangeTableRowDefinition
+    with TableInfo<$ExchangeTableRowDefinitionTable, ExchangeTableRow> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ExchangeTableRowDefinitionTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+      'id', aliasedName, false,
+      hasAutoIncrement: true,
+      type: DriftSqlType.int,
+      requiredDuringInsert: false,
+      defaultConstraints:
+          GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _exchangeSymbolMeta =
+      const VerificationMeta('exchangeSymbol');
+  @override
+  late final GeneratedColumn<String> exchangeSymbol = GeneratedColumn<String>(
+      'exchange_symbol', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _stockExchangeNameMeta =
+      const VerificationMeta('stockExchangeName');
+  @override
+  late final GeneratedColumn<String> stockExchangeName =
+      GeneratedColumn<String>('stock_exchange_name', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _stockMarketHoursMeta =
+      const VerificationMeta('stockMarketHours');
+  @override
+  late final GeneratedColumn<String> stockMarketHours = GeneratedColumn<String>(
+      'stock_market_hours', aliasedName, true,
+      type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _stockMarketHolidaysMeta =
+      const VerificationMeta('stockMarketHolidays');
+  @override
+  late final GeneratedColumn<String> stockMarketHolidays =
+      GeneratedColumn<String>('stock_market_holidays', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _isTheStockMarketOpenMeta =
+      const VerificationMeta('isTheStockMarketOpen');
+  @override
+  late final GeneratedColumn<bool> isTheStockMarketOpen = GeneratedColumn<bool>(
+      'is_the_stock_market_open', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("is_the_stock_market_open" IN (0, 1))'));
+  static const VerificationMeta _isTheEuronextMarketOpenMeta =
+      const VerificationMeta('isTheEuronextMarketOpen');
+  @override
+  late final GeneratedColumn<bool> isTheEuronextMarketOpen =
+      GeneratedColumn<bool>('is_the_euronext_market_open', aliasedName, true,
+          type: DriftSqlType.bool,
+          requiredDuringInsert: false,
+          defaultConstraints: GeneratedColumn.constraintIsAlways(
+              'CHECK ("is_the_euronext_market_open" IN (0, 1))'));
+  static const VerificationMeta _isTheForexMarketOpenMeta =
+      const VerificationMeta('isTheForexMarketOpen');
+  @override
+  late final GeneratedColumn<bool> isTheForexMarketOpen = GeneratedColumn<bool>(
+      'is_the_forex_market_open', aliasedName, true,
+      type: DriftSqlType.bool,
+      requiredDuringInsert: false,
+      defaultConstraints: GeneratedColumn.constraintIsAlways(
+          'CHECK ("is_the_forex_market_open" IN (0, 1))'));
+  static const VerificationMeta _isTheCryptoMarketOpenMeta =
+      const VerificationMeta('isTheCryptoMarketOpen');
+  @override
+  late final GeneratedColumn<bool> isTheCryptoMarketOpen =
+      GeneratedColumn<bool>('is_the_crypto_market_open', aliasedName, true,
+          type: DriftSqlType.bool,
+          requiredDuringInsert: false,
+          defaultConstraints: GeneratedColumn.constraintIsAlways(
+              'CHECK ("is_the_crypto_market_open" IN (0, 1))'));
+  static const VerificationMeta _expiresMeta =
+      const VerificationMeta('expires');
+  @override
+  late final GeneratedColumn<DateTime> expires = GeneratedColumn<DateTime>(
+      'expires', aliasedName, false,
+      type: DriftSqlType.dateTime, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns => [
+        id,
+        exchangeSymbol,
+        stockExchangeName,
+        stockMarketHours,
+        stockMarketHolidays,
+        isTheStockMarketOpen,
+        isTheEuronextMarketOpen,
+        isTheForexMarketOpen,
+        isTheCryptoMarketOpen,
+        expires
+      ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'exchange_table_row_definition';
+  @override
+  VerificationContext validateIntegrity(Insertable<ExchangeTableRow> instance,
+      {bool isInserting = false}) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('exchange_symbol')) {
+      context.handle(
+          _exchangeSymbolMeta,
+          exchangeSymbol.isAcceptableOrUnknown(
+              data['exchange_symbol']!, _exchangeSymbolMeta));
+    } else if (isInserting) {
+      context.missing(_exchangeSymbolMeta);
+    }
+    if (data.containsKey('stock_exchange_name')) {
+      context.handle(
+          _stockExchangeNameMeta,
+          stockExchangeName.isAcceptableOrUnknown(
+              data['stock_exchange_name']!, _stockExchangeNameMeta));
+    }
+    if (data.containsKey('stock_market_hours')) {
+      context.handle(
+          _stockMarketHoursMeta,
+          stockMarketHours.isAcceptableOrUnknown(
+              data['stock_market_hours']!, _stockMarketHoursMeta));
+    }
+    if (data.containsKey('stock_market_holidays')) {
+      context.handle(
+          _stockMarketHolidaysMeta,
+          stockMarketHolidays.isAcceptableOrUnknown(
+              data['stock_market_holidays']!, _stockMarketHolidaysMeta));
+    }
+    if (data.containsKey('is_the_stock_market_open')) {
+      context.handle(
+          _isTheStockMarketOpenMeta,
+          isTheStockMarketOpen.isAcceptableOrUnknown(
+              data['is_the_stock_market_open']!, _isTheStockMarketOpenMeta));
+    }
+    if (data.containsKey('is_the_euronext_market_open')) {
+      context.handle(
+          _isTheEuronextMarketOpenMeta,
+          isTheEuronextMarketOpen.isAcceptableOrUnknown(
+              data['is_the_euronext_market_open']!,
+              _isTheEuronextMarketOpenMeta));
+    }
+    if (data.containsKey('is_the_forex_market_open')) {
+      context.handle(
+          _isTheForexMarketOpenMeta,
+          isTheForexMarketOpen.isAcceptableOrUnknown(
+              data['is_the_forex_market_open']!, _isTheForexMarketOpenMeta));
+    }
+    if (data.containsKey('is_the_crypto_market_open')) {
+      context.handle(
+          _isTheCryptoMarketOpenMeta,
+          isTheCryptoMarketOpen.isAcceptableOrUnknown(
+              data['is_the_crypto_market_open']!, _isTheCryptoMarketOpenMeta));
+    }
+    if (data.containsKey('expires')) {
+      context.handle(_expiresMeta,
+          expires.isAcceptableOrUnknown(data['expires']!, _expiresMeta));
+    } else if (isInserting) {
+      context.missing(_expiresMeta);
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ExchangeTableRow map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ExchangeTableRow(
+      id: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      exchangeSymbol: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}exchange_symbol'])!,
+      stockExchangeName: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}stock_exchange_name']),
+      stockMarketHours: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}stock_market_hours']),
+      stockMarketHolidays: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}stock_market_holidays']),
+      isTheStockMarketOpen: attachedDatabase.typeMapping.read(DriftSqlType.bool,
+          data['${effectivePrefix}is_the_stock_market_open']),
+      isTheEuronextMarketOpen: attachedDatabase.typeMapping.read(
+          DriftSqlType.bool,
+          data['${effectivePrefix}is_the_euronext_market_open']),
+      isTheForexMarketOpen: attachedDatabase.typeMapping.read(DriftSqlType.bool,
+          data['${effectivePrefix}is_the_forex_market_open']),
+      isTheCryptoMarketOpen: attachedDatabase.typeMapping.read(
+          DriftSqlType.bool,
+          data['${effectivePrefix}is_the_crypto_market_open']),
+      expires: attachedDatabase.typeMapping
+          .read(DriftSqlType.dateTime, data['${effectivePrefix}expires'])!,
+    );
+  }
+
+  @override
+  $ExchangeTableRowDefinitionTable createAlias(String alias) {
+    return $ExchangeTableRowDefinitionTable(attachedDatabase, alias);
+  }
+}
+
+class ExchangeTableRow extends DataClass
+    implements Insertable<ExchangeTableRow> {
+  final int id;
+  final String exchangeSymbol;
+  final String? stockExchangeName;
+  final String? stockMarketHours;
+  final String? stockMarketHolidays;
+  final bool? isTheStockMarketOpen;
+  final bool? isTheEuronextMarketOpen;
+  final bool? isTheForexMarketOpen;
+  final bool? isTheCryptoMarketOpen;
+  final DateTime expires;
+  const ExchangeTableRow(
+      {required this.id,
+      required this.exchangeSymbol,
+      this.stockExchangeName,
+      this.stockMarketHours,
+      this.stockMarketHolidays,
+      this.isTheStockMarketOpen,
+      this.isTheEuronextMarketOpen,
+      this.isTheForexMarketOpen,
+      this.isTheCryptoMarketOpen,
+      required this.expires});
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['exchange_symbol'] = Variable<String>(exchangeSymbol);
+    if (!nullToAbsent || stockExchangeName != null) {
+      map['stock_exchange_name'] = Variable<String>(stockExchangeName);
+    }
+    if (!nullToAbsent || stockMarketHours != null) {
+      map['stock_market_hours'] = Variable<String>(stockMarketHours);
+    }
+    if (!nullToAbsent || stockMarketHolidays != null) {
+      map['stock_market_holidays'] = Variable<String>(stockMarketHolidays);
+    }
+    if (!nullToAbsent || isTheStockMarketOpen != null) {
+      map['is_the_stock_market_open'] = Variable<bool>(isTheStockMarketOpen);
+    }
+    if (!nullToAbsent || isTheEuronextMarketOpen != null) {
+      map['is_the_euronext_market_open'] =
+          Variable<bool>(isTheEuronextMarketOpen);
+    }
+    if (!nullToAbsent || isTheForexMarketOpen != null) {
+      map['is_the_forex_market_open'] = Variable<bool>(isTheForexMarketOpen);
+    }
+    if (!nullToAbsent || isTheCryptoMarketOpen != null) {
+      map['is_the_crypto_market_open'] = Variable<bool>(isTheCryptoMarketOpen);
+    }
+    map['expires'] = Variable<DateTime>(expires);
+    return map;
+  }
+
+  ExchangeTableRowDefinitionCompanion toCompanion(bool nullToAbsent) {
+    return ExchangeTableRowDefinitionCompanion(
+      id: Value(id),
+      exchangeSymbol: Value(exchangeSymbol),
+      stockExchangeName: stockExchangeName == null && nullToAbsent
+          ? const Value.absent()
+          : Value(stockExchangeName),
+      stockMarketHours: stockMarketHours == null && nullToAbsent
+          ? const Value.absent()
+          : Value(stockMarketHours),
+      stockMarketHolidays: stockMarketHolidays == null && nullToAbsent
+          ? const Value.absent()
+          : Value(stockMarketHolidays),
+      isTheStockMarketOpen: isTheStockMarketOpen == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isTheStockMarketOpen),
+      isTheEuronextMarketOpen: isTheEuronextMarketOpen == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isTheEuronextMarketOpen),
+      isTheForexMarketOpen: isTheForexMarketOpen == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isTheForexMarketOpen),
+      isTheCryptoMarketOpen: isTheCryptoMarketOpen == null && nullToAbsent
+          ? const Value.absent()
+          : Value(isTheCryptoMarketOpen),
+      expires: Value(expires),
+    );
+  }
+
+  factory ExchangeTableRow.fromJson(Map<String, dynamic> json,
+      {ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ExchangeTableRow(
+      id: serializer.fromJson<int>(json['id']),
+      exchangeSymbol: serializer.fromJson<String>(json['exchangeSymbol']),
+      stockExchangeName:
+          serializer.fromJson<String?>(json['stockExchangeName']),
+      stockMarketHours: serializer.fromJson<String?>(json['stockMarketHours']),
+      stockMarketHolidays:
+          serializer.fromJson<String?>(json['stockMarketHolidays']),
+      isTheStockMarketOpen:
+          serializer.fromJson<bool?>(json['isTheStockMarketOpen']),
+      isTheEuronextMarketOpen:
+          serializer.fromJson<bool?>(json['isTheEuronextMarketOpen']),
+      isTheForexMarketOpen:
+          serializer.fromJson<bool?>(json['isTheForexMarketOpen']),
+      isTheCryptoMarketOpen:
+          serializer.fromJson<bool?>(json['isTheCryptoMarketOpen']),
+      expires: serializer.fromJson<DateTime>(json['expires']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'exchangeSymbol': serializer.toJson<String>(exchangeSymbol),
+      'stockExchangeName': serializer.toJson<String?>(stockExchangeName),
+      'stockMarketHours': serializer.toJson<String?>(stockMarketHours),
+      'stockMarketHolidays': serializer.toJson<String?>(stockMarketHolidays),
+      'isTheStockMarketOpen': serializer.toJson<bool?>(isTheStockMarketOpen),
+      'isTheEuronextMarketOpen':
+          serializer.toJson<bool?>(isTheEuronextMarketOpen),
+      'isTheForexMarketOpen': serializer.toJson<bool?>(isTheForexMarketOpen),
+      'isTheCryptoMarketOpen': serializer.toJson<bool?>(isTheCryptoMarketOpen),
+      'expires': serializer.toJson<DateTime>(expires),
+    };
+  }
+
+  ExchangeTableRow copyWith(
+          {int? id,
+          String? exchangeSymbol,
+          Value<String?> stockExchangeName = const Value.absent(),
+          Value<String?> stockMarketHours = const Value.absent(),
+          Value<String?> stockMarketHolidays = const Value.absent(),
+          Value<bool?> isTheStockMarketOpen = const Value.absent(),
+          Value<bool?> isTheEuronextMarketOpen = const Value.absent(),
+          Value<bool?> isTheForexMarketOpen = const Value.absent(),
+          Value<bool?> isTheCryptoMarketOpen = const Value.absent(),
+          DateTime? expires}) =>
+      ExchangeTableRow(
+        id: id ?? this.id,
+        exchangeSymbol: exchangeSymbol ?? this.exchangeSymbol,
+        stockExchangeName: stockExchangeName.present
+            ? stockExchangeName.value
+            : this.stockExchangeName,
+        stockMarketHours: stockMarketHours.present
+            ? stockMarketHours.value
+            : this.stockMarketHours,
+        stockMarketHolidays: stockMarketHolidays.present
+            ? stockMarketHolidays.value
+            : this.stockMarketHolidays,
+        isTheStockMarketOpen: isTheStockMarketOpen.present
+            ? isTheStockMarketOpen.value
+            : this.isTheStockMarketOpen,
+        isTheEuronextMarketOpen: isTheEuronextMarketOpen.present
+            ? isTheEuronextMarketOpen.value
+            : this.isTheEuronextMarketOpen,
+        isTheForexMarketOpen: isTheForexMarketOpen.present
+            ? isTheForexMarketOpen.value
+            : this.isTheForexMarketOpen,
+        isTheCryptoMarketOpen: isTheCryptoMarketOpen.present
+            ? isTheCryptoMarketOpen.value
+            : this.isTheCryptoMarketOpen,
+        expires: expires ?? this.expires,
+      );
+  @override
+  String toString() {
+    return (StringBuffer('ExchangeTableRow(')
+          ..write('id: $id, ')
+          ..write('exchangeSymbol: $exchangeSymbol, ')
+          ..write('stockExchangeName: $stockExchangeName, ')
+          ..write('stockMarketHours: $stockMarketHours, ')
+          ..write('stockMarketHolidays: $stockMarketHolidays, ')
+          ..write('isTheStockMarketOpen: $isTheStockMarketOpen, ')
+          ..write('isTheEuronextMarketOpen: $isTheEuronextMarketOpen, ')
+          ..write('isTheForexMarketOpen: $isTheForexMarketOpen, ')
+          ..write('isTheCryptoMarketOpen: $isTheCryptoMarketOpen, ')
+          ..write('expires: $expires')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      id,
+      exchangeSymbol,
+      stockExchangeName,
+      stockMarketHours,
+      stockMarketHolidays,
+      isTheStockMarketOpen,
+      isTheEuronextMarketOpen,
+      isTheForexMarketOpen,
+      isTheCryptoMarketOpen,
+      expires);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ExchangeTableRow &&
+          other.id == this.id &&
+          other.exchangeSymbol == this.exchangeSymbol &&
+          other.stockExchangeName == this.stockExchangeName &&
+          other.stockMarketHours == this.stockMarketHours &&
+          other.stockMarketHolidays == this.stockMarketHolidays &&
+          other.isTheStockMarketOpen == this.isTheStockMarketOpen &&
+          other.isTheEuronextMarketOpen == this.isTheEuronextMarketOpen &&
+          other.isTheForexMarketOpen == this.isTheForexMarketOpen &&
+          other.isTheCryptoMarketOpen == this.isTheCryptoMarketOpen &&
+          other.expires == this.expires);
+}
+
+class ExchangeTableRowDefinitionCompanion
+    extends UpdateCompanion<ExchangeTableRow> {
+  final Value<int> id;
+  final Value<String> exchangeSymbol;
+  final Value<String?> stockExchangeName;
+  final Value<String?> stockMarketHours;
+  final Value<String?> stockMarketHolidays;
+  final Value<bool?> isTheStockMarketOpen;
+  final Value<bool?> isTheEuronextMarketOpen;
+  final Value<bool?> isTheForexMarketOpen;
+  final Value<bool?> isTheCryptoMarketOpen;
+  final Value<DateTime> expires;
+  const ExchangeTableRowDefinitionCompanion({
+    this.id = const Value.absent(),
+    this.exchangeSymbol = const Value.absent(),
+    this.stockExchangeName = const Value.absent(),
+    this.stockMarketHours = const Value.absent(),
+    this.stockMarketHolidays = const Value.absent(),
+    this.isTheStockMarketOpen = const Value.absent(),
+    this.isTheEuronextMarketOpen = const Value.absent(),
+    this.isTheForexMarketOpen = const Value.absent(),
+    this.isTheCryptoMarketOpen = const Value.absent(),
+    this.expires = const Value.absent(),
+  });
+  ExchangeTableRowDefinitionCompanion.insert({
+    this.id = const Value.absent(),
+    required String exchangeSymbol,
+    this.stockExchangeName = const Value.absent(),
+    this.stockMarketHours = const Value.absent(),
+    this.stockMarketHolidays = const Value.absent(),
+    this.isTheStockMarketOpen = const Value.absent(),
+    this.isTheEuronextMarketOpen = const Value.absent(),
+    this.isTheForexMarketOpen = const Value.absent(),
+    this.isTheCryptoMarketOpen = const Value.absent(),
+    required DateTime expires,
+  })  : exchangeSymbol = Value(exchangeSymbol),
+        expires = Value(expires);
+  static Insertable<ExchangeTableRow> custom({
+    Expression<int>? id,
+    Expression<String>? exchangeSymbol,
+    Expression<String>? stockExchangeName,
+    Expression<String>? stockMarketHours,
+    Expression<String>? stockMarketHolidays,
+    Expression<bool>? isTheStockMarketOpen,
+    Expression<bool>? isTheEuronextMarketOpen,
+    Expression<bool>? isTheForexMarketOpen,
+    Expression<bool>? isTheCryptoMarketOpen,
+    Expression<DateTime>? expires,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (exchangeSymbol != null) 'exchange_symbol': exchangeSymbol,
+      if (stockExchangeName != null) 'stock_exchange_name': stockExchangeName,
+      if (stockMarketHours != null) 'stock_market_hours': stockMarketHours,
+      if (stockMarketHolidays != null)
+        'stock_market_holidays': stockMarketHolidays,
+      if (isTheStockMarketOpen != null)
+        'is_the_stock_market_open': isTheStockMarketOpen,
+      if (isTheEuronextMarketOpen != null)
+        'is_the_euronext_market_open': isTheEuronextMarketOpen,
+      if (isTheForexMarketOpen != null)
+        'is_the_forex_market_open': isTheForexMarketOpen,
+      if (isTheCryptoMarketOpen != null)
+        'is_the_crypto_market_open': isTheCryptoMarketOpen,
+      if (expires != null) 'expires': expires,
+    });
+  }
+
+  ExchangeTableRowDefinitionCompanion copyWith(
+      {Value<int>? id,
+      Value<String>? exchangeSymbol,
+      Value<String?>? stockExchangeName,
+      Value<String?>? stockMarketHours,
+      Value<String?>? stockMarketHolidays,
+      Value<bool?>? isTheStockMarketOpen,
+      Value<bool?>? isTheEuronextMarketOpen,
+      Value<bool?>? isTheForexMarketOpen,
+      Value<bool?>? isTheCryptoMarketOpen,
+      Value<DateTime>? expires}) {
+    return ExchangeTableRowDefinitionCompanion(
+      id: id ?? this.id,
+      exchangeSymbol: exchangeSymbol ?? this.exchangeSymbol,
+      stockExchangeName: stockExchangeName ?? this.stockExchangeName,
+      stockMarketHours: stockMarketHours ?? this.stockMarketHours,
+      stockMarketHolidays: stockMarketHolidays ?? this.stockMarketHolidays,
+      isTheStockMarketOpen: isTheStockMarketOpen ?? this.isTheStockMarketOpen,
+      isTheEuronextMarketOpen:
+          isTheEuronextMarketOpen ?? this.isTheEuronextMarketOpen,
+      isTheForexMarketOpen: isTheForexMarketOpen ?? this.isTheForexMarketOpen,
+      isTheCryptoMarketOpen:
+          isTheCryptoMarketOpen ?? this.isTheCryptoMarketOpen,
+      expires: expires ?? this.expires,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (exchangeSymbol.present) {
+      map['exchange_symbol'] = Variable<String>(exchangeSymbol.value);
+    }
+    if (stockExchangeName.present) {
+      map['stock_exchange_name'] = Variable<String>(stockExchangeName.value);
+    }
+    if (stockMarketHours.present) {
+      map['stock_market_hours'] = Variable<String>(stockMarketHours.value);
+    }
+    if (stockMarketHolidays.present) {
+      map['stock_market_holidays'] =
+          Variable<String>(stockMarketHolidays.value);
+    }
+    if (isTheStockMarketOpen.present) {
+      map['is_the_stock_market_open'] =
+          Variable<bool>(isTheStockMarketOpen.value);
+    }
+    if (isTheEuronextMarketOpen.present) {
+      map['is_the_euronext_market_open'] =
+          Variable<bool>(isTheEuronextMarketOpen.value);
+    }
+    if (isTheForexMarketOpen.present) {
+      map['is_the_forex_market_open'] =
+          Variable<bool>(isTheForexMarketOpen.value);
+    }
+    if (isTheCryptoMarketOpen.present) {
+      map['is_the_crypto_market_open'] =
+          Variable<bool>(isTheCryptoMarketOpen.value);
+    }
+    if (expires.present) {
+      map['expires'] = Variable<DateTime>(expires.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ExchangeTableRowDefinitionCompanion(')
+          ..write('id: $id, ')
+          ..write('exchangeSymbol: $exchangeSymbol, ')
+          ..write('stockExchangeName: $stockExchangeName, ')
+          ..write('stockMarketHours: $stockMarketHours, ')
+          ..write('stockMarketHolidays: $stockMarketHolidays, ')
+          ..write('isTheStockMarketOpen: $isTheStockMarketOpen, ')
+          ..write('isTheEuronextMarketOpen: $isTheEuronextMarketOpen, ')
+          ..write('isTheForexMarketOpen: $isTheForexMarketOpen, ')
+          ..write('isTheCryptoMarketOpen: $isTheCryptoMarketOpen, ')
           ..write('expires: $expires')
           ..write(')'))
         .toString();
@@ -10454,11 +11065,14 @@ abstract class _$DriftDb extends GeneratedDatabase {
   late final $ChartEodItemTableRowDefinitionTable
       chartEodItemTableRowDefinition =
       $ChartEodItemTableRowDefinitionTable(this);
-  late final $StockListingTableRowDefinitionTable
-      stockListingTableRowDefinition =
-      $StockListingTableRowDefinitionTable(this);
+  late final $ExchangeListingTableRowDefinitionTable
+      exchangeListingTableRowDefinition =
+      $ExchangeListingTableRowDefinitionTable(this);
   late final $IndexTableRowDefinitionTable indexTableRowDefinition =
       $IndexTableRowDefinitionTable(this);
+  late final $ExchangeSymbolTableRowDefinitionTable
+      exchangeSymbolTableRowDefinition =
+      $ExchangeSymbolTableRowDefinitionTable(this);
   late final $ExchangeTableRowDefinitionTable exchangeTableRowDefinition =
       $ExchangeTableRowDefinitionTable(this);
   @override
@@ -10471,8 +11085,9 @@ abstract class _$DriftDb extends GeneratedDatabase {
         cashFlowStatementTableRowDefinition,
         incomeStatementTableRowDefinition,
         chartEodItemTableRowDefinition,
-        stockListingTableRowDefinition,
+        exchangeListingTableRowDefinition,
         indexTableRowDefinition,
+        exchangeSymbolTableRowDefinition,
         exchangeTableRowDefinition
       ];
 }
@@ -13917,13 +14532,14 @@ class $$ChartEodItemTableRowDefinitionTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
-typedef $$StockListingTableRowDefinitionTableInsertCompanionBuilder
-    = StockListingTableRowDefinitionCompanion Function({
+typedef $$ExchangeListingTableRowDefinitionTableInsertCompanionBuilder
+    = ExchangeListingTableRowDefinitionCompanion Function({
   Value<int> id,
   required String symbol,
   Value<String?> name,
   Value<double?> price,
   required String exchange,
+  required String exchangeSymbol,
   Value<String?> exchangeShortName,
   Value<String?> type,
   Value<double?> changesPercentage,
@@ -13946,13 +14562,14 @@ typedef $$StockListingTableRowDefinitionTableInsertCompanionBuilder
   Value<int?> timestamp,
   required DateTime expires,
 });
-typedef $$StockListingTableRowDefinitionTableUpdateCompanionBuilder
-    = StockListingTableRowDefinitionCompanion Function({
+typedef $$ExchangeListingTableRowDefinitionTableUpdateCompanionBuilder
+    = ExchangeListingTableRowDefinitionCompanion Function({
   Value<int> id,
   Value<String> symbol,
   Value<String?> name,
   Value<double?> price,
   Value<String> exchange,
+  Value<String> exchangeSymbol,
   Value<String?> exchangeShortName,
   Value<String?> type,
   Value<double?> changesPercentage,
@@ -13976,35 +14593,36 @@ typedef $$StockListingTableRowDefinitionTableUpdateCompanionBuilder
   Value<DateTime> expires,
 });
 
-class $$StockListingTableRowDefinitionTableTableManager
+class $$ExchangeListingTableRowDefinitionTableTableManager
     extends RootTableManager<
         _$DriftDb,
-        $StockListingTableRowDefinitionTable,
-        StockListingTableRow,
-        $$StockListingTableRowDefinitionTableFilterComposer,
-        $$StockListingTableRowDefinitionTableOrderingComposer,
-        $$StockListingTableRowDefinitionTableProcessedTableManager,
-        $$StockListingTableRowDefinitionTableInsertCompanionBuilder,
-        $$StockListingTableRowDefinitionTableUpdateCompanionBuilder> {
-  $$StockListingTableRowDefinitionTableTableManager(
-      _$DriftDb db, $StockListingTableRowDefinitionTable table)
+        $ExchangeListingTableRowDefinitionTable,
+        ExchangeListingTableRow,
+        $$ExchangeListingTableRowDefinitionTableFilterComposer,
+        $$ExchangeListingTableRowDefinitionTableOrderingComposer,
+        $$ExchangeListingTableRowDefinitionTableProcessedTableManager,
+        $$ExchangeListingTableRowDefinitionTableInsertCompanionBuilder,
+        $$ExchangeListingTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ExchangeListingTableRowDefinitionTableTableManager(
+      _$DriftDb db, $ExchangeListingTableRowDefinitionTable table)
       : super(TableManagerState(
           db: db,
           table: table,
           filteringComposer:
-              $$StockListingTableRowDefinitionTableFilterComposer(
+              $$ExchangeListingTableRowDefinitionTableFilterComposer(
                   ComposerState(db, table)),
           orderingComposer:
-              $$StockListingTableRowDefinitionTableOrderingComposer(
+              $$ExchangeListingTableRowDefinitionTableOrderingComposer(
                   ComposerState(db, table)),
           getChildManagerBuilder: (p) =>
-              $$StockListingTableRowDefinitionTableProcessedTableManager(p),
+              $$ExchangeListingTableRowDefinitionTableProcessedTableManager(p),
           getUpdateCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             Value<String> symbol = const Value.absent(),
             Value<String?> name = const Value.absent(),
             Value<double?> price = const Value.absent(),
             Value<String> exchange = const Value.absent(),
+            Value<String> exchangeSymbol = const Value.absent(),
             Value<String?> exchangeShortName = const Value.absent(),
             Value<String?> type = const Value.absent(),
             Value<double?> changesPercentage = const Value.absent(),
@@ -14027,12 +14645,13 @@ class $$StockListingTableRowDefinitionTableTableManager
             Value<int?> timestamp = const Value.absent(),
             Value<DateTime> expires = const Value.absent(),
           }) =>
-              StockListingTableRowDefinitionCompanion(
+              ExchangeListingTableRowDefinitionCompanion(
             id: id,
             symbol: symbol,
             name: name,
             price: price,
             exchange: exchange,
+            exchangeSymbol: exchangeSymbol,
             exchangeShortName: exchangeShortName,
             type: type,
             changesPercentage: changesPercentage,
@@ -14061,6 +14680,7 @@ class $$StockListingTableRowDefinitionTableTableManager
             Value<String?> name = const Value.absent(),
             Value<double?> price = const Value.absent(),
             required String exchange,
+            required String exchangeSymbol,
             Value<String?> exchangeShortName = const Value.absent(),
             Value<String?> type = const Value.absent(),
             Value<double?> changesPercentage = const Value.absent(),
@@ -14083,12 +14703,13 @@ class $$StockListingTableRowDefinitionTableTableManager
             Value<int?> timestamp = const Value.absent(),
             required DateTime expires,
           }) =>
-              StockListingTableRowDefinitionCompanion.insert(
+              ExchangeListingTableRowDefinitionCompanion.insert(
             id: id,
             symbol: symbol,
             name: name,
             price: price,
             exchange: exchange,
+            exchangeSymbol: exchangeSymbol,
             exchangeShortName: exchangeShortName,
             type: type,
             changesPercentage: changesPercentage,
@@ -14114,22 +14735,22 @@ class $$StockListingTableRowDefinitionTableTableManager
         ));
 }
 
-class $$StockListingTableRowDefinitionTableProcessedTableManager
+class $$ExchangeListingTableRowDefinitionTableProcessedTableManager
     extends ProcessedTableManager<
         _$DriftDb,
-        $StockListingTableRowDefinitionTable,
-        StockListingTableRow,
-        $$StockListingTableRowDefinitionTableFilterComposer,
-        $$StockListingTableRowDefinitionTableOrderingComposer,
-        $$StockListingTableRowDefinitionTableProcessedTableManager,
-        $$StockListingTableRowDefinitionTableInsertCompanionBuilder,
-        $$StockListingTableRowDefinitionTableUpdateCompanionBuilder> {
-  $$StockListingTableRowDefinitionTableProcessedTableManager(super.$state);
+        $ExchangeListingTableRowDefinitionTable,
+        ExchangeListingTableRow,
+        $$ExchangeListingTableRowDefinitionTableFilterComposer,
+        $$ExchangeListingTableRowDefinitionTableOrderingComposer,
+        $$ExchangeListingTableRowDefinitionTableProcessedTableManager,
+        $$ExchangeListingTableRowDefinitionTableInsertCompanionBuilder,
+        $$ExchangeListingTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ExchangeListingTableRowDefinitionTableProcessedTableManager(super.$state);
 }
 
-class $$StockListingTableRowDefinitionTableFilterComposer
-    extends FilterComposer<_$DriftDb, $StockListingTableRowDefinitionTable> {
-  $$StockListingTableRowDefinitionTableFilterComposer(super.$state);
+class $$ExchangeListingTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $ExchangeListingTableRowDefinitionTable> {
+  $$ExchangeListingTableRowDefinitionTableFilterComposer(super.$state);
   ColumnFilters<int> get id => $state.composableBuilder(
       column: $state.table.id,
       builder: (column, joinBuilders) =>
@@ -14152,6 +14773,11 @@ class $$StockListingTableRowDefinitionTableFilterComposer
 
   ColumnFilters<String> get exchange => $state.composableBuilder(
       column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get exchangeSymbol => $state.composableBuilder(
+      column: $state.table.exchangeSymbol,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -14261,9 +14887,10 @@ class $$StockListingTableRowDefinitionTableFilterComposer
           ColumnFilters(column, joinBuilders: joinBuilders));
 }
 
-class $$StockListingTableRowDefinitionTableOrderingComposer
-    extends OrderingComposer<_$DriftDb, $StockListingTableRowDefinitionTable> {
-  $$StockListingTableRowDefinitionTableOrderingComposer(super.$state);
+class $$ExchangeListingTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb,
+        $ExchangeListingTableRowDefinitionTable> {
+  $$ExchangeListingTableRowDefinitionTableOrderingComposer(super.$state);
   ColumnOrderings<int> get id => $state.composableBuilder(
       column: $state.table.id,
       builder: (column, joinBuilders) =>
@@ -14286,6 +14913,11 @@ class $$StockListingTableRowDefinitionTableOrderingComposer
 
   ColumnOrderings<String> get exchange => $state.composableBuilder(
       column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get exchangeSymbol => $state.composableBuilder(
+      column: $state.table.exchangeSymbol,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
@@ -14566,16 +15198,141 @@ class $$IndexTableRowDefinitionTableOrderingComposer
           ColumnOrderings(column, joinBuilders: joinBuilders));
 }
 
+typedef $$ExchangeSymbolTableRowDefinitionTableInsertCompanionBuilder
+    = ExchangeSymbolTableRowDefinitionCompanion Function({
+  Value<int> id,
+  required String symbol,
+  required DateTime expires,
+});
+typedef $$ExchangeSymbolTableRowDefinitionTableUpdateCompanionBuilder
+    = ExchangeSymbolTableRowDefinitionCompanion Function({
+  Value<int> id,
+  Value<String> symbol,
+  Value<DateTime> expires,
+});
+
+class $$ExchangeSymbolTableRowDefinitionTableTableManager
+    extends RootTableManager<
+        _$DriftDb,
+        $ExchangeSymbolTableRowDefinitionTable,
+        ExchangeSymbolTableRow,
+        $$ExchangeSymbolTableRowDefinitionTableFilterComposer,
+        $$ExchangeSymbolTableRowDefinitionTableOrderingComposer,
+        $$ExchangeSymbolTableRowDefinitionTableProcessedTableManager,
+        $$ExchangeSymbolTableRowDefinitionTableInsertCompanionBuilder,
+        $$ExchangeSymbolTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ExchangeSymbolTableRowDefinitionTableTableManager(
+      _$DriftDb db, $ExchangeSymbolTableRowDefinitionTable table)
+      : super(TableManagerState(
+          db: db,
+          table: table,
+          filteringComposer:
+              $$ExchangeSymbolTableRowDefinitionTableFilterComposer(
+                  ComposerState(db, table)),
+          orderingComposer:
+              $$ExchangeSymbolTableRowDefinitionTableOrderingComposer(
+                  ComposerState(db, table)),
+          getChildManagerBuilder: (p) =>
+              $$ExchangeSymbolTableRowDefinitionTableProcessedTableManager(p),
+          getUpdateCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            Value<String> symbol = const Value.absent(),
+            Value<DateTime> expires = const Value.absent(),
+          }) =>
+              ExchangeSymbolTableRowDefinitionCompanion(
+            id: id,
+            symbol: symbol,
+            expires: expires,
+          ),
+          getInsertCompanionBuilder: ({
+            Value<int> id = const Value.absent(),
+            required String symbol,
+            required DateTime expires,
+          }) =>
+              ExchangeSymbolTableRowDefinitionCompanion.insert(
+            id: id,
+            symbol: symbol,
+            expires: expires,
+          ),
+        ));
+}
+
+class $$ExchangeSymbolTableRowDefinitionTableProcessedTableManager
+    extends ProcessedTableManager<
+        _$DriftDb,
+        $ExchangeSymbolTableRowDefinitionTable,
+        ExchangeSymbolTableRow,
+        $$ExchangeSymbolTableRowDefinitionTableFilterComposer,
+        $$ExchangeSymbolTableRowDefinitionTableOrderingComposer,
+        $$ExchangeSymbolTableRowDefinitionTableProcessedTableManager,
+        $$ExchangeSymbolTableRowDefinitionTableInsertCompanionBuilder,
+        $$ExchangeSymbolTableRowDefinitionTableUpdateCompanionBuilder> {
+  $$ExchangeSymbolTableRowDefinitionTableProcessedTableManager(super.$state);
+}
+
+class $$ExchangeSymbolTableRowDefinitionTableFilterComposer
+    extends FilterComposer<_$DriftDb, $ExchangeSymbolTableRowDefinitionTable> {
+  $$ExchangeSymbolTableRowDefinitionTableFilterComposer(super.$state);
+  ColumnFilters<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+}
+
+class $$ExchangeSymbolTableRowDefinitionTableOrderingComposer
+    extends OrderingComposer<_$DriftDb,
+        $ExchangeSymbolTableRowDefinitionTable> {
+  $$ExchangeSymbolTableRowDefinitionTableOrderingComposer(super.$state);
+  ColumnOrderings<int> get id => $state.composableBuilder(
+      column: $state.table.id,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get symbol => $state.composableBuilder(
+      column: $state.table.symbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<DateTime> get expires => $state.composableBuilder(
+      column: $state.table.expires,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+}
+
 typedef $$ExchangeTableRowDefinitionTableInsertCompanionBuilder
     = ExchangeTableRowDefinitionCompanion Function({
   Value<int> id,
-  required String symbol,
+  required String exchangeSymbol,
+  Value<String?> stockExchangeName,
+  Value<String?> stockMarketHours,
+  Value<String?> stockMarketHolidays,
+  Value<bool?> isTheStockMarketOpen,
+  Value<bool?> isTheEuronextMarketOpen,
+  Value<bool?> isTheForexMarketOpen,
+  Value<bool?> isTheCryptoMarketOpen,
   required DateTime expires,
 });
 typedef $$ExchangeTableRowDefinitionTableUpdateCompanionBuilder
     = ExchangeTableRowDefinitionCompanion Function({
   Value<int> id,
-  Value<String> symbol,
+  Value<String> exchangeSymbol,
+  Value<String?> stockExchangeName,
+  Value<String?> stockMarketHours,
+  Value<String?> stockMarketHolidays,
+  Value<bool?> isTheStockMarketOpen,
+  Value<bool?> isTheEuronextMarketOpen,
+  Value<bool?> isTheForexMarketOpen,
+  Value<bool?> isTheCryptoMarketOpen,
   Value<DateTime> expires,
 });
 
@@ -14601,22 +15358,50 @@ class $$ExchangeTableRowDefinitionTableTableManager extends RootTableManager<
               $$ExchangeTableRowDefinitionTableProcessedTableManager(p),
           getUpdateCompanionBuilder: ({
             Value<int> id = const Value.absent(),
-            Value<String> symbol = const Value.absent(),
+            Value<String> exchangeSymbol = const Value.absent(),
+            Value<String?> stockExchangeName = const Value.absent(),
+            Value<String?> stockMarketHours = const Value.absent(),
+            Value<String?> stockMarketHolidays = const Value.absent(),
+            Value<bool?> isTheStockMarketOpen = const Value.absent(),
+            Value<bool?> isTheEuronextMarketOpen = const Value.absent(),
+            Value<bool?> isTheForexMarketOpen = const Value.absent(),
+            Value<bool?> isTheCryptoMarketOpen = const Value.absent(),
             Value<DateTime> expires = const Value.absent(),
           }) =>
               ExchangeTableRowDefinitionCompanion(
             id: id,
-            symbol: symbol,
+            exchangeSymbol: exchangeSymbol,
+            stockExchangeName: stockExchangeName,
+            stockMarketHours: stockMarketHours,
+            stockMarketHolidays: stockMarketHolidays,
+            isTheStockMarketOpen: isTheStockMarketOpen,
+            isTheEuronextMarketOpen: isTheEuronextMarketOpen,
+            isTheForexMarketOpen: isTheForexMarketOpen,
+            isTheCryptoMarketOpen: isTheCryptoMarketOpen,
             expires: expires,
           ),
           getInsertCompanionBuilder: ({
             Value<int> id = const Value.absent(),
-            required String symbol,
+            required String exchangeSymbol,
+            Value<String?> stockExchangeName = const Value.absent(),
+            Value<String?> stockMarketHours = const Value.absent(),
+            Value<String?> stockMarketHolidays = const Value.absent(),
+            Value<bool?> isTheStockMarketOpen = const Value.absent(),
+            Value<bool?> isTheEuronextMarketOpen = const Value.absent(),
+            Value<bool?> isTheForexMarketOpen = const Value.absent(),
+            Value<bool?> isTheCryptoMarketOpen = const Value.absent(),
             required DateTime expires,
           }) =>
               ExchangeTableRowDefinitionCompanion.insert(
             id: id,
-            symbol: symbol,
+            exchangeSymbol: exchangeSymbol,
+            stockExchangeName: stockExchangeName,
+            stockMarketHours: stockMarketHours,
+            stockMarketHolidays: stockMarketHolidays,
+            isTheStockMarketOpen: isTheStockMarketOpen,
+            isTheEuronextMarketOpen: isTheEuronextMarketOpen,
+            isTheForexMarketOpen: isTheForexMarketOpen,
+            isTheCryptoMarketOpen: isTheCryptoMarketOpen,
             expires: expires,
           ),
         ));
@@ -14643,8 +15428,43 @@ class $$ExchangeTableRowDefinitionTableFilterComposer
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
-  ColumnFilters<String> get symbol => $state.composableBuilder(
-      column: $state.table.symbol,
+  ColumnFilters<String> get exchangeSymbol => $state.composableBuilder(
+      column: $state.table.exchangeSymbol,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get stockExchangeName => $state.composableBuilder(
+      column: $state.table.stockExchangeName,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get stockMarketHours => $state.composableBuilder(
+      column: $state.table.stockMarketHours,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get stockMarketHolidays => $state.composableBuilder(
+      column: $state.table.stockMarketHolidays,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isTheStockMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheStockMarketOpen,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isTheEuronextMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheEuronextMarketOpen,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isTheForexMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheForexMarketOpen,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<bool> get isTheCryptoMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheCryptoMarketOpen,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -14662,8 +15482,43 @@ class $$ExchangeTableRowDefinitionTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
-  ColumnOrderings<String> get symbol => $state.composableBuilder(
-      column: $state.table.symbol,
+  ColumnOrderings<String> get exchangeSymbol => $state.composableBuilder(
+      column: $state.table.exchangeSymbol,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get stockExchangeName => $state.composableBuilder(
+      column: $state.table.stockExchangeName,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get stockMarketHours => $state.composableBuilder(
+      column: $state.table.stockMarketHours,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get stockMarketHolidays => $state.composableBuilder(
+      column: $state.table.stockMarketHolidays,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isTheStockMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheStockMarketOpen,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isTheEuronextMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheEuronextMarketOpen,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isTheForexMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheForexMarketOpen,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<bool> get isTheCryptoMarketOpen => $state.composableBuilder(
+      column: $state.table.isTheCryptoMarketOpen,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
@@ -14696,13 +15551,17 @@ class _$DriftDbManager {
       get chartEodItemTableRowDefinition =>
           $$ChartEodItemTableRowDefinitionTableTableManager(
               _db, _db.chartEodItemTableRowDefinition);
-  $$StockListingTableRowDefinitionTableTableManager
-      get stockListingTableRowDefinition =>
-          $$StockListingTableRowDefinitionTableTableManager(
-              _db, _db.stockListingTableRowDefinition);
+  $$ExchangeListingTableRowDefinitionTableTableManager
+      get exchangeListingTableRowDefinition =>
+          $$ExchangeListingTableRowDefinitionTableTableManager(
+              _db, _db.exchangeListingTableRowDefinition);
   $$IndexTableRowDefinitionTableTableManager get indexTableRowDefinition =>
       $$IndexTableRowDefinitionTableTableManager(
           _db, _db.indexTableRowDefinition);
+  $$ExchangeSymbolTableRowDefinitionTableTableManager
+      get exchangeSymbolTableRowDefinition =>
+          $$ExchangeSymbolTableRowDefinitionTableTableManager(
+              _db, _db.exchangeSymbolTableRowDefinition);
   $$ExchangeTableRowDefinitionTableTableManager
       get exchangeTableRowDefinition =>
           $$ExchangeTableRowDefinitionTableTableManager(
