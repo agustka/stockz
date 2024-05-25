@@ -74,6 +74,7 @@ class $AssetsImagesGen {
 class $AssetsTestGen {
   const $AssetsTestGen();
 
+  /// Directory path: assets/test/offline_data
   $AssetsTestOfflineDataGen get offlineData => const $AssetsTestOfflineDataGen();
 
   /// File path: assets/test/test_access.json
@@ -115,9 +116,11 @@ class AppAssets {
 }
 
 class AssetGenImage {
-  const AssetGenImage(this._assetName);
+  const AssetGenImage(this._assetName, {this.size = null});
 
   final String _assetName;
+
+  final Size? size;
 
   Image image({
     Key? key,

@@ -19,12 +19,47 @@ final class _$StockListingsChopperService extends StockListingsChopperService {
 
   @override
   Future<Response<List<StockListingModel>>> getStockListings() {
-    final Uri $url = Uri.parse('/api/v3/stock/list/');
+    final Uri $url = Uri.parse('/api/v3/stock/list');
     final Request $request = Request(
       'GET',
       $url,
       client.baseUrl,
     );
     return client.send<List<StockListingModel>, StockListingModel>($request);
+  }
+
+  @override
+  Future<Response<List<IndexModel>>> getIndices() {
+    final Uri $url = Uri.parse('/api/v3/symbol/available-indexes');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<IndexModel>, IndexModel>($request);
+  }
+
+  @override
+  Future<Response<List<String>>> getExchanges() {
+    final Uri $url = Uri.parse('/api/v3/exchanges-list');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<List<String>, String>($request);
+  }
+
+  @override
+  Future<Response<ExchangeModel>> getExchange(
+      {required String exchangeSymbol}) {
+    final Uri $url =
+        Uri.parse('/api/v3/is-the-market-open?exchange=${exchangeSymbol}');
+    final Request $request = Request(
+      'GET',
+      $url,
+      client.baseUrl,
+    );
+    return client.send<ExchangeModel, ExchangeModel>($request);
   }
 }

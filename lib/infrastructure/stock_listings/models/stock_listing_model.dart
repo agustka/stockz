@@ -19,6 +19,24 @@ class StockListingModel {
   final String? exchange;
   final String? exchangeShortName;
   final String? type;
+  final double? changesPercentage;
+  final double? change;
+  final double? dayLow;
+  final double? dayHigh;
+  final double? yearHigh;
+  final double? yearLow;
+  final double? marketCap;
+  final double? priceAvg50;
+  final double? priceAvg200;
+  final double? volume;
+  final double? avgVolume;
+  final double? open;
+  final double? previousClose;
+  final double? eps;
+  final double? pe;
+  final String? earningsAnnouncement;
+  final double? sharesOutstanding;
+  final int? timestamp;
 
   const StockListingModel({
     required this.symbol,
@@ -27,6 +45,24 @@ class StockListingModel {
     required this.exchange,
     required this.exchangeShortName,
     required this.type,
+    required this.changesPercentage,
+    required this.change,
+    required this.dayLow,
+    required this.dayHigh,
+    required this.yearHigh,
+    required this.yearLow,
+    required this.marketCap,
+    required this.priceAvg50,
+    required this.priceAvg200,
+    required this.volume,
+    required this.avgVolume,
+    required this.open,
+    required this.previousClose,
+    required this.eps,
+    required this.pe,
+    required this.earningsAnnouncement,
+    required this.sharesOutstanding,
+    required this.timestamp,
   });
 
   factory StockListingModel.fromTableRow(StockListingTableRow row) {
@@ -37,6 +73,24 @@ class StockListingModel {
       exchange: row.exchange,
       exchangeShortName: row.exchangeShortName,
       type: row.type,
+      changesPercentage: row.changesPercentage,
+      change: row.change,
+      dayLow: row.dayLow,
+      dayHigh: row.dayHigh,
+      yearHigh: row.yearHigh,
+      yearLow: row.yearLow,
+      marketCap: row.marketCap,
+      priceAvg50: row.priceAvg50,
+      priceAvg200: row.priceAvg200,
+      volume: row.volume,
+      avgVolume: row.avgVolume,
+      open: row.open,
+      previousClose: row.previousClose,
+      eps: row.eps,
+      pe: row.pe,
+      earningsAnnouncement: row.earningsAnnouncement,
+      sharesOutstanding: row.sharesOutstanding,
+      timestamp: row.timestamp,
     );
   }
 

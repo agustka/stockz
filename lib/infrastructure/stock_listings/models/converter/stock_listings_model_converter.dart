@@ -1,5 +1,6 @@
 import 'package:chopper/chopper.dart';
 import 'package:stockz/infrastructure/core/models/base_converter.dart';
+import 'package:stockz/infrastructure/stock_listings/models/exchange_model.dart';
 import 'package:stockz/infrastructure/stock_listings/models/index_model.dart';
 import 'package:stockz/infrastructure/stock_listings/models/stock_listing_model.dart';
 
@@ -8,6 +9,7 @@ class StockListingsModelConverter extends JsonConverter with BaseConverter {
   Map<dynamic, Function> get conversions => {
     StockListingModel: (Map<String, dynamic> data) => StockListingModel.fromJson(data),
     IndexModel: (Map<String, dynamic> data) => IndexModel.fromJson(data),
+    ExchangeModel: (Map<String, dynamic> data) => ExchangeModel.fromJson(data),
   };
 
   @override

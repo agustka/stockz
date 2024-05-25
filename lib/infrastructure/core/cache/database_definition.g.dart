@@ -8751,12 +8751,6 @@ class $StockListingTableRowDefinitionTable
   late final GeneratedColumn<String> symbol = GeneratedColumn<String>(
       'symbol', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _exchangeMeta =
-      const VerificationMeta('exchange');
-  @override
-  late final GeneratedColumn<String> exchange = GeneratedColumn<String>(
-      'exchange', aliasedName, false,
-      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _nameMeta = const VerificationMeta('name');
   @override
   late final GeneratedColumn<String> name = GeneratedColumn<String>(
@@ -8767,6 +8761,12 @@ class $StockListingTableRowDefinitionTable
   late final GeneratedColumn<double> price = GeneratedColumn<double>(
       'price', aliasedName, true,
       type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _exchangeMeta =
+      const VerificationMeta('exchange');
+  @override
+  late final GeneratedColumn<String> exchange = GeneratedColumn<String>(
+      'exchange', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _exchangeShortNameMeta =
       const VerificationMeta('exchangeShortName');
   @override
@@ -8778,6 +8778,108 @@ class $StockListingTableRowDefinitionTable
   late final GeneratedColumn<String> type = GeneratedColumn<String>(
       'type', aliasedName, true,
       type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _changesPercentageMeta =
+      const VerificationMeta('changesPercentage');
+  @override
+  late final GeneratedColumn<double> changesPercentage =
+      GeneratedColumn<double>('changes_percentage', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _changeMeta = const VerificationMeta('change');
+  @override
+  late final GeneratedColumn<double> change = GeneratedColumn<double>(
+      'change', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _dayLowMeta = const VerificationMeta('dayLow');
+  @override
+  late final GeneratedColumn<double> dayLow = GeneratedColumn<double>(
+      'day_low', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _dayHighMeta =
+      const VerificationMeta('dayHigh');
+  @override
+  late final GeneratedColumn<double> dayHigh = GeneratedColumn<double>(
+      'day_high', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _yearHighMeta =
+      const VerificationMeta('yearHigh');
+  @override
+  late final GeneratedColumn<double> yearHigh = GeneratedColumn<double>(
+      'year_high', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _yearLowMeta =
+      const VerificationMeta('yearLow');
+  @override
+  late final GeneratedColumn<double> yearLow = GeneratedColumn<double>(
+      'year_low', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _marketCapMeta =
+      const VerificationMeta('marketCap');
+  @override
+  late final GeneratedColumn<double> marketCap = GeneratedColumn<double>(
+      'market_cap', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _priceAvg50Meta =
+      const VerificationMeta('priceAvg50');
+  @override
+  late final GeneratedColumn<double> priceAvg50 = GeneratedColumn<double>(
+      'price_avg50', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _priceAvg200Meta =
+      const VerificationMeta('priceAvg200');
+  @override
+  late final GeneratedColumn<double> priceAvg200 = GeneratedColumn<double>(
+      'price_avg200', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _volumeMeta = const VerificationMeta('volume');
+  @override
+  late final GeneratedColumn<double> volume = GeneratedColumn<double>(
+      'volume', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _avgVolumeMeta =
+      const VerificationMeta('avgVolume');
+  @override
+  late final GeneratedColumn<double> avgVolume = GeneratedColumn<double>(
+      'avg_volume', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _openMeta = const VerificationMeta('open');
+  @override
+  late final GeneratedColumn<double> open = GeneratedColumn<double>(
+      'open', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _previousCloseMeta =
+      const VerificationMeta('previousClose');
+  @override
+  late final GeneratedColumn<double> previousClose = GeneratedColumn<double>(
+      'previous_close', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _epsMeta = const VerificationMeta('eps');
+  @override
+  late final GeneratedColumn<double> eps = GeneratedColumn<double>(
+      'eps', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _peMeta = const VerificationMeta('pe');
+  @override
+  late final GeneratedColumn<double> pe = GeneratedColumn<double>(
+      'pe', aliasedName, true,
+      type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _earningsAnnouncementMeta =
+      const VerificationMeta('earningsAnnouncement');
+  @override
+  late final GeneratedColumn<String> earningsAnnouncement =
+      GeneratedColumn<String>('earnings_announcement', aliasedName, true,
+          type: DriftSqlType.string, requiredDuringInsert: false);
+  static const VerificationMeta _sharesOutstandingMeta =
+      const VerificationMeta('sharesOutstanding');
+  @override
+  late final GeneratedColumn<double> sharesOutstanding =
+      GeneratedColumn<double>('shares_outstanding', aliasedName, true,
+          type: DriftSqlType.double, requiredDuringInsert: false);
+  static const VerificationMeta _timestampMeta =
+      const VerificationMeta('timestamp');
+  @override
+  late final GeneratedColumn<int> timestamp = GeneratedColumn<int>(
+      'timestamp', aliasedName, true,
+      type: DriftSqlType.int, requiredDuringInsert: false);
   static const VerificationMeta _expiresMeta =
       const VerificationMeta('expires');
   @override
@@ -8785,8 +8887,34 @@ class $StockListingTableRowDefinitionTable
       'expires', aliasedName, false,
       type: DriftSqlType.dateTime, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns =>
-      [id, symbol, exchange, name, price, exchangeShortName, type, expires];
+  List<GeneratedColumn> get $columns => [
+        id,
+        symbol,
+        name,
+        price,
+        exchange,
+        exchangeShortName,
+        type,
+        changesPercentage,
+        change,
+        dayLow,
+        dayHigh,
+        yearHigh,
+        yearLow,
+        marketCap,
+        priceAvg50,
+        priceAvg200,
+        volume,
+        avgVolume,
+        open,
+        previousClose,
+        eps,
+        pe,
+        earningsAnnouncement,
+        sharesOutstanding,
+        timestamp,
+        expires
+      ];
   @override
   String get aliasedName => _alias ?? actualTableName;
   @override
@@ -8807,12 +8935,6 @@ class $StockListingTableRowDefinitionTable
     } else if (isInserting) {
       context.missing(_symbolMeta);
     }
-    if (data.containsKey('exchange')) {
-      context.handle(_exchangeMeta,
-          exchange.isAcceptableOrUnknown(data['exchange']!, _exchangeMeta));
-    } else if (isInserting) {
-      context.missing(_exchangeMeta);
-    }
     if (data.containsKey('name')) {
       context.handle(
           _nameMeta, name.isAcceptableOrUnknown(data['name']!, _nameMeta));
@@ -8820,6 +8942,12 @@ class $StockListingTableRowDefinitionTable
     if (data.containsKey('price')) {
       context.handle(
           _priceMeta, price.isAcceptableOrUnknown(data['price']!, _priceMeta));
+    }
+    if (data.containsKey('exchange')) {
+      context.handle(_exchangeMeta,
+          exchange.isAcceptableOrUnknown(data['exchange']!, _exchangeMeta));
+    } else if (isInserting) {
+      context.missing(_exchangeMeta);
     }
     if (data.containsKey('exchange_short_name')) {
       context.handle(
@@ -8830,6 +8958,89 @@ class $StockListingTableRowDefinitionTable
     if (data.containsKey('type')) {
       context.handle(
           _typeMeta, type.isAcceptableOrUnknown(data['type']!, _typeMeta));
+    }
+    if (data.containsKey('changes_percentage')) {
+      context.handle(
+          _changesPercentageMeta,
+          changesPercentage.isAcceptableOrUnknown(
+              data['changes_percentage']!, _changesPercentageMeta));
+    }
+    if (data.containsKey('change')) {
+      context.handle(_changeMeta,
+          change.isAcceptableOrUnknown(data['change']!, _changeMeta));
+    }
+    if (data.containsKey('day_low')) {
+      context.handle(_dayLowMeta,
+          dayLow.isAcceptableOrUnknown(data['day_low']!, _dayLowMeta));
+    }
+    if (data.containsKey('day_high')) {
+      context.handle(_dayHighMeta,
+          dayHigh.isAcceptableOrUnknown(data['day_high']!, _dayHighMeta));
+    }
+    if (data.containsKey('year_high')) {
+      context.handle(_yearHighMeta,
+          yearHigh.isAcceptableOrUnknown(data['year_high']!, _yearHighMeta));
+    }
+    if (data.containsKey('year_low')) {
+      context.handle(_yearLowMeta,
+          yearLow.isAcceptableOrUnknown(data['year_low']!, _yearLowMeta));
+    }
+    if (data.containsKey('market_cap')) {
+      context.handle(_marketCapMeta,
+          marketCap.isAcceptableOrUnknown(data['market_cap']!, _marketCapMeta));
+    }
+    if (data.containsKey('price_avg50')) {
+      context.handle(
+          _priceAvg50Meta,
+          priceAvg50.isAcceptableOrUnknown(
+              data['price_avg50']!, _priceAvg50Meta));
+    }
+    if (data.containsKey('price_avg200')) {
+      context.handle(
+          _priceAvg200Meta,
+          priceAvg200.isAcceptableOrUnknown(
+              data['price_avg200']!, _priceAvg200Meta));
+    }
+    if (data.containsKey('volume')) {
+      context.handle(_volumeMeta,
+          volume.isAcceptableOrUnknown(data['volume']!, _volumeMeta));
+    }
+    if (data.containsKey('avg_volume')) {
+      context.handle(_avgVolumeMeta,
+          avgVolume.isAcceptableOrUnknown(data['avg_volume']!, _avgVolumeMeta));
+    }
+    if (data.containsKey('open')) {
+      context.handle(
+          _openMeta, open.isAcceptableOrUnknown(data['open']!, _openMeta));
+    }
+    if (data.containsKey('previous_close')) {
+      context.handle(
+          _previousCloseMeta,
+          previousClose.isAcceptableOrUnknown(
+              data['previous_close']!, _previousCloseMeta));
+    }
+    if (data.containsKey('eps')) {
+      context.handle(
+          _epsMeta, eps.isAcceptableOrUnknown(data['eps']!, _epsMeta));
+    }
+    if (data.containsKey('pe')) {
+      context.handle(_peMeta, pe.isAcceptableOrUnknown(data['pe']!, _peMeta));
+    }
+    if (data.containsKey('earnings_announcement')) {
+      context.handle(
+          _earningsAnnouncementMeta,
+          earningsAnnouncement.isAcceptableOrUnknown(
+              data['earnings_announcement']!, _earningsAnnouncementMeta));
+    }
+    if (data.containsKey('shares_outstanding')) {
+      context.handle(
+          _sharesOutstandingMeta,
+          sharesOutstanding.isAcceptableOrUnknown(
+              data['shares_outstanding']!, _sharesOutstandingMeta));
+    }
+    if (data.containsKey('timestamp')) {
+      context.handle(_timestampMeta,
+          timestamp.isAcceptableOrUnknown(data['timestamp']!, _timestampMeta));
     }
     if (data.containsKey('expires')) {
       context.handle(_expiresMeta,
@@ -8850,16 +9061,52 @@ class $StockListingTableRowDefinitionTable
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       symbol: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}symbol'])!,
-      exchange: attachedDatabase.typeMapping
-          .read(DriftSqlType.string, data['${effectivePrefix}exchange'])!,
       name: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}name']),
       price: attachedDatabase.typeMapping
           .read(DriftSqlType.double, data['${effectivePrefix}price']),
+      exchange: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}exchange'])!,
       exchangeShortName: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}exchange_short_name']),
       type: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}type']),
+      changesPercentage: attachedDatabase.typeMapping.read(
+          DriftSqlType.double, data['${effectivePrefix}changes_percentage']),
+      change: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}change']),
+      dayLow: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}day_low']),
+      dayHigh: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}day_high']),
+      yearHigh: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}year_high']),
+      yearLow: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}year_low']),
+      marketCap: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}market_cap']),
+      priceAvg50: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}price_avg50']),
+      priceAvg200: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}price_avg200']),
+      volume: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}volume']),
+      avgVolume: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}avg_volume']),
+      open: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}open']),
+      previousClose: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}previous_close']),
+      eps: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}eps']),
+      pe: attachedDatabase.typeMapping
+          .read(DriftSqlType.double, data['${effectivePrefix}pe']),
+      earningsAnnouncement: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}earnings_announcement']),
+      sharesOutstanding: attachedDatabase.typeMapping.read(
+          DriftSqlType.double, data['${effectivePrefix}shares_outstanding']),
+      timestamp: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}timestamp']),
       expires: attachedDatabase.typeMapping
           .read(DriftSqlType.dateTime, data['${effectivePrefix}expires'])!,
     );
@@ -8875,38 +9122,128 @@ class StockListingTableRow extends DataClass
     implements Insertable<StockListingTableRow> {
   final int id;
   final String symbol;
-  final String exchange;
   final String? name;
   final double? price;
+  final String exchange;
   final String? exchangeShortName;
   final String? type;
+  final double? changesPercentage;
+  final double? change;
+  final double? dayLow;
+  final double? dayHigh;
+  final double? yearHigh;
+  final double? yearLow;
+  final double? marketCap;
+  final double? priceAvg50;
+  final double? priceAvg200;
+  final double? volume;
+  final double? avgVolume;
+  final double? open;
+  final double? previousClose;
+  final double? eps;
+  final double? pe;
+  final String? earningsAnnouncement;
+  final double? sharesOutstanding;
+  final int? timestamp;
   final DateTime expires;
   const StockListingTableRow(
       {required this.id,
       required this.symbol,
-      required this.exchange,
       this.name,
       this.price,
+      required this.exchange,
       this.exchangeShortName,
       this.type,
+      this.changesPercentage,
+      this.change,
+      this.dayLow,
+      this.dayHigh,
+      this.yearHigh,
+      this.yearLow,
+      this.marketCap,
+      this.priceAvg50,
+      this.priceAvg200,
+      this.volume,
+      this.avgVolume,
+      this.open,
+      this.previousClose,
+      this.eps,
+      this.pe,
+      this.earningsAnnouncement,
+      this.sharesOutstanding,
+      this.timestamp,
       required this.expires});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['symbol'] = Variable<String>(symbol);
-    map['exchange'] = Variable<String>(exchange);
     if (!nullToAbsent || name != null) {
       map['name'] = Variable<String>(name);
     }
     if (!nullToAbsent || price != null) {
       map['price'] = Variable<double>(price);
     }
+    map['exchange'] = Variable<String>(exchange);
     if (!nullToAbsent || exchangeShortName != null) {
       map['exchange_short_name'] = Variable<String>(exchangeShortName);
     }
     if (!nullToAbsent || type != null) {
       map['type'] = Variable<String>(type);
+    }
+    if (!nullToAbsent || changesPercentage != null) {
+      map['changes_percentage'] = Variable<double>(changesPercentage);
+    }
+    if (!nullToAbsent || change != null) {
+      map['change'] = Variable<double>(change);
+    }
+    if (!nullToAbsent || dayLow != null) {
+      map['day_low'] = Variable<double>(dayLow);
+    }
+    if (!nullToAbsent || dayHigh != null) {
+      map['day_high'] = Variable<double>(dayHigh);
+    }
+    if (!nullToAbsent || yearHigh != null) {
+      map['year_high'] = Variable<double>(yearHigh);
+    }
+    if (!nullToAbsent || yearLow != null) {
+      map['year_low'] = Variable<double>(yearLow);
+    }
+    if (!nullToAbsent || marketCap != null) {
+      map['market_cap'] = Variable<double>(marketCap);
+    }
+    if (!nullToAbsent || priceAvg50 != null) {
+      map['price_avg50'] = Variable<double>(priceAvg50);
+    }
+    if (!nullToAbsent || priceAvg200 != null) {
+      map['price_avg200'] = Variable<double>(priceAvg200);
+    }
+    if (!nullToAbsent || volume != null) {
+      map['volume'] = Variable<double>(volume);
+    }
+    if (!nullToAbsent || avgVolume != null) {
+      map['avg_volume'] = Variable<double>(avgVolume);
+    }
+    if (!nullToAbsent || open != null) {
+      map['open'] = Variable<double>(open);
+    }
+    if (!nullToAbsent || previousClose != null) {
+      map['previous_close'] = Variable<double>(previousClose);
+    }
+    if (!nullToAbsent || eps != null) {
+      map['eps'] = Variable<double>(eps);
+    }
+    if (!nullToAbsent || pe != null) {
+      map['pe'] = Variable<double>(pe);
+    }
+    if (!nullToAbsent || earningsAnnouncement != null) {
+      map['earnings_announcement'] = Variable<String>(earningsAnnouncement);
+    }
+    if (!nullToAbsent || sharesOutstanding != null) {
+      map['shares_outstanding'] = Variable<double>(sharesOutstanding);
+    }
+    if (!nullToAbsent || timestamp != null) {
+      map['timestamp'] = Variable<int>(timestamp);
     }
     map['expires'] = Variable<DateTime>(expires);
     return map;
@@ -8916,14 +9253,59 @@ class StockListingTableRow extends DataClass
     return StockListingTableRowDefinitionCompanion(
       id: Value(id),
       symbol: Value(symbol),
-      exchange: Value(exchange),
       name: name == null && nullToAbsent ? const Value.absent() : Value(name),
       price:
           price == null && nullToAbsent ? const Value.absent() : Value(price),
+      exchange: Value(exchange),
       exchangeShortName: exchangeShortName == null && nullToAbsent
           ? const Value.absent()
           : Value(exchangeShortName),
       type: type == null && nullToAbsent ? const Value.absent() : Value(type),
+      changesPercentage: changesPercentage == null && nullToAbsent
+          ? const Value.absent()
+          : Value(changesPercentage),
+      change:
+          change == null && nullToAbsent ? const Value.absent() : Value(change),
+      dayLow:
+          dayLow == null && nullToAbsent ? const Value.absent() : Value(dayLow),
+      dayHigh: dayHigh == null && nullToAbsent
+          ? const Value.absent()
+          : Value(dayHigh),
+      yearHigh: yearHigh == null && nullToAbsent
+          ? const Value.absent()
+          : Value(yearHigh),
+      yearLow: yearLow == null && nullToAbsent
+          ? const Value.absent()
+          : Value(yearLow),
+      marketCap: marketCap == null && nullToAbsent
+          ? const Value.absent()
+          : Value(marketCap),
+      priceAvg50: priceAvg50 == null && nullToAbsent
+          ? const Value.absent()
+          : Value(priceAvg50),
+      priceAvg200: priceAvg200 == null && nullToAbsent
+          ? const Value.absent()
+          : Value(priceAvg200),
+      volume:
+          volume == null && nullToAbsent ? const Value.absent() : Value(volume),
+      avgVolume: avgVolume == null && nullToAbsent
+          ? const Value.absent()
+          : Value(avgVolume),
+      open: open == null && nullToAbsent ? const Value.absent() : Value(open),
+      previousClose: previousClose == null && nullToAbsent
+          ? const Value.absent()
+          : Value(previousClose),
+      eps: eps == null && nullToAbsent ? const Value.absent() : Value(eps),
+      pe: pe == null && nullToAbsent ? const Value.absent() : Value(pe),
+      earningsAnnouncement: earningsAnnouncement == null && nullToAbsent
+          ? const Value.absent()
+          : Value(earningsAnnouncement),
+      sharesOutstanding: sharesOutstanding == null && nullToAbsent
+          ? const Value.absent()
+          : Value(sharesOutstanding),
+      timestamp: timestamp == null && nullToAbsent
+          ? const Value.absent()
+          : Value(timestamp),
       expires: Value(expires),
     );
   }
@@ -8934,12 +9316,33 @@ class StockListingTableRow extends DataClass
     return StockListingTableRow(
       id: serializer.fromJson<int>(json['id']),
       symbol: serializer.fromJson<String>(json['symbol']),
-      exchange: serializer.fromJson<String>(json['exchange']),
       name: serializer.fromJson<String?>(json['name']),
       price: serializer.fromJson<double?>(json['price']),
+      exchange: serializer.fromJson<String>(json['exchange']),
       exchangeShortName:
           serializer.fromJson<String?>(json['exchangeShortName']),
       type: serializer.fromJson<String?>(json['type']),
+      changesPercentage:
+          serializer.fromJson<double?>(json['changesPercentage']),
+      change: serializer.fromJson<double?>(json['change']),
+      dayLow: serializer.fromJson<double?>(json['dayLow']),
+      dayHigh: serializer.fromJson<double?>(json['dayHigh']),
+      yearHigh: serializer.fromJson<double?>(json['yearHigh']),
+      yearLow: serializer.fromJson<double?>(json['yearLow']),
+      marketCap: serializer.fromJson<double?>(json['marketCap']),
+      priceAvg50: serializer.fromJson<double?>(json['priceAvg50']),
+      priceAvg200: serializer.fromJson<double?>(json['priceAvg200']),
+      volume: serializer.fromJson<double?>(json['volume']),
+      avgVolume: serializer.fromJson<double?>(json['avgVolume']),
+      open: serializer.fromJson<double?>(json['open']),
+      previousClose: serializer.fromJson<double?>(json['previousClose']),
+      eps: serializer.fromJson<double?>(json['eps']),
+      pe: serializer.fromJson<double?>(json['pe']),
+      earningsAnnouncement:
+          serializer.fromJson<String?>(json['earningsAnnouncement']),
+      sharesOutstanding:
+          serializer.fromJson<double?>(json['sharesOutstanding']),
+      timestamp: serializer.fromJson<int?>(json['timestamp']),
       expires: serializer.fromJson<DateTime>(json['expires']),
     );
   }
@@ -8949,11 +9352,29 @@ class StockListingTableRow extends DataClass
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'symbol': serializer.toJson<String>(symbol),
-      'exchange': serializer.toJson<String>(exchange),
       'name': serializer.toJson<String?>(name),
       'price': serializer.toJson<double?>(price),
+      'exchange': serializer.toJson<String>(exchange),
       'exchangeShortName': serializer.toJson<String?>(exchangeShortName),
       'type': serializer.toJson<String?>(type),
+      'changesPercentage': serializer.toJson<double?>(changesPercentage),
+      'change': serializer.toJson<double?>(change),
+      'dayLow': serializer.toJson<double?>(dayLow),
+      'dayHigh': serializer.toJson<double?>(dayHigh),
+      'yearHigh': serializer.toJson<double?>(yearHigh),
+      'yearLow': serializer.toJson<double?>(yearLow),
+      'marketCap': serializer.toJson<double?>(marketCap),
+      'priceAvg50': serializer.toJson<double?>(priceAvg50),
+      'priceAvg200': serializer.toJson<double?>(priceAvg200),
+      'volume': serializer.toJson<double?>(volume),
+      'avgVolume': serializer.toJson<double?>(avgVolume),
+      'open': serializer.toJson<double?>(open),
+      'previousClose': serializer.toJson<double?>(previousClose),
+      'eps': serializer.toJson<double?>(eps),
+      'pe': serializer.toJson<double?>(pe),
+      'earningsAnnouncement': serializer.toJson<String?>(earningsAnnouncement),
+      'sharesOutstanding': serializer.toJson<double?>(sharesOutstanding),
+      'timestamp': serializer.toJson<int?>(timestamp),
       'expires': serializer.toJson<DateTime>(expires),
     };
   }
@@ -8961,22 +9382,65 @@ class StockListingTableRow extends DataClass
   StockListingTableRow copyWith(
           {int? id,
           String? symbol,
-          String? exchange,
           Value<String?> name = const Value.absent(),
           Value<double?> price = const Value.absent(),
+          String? exchange,
           Value<String?> exchangeShortName = const Value.absent(),
           Value<String?> type = const Value.absent(),
+          Value<double?> changesPercentage = const Value.absent(),
+          Value<double?> change = const Value.absent(),
+          Value<double?> dayLow = const Value.absent(),
+          Value<double?> dayHigh = const Value.absent(),
+          Value<double?> yearHigh = const Value.absent(),
+          Value<double?> yearLow = const Value.absent(),
+          Value<double?> marketCap = const Value.absent(),
+          Value<double?> priceAvg50 = const Value.absent(),
+          Value<double?> priceAvg200 = const Value.absent(),
+          Value<double?> volume = const Value.absent(),
+          Value<double?> avgVolume = const Value.absent(),
+          Value<double?> open = const Value.absent(),
+          Value<double?> previousClose = const Value.absent(),
+          Value<double?> eps = const Value.absent(),
+          Value<double?> pe = const Value.absent(),
+          Value<String?> earningsAnnouncement = const Value.absent(),
+          Value<double?> sharesOutstanding = const Value.absent(),
+          Value<int?> timestamp = const Value.absent(),
           DateTime? expires}) =>
       StockListingTableRow(
         id: id ?? this.id,
         symbol: symbol ?? this.symbol,
-        exchange: exchange ?? this.exchange,
         name: name.present ? name.value : this.name,
         price: price.present ? price.value : this.price,
+        exchange: exchange ?? this.exchange,
         exchangeShortName: exchangeShortName.present
             ? exchangeShortName.value
             : this.exchangeShortName,
         type: type.present ? type.value : this.type,
+        changesPercentage: changesPercentage.present
+            ? changesPercentage.value
+            : this.changesPercentage,
+        change: change.present ? change.value : this.change,
+        dayLow: dayLow.present ? dayLow.value : this.dayLow,
+        dayHigh: dayHigh.present ? dayHigh.value : this.dayHigh,
+        yearHigh: yearHigh.present ? yearHigh.value : this.yearHigh,
+        yearLow: yearLow.present ? yearLow.value : this.yearLow,
+        marketCap: marketCap.present ? marketCap.value : this.marketCap,
+        priceAvg50: priceAvg50.present ? priceAvg50.value : this.priceAvg50,
+        priceAvg200: priceAvg200.present ? priceAvg200.value : this.priceAvg200,
+        volume: volume.present ? volume.value : this.volume,
+        avgVolume: avgVolume.present ? avgVolume.value : this.avgVolume,
+        open: open.present ? open.value : this.open,
+        previousClose:
+            previousClose.present ? previousClose.value : this.previousClose,
+        eps: eps.present ? eps.value : this.eps,
+        pe: pe.present ? pe.value : this.pe,
+        earningsAnnouncement: earningsAnnouncement.present
+            ? earningsAnnouncement.value
+            : this.earningsAnnouncement,
+        sharesOutstanding: sharesOutstanding.present
+            ? sharesOutstanding.value
+            : this.sharesOutstanding,
+        timestamp: timestamp.present ? timestamp.value : this.timestamp,
         expires: expires ?? this.expires,
       );
   @override
@@ -8984,30 +9448,92 @@ class StockListingTableRow extends DataClass
     return (StringBuffer('StockListingTableRow(')
           ..write('id: $id, ')
           ..write('symbol: $symbol, ')
-          ..write('exchange: $exchange, ')
           ..write('name: $name, ')
           ..write('price: $price, ')
+          ..write('exchange: $exchange, ')
           ..write('exchangeShortName: $exchangeShortName, ')
           ..write('type: $type, ')
+          ..write('changesPercentage: $changesPercentage, ')
+          ..write('change: $change, ')
+          ..write('dayLow: $dayLow, ')
+          ..write('dayHigh: $dayHigh, ')
+          ..write('yearHigh: $yearHigh, ')
+          ..write('yearLow: $yearLow, ')
+          ..write('marketCap: $marketCap, ')
+          ..write('priceAvg50: $priceAvg50, ')
+          ..write('priceAvg200: $priceAvg200, ')
+          ..write('volume: $volume, ')
+          ..write('avgVolume: $avgVolume, ')
+          ..write('open: $open, ')
+          ..write('previousClose: $previousClose, ')
+          ..write('eps: $eps, ')
+          ..write('pe: $pe, ')
+          ..write('earningsAnnouncement: $earningsAnnouncement, ')
+          ..write('sharesOutstanding: $sharesOutstanding, ')
+          ..write('timestamp: $timestamp, ')
           ..write('expires: $expires')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(
-      id, symbol, exchange, name, price, exchangeShortName, type, expires);
+  int get hashCode => Object.hashAll([
+        id,
+        symbol,
+        name,
+        price,
+        exchange,
+        exchangeShortName,
+        type,
+        changesPercentage,
+        change,
+        dayLow,
+        dayHigh,
+        yearHigh,
+        yearLow,
+        marketCap,
+        priceAvg50,
+        priceAvg200,
+        volume,
+        avgVolume,
+        open,
+        previousClose,
+        eps,
+        pe,
+        earningsAnnouncement,
+        sharesOutstanding,
+        timestamp,
+        expires
+      ]);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is StockListingTableRow &&
           other.id == this.id &&
           other.symbol == this.symbol &&
-          other.exchange == this.exchange &&
           other.name == this.name &&
           other.price == this.price &&
+          other.exchange == this.exchange &&
           other.exchangeShortName == this.exchangeShortName &&
           other.type == this.type &&
+          other.changesPercentage == this.changesPercentage &&
+          other.change == this.change &&
+          other.dayLow == this.dayLow &&
+          other.dayHigh == this.dayHigh &&
+          other.yearHigh == this.yearHigh &&
+          other.yearLow == this.yearLow &&
+          other.marketCap == this.marketCap &&
+          other.priceAvg50 == this.priceAvg50 &&
+          other.priceAvg200 == this.priceAvg200 &&
+          other.volume == this.volume &&
+          other.avgVolume == this.avgVolume &&
+          other.open == this.open &&
+          other.previousClose == this.previousClose &&
+          other.eps == this.eps &&
+          other.pe == this.pe &&
+          other.earningsAnnouncement == this.earningsAnnouncement &&
+          other.sharesOutstanding == this.sharesOutstanding &&
+          other.timestamp == this.timestamp &&
           other.expires == this.expires);
 }
 
@@ -9015,30 +9541,84 @@ class StockListingTableRowDefinitionCompanion
     extends UpdateCompanion<StockListingTableRow> {
   final Value<int> id;
   final Value<String> symbol;
-  final Value<String> exchange;
   final Value<String?> name;
   final Value<double?> price;
+  final Value<String> exchange;
   final Value<String?> exchangeShortName;
   final Value<String?> type;
+  final Value<double?> changesPercentage;
+  final Value<double?> change;
+  final Value<double?> dayLow;
+  final Value<double?> dayHigh;
+  final Value<double?> yearHigh;
+  final Value<double?> yearLow;
+  final Value<double?> marketCap;
+  final Value<double?> priceAvg50;
+  final Value<double?> priceAvg200;
+  final Value<double?> volume;
+  final Value<double?> avgVolume;
+  final Value<double?> open;
+  final Value<double?> previousClose;
+  final Value<double?> eps;
+  final Value<double?> pe;
+  final Value<String?> earningsAnnouncement;
+  final Value<double?> sharesOutstanding;
+  final Value<int?> timestamp;
   final Value<DateTime> expires;
   const StockListingTableRowDefinitionCompanion({
     this.id = const Value.absent(),
     this.symbol = const Value.absent(),
-    this.exchange = const Value.absent(),
     this.name = const Value.absent(),
     this.price = const Value.absent(),
+    this.exchange = const Value.absent(),
     this.exchangeShortName = const Value.absent(),
     this.type = const Value.absent(),
+    this.changesPercentage = const Value.absent(),
+    this.change = const Value.absent(),
+    this.dayLow = const Value.absent(),
+    this.dayHigh = const Value.absent(),
+    this.yearHigh = const Value.absent(),
+    this.yearLow = const Value.absent(),
+    this.marketCap = const Value.absent(),
+    this.priceAvg50 = const Value.absent(),
+    this.priceAvg200 = const Value.absent(),
+    this.volume = const Value.absent(),
+    this.avgVolume = const Value.absent(),
+    this.open = const Value.absent(),
+    this.previousClose = const Value.absent(),
+    this.eps = const Value.absent(),
+    this.pe = const Value.absent(),
+    this.earningsAnnouncement = const Value.absent(),
+    this.sharesOutstanding = const Value.absent(),
+    this.timestamp = const Value.absent(),
     this.expires = const Value.absent(),
   });
   StockListingTableRowDefinitionCompanion.insert({
     this.id = const Value.absent(),
     required String symbol,
-    required String exchange,
     this.name = const Value.absent(),
     this.price = const Value.absent(),
+    required String exchange,
     this.exchangeShortName = const Value.absent(),
     this.type = const Value.absent(),
+    this.changesPercentage = const Value.absent(),
+    this.change = const Value.absent(),
+    this.dayLow = const Value.absent(),
+    this.dayHigh = const Value.absent(),
+    this.yearHigh = const Value.absent(),
+    this.yearLow = const Value.absent(),
+    this.marketCap = const Value.absent(),
+    this.priceAvg50 = const Value.absent(),
+    this.priceAvg200 = const Value.absent(),
+    this.volume = const Value.absent(),
+    this.avgVolume = const Value.absent(),
+    this.open = const Value.absent(),
+    this.previousClose = const Value.absent(),
+    this.eps = const Value.absent(),
+    this.pe = const Value.absent(),
+    this.earningsAnnouncement = const Value.absent(),
+    this.sharesOutstanding = const Value.absent(),
+    this.timestamp = const Value.absent(),
     required DateTime expires,
   })  : symbol = Value(symbol),
         exchange = Value(exchange),
@@ -9046,21 +9626,58 @@ class StockListingTableRowDefinitionCompanion
   static Insertable<StockListingTableRow> custom({
     Expression<int>? id,
     Expression<String>? symbol,
-    Expression<String>? exchange,
     Expression<String>? name,
     Expression<double>? price,
+    Expression<String>? exchange,
     Expression<String>? exchangeShortName,
     Expression<String>? type,
+    Expression<double>? changesPercentage,
+    Expression<double>? change,
+    Expression<double>? dayLow,
+    Expression<double>? dayHigh,
+    Expression<double>? yearHigh,
+    Expression<double>? yearLow,
+    Expression<double>? marketCap,
+    Expression<double>? priceAvg50,
+    Expression<double>? priceAvg200,
+    Expression<double>? volume,
+    Expression<double>? avgVolume,
+    Expression<double>? open,
+    Expression<double>? previousClose,
+    Expression<double>? eps,
+    Expression<double>? pe,
+    Expression<String>? earningsAnnouncement,
+    Expression<double>? sharesOutstanding,
+    Expression<int>? timestamp,
     Expression<DateTime>? expires,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (symbol != null) 'symbol': symbol,
-      if (exchange != null) 'exchange': exchange,
       if (name != null) 'name': name,
       if (price != null) 'price': price,
+      if (exchange != null) 'exchange': exchange,
       if (exchangeShortName != null) 'exchange_short_name': exchangeShortName,
       if (type != null) 'type': type,
+      if (changesPercentage != null) 'changes_percentage': changesPercentage,
+      if (change != null) 'change': change,
+      if (dayLow != null) 'day_low': dayLow,
+      if (dayHigh != null) 'day_high': dayHigh,
+      if (yearHigh != null) 'year_high': yearHigh,
+      if (yearLow != null) 'year_low': yearLow,
+      if (marketCap != null) 'market_cap': marketCap,
+      if (priceAvg50 != null) 'price_avg50': priceAvg50,
+      if (priceAvg200 != null) 'price_avg200': priceAvg200,
+      if (volume != null) 'volume': volume,
+      if (avgVolume != null) 'avg_volume': avgVolume,
+      if (open != null) 'open': open,
+      if (previousClose != null) 'previous_close': previousClose,
+      if (eps != null) 'eps': eps,
+      if (pe != null) 'pe': pe,
+      if (earningsAnnouncement != null)
+        'earnings_announcement': earningsAnnouncement,
+      if (sharesOutstanding != null) 'shares_outstanding': sharesOutstanding,
+      if (timestamp != null) 'timestamp': timestamp,
       if (expires != null) 'expires': expires,
     });
   }
@@ -9068,20 +9685,56 @@ class StockListingTableRowDefinitionCompanion
   StockListingTableRowDefinitionCompanion copyWith(
       {Value<int>? id,
       Value<String>? symbol,
-      Value<String>? exchange,
       Value<String?>? name,
       Value<double?>? price,
+      Value<String>? exchange,
       Value<String?>? exchangeShortName,
       Value<String?>? type,
+      Value<double?>? changesPercentage,
+      Value<double?>? change,
+      Value<double?>? dayLow,
+      Value<double?>? dayHigh,
+      Value<double?>? yearHigh,
+      Value<double?>? yearLow,
+      Value<double?>? marketCap,
+      Value<double?>? priceAvg50,
+      Value<double?>? priceAvg200,
+      Value<double?>? volume,
+      Value<double?>? avgVolume,
+      Value<double?>? open,
+      Value<double?>? previousClose,
+      Value<double?>? eps,
+      Value<double?>? pe,
+      Value<String?>? earningsAnnouncement,
+      Value<double?>? sharesOutstanding,
+      Value<int?>? timestamp,
       Value<DateTime>? expires}) {
     return StockListingTableRowDefinitionCompanion(
       id: id ?? this.id,
       symbol: symbol ?? this.symbol,
-      exchange: exchange ?? this.exchange,
       name: name ?? this.name,
       price: price ?? this.price,
+      exchange: exchange ?? this.exchange,
       exchangeShortName: exchangeShortName ?? this.exchangeShortName,
       type: type ?? this.type,
+      changesPercentage: changesPercentage ?? this.changesPercentage,
+      change: change ?? this.change,
+      dayLow: dayLow ?? this.dayLow,
+      dayHigh: dayHigh ?? this.dayHigh,
+      yearHigh: yearHigh ?? this.yearHigh,
+      yearLow: yearLow ?? this.yearLow,
+      marketCap: marketCap ?? this.marketCap,
+      priceAvg50: priceAvg50 ?? this.priceAvg50,
+      priceAvg200: priceAvg200 ?? this.priceAvg200,
+      volume: volume ?? this.volume,
+      avgVolume: avgVolume ?? this.avgVolume,
+      open: open ?? this.open,
+      previousClose: previousClose ?? this.previousClose,
+      eps: eps ?? this.eps,
+      pe: pe ?? this.pe,
+      earningsAnnouncement: earningsAnnouncement ?? this.earningsAnnouncement,
+      sharesOutstanding: sharesOutstanding ?? this.sharesOutstanding,
+      timestamp: timestamp ?? this.timestamp,
       expires: expires ?? this.expires,
     );
   }
@@ -9095,20 +9748,75 @@ class StockListingTableRowDefinitionCompanion
     if (symbol.present) {
       map['symbol'] = Variable<String>(symbol.value);
     }
-    if (exchange.present) {
-      map['exchange'] = Variable<String>(exchange.value);
-    }
     if (name.present) {
       map['name'] = Variable<String>(name.value);
     }
     if (price.present) {
       map['price'] = Variable<double>(price.value);
     }
+    if (exchange.present) {
+      map['exchange'] = Variable<String>(exchange.value);
+    }
     if (exchangeShortName.present) {
       map['exchange_short_name'] = Variable<String>(exchangeShortName.value);
     }
     if (type.present) {
       map['type'] = Variable<String>(type.value);
+    }
+    if (changesPercentage.present) {
+      map['changes_percentage'] = Variable<double>(changesPercentage.value);
+    }
+    if (change.present) {
+      map['change'] = Variable<double>(change.value);
+    }
+    if (dayLow.present) {
+      map['day_low'] = Variable<double>(dayLow.value);
+    }
+    if (dayHigh.present) {
+      map['day_high'] = Variable<double>(dayHigh.value);
+    }
+    if (yearHigh.present) {
+      map['year_high'] = Variable<double>(yearHigh.value);
+    }
+    if (yearLow.present) {
+      map['year_low'] = Variable<double>(yearLow.value);
+    }
+    if (marketCap.present) {
+      map['market_cap'] = Variable<double>(marketCap.value);
+    }
+    if (priceAvg50.present) {
+      map['price_avg50'] = Variable<double>(priceAvg50.value);
+    }
+    if (priceAvg200.present) {
+      map['price_avg200'] = Variable<double>(priceAvg200.value);
+    }
+    if (volume.present) {
+      map['volume'] = Variable<double>(volume.value);
+    }
+    if (avgVolume.present) {
+      map['avg_volume'] = Variable<double>(avgVolume.value);
+    }
+    if (open.present) {
+      map['open'] = Variable<double>(open.value);
+    }
+    if (previousClose.present) {
+      map['previous_close'] = Variable<double>(previousClose.value);
+    }
+    if (eps.present) {
+      map['eps'] = Variable<double>(eps.value);
+    }
+    if (pe.present) {
+      map['pe'] = Variable<double>(pe.value);
+    }
+    if (earningsAnnouncement.present) {
+      map['earnings_announcement'] =
+          Variable<String>(earningsAnnouncement.value);
+    }
+    if (sharesOutstanding.present) {
+      map['shares_outstanding'] = Variable<double>(sharesOutstanding.value);
+    }
+    if (timestamp.present) {
+      map['timestamp'] = Variable<int>(timestamp.value);
     }
     if (expires.present) {
       map['expires'] = Variable<DateTime>(expires.value);
@@ -9121,11 +9829,29 @@ class StockListingTableRowDefinitionCompanion
     return (StringBuffer('StockListingTableRowDefinitionCompanion(')
           ..write('id: $id, ')
           ..write('symbol: $symbol, ')
-          ..write('exchange: $exchange, ')
           ..write('name: $name, ')
           ..write('price: $price, ')
+          ..write('exchange: $exchange, ')
           ..write('exchangeShortName: $exchangeShortName, ')
           ..write('type: $type, ')
+          ..write('changesPercentage: $changesPercentage, ')
+          ..write('change: $change, ')
+          ..write('dayLow: $dayLow, ')
+          ..write('dayHigh: $dayHigh, ')
+          ..write('yearHigh: $yearHigh, ')
+          ..write('yearLow: $yearLow, ')
+          ..write('marketCap: $marketCap, ')
+          ..write('priceAvg50: $priceAvg50, ')
+          ..write('priceAvg200: $priceAvg200, ')
+          ..write('volume: $volume, ')
+          ..write('avgVolume: $avgVolume, ')
+          ..write('open: $open, ')
+          ..write('previousClose: $previousClose, ')
+          ..write('eps: $eps, ')
+          ..write('pe: $pe, ')
+          ..write('earningsAnnouncement: $earningsAnnouncement, ')
+          ..write('sharesOutstanding: $sharesOutstanding, ')
+          ..write('timestamp: $timestamp, ')
           ..write('expires: $expires')
           ..write(')'))
         .toString();
@@ -13195,22 +13921,58 @@ typedef $$StockListingTableRowDefinitionTableInsertCompanionBuilder
     = StockListingTableRowDefinitionCompanion Function({
   Value<int> id,
   required String symbol,
-  required String exchange,
   Value<String?> name,
   Value<double?> price,
+  required String exchange,
   Value<String?> exchangeShortName,
   Value<String?> type,
+  Value<double?> changesPercentage,
+  Value<double?> change,
+  Value<double?> dayLow,
+  Value<double?> dayHigh,
+  Value<double?> yearHigh,
+  Value<double?> yearLow,
+  Value<double?> marketCap,
+  Value<double?> priceAvg50,
+  Value<double?> priceAvg200,
+  Value<double?> volume,
+  Value<double?> avgVolume,
+  Value<double?> open,
+  Value<double?> previousClose,
+  Value<double?> eps,
+  Value<double?> pe,
+  Value<String?> earningsAnnouncement,
+  Value<double?> sharesOutstanding,
+  Value<int?> timestamp,
   required DateTime expires,
 });
 typedef $$StockListingTableRowDefinitionTableUpdateCompanionBuilder
     = StockListingTableRowDefinitionCompanion Function({
   Value<int> id,
   Value<String> symbol,
-  Value<String> exchange,
   Value<String?> name,
   Value<double?> price,
+  Value<String> exchange,
   Value<String?> exchangeShortName,
   Value<String?> type,
+  Value<double?> changesPercentage,
+  Value<double?> change,
+  Value<double?> dayLow,
+  Value<double?> dayHigh,
+  Value<double?> yearHigh,
+  Value<double?> yearLow,
+  Value<double?> marketCap,
+  Value<double?> priceAvg50,
+  Value<double?> priceAvg200,
+  Value<double?> volume,
+  Value<double?> avgVolume,
+  Value<double?> open,
+  Value<double?> previousClose,
+  Value<double?> eps,
+  Value<double?> pe,
+  Value<String?> earningsAnnouncement,
+  Value<double?> sharesOutstanding,
+  Value<int?> timestamp,
   Value<DateTime> expires,
 });
 
@@ -13240,41 +14002,113 @@ class $$StockListingTableRowDefinitionTableTableManager
           getUpdateCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             Value<String> symbol = const Value.absent(),
-            Value<String> exchange = const Value.absent(),
             Value<String?> name = const Value.absent(),
             Value<double?> price = const Value.absent(),
+            Value<String> exchange = const Value.absent(),
             Value<String?> exchangeShortName = const Value.absent(),
             Value<String?> type = const Value.absent(),
+            Value<double?> changesPercentage = const Value.absent(),
+            Value<double?> change = const Value.absent(),
+            Value<double?> dayLow = const Value.absent(),
+            Value<double?> dayHigh = const Value.absent(),
+            Value<double?> yearHigh = const Value.absent(),
+            Value<double?> yearLow = const Value.absent(),
+            Value<double?> marketCap = const Value.absent(),
+            Value<double?> priceAvg50 = const Value.absent(),
+            Value<double?> priceAvg200 = const Value.absent(),
+            Value<double?> volume = const Value.absent(),
+            Value<double?> avgVolume = const Value.absent(),
+            Value<double?> open = const Value.absent(),
+            Value<double?> previousClose = const Value.absent(),
+            Value<double?> eps = const Value.absent(),
+            Value<double?> pe = const Value.absent(),
+            Value<String?> earningsAnnouncement = const Value.absent(),
+            Value<double?> sharesOutstanding = const Value.absent(),
+            Value<int?> timestamp = const Value.absent(),
             Value<DateTime> expires = const Value.absent(),
           }) =>
               StockListingTableRowDefinitionCompanion(
             id: id,
             symbol: symbol,
-            exchange: exchange,
             name: name,
             price: price,
+            exchange: exchange,
             exchangeShortName: exchangeShortName,
             type: type,
+            changesPercentage: changesPercentage,
+            change: change,
+            dayLow: dayLow,
+            dayHigh: dayHigh,
+            yearHigh: yearHigh,
+            yearLow: yearLow,
+            marketCap: marketCap,
+            priceAvg50: priceAvg50,
+            priceAvg200: priceAvg200,
+            volume: volume,
+            avgVolume: avgVolume,
+            open: open,
+            previousClose: previousClose,
+            eps: eps,
+            pe: pe,
+            earningsAnnouncement: earningsAnnouncement,
+            sharesOutstanding: sharesOutstanding,
+            timestamp: timestamp,
             expires: expires,
           ),
           getInsertCompanionBuilder: ({
             Value<int> id = const Value.absent(),
             required String symbol,
-            required String exchange,
             Value<String?> name = const Value.absent(),
             Value<double?> price = const Value.absent(),
+            required String exchange,
             Value<String?> exchangeShortName = const Value.absent(),
             Value<String?> type = const Value.absent(),
+            Value<double?> changesPercentage = const Value.absent(),
+            Value<double?> change = const Value.absent(),
+            Value<double?> dayLow = const Value.absent(),
+            Value<double?> dayHigh = const Value.absent(),
+            Value<double?> yearHigh = const Value.absent(),
+            Value<double?> yearLow = const Value.absent(),
+            Value<double?> marketCap = const Value.absent(),
+            Value<double?> priceAvg50 = const Value.absent(),
+            Value<double?> priceAvg200 = const Value.absent(),
+            Value<double?> volume = const Value.absent(),
+            Value<double?> avgVolume = const Value.absent(),
+            Value<double?> open = const Value.absent(),
+            Value<double?> previousClose = const Value.absent(),
+            Value<double?> eps = const Value.absent(),
+            Value<double?> pe = const Value.absent(),
+            Value<String?> earningsAnnouncement = const Value.absent(),
+            Value<double?> sharesOutstanding = const Value.absent(),
+            Value<int?> timestamp = const Value.absent(),
             required DateTime expires,
           }) =>
               StockListingTableRowDefinitionCompanion.insert(
             id: id,
             symbol: symbol,
-            exchange: exchange,
             name: name,
             price: price,
+            exchange: exchange,
             exchangeShortName: exchangeShortName,
             type: type,
+            changesPercentage: changesPercentage,
+            change: change,
+            dayLow: dayLow,
+            dayHigh: dayHigh,
+            yearHigh: yearHigh,
+            yearLow: yearLow,
+            marketCap: marketCap,
+            priceAvg50: priceAvg50,
+            priceAvg200: priceAvg200,
+            volume: volume,
+            avgVolume: avgVolume,
+            open: open,
+            previousClose: previousClose,
+            eps: eps,
+            pe: pe,
+            earningsAnnouncement: earningsAnnouncement,
+            sharesOutstanding: sharesOutstanding,
+            timestamp: timestamp,
             expires: expires,
           ),
         ));
@@ -13306,11 +14140,6 @@ class $$StockListingTableRowDefinitionTableFilterComposer
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
-  ColumnFilters<String> get exchange => $state.composableBuilder(
-      column: $state.table.exchange,
-      builder: (column, joinBuilders) =>
-          ColumnFilters(column, joinBuilders: joinBuilders));
-
   ColumnFilters<String> get name => $state.composableBuilder(
       column: $state.table.name,
       builder: (column, joinBuilders) =>
@@ -13321,6 +14150,11 @@ class $$StockListingTableRowDefinitionTableFilterComposer
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
+  ColumnFilters<String> get exchange => $state.composableBuilder(
+      column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
   ColumnFilters<String> get exchangeShortName => $state.composableBuilder(
       column: $state.table.exchangeShortName,
       builder: (column, joinBuilders) =>
@@ -13328,6 +14162,96 @@ class $$StockListingTableRowDefinitionTableFilterComposer
 
   ColumnFilters<String> get type => $state.composableBuilder(
       column: $state.table.type,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get changesPercentage => $state.composableBuilder(
+      column: $state.table.changesPercentage,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get change => $state.composableBuilder(
+      column: $state.table.change,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get dayLow => $state.composableBuilder(
+      column: $state.table.dayLow,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get dayHigh => $state.composableBuilder(
+      column: $state.table.dayHigh,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get yearHigh => $state.composableBuilder(
+      column: $state.table.yearHigh,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get yearLow => $state.composableBuilder(
+      column: $state.table.yearLow,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get marketCap => $state.composableBuilder(
+      column: $state.table.marketCap,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get priceAvg50 => $state.composableBuilder(
+      column: $state.table.priceAvg50,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get priceAvg200 => $state.composableBuilder(
+      column: $state.table.priceAvg200,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get volume => $state.composableBuilder(
+      column: $state.table.volume,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get avgVolume => $state.composableBuilder(
+      column: $state.table.avgVolume,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get open => $state.composableBuilder(
+      column: $state.table.open,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get previousClose => $state.composableBuilder(
+      column: $state.table.previousClose,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get eps => $state.composableBuilder(
+      column: $state.table.eps,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get pe => $state.composableBuilder(
+      column: $state.table.pe,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<String> get earningsAnnouncement => $state.composableBuilder(
+      column: $state.table.earningsAnnouncement,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<double> get sharesOutstanding => $state.composableBuilder(
+      column: $state.table.sharesOutstanding,
+      builder: (column, joinBuilders) =>
+          ColumnFilters(column, joinBuilders: joinBuilders));
+
+  ColumnFilters<int> get timestamp => $state.composableBuilder(
+      column: $state.table.timestamp,
       builder: (column, joinBuilders) =>
           ColumnFilters(column, joinBuilders: joinBuilders));
 
@@ -13350,11 +14274,6 @@ class $$StockListingTableRowDefinitionTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
-  ColumnOrderings<String> get exchange => $state.composableBuilder(
-      column: $state.table.exchange,
-      builder: (column, joinBuilders) =>
-          ColumnOrderings(column, joinBuilders: joinBuilders));
-
   ColumnOrderings<String> get name => $state.composableBuilder(
       column: $state.table.name,
       builder: (column, joinBuilders) =>
@@ -13365,6 +14284,11 @@ class $$StockListingTableRowDefinitionTableOrderingComposer
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
+  ColumnOrderings<String> get exchange => $state.composableBuilder(
+      column: $state.table.exchange,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
   ColumnOrderings<String> get exchangeShortName => $state.composableBuilder(
       column: $state.table.exchangeShortName,
       builder: (column, joinBuilders) =>
@@ -13372,6 +14296,96 @@ class $$StockListingTableRowDefinitionTableOrderingComposer
 
   ColumnOrderings<String> get type => $state.composableBuilder(
       column: $state.table.type,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get changesPercentage => $state.composableBuilder(
+      column: $state.table.changesPercentage,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get change => $state.composableBuilder(
+      column: $state.table.change,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get dayLow => $state.composableBuilder(
+      column: $state.table.dayLow,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get dayHigh => $state.composableBuilder(
+      column: $state.table.dayHigh,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get yearHigh => $state.composableBuilder(
+      column: $state.table.yearHigh,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get yearLow => $state.composableBuilder(
+      column: $state.table.yearLow,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get marketCap => $state.composableBuilder(
+      column: $state.table.marketCap,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get priceAvg50 => $state.composableBuilder(
+      column: $state.table.priceAvg50,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get priceAvg200 => $state.composableBuilder(
+      column: $state.table.priceAvg200,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get volume => $state.composableBuilder(
+      column: $state.table.volume,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get avgVolume => $state.composableBuilder(
+      column: $state.table.avgVolume,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get open => $state.composableBuilder(
+      column: $state.table.open,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get previousClose => $state.composableBuilder(
+      column: $state.table.previousClose,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get eps => $state.composableBuilder(
+      column: $state.table.eps,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get pe => $state.composableBuilder(
+      column: $state.table.pe,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<String> get earningsAnnouncement => $state.composableBuilder(
+      column: $state.table.earningsAnnouncement,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<double> get sharesOutstanding => $state.composableBuilder(
+      column: $state.table.sharesOutstanding,
+      builder: (column, joinBuilders) =>
+          ColumnOrderings(column, joinBuilders: joinBuilders));
+
+  ColumnOrderings<int> get timestamp => $state.composableBuilder(
+      column: $state.table.timestamp,
       builder: (column, joinBuilders) =>
           ColumnOrderings(column, joinBuilders: joinBuilders));
 
