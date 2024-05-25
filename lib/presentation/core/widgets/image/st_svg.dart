@@ -5,14 +5,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stockz/presentation/core/accessibility/accessibility.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 
-class StSvgImage extends StatelessWidget {
+class StSvg extends StatelessWidget {
   final String asset;
   final double width;
   final double height;
   final Color? color;
   final bool accessibilityScaling;
 
-  const StSvgImage(
+  const StSvg(
       this.asset, {
         super.key,
         required this.width,

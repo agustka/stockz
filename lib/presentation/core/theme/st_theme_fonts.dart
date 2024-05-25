@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:stockz/presentation/core/theme/st_theme.dart';
 
 class StThemeFonts {
-  final ThemeData _theme;
+  StThemeFonts();
 
-  StThemeFonts(this._theme);
-
-  TextStyle get _template => _theme.textTheme.bodyLarge!;
+  TextStyle get _template => GoogleFonts.lato();
 
   TextStyle get body11 => _template.copyWith(fontSize: 11);
 
@@ -24,7 +23,9 @@ class StThemeFonts {
 
   TextStyle get body22 => _template.copyWith(fontSize: 22);
 
-  TextStyle get body25 => _template.copyWith(fontSize: 25);
+  TextStyle get body24 => _template.copyWith(fontSize: 24);
+
+  TextStyle get body30 => _template.copyWith(fontSize: 30);
 
   TextStyle get body32 => _template.copyWith(fontSize: 32);
 

@@ -1,8 +1,6 @@
 import 'package:intl/intl.dart';
-import 'package:stockz/core/assets/assets.gen.dart';
 import 'package:stockz/domain/core/value_objects/failures/failure.dart';
 import 'package:stockz/domain/core/value_objects/value_object.dart';
-import 'package:stockz/presentation/core/localization/l10n.dart';
 
 class ExchangeSymbolValueObject extends ValueObject<String> {
   String get get => getOr("");

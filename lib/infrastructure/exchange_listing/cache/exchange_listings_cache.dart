@@ -18,7 +18,6 @@ class ExchangeListingsCache with BaseCache {
 
   ExchangeListingsCache(this.stockListingsDao);
 
-  @override
   Future<Cache<List<String>>> getExchangeSymbols({
     CachingPolicy policy = CachingPolicy.alwaysProvide,
   }) {
@@ -32,7 +31,6 @@ class ExchangeListingsCache with BaseCache {
     );
   }
 
-  @override
   Future addExchangeListings({required List<ExchangeListingModel> listings, required String exchangeSymbol}) {
     final Future added = stockListingsDao.addExchangeListings(
       listings: listings,
@@ -43,7 +41,6 @@ class ExchangeListingsCache with BaseCache {
     return added;
   }
 
-  @override
   Future addExchangeSymbols({required List<String> symbols}) {
     final Future added = stockListingsDao.addExchangeSymbols(
       symbols: symbols,
@@ -53,7 +50,6 @@ class ExchangeListingsCache with BaseCache {
     return added;
   }
 
-  @override
   Future addExchange({required ExchangeModel exchange, required String exchangeSymbol}) {
     final Future added = stockListingsDao.addExchange(
       exchange: exchange,
@@ -64,7 +60,6 @@ class ExchangeListingsCache with BaseCache {
     return added;
   }
 
-  @override
   Future<Cache<ExchangeModel>> getExchange({required String exchangeSymbol, required CachingPolicy policy}) {
     return serveCache(
       policy: policy,
@@ -76,7 +71,6 @@ class ExchangeListingsCache with BaseCache {
     );
   }
 
-  @override
   Future<Cache<List<ExchangeListingModel>>> getExchangeListings({
     required String exchangeSymbol,
     required CachingPolicy policy,

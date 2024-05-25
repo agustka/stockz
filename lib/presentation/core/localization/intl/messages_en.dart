@@ -79,6 +79,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Failed to connect"),
         "more": MessageLookupByLibrary.simpleMessage("More"),
         "overview": MessageLookupByLibrary.simpleMessage("Overview"),
+        "overview_stock_exchanges":
+            MessageLookupByLibrary.simpleMessage("Stock exchanges"),
+        "overview_stock_exchanges_explanation":
+            MessageLookupByLibrary.simpleMessage("All tradeable markets"),
         "page_not_found_message": MessageLookupByLibrary.simpleMessage(
             "This request has been closed temporarily, please try again shortly. We apologise for any inconvenience this may cause. Code 560."),
         "retry": MessageLookupByLibrary.simpleMessage("Try again"),

@@ -4,7 +4,9 @@ import 'package:stockz/application/overview/overview_cubit.dart';
 import 'package:stockz/domain/chart/entities/impulse_macd.dart';
 import 'package:stockz/domain/company/entities/company.dart';
 import 'package:stockz/domain/exchange_listing/value_objects/exchange_symbol_value_object.dart';
+import 'package:stockz/presentation/core/localization/l10n.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
+import 'package:stockz/presentation/core/widgets/text/st_feature_heading.dart';
 import 'package:stockz/setup.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -55,31 +57,39 @@ class _OverviewContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StRefreshIndicator(
-      onRefresh: () async {
-        context.read<OverviewCubit>().getData(forceGet: true);
-      },
-      child: ListView.separated(
-        itemCount: exchanges.length,
-        separatorBuilder: (BuildContext context, int index) {
-          return const StDivider();
-        },
-        itemBuilder: (BuildContext context, int index) {
-          return StListTile(
-            onTap: () {
-              context.read<OverviewCubit>().gotoExchange(exchangeSymbol: exchanges[index].get);
+    return Column(
+      children: [
+        StFeatureHeading(text: S.of(context).overview_stock_exchanges, subText: S.of(context).overview_stock_exchanges_explanation,),
+        Expanded(
+          child: StRefreshIndicator(
+            onRefresh: () async {
+              context.read<OverviewCubit>().getData(forceGet: true);
             },
-            leading: StSvgImage(
-              exchanges[index].getExchangeFlag(),
-              width: 24,
-              height: 24,
+            child: ListView.separated(
+              itemCount: exchanges.length,
+              separatorBuilder: (BuildContext context, int index) {
+                return const StDivider();
+              },
+              itemBuilder: (BuildContext context, int index) {
+                return StListTile(
+                  onTap: () {
+                    context.read<OverviewCubit>().gotoExchange(exchangeSymbol: exchanges[index].get);
+                  },
+                  leading: StSvg(
+                    exchanges[index].getExchangeFlag(),
+                    width: 24,
+                    height: 24,
+                  ),
+                  leadingText: exchanges[index].getExchangeName(),
+                  leadingTextStyle: StTheme.of(context).fonts.body16.bold,
+                  subLeadingText: exchanges[index].getExchangeCountry(),
+                  trailingText: exchanges[index].get,
+                );
+              },
             ),
-            leadingText: exchanges[index].getExchangeName(),
-            subLeadingText: exchanges[index].getExchangeCountry(),
-            trailingText: exchanges[index].get,
-          );
-        },
-      ),
+          ),
+        ),
+      ],
     );
   }
 }

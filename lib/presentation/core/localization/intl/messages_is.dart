@@ -80,6 +80,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Tenging tókst ekki"),
         "more": MessageLookupByLibrary.simpleMessage("Meira"),
         "overview": MessageLookupByLibrary.simpleMessage("Yfirlit"),
+        "overview_stock_exchanges":
+            MessageLookupByLibrary.simpleMessage("Verðbréfamarkaðir"),
+        "overview_stock_exchanges_explanation":
+            MessageLookupByLibrary.simpleMessage("Allir virkir markaðir"),
         "page_not_found_message": MessageLookupByLibrary.simpleMessage(
             "Þessari aðgerð hefur verið lokað tímabundið. vinsamlegast reyndu aftur síðar. Við biðjumst afsökunar á þeim óþægindum sem þetta kann að valda. Kóði 560."),
         "retry": MessageLookupByLibrary.simpleMessage("Reyna aftur"),

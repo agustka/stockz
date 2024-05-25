@@ -22,7 +22,7 @@ class StTheme extends ChangeNotifier {
 
   static const EdgeInsets sideInsets = EdgeInsets.symmetric(horizontal: sidePadding);
 
-  late StThemeFonts _fonts = StThemeFonts(theme);
+  late StThemeFonts _fonts = StThemeFonts();
 
   Brightness? get brightness => PlatformDispatcher.instance.platformBrightness;
 
@@ -89,7 +89,7 @@ class StTheme extends ChangeNotifier {
     });
 
     _themeMode = themeMode;
-    _fonts = StThemeFonts(theme);
+    _fonts = StThemeFonts();
 
     notifyListeners();
   }
@@ -115,7 +115,7 @@ class StTheme extends ChangeNotifier {
     }
 
     SystemChrome.setSystemUIOverlayStyle(chrome.normal);
-    _fonts = StThemeFonts(theme);
+    _fonts = StThemeFonts();
     notifyListeners();
   }
 }

@@ -190,6 +190,26 @@ class S {
     );
   }
 
+  /// `Verðbréfamarkaðir`
+  String get overview_stock_exchanges {
+    return Intl.message(
+      'Verðbréfamarkaðir',
+      name: 'overview_stock_exchanges',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allir virkir markaðir`
+  String get overview_stock_exchanges_explanation {
+    return Intl.message(
+      'Allir virkir markaðir',
+      name: 'overview_stock_exchanges_explanation',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Bandaríkin`
   String get US {
     return Intl.message(
