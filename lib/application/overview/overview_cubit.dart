@@ -45,6 +45,8 @@ class OverviewCubit extends Cubit<OverviewState> with AnalyticsHelper {
   }
 
   void gotoExchange({required String exchangeSymbol}) {
-    getIt<NavigationCubit>().navigate(routeLink: RouteLink.stockExchange(exchangeSymbol: exchangeSymbol));
+    getIt<NavigationCubit>().navigate(
+      routeLink: RouteLink.stockExchange(exchangeSymbol: exchangeSymbol),
+    );
   }
 }

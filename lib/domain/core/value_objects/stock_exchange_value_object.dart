@@ -27,6 +27,7 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
   static StockExchange _parse(String? input, {required bool logError}) {
     switch (input?.toLowerCase() ?? "") {
       case "new york stock exchange":
+      case "nyse":
         return StockExchange.newYorkStockExchange;
       case "new york stock exchange arca":
         return StockExchange.newYorkStockExchangeArca;
@@ -116,6 +117,8 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
 
       case "johannesburg":
         return StockExchange.johannesburg;
+      case "cai":
+        return StockExchange.cairo;
 
       case "tel aviv":
         return StockExchange.telAviv;
@@ -193,6 +196,8 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
         return StockExchange.iceland;
       case "nordic growth market":
         return StockExchange.nordicGrowthMarket;
+      case "ice":
+        return StockExchange.icelandStockMarket;
 
       case "invalid":
         return StockExchange.invalid;
@@ -258,6 +263,7 @@ enum StockExchange {
   nzse,
 
   johannesburg,
+  cairo,
 
   telAviv,
   istanbulStockExchange,
@@ -296,6 +302,7 @@ enum StockExchange {
   budapest,
   riga,
   iceland,
+  icelandStockMarket,
   nordicGrowthMarket,
 
   invalid,

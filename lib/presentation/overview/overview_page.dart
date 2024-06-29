@@ -63,6 +63,7 @@ class _OverviewContent extends StatelessWidget {
           text: S.of(context).overview_stock_exchanges,
           subText: S.of(context).overview_stock_exchanges_explanation,
         ),
+        const SizedBox(height: 24),
         Expanded(
           child: StRefreshIndicator(
             onRefresh: () async {
