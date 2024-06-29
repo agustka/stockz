@@ -84,7 +84,7 @@ class _StFeatureErrorState extends State<StFeatureError> {
                           ),
                           const SizedBox(height: 24),
                           Expanded(
-                            child: Text(widget.message, style: StTheme.of(context).fonts.body20.light),
+                            child: StText(widget.message, style: StTheme.of(context).fonts.body20.light),
                           ),
                           if (widget.retryEnabled)
                             Padding(

@@ -1,8 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:stockz/presentation/core/accessibility/accessibility.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
 
 enum StButtonStyle {
@@ -117,18 +115,17 @@ class StButton extends StatelessWidget {
     }
 
     final Color textColor = _getTextColor(theme);
-    final double iconHeight = 24.0 * Accessibility.of(context).uiScale;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           if (icon != null) ...[
-            SvgPicture.asset(icon!, height: iconHeight, colorFilter: textColor.svg),
+            StSvg(icon!, height: 24, width: 24, color: textColor),
             const SizedBox(width: 13.0),
           ],
           Flexible(
-            child: Text(
+            child: StText(
               text ?? "",
               maxLines: maxLines,
               overflow: maxLines != null ? TextOverflow.ellipsis : null,

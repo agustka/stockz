@@ -100,22 +100,22 @@ class StTheme extends ChangeNotifier {
   static ColorScheme _createScheme(ThemeMode theme) {
     return _scheme ??= ColorScheme(
       brightness: theme == ThemeMode.dark ? Brightness.dark : Brightness.light,
-      primary: _buildMaterialColor(const Color(0xff114B5F)),
-        primaryFixedDim: _buildMaterialColor(const Color(0xff445566)),
+      primary: _buildMaterialColor(const Color(0xfff00067)),
+      primaryFixedDim: _buildMaterialColor(const Color(0xff82093e)),
       onPrimary: _buildMaterialColor(const Color(0xfffafafa)),
       secondary: _buildMaterialColor(const Color(0xffEC7D10)),
       onSecondary: _buildMaterialColor(const Color(0xffffffff)),
       tertiary: _buildMaterialColor(const Color(0xff2E933C)),
       onTertiary: _buildMaterialColor(const Color(0xffffffff)),
-      error: _buildMaterialColor(const Color(0xff9E2A2B)),
+      error: _buildMaterialColor(const Color(0xffff1122)),
       onError: _buildMaterialColor(const Color(0xffffffff)),
-      errorContainer: _buildMaterialColor(const Color(0xffFF006E)),
+      errorContainer: _buildMaterialColor(const Color(0xffffffff)),
       onErrorContainer: _buildMaterialColor(const Color(0xffffffff)),
       surface: _buildMaterialColor(const Color(0xfff3f3f3)),
       onSurface: _buildMaterialColor(const Color(0xff1d1d1d)),
-      onSurfaceVariant: _buildMaterialColor(const Color(0xff7d7d7d)),
-      surfaceContainerHighest: _buildMaterialColor(const Color(0xffC9DAEA)),
-      scrim: _buildMaterialColor(const Color(0x661d1d1d)),
+      onSurfaceVariant: _buildMaterialColor(const Color(0xffe4e4e4)),
+      surfaceContainerHighest: _buildMaterialColor(const Color(0xffffffff)),
+      scrim: _buildMaterialColor(const Color(0x66838383)),
     );
   }
 }

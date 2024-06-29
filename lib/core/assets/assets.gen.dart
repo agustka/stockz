@@ -19,38 +19,75 @@ class $AssetsConfigGen {
   List<String> get values => [buildConfig];
 }
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/ic_back.svg
+  String get icBack => 'assets/icons/ic_back.svg';
+
+  /// File path: assets/icons/ic_check2_circle.svg
+  String get icCheck2Circle => 'assets/icons/ic_check2_circle.svg';
+
+  /// File path: assets/icons/ic_exclamation_diamond.svg
+  String get icExclamationDiamond => 'assets/icons/ic_exclamation_diamond.svg';
+
+  /// File path: assets/icons/ic_hourglass_split.svg
+  String get icHourglassSplit => 'assets/icons/ic_hourglass_split.svg';
+
+  /// File path: assets/icons/ic_info_circle.svg
+  String get icInfoCircle => 'assets/icons/ic_info_circle.svg';
+
+  /// File path: assets/icons/ic_nav_bills.svg
+  String get icNavBills => 'assets/icons/ic_nav_bills.svg';
+
+  /// File path: assets/icons/ic_nav_frida.svg
+  String get icNavFrida => 'assets/icons/ic_nav_frida.svg';
+
+  /// File path: assets/icons/ic_nav_more.svg
+  String get icNavMore => 'assets/icons/ic_nav_more.svg';
+
+  /// File path: assets/icons/ic_slash_circle.svg
+  String get icSlashCircle => 'assets/icons/ic_slash_circle.svg';
+
+  /// File path: assets/icons/ic_speedometer.svg
+  String get icSpeedometer => 'assets/icons/ic_speedometer.svg';
+
+  /// File path: assets/icons/ic_three_dots.svg
+  String get icThreeDots => 'assets/icons/ic_three_dots.svg';
+
+  /// File path: assets/icons/ic_transfer.svg
+  String get icTransfer => 'assets/icons/ic_transfer.svg';
+
+  /// File path: assets/icons/ic_transparent.svg
+  String get icTransparent => 'assets/icons/ic_transparent.svg';
+
+  /// File path: assets/icons/ic_x.svg
+  String get icX => 'assets/icons/ic_x.svg';
+
+  /// List of all assets
+  List<String> get values => [
+        icBack,
+        icCheck2Circle,
+        icExclamationDiamond,
+        icHourglassSplit,
+        icInfoCircle,
+        icNavBills,
+        icNavFrida,
+        icNavMore,
+        icSlashCircle,
+        icSpeedometer,
+        icThreeDots,
+        icTransfer,
+        icTransparent,
+        icX
+      ];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// Directory path: assets/images/flags
   $AssetsImagesFlagsGen get flags => const $AssetsImagesFlagsGen();
-
-  /// File path: assets/images/ic_back.svg
-  String get icBack => 'assets/images/ic_back.svg';
-
-  /// File path: assets/images/ic_cancel_cross.svg
-  String get icCancelCross => 'assets/images/ic_cancel_cross.svg';
-
-  /// File path: assets/images/ic_home.svg
-  String get icHome => 'assets/images/ic_home.svg';
-
-  /// File path: assets/images/ic_nav_bills.svg
-  String get icNavBills => 'assets/images/ic_nav_bills.svg';
-
-  /// File path: assets/images/ic_nav_frida.svg
-  String get icNavFrida => 'assets/images/ic_nav_frida.svg';
-
-  /// File path: assets/images/ic_nav_more.svg
-  String get icNavMore => 'assets/images/ic_nav_more.svg';
-
-  /// File path: assets/images/ic_three_dots.svg
-  String get icThreeDots => 'assets/images/ic_three_dots.svg';
-
-  /// File path: assets/images/ic_transfer.svg
-  String get icTransfer => 'assets/images/ic_transfer.svg';
-
-  /// File path: assets/images/ic_transparent.svg
-  String get icTransparent => 'assets/images/ic_transparent.svg';
 
   /// File path: assets/images/img_alert.webp
   AssetGenImage get imgAlert => const AssetGenImage('assets/images/img_alert.webp');
@@ -59,19 +96,7 @@ class $AssetsImagesGen {
   AssetGenImage get imgError => const AssetGenImage('assets/images/img_error.webp');
 
   /// List of all assets
-  List<dynamic> get values => [
-        icBack,
-        icCancelCross,
-        icHome,
-        icNavBills,
-        icNavFrida,
-        icNavMore,
-        icThreeDots,
-        icTransfer,
-        icTransparent,
-        imgAlert,
-        imgError
-      ];
+  List<AssetGenImage> get values => [imgAlert, imgError];
 }
 
 class $AssetsTestGen {
@@ -1202,6 +1227,7 @@ class AppAssets {
   AppAssets._();
 
   static const $AssetsConfigGen config = $AssetsConfigGen();
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
   static const $AssetsTestGen test = $AssetsTestGen();
 }

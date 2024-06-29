@@ -91,6 +91,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
                 "Dragðu til að loka skúffunni."),
         "semantics_tap_to_dismiss": MessageLookupByLibrary.simpleMessage(
-            "Smelltu hvar sem er til að fara til baka")
+            "Smelltu hvar sem er til að fara til baka"),
+        "stock_exchange_error_loading_exchange":
+            MessageLookupByLibrary.simpleMessage("Villa við að hlaða markaði"),
+        "stock_exchange_error_loading_exchange_listings":
+            MessageLookupByLibrary.simpleMessage("Villa við að hlaða félögum")
       };
 }

@@ -16,6 +16,8 @@
   "date_short_format_no_year_single_digit": "d. MMMM",
   "overview_stock_exchanges": "Stock exchanges",
   "overview_stock_exchanges_explanation": "All tradeable markets",
+  "stock_exchange_error_loading_exchange": "Error loading exchange",
+  "stock_exchange_error_loading_exchange_listings": "Error loading exchange listings",
   "US": "United States",
   "NL": "Netherlands",
   "CA": "Canada",

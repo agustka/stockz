@@ -27,8 +27,8 @@ class StLoadingBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _Shimmer.fromColors(
-      highlightColor: StTheme.of(context).scheme.secondary.withAlpha(100),
-      baseColor: baseColor ?? StTheme.of(context).scheme.primary,
+      highlightColor: StTheme.of(context).scheme.onSurfaceVariant,
+      baseColor: baseColor ?? StTheme.of(context).scheme.scrim,
       child: DecoratedBox(
         decoration: BoxDecoration(
           borderRadius: customBorderRadius ?? BorderRadius.circular(borderRadius),

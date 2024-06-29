@@ -89,6 +89,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "semantics_drag_down_to_dismiss_drawer":
             MessageLookupByLibrary.simpleMessage("Drag to dismiss the drawer."),
         "semantics_tap_to_dismiss":
-            MessageLookupByLibrary.simpleMessage("Tap anywhere to dismiss")
+            MessageLookupByLibrary.simpleMessage("Tap anywhere to dismiss"),
+        "stock_exchange_error_loading_exchange":
+            MessageLookupByLibrary.simpleMessage("Error loading exchange"),
+        "stock_exchange_error_loading_exchange_listings":
+            MessageLookupByLibrary.simpleMessage(
+                "Error loading exchange listings")
       };
 }

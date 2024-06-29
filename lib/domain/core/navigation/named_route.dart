@@ -5,11 +5,14 @@ import 'package:stockz/infrastructure/core/error_handling/error_handler.dart';
 import 'package:stockz/presentation/core/root_page.dart';
 import 'package:stockz/presentation/core/widgets/dialogs/st_alert_dialog.dart';
 import 'package:stockz/presentation/core/widgets/page_not_found/page_not_found_page.dart';
+import 'package:stockz/presentation/overview/stock_exchange/stock_exchange_page.dart';
 
 class PageName {
   static const String root = "/";
   static const String alertDialog = "/alert-dialog";
   static const String pageNotFound = "/page-not-found";
+
+  static const String stockExchange = "/stock-exchange";
 }
 
 @immutable
@@ -54,6 +57,12 @@ class NamedRoute extends Equatable {
     animation: PageAnimation.adaptive,
   );
 
+  factory NamedRoute.stockExchange() => const NamedRoute._(
+    creator: StockExchangePage.creator,
+    name: PageName.stockExchange,
+    animation: PageAnimation.adaptive,
+  );
+
   factory NamedRoute.parse(String path) {
     switch (path) {
       case PageName.root:
@@ -64,6 +73,9 @@ class NamedRoute extends Equatable {
 
       case PageName.alertDialog:
         return NamedRoute.alertDialog();
+
+      case PageName.stockExchange:
+        return NamedRoute.stockExchange();
 
       default:
         err("Could not find flutter page $path. Showing 404 page instead");

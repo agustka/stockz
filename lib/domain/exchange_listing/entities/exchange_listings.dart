@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:stockz/domain/core/value_objects/number_value_object.dart';
 import 'package:stockz/domain/core/value_objects/security_type_value_object.dart';
@@ -6,15 +7,32 @@ import 'package:stockz/domain/core/value_objects/string_id_value_objec.dart';
 import 'package:stockz/domain/core/value_objects/text_value_object.dart';
 
 @immutable
-class StockListings {
+class StockListings extends Equatable {
   final StringIdValueObject exchangeSymbol;
   final List<ExchangeListing> listings;
+  final bool valid;
 
-  const StockListings({required this.exchangeSymbol, required this.listings});
+  bool get isInvalid => !valid;
+
+  const StockListings({required this.exchangeSymbol, required this.listings, this.valid = true});
+
+  const factory StockListings.invalid() = _$InvalidStockListings;
+
+  @override
+  List<Object?> get props => [exchangeSymbol, listings, valid];
+}
+
+class _$InvalidStockListings extends StockListings {
+  const _$InvalidStockListings()
+      : super(
+          exchangeSymbol: const StringIdValueObject.invalid(),
+          listings: const [],
+          valid: false,
+        );
 }
 
 @immutable
-class ExchangeListing {
+class ExchangeListing extends Equatable {
   final StringIdValueObject symbol;
   final TextValueObject name;
   final NumberValueObject price;
@@ -30,4 +48,14 @@ class ExchangeListing {
     required this.exchangeShortName,
     required this.type,
   });
+
+  @override
+  List<Object?> get props => [
+        symbol,
+        name,
+        price,
+        exchange,
+        exchangeShortName,
+        type,
+      ];
 }

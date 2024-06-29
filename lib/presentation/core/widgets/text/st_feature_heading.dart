@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:stockz/application/core/navigation/navigation_cubit.dart';
 import 'package:stockz/domain/core/navigation/named_route.dart';
 import 'package:stockz/presentation/core/accessibility/accessibility.dart';
@@ -14,36 +12,50 @@ enum StFeatureHeadingSize {
   small,
 }
 
-extension _StFeatureHeadingSizeX on StFeatureHeadingSize {
+enum StFeatureHeadingStyle {
+  normal,
+  primary,
+}
+
+extension StFeatureHeadingSizeX on StFeatureHeadingSize {
   TextStyle _getTitleFontStyle(StThemeFonts fonts) => switch (this) {
-    StFeatureHeadingSize.huge => fonts.body30.bold.primary,
-    StFeatureHeadingSize.large => fonts.body24.bold.primary,
-    StFeatureHeadingSize.medium => fonts.body22.bold.primary,
-    StFeatureHeadingSize.small => fonts.body20.bold.primary,
-  };
+        StFeatureHeadingSize.huge => fonts.body30.bold.primary,
+        StFeatureHeadingSize.large => fonts.body24.bold.primary,
+        StFeatureHeadingSize.medium => fonts.body22.bold.primary,
+        StFeatureHeadingSize.small => fonts.body20.bold.primary,
+      };
 
   double _getTrailingIconSize(TextScaler scaler, StThemeFonts fonts) => switch (this) {
-    StFeatureHeadingSize.huge => scaler.scale(fonts.body30.bold.fontSize!),
-    StFeatureHeadingSize.large => scaler.scale(fonts.body24.bold.fontSize!),
-    StFeatureHeadingSize.medium => scaler.scale(fonts.body22.bold.fontSize!),
-    StFeatureHeadingSize.small => scaler.scale(fonts.body20.bold.fontSize!),
-  };
+        StFeatureHeadingSize.huge => scaler.scale(fonts.body30.bold.fontSize!),
+        StFeatureHeadingSize.large => scaler.scale(fonts.body24.bold.fontSize!),
+        StFeatureHeadingSize.medium => scaler.scale(fonts.body22.bold.fontSize!),
+        StFeatureHeadingSize.small => scaler.scale(fonts.body20.bold.fontSize!),
+      };
+
+  double getTopPadding() => switch (this) {
+        StFeatureHeadingSize.huge => 24,
+        StFeatureHeadingSize.large => 4,
+        StFeatureHeadingSize.medium => 0,
+        StFeatureHeadingSize.small => 0,
+      };
 
   TextStyle _getSubTitleFontStyle(StThemeFonts fonts) => fonts.body16;
+}
 
-  double _getTopPadding() => switch (this) {
-    StFeatureHeadingSize.huge => 24,
-    StFeatureHeadingSize.large => 12,
-    StFeatureHeadingSize.medium => 8,
-    StFeatureHeadingSize.small => 4,
-  };
+extension _FeatureHeadingStyleX on StFeatureHeadingStyle {
+  Color _getBackgroundColor(BuildContext context) {
+    return switch (this) {
+      StFeatureHeadingStyle.normal => Colors.transparent,
+      StFeatureHeadingStyle.primary => StTheme.of(context).scheme.primary,
+    };
+  }
 
-  double _getBottomPadding() => switch (this) {
-    StFeatureHeadingSize.huge => 12,
-    StFeatureHeadingSize.large => 8,
-    StFeatureHeadingSize.medium => 4,
-    StFeatureHeadingSize.small => 4,
-  };
+  Color _getForegroundColor(BuildContext context, {required bool main}) {
+    return switch (this) {
+      StFeatureHeadingStyle.normal => main ? StTheme.of(context).scheme.primary : StTheme.of(context).scheme.onSurface,
+      StFeatureHeadingStyle.primary => StTheme.of(context).scheme.onPrimary,
+    };
+  }
 }
 
 class StFeatureHeading extends StatefulWidget {
@@ -51,16 +63,19 @@ class StFeatureHeading extends StatefulWidget {
   final String subText;
   final VoidCallback? onSubTextPressed;
   final bool loading;
+  final bool detailedLoadingIndicators;
   final String? iconPath;
   final String? iconSemanticsLabel;
   final Key? iconKey;
   final VoidCallback? onIconPressed;
   final StFeatureHeadingSize? overrideSize;
+  final StFeatureHeadingStyle style;
 
   StFeatureHeading({
     super.key,
     required this.text,
     this.loading = false,
+    this.detailedLoadingIndicators = false,
     this.subText = "",
     this.onSubTextPressed,
     this.iconPath,
@@ -68,26 +83,27 @@ class StFeatureHeading extends StatefulWidget {
     this.iconKey,
     this.onIconPressed,
     this.overrideSize,
+    this.style = StFeatureHeadingStyle.normal,
   })  : assert(
-  iconPath == null || iconPath.endsWith(".svg"),
-  "iconPath must point to .svg picture",
-  ),
-        assert(
-        iconPath == null || iconSemanticsLabel != null,
-        "iconSemanticsLabel must be provided so screen readers can read it",
+          iconPath == null || iconPath.endsWith(".svg"),
+          "iconPath must point to .svg picture",
         ),
         assert(
-        onIconPressed == null || iconPath != null,
-        "iconPath must be provided to show icon which can be pressed",
+          iconPath == null || iconSemanticsLabel != null,
+          "iconSemanticsLabel must be provided so screen readers can read it",
+        ),
+        assert(
+          onIconPressed == null || iconPath != null,
+          "iconPath must be provided to show icon which can be pressed",
         );
 
   @override
   State<StatefulWidget> createState() {
-    return _IsbFeatureHeadingState();
+    return _StFeatureHeadingState();
   }
 }
 
-class _IsbFeatureHeadingState extends State<StFeatureHeading> {
+class _StFeatureHeadingState extends State<StFeatureHeading> {
   StFeatureHeadingSize? _size;
 
   @override
@@ -115,14 +131,12 @@ class _IsbFeatureHeadingState extends State<StFeatureHeading> {
     final TextStyle titleFontStyle = size._getTitleFontStyle(StTheme.of(context).fonts);
     final TextStyle subtitleFontStyle = size._getSubTitleFontStyle(StTheme.of(context).fonts);
     final double iconSize = size._getTrailingIconSize(MediaQuery.textScalerOf(context), StTheme.of(context).fonts);
-    final double topPadding = size._getTopPadding();
-    final double bottomPadding = size._getBottomPadding();
-    return Padding(
-      padding: EdgeInsets.only(top: topPadding, bottom: bottomPadding),
+    return Material(
+      color: widget.style._getBackgroundColor(context),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _StFeatureHeadingTitleAndTrailingIcon.fromAccessibilityMode(
+          _IsbFeatureHeadingTitleAndTrailingIcon.fromAccessibilityMode(
             inAccessibilityMode: inAccessibilityMode,
             loading: widget.loading,
             text: widget.text,
@@ -132,6 +146,8 @@ class _IsbFeatureHeadingState extends State<StFeatureHeading> {
             iconKey: widget.iconKey,
             iconSemanticsLabel: widget.iconSemanticsLabel,
             onIconPressed: widget.onIconPressed,
+            size: size,
+            style: widget.style,
           ),
           _IsbFeatureHeadingSubtitle.fromAccessibilityMode(
             inAccessibilityMode: inAccessibilityMode,
@@ -139,6 +155,8 @@ class _IsbFeatureHeadingState extends State<StFeatureHeading> {
             onSubtitlePressed: widget.onSubTextPressed,
             fontStyle: subtitleFontStyle,
             loading: widget.loading,
+            detailedLoadingIndicators: widget.detailedLoadingIndicators,
+            style: widget.style,
           ),
         ],
       ),
@@ -150,7 +168,7 @@ class _IsbFeatureHeadingState extends State<StFeatureHeading> {
   }
 }
 
-class _StFeatureHeadingTitleAndTrailingIcon extends StatelessWidget {
+class _IsbFeatureHeadingTitleAndTrailingIcon extends StatelessWidget {
   final String text;
   final TextStyle fontStyle;
   final int maxLinesText;
@@ -160,8 +178,10 @@ class _StFeatureHeadingTitleAndTrailingIcon extends StatelessWidget {
   final double? iconSize;
   final VoidCallback? onIconPressed;
   final bool loading;
+  final StFeatureHeadingSize size;
+  final StFeatureHeadingStyle style;
 
-  const _StFeatureHeadingTitleAndTrailingIcon({
+  const _IsbFeatureHeadingTitleAndTrailingIcon({
     super.key,
     required this.text,
     required this.fontStyle,
@@ -172,9 +192,11 @@ class _StFeatureHeadingTitleAndTrailingIcon extends StatelessWidget {
     required this.iconSize,
     required this.onIconPressed,
     required this.loading,
+    required this.size,
+    required this.style,
   });
 
-  factory _StFeatureHeadingTitleAndTrailingIcon.fromAccessibilityMode({
+  factory _IsbFeatureHeadingTitleAndTrailingIcon.fromAccessibilityMode({
     Key? key,
     required bool inAccessibilityMode,
     required String text,
@@ -185,8 +207,10 @@ class _StFeatureHeadingTitleAndTrailingIcon extends StatelessWidget {
     required double? iconSize,
     required VoidCallback? onIconPressed,
     required bool loading,
+    required StFeatureHeadingSize size,
+    required StFeatureHeadingStyle style,
   }) {
-    return _StFeatureHeadingTitleAndTrailingIcon(
+    return _IsbFeatureHeadingTitleAndTrailingIcon(
       key: key,
       text: text,
       fontStyle: fontStyle,
@@ -197,37 +221,49 @@ class _StFeatureHeadingTitleAndTrailingIcon extends StatelessWidget {
       iconSize: iconSize,
       onIconPressed: onIconPressed,
       loading: loading,
+      size: size,
+      style: style,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Flexible(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: StTheme.sidePadding),
-            child: _IsbFeatureHeadingLoading(
-              loading: loading,
-              child: StText(
-                text,
-                style: fontStyle,
-                maxLines: maxLinesText,
-                overflow: TextOverflow.ellipsis,
+    return Padding(
+      padding: EdgeInsets.only(top: size.getTopPadding()),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                left: StTheme.sidePadding,
+                right: StTheme.sidePadding,
+              ),
+              child: _IsbFeatureHeadingLoading(
+                loading: loading,
+                child: StText(
+                  loading
+                      ? text.isEmpty
+                          ? "Abcd efg hijk"
+                          : text
+                      : text,
+                  style: fontStyle.copyWith(color: style._getForegroundColor(context, main: true)),
+                  maxLines: maxLinesText,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           ),
-        ),
-        _IsbFeatureHeadingTrailingIcon(
-          iconKey: iconKey,
-          loading: loading,
-          size: iconSize,
-          iconPath: iconPath,
-          semanticsLabel: iconSemanticsLabel,
-          onIconPressed: onIconPressed,
-        ),
-      ],
+          _IsbFeatureHeadingTrailingIcon(
+            iconKey: iconKey,
+            loading: loading,
+            size: iconSize,
+            iconPath: iconPath,
+            semanticsLabel: iconSemanticsLabel,
+            onIconPressed: onIconPressed,
+          ),
+        ],
+      ),
     );
   }
 }
@@ -294,6 +330,8 @@ class _IsbFeatureHeadingSubtitle extends StatelessWidget {
   final int maxLines;
   final VoidCallback? onSubtitlePressed;
   final bool loading;
+  final bool detailedLoadingIndicators;
+  final StFeatureHeadingStyle style;
 
   const _IsbFeatureHeadingSubtitle({
     super.key,
@@ -302,6 +340,8 @@ class _IsbFeatureHeadingSubtitle extends StatelessWidget {
     required this.maxLines,
     required this.onSubtitlePressed,
     required this.loading,
+    required this.detailedLoadingIndicators,
+    required this.style,
   });
 
   factory _IsbFeatureHeadingSubtitle.fromAccessibilityMode({
@@ -311,6 +351,8 @@ class _IsbFeatureHeadingSubtitle extends StatelessWidget {
     required TextStyle fontStyle,
     required VoidCallback? onSubtitlePressed,
     required bool loading,
+    required bool detailedLoadingIndicators,
+    required StFeatureHeadingStyle style,
   }) {
     return _IsbFeatureHeadingSubtitle(
       key: key,
@@ -319,17 +361,21 @@ class _IsbFeatureHeadingSubtitle extends StatelessWidget {
       maxLines: inAccessibilityMode ? 2 : 1,
       onSubtitlePressed: onSubtitlePressed,
       loading: loading,
+      detailedLoadingIndicators: detailedLoadingIndicators,
+      style: style,
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    if (subtitle.isEmpty) {
+    if (subtitle.isEmpty && !(loading && detailedLoadingIndicators)) {
       return const SizedBox.shrink();
     }
     final bool isSubTextTappable = onSubtitlePressed != null;
     final double subTextTopPadding = isSubTextTappable ? 4 : 2;
     final double subTextBottomPadding = isSubTextTappable ? 4 : 0;
+
+    final String subtitleUse = (loading && detailedLoadingIndicators) ? "0123-12-123456" : subtitle;
 
     return StTapVisual(
       enabled: isSubTextTappable,
@@ -342,8 +388,8 @@ class _IsbFeatureHeadingSubtitle extends StatelessWidget {
           child: _IsbFeatureHeadingLoading(
             loading: loading,
             child: StText(
-              subtitle,
-              style: fontStyle,
+              subtitleUse,
+              style: fontStyle.copyWith(color: style._getForegroundColor(context, main: false)),
               maxLines: maxLines,
               overflow: TextOverflow.ellipsis,
             ),
@@ -368,7 +414,10 @@ class _IsbFeatureHeadingLoading extends StatelessWidget {
   Widget build(BuildContext context) {
     Widget child = this.child;
     if (loading) {
-      child = StLoadingBox(child: child);
+      child = Align(
+        alignment: Alignment.centerLeft,
+        child: StLoadingBox(child: child),
+      );
     }
     return child;
   }

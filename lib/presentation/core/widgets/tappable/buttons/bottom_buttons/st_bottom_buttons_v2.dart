@@ -4,7 +4,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stockz/core/assets/assets.gen.dart';
 import 'package:stockz/presentation/core/accessibility/accessibility.dart';
 import 'package:stockz/presentation/core/localization/l10n.dart';
@@ -308,10 +307,11 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                   key: const ValueKey(StBottomButtonsV2.bottomButtonsMoreButtonKey),
                   onTap: _buttons.onMorePressed ?? _showDrawer,
                   buttonStyle: StButtonStyle.secondary,
-                  child: SvgPicture.asset(
-                    AppAssets.images.icThreeDots,
+                  child: StSvg(
+                    AppAssets.icons.icThreeDots,
                     width: 24,
-                    colorFilter: StTheme.of(context).scheme.onSurfaceVariant.svg,
+                    height: 24,
+                    color: StTheme.of(context).scheme.onSurfaceVariant,
                   ),
                 ),
               ),
@@ -369,7 +369,7 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                   const SizedBox(width: StTheme.sidePadding),
                   if (button.drawerIcon != null) ...[
                     StSvg(
-                      button.drawerIcon ?? AppAssets.images.icTransparent,
+                      button.drawerIcon ?? AppAssets.icons.icTransparent,
                       width: 24,
                       height: 24,
                       color: button.enabled
@@ -379,7 +379,7 @@ class _IsbBottomButtonsState extends State<StBottomButtonsV2> with WidgetsBindin
                     const SizedBox(width: 16),
                   ],
                   Expanded(
-                    child: Text(
+                    child: StText(
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       button.drawerText ?? button.buttonText,

@@ -119,8 +119,8 @@ class StockMarketHoursModel {
 @immutable
 @JsonSerializable(includeIfNull: true, explicitToJson: true)
 class StockMarketHolidaysModel {
-  final int? year;
-  final Map<String, String>? holidays;
+  final dynamic year;
+  final Map? holidays;
 
   const StockMarketHolidaysModel({
     required this.year,
@@ -128,10 +128,11 @@ class StockMarketHolidaysModel {
   });
 
   factory StockMarketHolidaysModel.fromJson(Map<String, dynamic> json) {
-    final Map<String, String> holidays = Map.from(json)..remove("year");
+    final Map<String, dynamic> withoutYear = Map.from(json)..remove("year");
+    final Map? holidays = withoutYear["holidays"] as Map?;
     return StockMarketHolidaysModel(
-      year: json["year"] as int?,
-      holidays: holidays.cast<String, String>(),
+      year: json["year"]?.toString(),
+      holidays: holidays,
     );
   }
 
@@ -144,16 +145,16 @@ class StockMarketHolidaysModel {
 
   StockMarketHolidays toDomain() {
     return StockMarketHolidays(
-      year: NumberValueObject(year),
-      holidays: (holidays ?? {})
-          .keys
-          .map(
-            (String key) => StockMarketHoliday(
-              name: TextValueObject(key),
-              date: DateValueObject.fromString(holidays![key]),
-            ),
-          )
-          .toList(),
+      year: NumberValueObject.fromString(year?.toString()),
+      holidays: (holidays ?? {}).keys.map(
+        (dynamic key) {
+          final dynamic value = holidays![key];
+          return StockMarketHoliday(
+            name: TextValueObject(key.toString()),
+            date: DateValueObject.fromString(value?.toString()),
+          );
+        },
+      ).toList(),
     );
   }
 }

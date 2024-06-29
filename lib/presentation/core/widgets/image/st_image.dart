@@ -119,12 +119,10 @@ class _StImageState extends State<StImage> {
       }
     } else {
       if (widget.imageLink.toLowerCase().endsWith("svg")) {
-        return SvgPicture.asset(
+        return StSvg(
           widget.imageLink,
-          width: widget.width,
-          height: widget.height,
-          fit: widget.fit,
-          placeholderBuilder: (context) => _fallback,
+          width: widget.width ?? 24,
+          height: widget.height ?? 24,
         );
       } else {
         return Image.asset(

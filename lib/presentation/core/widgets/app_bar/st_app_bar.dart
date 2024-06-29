@@ -66,7 +66,7 @@ class StAppBar extends StatelessWidget implements PreferredSizeWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 12, right: 12),
               child: StSvg(
-                AppAssets.images.icCancelCross,
+                AppAssets.icons.icX,
                 width: 24,
                 height: 24,
                 color: StTheme.of(context).scheme.onSurfaceVariant,
@@ -96,6 +96,6 @@ class StAppBar extends StatelessWidget implements PreferredSizeWidget {
     if (titleWidget != null) {
       return titleWidget!;
     }
-    return Text(title ?? "", style: StTheme.of(context).fonts.body13.light);
+    return StText(title ?? "", style: StTheme.of(context).fonts.body13.light);
   }
 }

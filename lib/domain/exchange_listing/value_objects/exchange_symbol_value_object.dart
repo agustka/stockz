@@ -24,6 +24,11 @@ class ExchangeSymbolValueObject extends ValueObject<String> {
     return null;
   }
 
+  @override
+  bool get valid {
+    return super.valid && getExchangeCountry().isNotEmpty && getExchangeCountryCode().isNotEmpty;
+  }
+
   String getExchangeName() {
     final Map<String, String> exchangeNames = {
       "AMEX": "NYSE American",
@@ -96,7 +101,7 @@ class ExchangeSymbolValueObject extends ValueObject<String> {
       "XETRA": "Xetra",
     };
 
-    return exchangeNames[get] ?? "Unknown Exchange";
+    return exchangeNames[get] ?? "";
   }
 
   String getExchangeCountryCode() {
@@ -125,7 +130,7 @@ class ExchangeSymbolValueObject extends ValueObject<String> {
       "HAM": "DE",
       "HEL": "FI",
       "HKSE": "HK",
-      "ICE": "IS",
+      "ICE": "US",
       "IOB": "GB",
       "IST": "TR",
       "JKT": "ID",

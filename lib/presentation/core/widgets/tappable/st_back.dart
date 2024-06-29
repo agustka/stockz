@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:stockz/core/assets/assets.gen.dart';
 import 'package:stockz/presentation/core/localization/l10n.dart';
 import 'package:stockz/presentation/core/widgets/imports.dart';
@@ -29,15 +28,23 @@ class StBack extends StatelessWidget {
 
   Widget _icon(BuildContext context) {
     if (overrideBackIcon != null) {
-      return Transform.scale(scale: 1.5, child: SvgPicture.asset(overrideBackIcon!));
+      return Transform.scale(
+        scale: 1.5,
+        child: StSvg(
+          overrideBackIcon ?? AppAssets.icons.icTransparent,
+          width: 16,
+          height: 16,
+          color: StTheme.of(context).scheme.primary,
+        ),
+      );
     }
     return Padding(
       padding: const EdgeInsets.all(4),
-      child: SvgPicture.asset(
-        AppAssets.images.icBack,
+      child: StSvg(
+        AppAssets.icons.icBack,
         width: 18,
         height: 18,
-        colorFilter: color?.svg,
+        color: color ?? StTheme.of(context).scheme.primary,
       ),
     );
   }

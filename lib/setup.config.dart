@@ -20,6 +20,8 @@ import 'package:stockz/application/core/language/language_cubit.dart' as _i3;
 import 'package:stockz/application/core/navigation/navigation_cubit.dart'
     as _i70;
 import 'package:stockz/application/overview/overview_cubit.dart' as _i82;
+import 'package:stockz/application/overview/stock_exchange/stock_exchange_cubit.dart'
+    as _i83;
 import 'package:stockz/infrastructure/balance_sheet_statement/cache/balance_sheet_cache.dart'
     as _i65;
 import 'package:stockz/infrastructure/balance_sheet_statement/cache/balance_sheet_statement_dao.dart'
@@ -31,7 +33,7 @@ import 'package:stockz/infrastructure/balance_sheet_statement/repository/balance
 import 'package:stockz/infrastructure/balance_sheet_statement/repository/i_balance_sheet_statement_repository.dart'
     as _i76;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/balance_sheet_statement_module.dart'
-    as _i91;
+    as _i92;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/balance_sheet_statement_service.dart'
     as _i66;
 import 'package:stockz/infrastructure/balance_sheet_statement/service/chopper/balance_sheet_statement_chopper_service.dart'
@@ -51,7 +53,7 @@ import 'package:stockz/infrastructure/cash_flow_statement/repository/cash_flow_s
 import 'package:stockz/infrastructure/cash_flow_statement/repository/i_cash_flow_statement_repository.dart'
     as _i56;
 import 'package:stockz/infrastructure/cash_flow_statement/service/cash_flow_statement_module.dart'
-    as _i90;
+    as _i91;
 import 'package:stockz/infrastructure/cash_flow_statement/service/cash_flow_statement_service.dart'
     as _i43;
 import 'package:stockz/infrastructure/cash_flow_statement/service/chopper/cash_flow_statement_chopper_service.dart'
@@ -73,13 +75,13 @@ import 'package:stockz/infrastructure/chart/service/chopper/chart_chopper_servic
 import 'package:stockz/infrastructure/chart/service/i_chart_service.dart'
     as _i37;
 import 'package:stockz/infrastructure/chart/service/moving_average_service_module.dart'
-    as _i87;
+    as _i88;
 import 'package:stockz/infrastructure/chart/service/offline/offline_chart_service.dart'
     as _i51;
 import 'package:stockz/infrastructure/company/repository/company_repository.dart'
-    as _i84;
+    as _i85;
 import 'package:stockz/infrastructure/company/repository/i_company_repository.dart'
-    as _i83;
+    as _i84;
 import 'package:stockz/infrastructure/company_profile/cache/company_profile_cache.dart'
     as _i59;
 import 'package:stockz/infrastructure/company_profile/cache/company_profile_dao.dart'
@@ -95,7 +97,7 @@ import 'package:stockz/infrastructure/company_profile/service/chopper/company_pr
 import 'package:stockz/infrastructure/company_profile/service/company_profile_service.dart'
     as _i24;
 import 'package:stockz/infrastructure/company_profile/service/company_profile_service_module.dart'
-    as _i89;
+    as _i90;
 import 'package:stockz/infrastructure/company_profile/service/i_company_profile_service.dart'
     as _i23;
 import 'package:stockz/infrastructure/company_profile/service/offline/offline_company_profile_service.dart'
@@ -106,7 +108,7 @@ import 'package:stockz/infrastructure/core/analytics/repository/i_analytics_repo
     as _i41;
 import 'package:stockz/infrastructure/core/cache/database_definition.dart'
     as _i34;
-import 'package:stockz/infrastructure/core/cache/database_module.dart' as _i92;
+import 'package:stockz/infrastructure/core/cache/database_module.dart' as _i93;
 import 'package:stockz/infrastructure/core/cache/offline/offline_database_definition.dart'
     as _i44;
 import 'package:stockz/infrastructure/core/cache/repository/cache_repository.dart'
@@ -124,7 +126,7 @@ import 'package:stockz/infrastructure/core/prefs/offline/offline_shared_prefs_pr
 import 'package:stockz/infrastructure/core/prefs/shared_prefs_wrapper.dart'
     as _i25;
 import 'package:stockz/infrastructure/core/service/event_bus_module.dart'
-    as _i85;
+    as _i86;
 import 'package:stockz/infrastructure/core/service/interceptors/auth_request_interceptor.dart'
     as _i14;
 import 'package:stockz/infrastructure/core/service/interceptors/headers_request_interceptor.dart'
@@ -152,7 +154,7 @@ import 'package:stockz/infrastructure/exchange_listing/repository/exchange_listi
 import 'package:stockz/infrastructure/exchange_listing/service/chopper/exchange_listings_chopper_service.dart'
     as _i7;
 import 'package:stockz/infrastructure/exchange_listing/service/exchange_listings_module.dart'
-    as _i88;
+    as _i89;
 import 'package:stockz/infrastructure/exchange_listing/service/exchange_listings_service.dart'
     as _i31;
 import 'package:stockz/infrastructure/income_statement/cache/i_income_statement_cache.dart'
@@ -170,7 +172,7 @@ import 'package:stockz/infrastructure/income_statement/service/chopper/income_st
 import 'package:stockz/infrastructure/income_statement/service/i_income_statement_service.dart'
     as _i19;
 import 'package:stockz/infrastructure/income_statement/service/income_statement_module.dart'
-    as _i86;
+    as _i87;
 import 'package:stockz/infrastructure/income_statement/service/income_statement_service.dart'
     as _i62;
 import 'package:stockz/infrastructure/income_statement/service/offline/offline_income_statement_service.dart'
@@ -384,7 +386,11 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i75.ExchangeListingsRepository>(),
           gh<_i4.EventBus>(),
         ));
-    gh.lazySingleton<_i83.ICompanyRepository>(() => _i84.CompanyRepository(
+    gh.factory<_i83.StockExchangeCubit>(() => _i83.StockExchangeCubit(
+          gh<_i75.ExchangeListingsRepository>(),
+          gh<_i4.EventBus>(),
+        ));
+    gh.lazySingleton<_i84.ICompanyRepository>(() => _i85.CompanyRepository(
           gh<_i76.IBalanceSheetStatementRepository>(),
           gh<_i56.ICashFlowStatementRepository>(),
           gh<_i73.ICompanyProfileRepository>(),
@@ -396,22 +402,22 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$EventBusModule extends _i85.EventBusModule {}
+class _$EventBusModule extends _i86.EventBusModule {}
 
 class _$IncomeStatementServiceModule
-    extends _i86.IncomeStatementServiceModule {}
+    extends _i87.IncomeStatementServiceModule {}
 
-class _$MovingAverageServiceModule extends _i87.MovingAverageServiceModule {}
+class _$MovingAverageServiceModule extends _i88.MovingAverageServiceModule {}
 
 class _$ExchangeListingsServiceModule
-    extends _i88.ExchangeListingsServiceModule {}
+    extends _i89.ExchangeListingsServiceModule {}
 
-class _$CompanyProfileServiceModule extends _i89.CompanyProfileServiceModule {}
+class _$CompanyProfileServiceModule extends _i90.CompanyProfileServiceModule {}
 
 class _$CashFlowStatementServiceModule
-    extends _i90.CashFlowStatementServiceModule {}
+    extends _i91.CashFlowStatementServiceModule {}
 
 class _$BalanceSheetStatementServiceModule
-    extends _i91.BalanceSheetStatementServiceModule {}
+    extends _i92.BalanceSheetStatementServiceModule {}
 
-class _$DatabaseModule extends _i92.DatabaseModule {}
+class _$DatabaseModule extends _i93.DatabaseModule {}

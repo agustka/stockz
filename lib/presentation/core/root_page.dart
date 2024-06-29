@@ -59,8 +59,8 @@ class _RootPageState extends State<RootPage> {
     const double iconTextSpacing = 8;
 
     final StTheme theme = StTheme.of(context);
-    final Color selCol = theme.scheme.error;
-    final Color unSelCol = theme.scheme.onSurfaceVariant;
+    final Color selCol = theme.scheme.primary;
+    final Color unSelCol = theme.scheme.onSurface;
     final Color backgroundColor = theme.scheme.surfaceContainerHighest;
 
     return Scaffold(
@@ -75,7 +75,7 @@ class _RootPageState extends State<RootPage> {
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
               child: StSvg(
-                AppAssets.images.icHome,
+                AppAssets.icons.icSpeedometer,
                 width: iconSize,
                 height: iconSize,
                 color: _selPage == 0 ? selCol : unSelCol,
@@ -88,7 +88,7 @@ class _RootPageState extends State<RootPage> {
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
               child: StSvg(
-                AppAssets.images.icNavBills,
+                AppAssets.icons.icNavBills,
                 width: iconSize,
                 height: iconSize,
                 color: _selPage == 1 ? selCol : unSelCol,
@@ -101,7 +101,7 @@ class _RootPageState extends State<RootPage> {
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
               child: StSvg(
-                AppAssets.images.icTransfer,
+                AppAssets.icons.icTransfer,
                 width: iconSize,
                 height: iconSize,
                 color: _selPage == 2 ? selCol : unSelCol,
@@ -114,7 +114,7 @@ class _RootPageState extends State<RootPage> {
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
               child: StSvg(
-                AppAssets.images.icNavFrida,
+                AppAssets.icons.icNavFrida,
                 width: iconSize,
                 height: iconSize,
                 color: _selPage == 3 ? selCol : unSelCol,
@@ -127,7 +127,7 @@ class _RootPageState extends State<RootPage> {
             icon: Padding(
               padding: const EdgeInsets.only(bottom: iconTextSpacing, top: 5),
               child: StSvg(
-                AppAssets.images.icNavMore,
+                AppAssets.icons.icNavMore,
                 width: iconSize,
                 height: iconSize,
                 color: _selPage == 4 ? selCol : unSelCol,

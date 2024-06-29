@@ -27,6 +27,9 @@ class Exchange extends Equatable {
   final BoolValueObject isTheEuronextMarketOpen;
   final BoolValueObject isTheForexMarketOpen;
   final BoolValueObject isTheCryptoMarketOpen;
+  final bool valid;
+
+  bool get isInvalid => !valid;
 
   const Exchange({
     required this.exchangeSymbol,
@@ -37,8 +40,10 @@ class Exchange extends Equatable {
     required this.isTheEuronextMarketOpen,
     required this.isTheForexMarketOpen,
     required this.isTheCryptoMarketOpen,
+    this.valid = true,
   });
 
+  const factory Exchange.invalid() = _$InvalidExchange;
 
   @override
   List<Object?> get props => [
@@ -50,7 +55,23 @@ class Exchange extends Equatable {
         isTheEuronextMarketOpen,
         isTheForexMarketOpen,
         isTheCryptoMarketOpen,
+        valid,
       ];
+}
+
+class _$InvalidExchange extends Exchange {
+  const _$InvalidExchange()
+      : super(
+          exchangeSymbol: const StringIdValueObject.invalid(),
+          stockExchangeName: const TextValueObject.invalid(),
+          stockMarketHours: const OpeningHours.invalid(),
+          stockMarketHolidays: const [],
+          isTheStockMarketOpen: const BoolValueObject.invalid(),
+          isTheEuronextMarketOpen: const BoolValueObject.invalid(),
+          isTheForexMarketOpen: const BoolValueObject.invalid(),
+          isTheCryptoMarketOpen: const BoolValueObject.invalid(),
+          valid: false,
+        );
 }
 
 class OpeningHours extends Equatable {
@@ -75,11 +96,11 @@ class OpeningHours extends Equatable {
 class _$InvalidOpeningHours extends OpeningHours {
   const _$InvalidOpeningHours()
       : super(
-    openingHour: const OpenHoursValueObject.invalid(),
-    closingHour: const OpenHoursValueObject.invalid(),
-    openStatus: OpenStatus.invalid,
-    valid: false,
-  );
+          openingHour: const OpenHoursValueObject.invalid(),
+          closingHour: const OpenHoursValueObject.invalid(),
+          openStatus: OpenStatus.invalid,
+          valid: false,
+        );
 }
 
 enum OpenStatus {

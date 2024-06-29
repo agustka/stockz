@@ -9,6 +9,7 @@ export 'container/st_divider.dart';
 export 'container/st_loading_box.dart';
 export 'core/st_scaffold.dart';
 export 'dialogs/st_alert_dialog.dart';
+export 'dialogs/st_toast.dart';
 export 'error/st_feature_error.dart';
 export 'image/st_image.dart';
 export 'image/st_svg.dart';

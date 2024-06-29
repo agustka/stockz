@@ -23,10 +23,8 @@ Map<String, dynamic> _$StockMarketHoursModelToJson(
 StockMarketHolidaysModel _$StockMarketHolidaysModelFromJson(
         Map<String, dynamic> json) =>
     StockMarketHolidaysModel(
-      year: (json['year'] as num?)?.toInt(),
-      holidays: (json['holidays'] as Map<String, dynamic>?)?.map(
-        (k, e) => MapEntry(k, e as String),
-      ),
+      year: json['year'],
+      holidays: json['holidays'] as Map<String, dynamic>?,
     );
 
 Map<String, dynamic> _$StockMarketHolidaysModelToJson(

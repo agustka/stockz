@@ -210,6 +210,26 @@ class S {
     );
   }
 
+  /// `Villa við að hlaða markaði`
+  String get stock_exchange_error_loading_exchange {
+    return Intl.message(
+      'Villa við að hlaða markaði',
+      name: 'stock_exchange_error_loading_exchange',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Villa við að hlaða félögum`
+  String get stock_exchange_error_loading_exchange_listings {
+    return Intl.message(
+      'Villa við að hlaða félögum',
+      name: 'stock_exchange_error_loading_exchange_listings',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Bandaríkin`
   String get US {
     return Intl.message(

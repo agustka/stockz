@@ -193,6 +193,13 @@ class RouteLink extends Equatable {
     );
   }
 
+  factory RouteLink.stockExchange({required String exchangeSymbol}) {
+    return RouteLink._(
+      route: NamedRoute.stockExchange(),
+      arguments: RouteArguments({"exchangeSymbol": exchangeSymbol}),
+    );
+  }
+
   factory RouteLink.alertDialog({required AlertDialogData data, bool shouldHideIosTabBar = true}) {
     return RouteLink._(
       route: NamedRoute.alertDialog(),

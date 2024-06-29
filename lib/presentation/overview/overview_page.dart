@@ -59,7 +59,10 @@ class _OverviewContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        StFeatureHeading(text: S.of(context).overview_stock_exchanges, subText: S.of(context).overview_stock_exchanges_explanation,),
+        StFeatureHeading(
+          text: S.of(context).overview_stock_exchanges,
+          subText: S.of(context).overview_stock_exchanges_explanation,
+        ),
         Expanded(
           child: StRefreshIndicator(
             onRefresh: () async {

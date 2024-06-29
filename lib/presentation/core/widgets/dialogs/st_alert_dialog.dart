@@ -295,13 +295,13 @@ class _AlertDialogPageState extends State<AlertDialogPage> with TickerProviderSt
           child: Column(
             children: [
               const SizedBox(height: 120),
-              Text(
+              StText(
                 widget.data.title,
                 style: StTheme.of(context).fonts.body32.bold.primary,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 23),
-              Text(widget.data.content, style: StTheme.of(context).fonts.body18.light, textAlign: TextAlign.center),
+              StText(widget.data.content, style: StTheme.of(context).fonts.body18.light, textAlign: TextAlign.center),
               const SizedBox(height: 30),
               Center(
                 child: FractionallySizedBox(

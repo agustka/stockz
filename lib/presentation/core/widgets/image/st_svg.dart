@@ -13,13 +13,13 @@ class StSvg extends StatelessWidget {
   final bool accessibilityScaling;
 
   const StSvg(
-      this.asset, {
-        super.key,
-        required this.width,
-        required this.height,
-        this.color,
-        this.accessibilityScaling = true,
-      });
+    this.asset, {
+    super.key,
+    required this.width,
+    required this.height,
+    this.color,
+    this.accessibilityScaling = true,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,12 @@ class StSvg extends StatelessWidget {
     if (asset.startsWith("http")) {
       svg = SvgPicture.network(asset, width: imageWidth, height: imageHeight, colorFilter: color?.svg);
     } else {
-      svg = SvgPicture.asset(asset, width: imageWidth, height: imageHeight, colorFilter: color?.svg);
+      svg = SvgPicture.asset(
+        asset,
+        width: imageWidth,
+        height: imageHeight,
+        colorFilter: color?.svg,
+      );
     }
     return ConstrainedBox(constraints: BoxConstraints(maxWidth: imageWidth, maxHeight: imageHeight), child: svg);
   }

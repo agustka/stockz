@@ -25,16 +25,18 @@ class ExchangeListingsRepository {
     if (forceGet) {
       return _fetchExchangeSymbols();
     }
-    return _cache.getExchangeSymbols(policy: CachingPolicy.onlyServeNotExpired).then((
-      Cache<List<String>> cache,
-    ) {
-      return cache.maybeMap(
-        available: (CacheAvailable<List<String>> available) {
-          return Payload.success(available.data.map((String e) => ExchangeSymbolValueObject(e)).toList());
-        },
-        orElse: () => _fetchExchangeSymbols(),
-      );
-    });
+    return _cache.getExchangeSymbols(policy: CachingPolicy.onlyServeNotExpired).then(
+      (
+        Cache<List<String>> cache,
+      ) {
+        return cache.maybeMap(
+          available: (CacheAvailable<List<String>> available) {
+            return Payload.success(available.data.map((String e) => ExchangeSymbolValueObject(e)).toList());
+          },
+          orElse: () => _fetchExchangeSymbols(),
+        );
+      },
+    );
   }
 
   Future<Payload<List<ExchangeSymbolValueObject>>> _fetchExchangeSymbols() async {
