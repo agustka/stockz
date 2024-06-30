@@ -27,10 +27,14 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
   static StockExchange _parse(String? input, {required bool logError}) {
     switch (input?.toLowerCase() ?? "") {
       case "new york stock exchange":
-      case "nyse":
+      case "nyse" || "amex":
         return StockExchange.newYorkStockExchange;
       case "new york stock exchange arca":
         return StockExchange.newYorkStockExchangeArca;
+      case "etf":
+        return StockExchange.cboeUs;
+      case "euronext":
+        return StockExchange.cboeEurope;
 
       case "nasdaq":
         return StockExchange.nasdaq;
@@ -40,67 +44,67 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
         return StockExchange.nasdaqGlobalMarket;
       case "nasdaq capital market":
         return StockExchange.nasdaqCapitalMarket;
-      case "other otc":
+      case "other otc" || "otc":
         return StockExchange.otherOtc;
       case "international order book":
       case "iob":
         return StockExchange.internationalOrderBook;
       case "american stock exchange":
         return StockExchange.americanStockExchange;
+      case "pnk":
+        return StockExchange.pinkSheets;
       case "bats":
-      case "cboe bzx":
+      case "cboe bzx" || "cboe":
         return StockExchange.cboe;
       case "cboe us":
         return StockExchange.cboeUs;
-      case "cboe ca":
+      case "cboe ca" || "cnq":
         return StockExchange.cboeCanada;
       case "cboe europe":
         return StockExchange.cboeEurope;
 
-      case "toronto stock exchange":
+      case "toronto stock exchange" || "tsx":
         return StockExchange.torontoStockExchange;
       case "canadian securities exchange":
       case "canadian sec":
         return StockExchange.canadianSecuritiesExchange;
-      case "toronto stock exchange ventures":
+      case "toronto stock exchange ventures" || "tsxv":
         return StockExchange.torontoStockExchangeVentures;
       case "neo":
         return StockExchange.neo;
-      case "tsxv":
-        return StockExchange.tsxv;
 
-      case "mexico":
+      case "mexico" || "mex":
         return StockExchange.mexico;
-      case "são paulo":
+      case "são paulo" || "sao":
         return StockExchange.saoPaulo;
-      case "santiago":
+      case "santiago" || "sgo":
         return StockExchange.santiago;
-      case "buenos aires":
+      case "buenos aires" || "bue":
         return StockExchange.buenosAires;
 
       case "tokyo":
         return StockExchange.tokyo;
-      case "shanghai":
+      case "shanghai" || "shh":
         return StockExchange.shanghai;
-      case "shenzhen":
+      case "shenzhen" || "shz":
         return StockExchange.shenzhen;
-      case "taiwan":
+      case "taiwan" || "tai":
         return StockExchange.taiwan;
-      case "taipei exchange":
+      case "taipei exchange" || "two":
         return StockExchange.taipeiExchange;
-      case "kuala lumpur":
+      case "kuala lumpur" || "kls":
         return StockExchange.kualaLumpur;
       case "hkse":
         return StockExchange.hkse;
-      case "kosdaq": // Korea
+      case "koe": // Korea
         return StockExchange.kosdaq;
-      case "stock exchange of singapore":
+      case "stock exchange of singapore" || "ses":
         return StockExchange.stockExchangeOfSingapore;
-      case "thailand":
+      case "thailand" || "set":
         return StockExchange.thailand;
-      case "jakarta stock exchange":
+      case "jakarta stock exchange" || "jkt":
         return StockExchange.jakartaStockExchange;
-      case "national stock exchange of india":
+      case "national stock exchange of india" ||"nse":
         return StockExchange.nationalStockExchangeOfIndia;
       case "bombay stock exchange":
       case "bse":
@@ -110,87 +114,90 @@ class StockExchangeValueObject extends ValueObject<StockExchange> {
       case "kse":
         return StockExchange.kse;
 
-      case "australian securities exchange":
+      case "australian securities exchange" || "asx":
         return StockExchange.australianSecuritiesExchange;
       case "nzse":
         return StockExchange.nzse;
 
-      case "johannesburg":
+      case "johannesburg" || "jnb":
         return StockExchange.johannesburg;
       case "cai":
         return StockExchange.cairo;
 
-      case "tel aviv":
+      case "jpx":
+        return StockExchange.tokyo;
+      case "tel aviv" || "tlv":
         return StockExchange.telAviv;
-      case "istanbul stock exchange":
+      case "istanbul stock exchange" || "ist":
         return StockExchange.istanbulStockExchange;
-      case "dubai":
+      case "dubai" || "dfm":
         return StockExchange.dubai;
-      case "saudi":
+      case "saudi" || "sau":
         return StockExchange.saudi;
-      case "qatar":
+      case "qatar" || "doh":
         return StockExchange.qatar;
-      case "kuwait":
+      case "ksc":
+      case "kuwait" || "kuw":
         return StockExchange.kuwait;
 
-      case "london stock exchange":
+      case "london stock exchange" || "lse":
         return StockExchange.londonStockExchange;
-      case "aquis aqse":
+      case "aquis aqse" || "aqs":
         return StockExchange.aquisAqse;
       case "egx":
         return StockExchange.egx;
       case "xetra":
         return StockExchange.xetra;
-      case "berlin":
+      case "berlin" || "ber":
         return StockExchange.berlin;
-      case "hamburg":
+      case "hamburg" || "ham":
         return StockExchange.hamburg;
       case "frankfurt stock exchange":
       case "frankfurt":
         return StockExchange.frankfurtStockExchange;
-      case "munich":
+      case "munich" || "mun":
         return StockExchange.munich;
-      case "stuttgart":
+      case "stuttgart" || "stu":
         return StockExchange.stuttgart;
-      case "dusseldorf":
+      case "dusseldorf" || "dus":
         return StockExchange.dusseldorf;
-      case "moscow stock exchange":
+      case "moscow stock exchange" || "mcx":
         return StockExchange.moscowStockExchange;
-      case "amsterdam":
+      case "amsterdam" || "ams":
         return StockExchange.amsterdam;
       case "paris":
         return StockExchange.paris;
-      case "prague":
+      case "prague" || "pra":
         return StockExchange.prague;
-      case "swiss exchange":
+      case "swiss exchange" || "six":
         return StockExchange.swissExchange;
-      case "stockholm stock exchange":
+      case "stockholm stock exchange" || "sto":
         return StockExchange.stockholmStockExchange;
-      case "oslo stock exchange":
+      case "oslo stock exchange" || "osl":
         return StockExchange.osloStockExchange;
-      case "brussels":
+      case "brussels" || "bru":
         return StockExchange.brussels;
-      case "copenhagen":
+      case "copenhagen" || "cph":
         return StockExchange.copenhagen;
-      case "milan":
+      case "milan" || "mil":
         return StockExchange.milan;
-      case "warsaw stock exchange":
+      case "warsaw stock exchange" || "wse":
         return StockExchange.warsawStockExchange;
       case "lisbon":
         return StockExchange.lisbon;
-      case "vienna":
+      case "vienna" || "vie":
         return StockExchange.vienna;
       case "irish":
         return StockExchange.irish;
-      case "madrid stock exchange":
+      case "madrid stock exchange" || "bme":
         return StockExchange.madridStockExchange;
-      case "athens":
+      case "athens" || "ath":
         return StockExchange.athens;
-      case "helsinki":
+      case "helsinki" || "hel":
         return StockExchange.helsinki;
-      case "budapest":
+      case "budapest" || "bud":
         return StockExchange.budapest;
-      case "riga":
+      case "riga" ||"ris":
         return StockExchange.riga;
       case "iceland":
         return StockExchange.iceland;
@@ -227,6 +234,8 @@ enum StockExchange {
   otherOtc,
   internationalOrderBook,
   americanStockExchange,
+  americanExchangeTradedFund,
+  pinkSheets,
   cboe,
   cboeUs,
   cboeCanada,
@@ -236,7 +245,6 @@ enum StockExchange {
   canadianSecuritiesExchange,
   torontoStockExchangeVentures,
   neo,
-  tsxv,
 
   mexico,
   saoPaulo,

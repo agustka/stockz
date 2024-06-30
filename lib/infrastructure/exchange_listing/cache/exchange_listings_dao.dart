@@ -65,8 +65,7 @@ class StockListingsDao extends DatabaseAccessor<DriftDb> with _$StockListingsDao
                   exchange: listing.exchange ?? "invalid",
                   name: Value(listing.name),
                   price: Value(listing.price),
-                  exchangeShortName: Value(listing.exchangeShortName),
-                  type: Value(listing.type),
+                  changesPercentage: Value(listing.changesPercentage),
                   expires: DateTime.now().add(Duration(seconds: ttlSeconds)),
                 ),
               )

@@ -26,7 +26,9 @@ class StockExchangePage extends StatelessWidget {
       create: (BuildContext context) {
         final StockExchangeCubit cubit = getIt<StockExchangeCubit>();
         cubit.getData(forceGet: false, exchangeSymbol: exchangeSymbol);
-        cubit.eventBus.on<StockExchangeMessage>().listen((StockExchangeMessage event) {
+        cubit.eventBus
+            .on<StockExchangeMessage>()
+            .listen((StockExchangeMessage event) {
           if (!context.mounted) {
             return;
           }
@@ -41,7 +43,9 @@ class StockExchangePage extends StatelessWidget {
               StToast.show(
                 context: context,
                 type: ToastType.error,
-                text: S.of(context).stock_exchange_error_loading_exchange_listings,
+                text: S
+                    .of(context)
+                    .stock_exchange_error_loading_exchange_listings,
               );
           }
         });
@@ -57,14 +61,24 @@ class StockExchangePage extends StatelessWidget {
                 StFeatureHeading(
                   loading: state.isLoading,
                   text: state.exchange.stockExchangeName.get.isEmpty
-                      ? ExchangeSymbolValueObject(exchangeSymbol).getExchangeName()
+                      ? ExchangeSymbolValueObject(exchangeSymbol)
+                          .getExchangeName()
                       : state.exchange.stockExchangeName.get,
                   subText: state.exchangeSymbol,
                 ),
                 const SizedBox(height: 24),
-                ...state.listings.listings.map((ExchangeListing e) {
+                ...state.listings.listings
+                    .map((ExchangeListing exchangeListing) {
                   return StListTile(
-                    leadingText: e.name.get,
+                    leadingText: exchangeListing.name.get,
+                    trailingText: exchangeListing.change.get.format(),
+                    trailingTextStyle: exchangeListing.change.get.isZero
+                        ? null
+                        : StTheme.current?.fonts.body16.copyWith(
+                            color: exchangeListing.change.get.isPositive
+                                ? StTheme.current?.scheme.tertiary
+                                : StTheme.current?.scheme.error,
+                          ),
                   );
                 }),
               ],
